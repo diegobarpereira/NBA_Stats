@@ -17,6 +17,8 @@ env/
 Thumbs.db
 data/*.json
 !data/.gitkeep
+!data/comparison_history.json
+!data/performance_history.json
 output/*.json
 !output/.gitkeep
 nul

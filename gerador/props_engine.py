@@ -5,18 +5,28 @@ from scrapers.matchup_scraper import get_matchup_boost
 
 
 class PropsEngine:
-    def __init__(self):
+    def __init__(self, use_performance: bool = True):
         self.prop_types = config.PROP_TYPES
         self.prop_abbrev = config.PROP_ABBREV
         self.weights = config.WEIGHT_CONFIG
         self.odds_config = config.ODDS_CONFIG
         self.injury_adjustments = config.INJURY_ADJUSTMENTS
 
+        self.performance_analyzer = None
+        self.use_performance = use_performance
+        if use_performance:
+            try:
+                from gerador.performance_analyzer import get_performance_analyzer
+                self.performance_analyzer = get_performance_analyzer()
+            except Exception:
+                pass
+
     def calculate_adjusted_line(
         self,
         player_stats: Dict,
         prop_type: str,
         injury_status: Optional[str] = None,
+        player_name: Optional[str] = None,
     ) -> float:
         season_key = f"avg{prop_type.capitalize()}_season"
         last5_key = f"avg{prop_type.capitalize()}_last5"
@@ -35,6 +45,17 @@ class PropsEngine:
         if injury_status and injury_status in self.injury_adjustments:
             adjustment = self.injury_adjustments[injury_status]
             line *= adjustment
+
+        if self.performance_analyzer and player_name:
+            player_acc = self.performance_analyzer.get_player_confidence(player_name)
+            type_mult = self.performance_analyzer.get_type_multipliers().get(prop_type, 1.0)
+            
+            if player_acc < 0.35:
+                line *= 1.1
+            elif player_acc > 0.7:
+                line *= 0.95
+            
+            line *= type_mult
 
         return round(line, 1)
 
@@ -65,7 +86,7 @@ class PropsEngine:
             if prop_type == "3pt" and player_stats.get("avg3PT_season", 0) < 0.3:
                 continue
 
-            base_line = self.calculate_adjusted_line(player_stats, prop_type, injury_status)
+            base_line = self.calculate_adjusted_line(player_stats, prop_type, injury_status, player_name)
 
             matchup_mult = 1.0
             if opponent and matchup_data and position:
@@ -260,6 +281,23 @@ class PropsEngine:
             score += 1
         elif matchup_mult < 0.95:
             score -= 1
+
+        if self.performance_analyzer:
+            player_name = prop.get("player", "")
+            prop_type = prop.get("type", "")
+            
+            player_acc = self.performance_analyzer.get_player_confidence(player_name)
+            type_mult = self.performance_analyzer.get_type_multipliers().get(prop_type, 1.0)
+            
+            if player_acc < 0.3:
+                score -= 2
+            elif player_acc < 0.4:
+                score -= 1
+            elif player_acc > 0.7:
+                score += 1
+
+            score *= type_mult
+            score = max(0, min(score, 10))
 
         return max(0, min(score, 10))
 

@@ -61,6 +61,48 @@ st.markdown("""
 st.title("📈 Comparativo")
 st.markdown("Compare os bilhetes gerados com os resultados reais para ajustar seus filtros.")
 
+try:
+    from gerador.performance_analyzer import get_performance_analyzer
+    analyzer = get_performance_analyzer()
+    summary = analyzer.get_summary()
+    
+    st.markdown("---")
+    st.markdown("### 🎯 Resumo de Performance do Sistema")
+    
+    total_bets = summary.get("total_bets", 0)
+    if total_bets > 0:
+        col1, col2 = st.columns(2)
+        with col1:
+            st.metric("Total de Apostas Analisadas", total_bets)
+        with col2:
+            weights = summary.get("suggested_weights", (0.6, 0.4))
+            st.metric("Pesos Sugeridos (S/L5)", f"{weights[0]:.1f}/{weights[1]:.1f}")
+        
+        st.markdown("#### Acurácia por Tipo de Prop:")
+        type_acc = summary.get("type_accuracy", {})
+        for t, acc in type_acc.items():
+            emoji = "🟢" if acc > 0.6 else "🟡" if acc > 0.4 else "🔴"
+            st.write(f"{emoji} {t.upper()}: {acc:.1%}")
+        
+        st.markdown("#### Acurácia por Confiança:")
+        conf_acc = summary.get("confidence_accuracy", {})
+        for c in sorted(conf_acc.keys())[:5]:
+            acc = conf_acc[c]
+            emoji = "🟢" if acc > 0.6 else "🟡" if acc > 0.4 else "🔴"
+            st.write(f"{emoji} Conf {c}: {acc:.1%}")
+        
+        st.markdown("#### 💡 Recomendações:")
+        recs = summary.get("recommendations", [])
+        if recs:
+            for r in recs[:5]:
+                st.write(r)
+        else:
+            st.info("Aguardando mais dados para recomendações")
+    else:
+        st.info("ℹ️ Execute o Comparativo e salve os resultados para ver recomendações")
+except Exception as e:
+    pass
+
 tab1, tab2 = st.tabs(["🔍 Sistema vs Real", "💰 Minhas Apostas (Bet365)"])
 
 # ==========================================
