@@ -4,6 +4,10 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
 OUTPUT_DIR = BASE_DIR / "output"
+
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 CACHE_FILE = DATA_DIR / "cache_stats.json"
 ODDS_CACHE_FILE = DATA_DIR / "odds_cache_{date}.json"
 
