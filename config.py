@@ -11,7 +11,14 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 CACHE_FILE = DATA_DIR / "cache_stats.json"
 ODDS_CACHE_FILE = DATA_DIR / "odds_cache_{date}.json"
 
-THE_ODDS_API_KEY = "fdc16fc87bf1afd7f998ec2b82473e6b"
+THE_ODDS_API_KEY = os.environ.get("THE_ODDS_API_KEY", "")
+
+try:
+    from config_local import THE_ODDS_API_KEY as LOCAL_API_KEY
+    if LOCAL_API_KEY and not THE_ODDS_API_KEY:
+        THE_ODDS_API_KEY = LOCAL_API_KEY
+except ImportError:
+    pass
 
 DATA_FILES = {
     "teams": BASE_DIR / "nba_por_equipe.json",

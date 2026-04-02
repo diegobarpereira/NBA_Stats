@@ -22,3 +22,6 @@ data/*.json
 output/*.json
 !output/.gitkeep
 nul
+config_local.py
+api_keys.py
+secrets.json
