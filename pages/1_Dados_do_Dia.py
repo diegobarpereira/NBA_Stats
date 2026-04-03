@@ -188,6 +188,15 @@ def parse_injuries_text(raw: str) -> dict:
                     by_team[current_team] = {"abbr": current_abbr, "team": current_team, "jogadores": []}
             continue
 
+        if not current_team and not ":" in line and not "[" in line:
+            potential_team = _resolve_team(line.strip())
+            if potential_team and potential_team != line.strip():
+                current_team = potential_team
+                current_abbr = _team_name_to_abbr(potential_team)
+                if current_team not in by_team:
+                    by_team[current_team] = {"abbr": current_abbr, "team": current_team, "jogadores": []}
+                continue
+
         injury_line = re.match(
             r"(?P<player>[A-Z][A-Za-z'\-À-ÿ]+(?:\s+[A-Za-z'\-À-ÿ]+)*)"
             r"(?:\s*[-–:]\s*)"
