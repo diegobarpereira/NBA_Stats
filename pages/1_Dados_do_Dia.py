@@ -32,11 +32,24 @@ _init_session()
 
 st.title("📋 Dados do Dia")
 
-col_fetch, col_date = st.columns([2, 1])
+col_fetch, col_date = st.columns([2, 2])
+
 with col_fetch:
     st.markdown("#### 🤖 Auto-fetch GameRead")
+    
+    timezone_offset = st.selectbox(
+        "Fuso Horário",
+        options=[-3, -4, -5, -6, -7, -8],
+        index=0,
+        format_func=lambda x: f"Brasília (GMT{x})" if x == -3 else f"GMT{x}",
+        help="Selecione o timezone do seu localização"
+    )
+
 with col_date:
-    today = datetime.now().strftime("%Y-%m-%d")
+    from datetime import timezone, timedelta
+    server_now = datetime.now()
+    local_dt = server_now + timedelta(hours=timezone_offset)
+    today = local_dt.strftime("%Y-%m-%d")
     auto_date = st.text_input("Data", value=today)
 
 if st.button("📥 Buscar do GameRead", type="primary"):
