@@ -159,15 +159,22 @@ def parse_injuries_text(raw: str) -> dict:
         if not line or line.startswith("#") or line.startswith("//"):
             continue
 
-        team_header_brackets = re.match(r"\[(?P<abbr>[A-Z]{2,3})\](?:\s+(?P<name>.+))?", line, re.IGNORECASE)
-        if team_header_brackets and (team_header_brackets.group("name") or team_header_brackets.group("abbr")):
-            abbr = (team_header_brackets.group("abbr") or "").upper()
-            name = team_header_brackets.group("name")
-            if name or abbr:
-                current_team = name.strip() if name else _abbr_to_team_name(abbr)
-                current_abbr = abbr or _team_name_to_abbr(current_team)
-                if current_team and current_abbr and current_team not in by_team:
-                    by_team[current_team] = {"abbr": current_abbr, "team": current_team, "jogadores": []}
+        team_header_brackets = re.match(r"\[(?P<inside>[^\]]+)\](?:\s*(?P<after>.+))?", line, re.IGNORECASE)
+        if team_header_brackets:
+            inside = (team_header_brackets.group("inside") or "").strip()
+            after = (team_header_brackets.group("after") or "").strip()
+            
+            inside_upper = inside.upper()
+            if inside_upper in _TEAM_KEYWORDS:
+                current_team = _TEAM_KEYWORDS[inside_upper]
+                current_abbr = _team_name_to_abbr(current_team)
+            else:
+                resolved = _resolve_team(inside)
+                current_team = resolved
+                current_abbr = _team_name_to_abbr(resolved)
+            
+            if current_team and current_abbr and current_team not in by_team:
+                by_team[current_team] = {"abbr": current_abbr, "team": current_team, "jogadores": []}
             continue
 
         team_header_colon = re.match(r"^(?P<abbr>[A-Z]{2,3})\s*:\s*(?P<name>.*)$", line, re.IGNORECASE)

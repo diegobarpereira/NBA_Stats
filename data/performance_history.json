@@ -736,5 +736,294 @@
         "miss": 0
       }
     }
+  },
+  {
+    "date": "2026-04-02",
+    "comparison_results": [
+      {
+        "game": "Phoenix Suns @ Charlotte Hornets",
+        "player": "Brandon Miller",
+        "type": "PTS",
+        "line": 19.3,
+        "actual": 17,
+        "diff": "-2.3",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Phoenix Suns @ Charlotte Hornets",
+        "player": "LaMelo Ball",
+        "type": "PTS",
+        "line": 19.4,
+        "actual": 15,
+        "diff": "-4.4",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Phoenix Suns @ Charlotte Hornets",
+        "player": "Devin Booker",
+        "type": "PTS",
+        "line": 26.9,
+        "actual": 22,
+        "diff": "-4.9",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Phoenix Suns @ Charlotte Hornets",
+        "player": "LaMelo Ball",
+        "type": "AST",
+        "line": 5.8,
+        "actual": 11,
+        "diff": "+5.2",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Detroit Pistons",
+        "player": "Jalen Duren",
+        "type": "PTS",
+        "line": 21.1,
+        "actual": 22,
+        "diff": "+0.9",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Detroit Pistons",
+        "player": "Anthony Edwards",
+        "type": "PTS",
+        "line": 25,
+        "actual": 17,
+        "diff": "-8.0",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Detroit Pistons",
+        "player": "Rudy Gobert",
+        "type": "REB",
+        "line": 10,
+        "actual": 7,
+        "diff": "-3.0",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Detroit Pistons",
+        "player": "Julius Randle",
+        "type": "AST",
+        "line": 4,
+        "actual": 6,
+        "diff": "+2.0",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Los Angeles Lakers @ Oklahoma City Thunder",
+        "player": "Austin Reaves",
+        "type": "PTS",
+        "line": 23.1,
+        "actual": 15,
+        "diff": "-8.1",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Los Angeles Lakers @ Oklahoma City Thunder",
+        "player": "Luka Doncic",
+        "type": "PTS",
+        "line": 35.6,
+        "actual": 12,
+        "diff": "-23.6",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Los Angeles Lakers @ Oklahoma City Thunder",
+        "player": "Deandre Ayton",
+        "type": "REB",
+        "line": 7.1,
+        "actual": 1,
+        "diff": "-6.1",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      },
+      {
+        "game": "Los Angeles Lakers @ Oklahoma City Thunder",
+        "player": "Luka Doncic",
+        "type": "AST",
+        "line": 6.6,
+        "actual": 7,
+        "diff": "+0.4",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Golden State Warriors",
+        "player": "Donovan Mitchell",
+        "type": "PTS",
+        "line": 28.3,
+        "actual": 25,
+        "diff": "-3.3",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Cleveland Cavaliers @ Golden State Warriors",
+        "player": "Evan Mobley",
+        "type": "PTS",
+        "line": 17.2,
+        "actual": 12,
+        "diff": "-5.2",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Golden State Warriors",
+        "player": "Jarrett Allen",
+        "type": "PTS",
+        "line": 14.8,
+        "actual": 16,
+        "diff": "+1.2",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Golden State Warriors",
+        "player": "Evan Mobley",
+        "type": "REB",
+        "line": 7.4,
+        "actual": 10,
+        "diff": "+2.6",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Portland Trail Blazers",
+        "player": "Saddiq Bey",
+        "type": "PTS",
+        "line": 18.4,
+        "actual": 15,
+        "diff": "-3.4",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Portland Trail Blazers",
+        "player": "Zion Williamson",
+        "type": "PTS",
+        "line": 21.4,
+        "actual": 15,
+        "diff": "-6.4",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Portland Trail Blazers",
+        "player": "Deni Avdija",
+        "type": "PTS",
+        "line": 23.6,
+        "actual": 26,
+        "diff": "+2.4",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Portland Trail Blazers",
+        "player": "Donovan Clingan",
+        "type": "REB",
+        "line": 9.5,
+        "actual": 9,
+        "diff": "-0.5",
+        "result": "➖ PUSH",
+        "conf": 9.0
+      },
+      {
+        "game": "San Antonio Spurs @ Los Angeles Clippers",
+        "player": "John Collins",
+        "type": "PTS",
+        "line": 13.3,
+        "actual": 15,
+        "diff": "+1.7",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "San Antonio Spurs @ Los Angeles Clippers",
+        "player": "Kawhi Leonard",
+        "type": "PTS",
+        "line": 26.9,
+        "actual": 24,
+        "diff": "-2.9",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "San Antonio Spurs @ Los Angeles Clippers",
+        "player": "Kawhi Leonard",
+        "type": "REB",
+        "line": 5.5,
+        "actual": 6,
+        "diff": "+0.5",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "San Antonio Spurs @ Los Angeles Clippers",
+        "player": "Stephon Castle",
+        "type": "PTS",
+        "line": 16,
+        "actual": 20,
+        "diff": "+4.0",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      }
+    ],
+    "type_analysis": {
+      "PTS": {
+        "hit": 5,
+        "miss": 11,
+        "push": 0
+      },
+      "AST": {
+        "hit": 3,
+        "miss": 0,
+        "push": 0
+      },
+      "REB": {
+        "hit": 2,
+        "miss": 2,
+        "push": 1
+      }
+    },
+    "conf_analysis": {
+      "10.0": {
+        "hit": 3,
+        "miss": 10,
+        "push": 0
+      },
+      "9.0": {
+        "hit": 6,
+        "miss": 3,
+        "push": 1
+      },
+      "8.0": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 10,
+        "miss": 13
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    }
   }
 ]
