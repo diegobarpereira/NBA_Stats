@@ -214,8 +214,10 @@ class ESPNScraper:
             last5 = game_rows[:5]
 
             def avg(key):
-                vals = [g[key] for g in last5 if g.get(key, 0) > 0]
+                vals = [g[key] for g in last5 if g.get(key, 0) > 0 or g.get("min", 0) > 0]
                 return round(sum(vals) / len(vals), 1) if vals else 0.0
+
+            result_games = len([g for g in last5 if g.get("pts", 0) > 0 or g.get("reb", 0) > 0 or g.get("ast", 0) > 0])
 
             return {
                 "ppg": avg("pts"),
@@ -223,7 +225,7 @@ class ESPNScraper:
                 "apg": avg("ast"),
                 "tpg": avg("fg3"),
                 "mpg": avg("min"),
-                "games": len(last5),
+                "games": result_games,
             }
         except Exception:
             return None
@@ -366,6 +368,7 @@ class ESPNScraper:
             result["avgAssists_last5"] = result["avgAssists_season"]
             result["avg3PT_last5"] = result["avg3PT_season"]
             result["games_last5"] = 0
+            result["avgMinutes_last5"] = 0.0
 
         return result
 
