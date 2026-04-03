@@ -129,79 +129,66 @@ class ESPNScraper:
             return None
 
         try:
-            url = f"https://www.espn.com/nba/player/gamelog/_/id/{pid}/type/nba"
+            current_month = datetime.now().month
+            season_year = 2026 if current_month >= 10 or current_month <= 6 else 2025
+            url = f"https://www.espn.com/nba/player/gamelog/_/id/{pid}/season/{season_year}"
             resp = self.session.get(url, timeout=20)
             if resp.status_code != 200:
                 return None
 
             soup = BeautifulSoup(resp.text, "lxml")
 
-            table = soup.find("table", {"class": "mod-data"})
-            if not table:
-                tables = soup.find_all("table")
-                for t in tables:
-                    txt = t.get_text()
-                    if "PTS" in txt and "OPP" in txt:
-                        table = t
-                        break
-
-            if not table:
-                return None
-
-            rows = table.find_all("tr")
-
-            data_rows = []
-            for row in rows:
-                cells = row.find_all(["td"])
-                if len(cells) < 15:
+            all_games = []
+            for table in soup.find_all("table"):
+                table_text = table.get_text()
+                if "DateOPPResultMIN" not in table_text:
                     continue
-                date_text = cells[0].get_text(strip=True)
-                if "/" not in date_text:
+                if "Postseason" in table_text or "Preseason" in table_text or "Regular Season Stats" in table_text:
                     continue
-                data_rows.append(cells)
 
-            if not data_rows:
-                return None
-
-            game_rows = []
-            recent_data = data_rows[:10]
-
-            for cells in recent_data:
-                try:
-                    pts_raw = cells[16].get_text(strip=True)
-                    reb_raw = cells[10].get_text(strip=True)
-                    ast_raw = cells[11].get_text(strip=True)
-                    fg3_raw = cells[6].get_text(strip=True) if len(cells) > 6 else ""
+                for row in table.find_all("tr"):
+                    cells = row.find_all(["td"])
+                    if len(cells) < 15:
+                        continue
                     
-                    min_raw = cells[3].get_text(strip=True) if len(cells) > 3 else "0"
+                    date_text = cells[0].get_text(strip=True)
+                    if not re.search(r'\d+/\d+', date_text):
+                        continue
 
-                    pts = float(pts_raw) if pts_raw.replace(".", "").isdigit() else 0.0
-                    reb = float(reb_raw) if reb_raw.replace(".", "").isdigit() else 0.0
-                    ast = float(ast_raw) if ast_raw.replace(".", "").isdigit() else 0.0
-
-                    fg3 = 0.0
-                    if fg3_raw and "-" in fg3_raw:
-                        try:
-                            fg3 = float(fg3_raw.split("-")[0])
-                        except ValueError:
-                            fg3 = 0.0
-                    
-                    minutes = 0.0
                     try:
-                        minutes = float(min_raw) if min_raw.isdigit() else 0.0
-                    except ValueError:
+                        pts_raw = cells[16].get_text(strip=True)
+                        reb_raw = cells[10].get_text(strip=True)
+                        ast_raw = cells[11].get_text(strip=True)
+                        fg3_raw = cells[6].get_text(strip=True) if len(cells) > 6 else ""
+                        min_raw = cells[3].get_text(strip=True) if len(cells) > 3 else "0"
+
+                        pts = float(pts_raw) if pts_raw.replace(".", "").isdigit() else 0.0
+                        reb = float(reb_raw) if reb_raw.replace(".", "").isdigit() else 0.0
+                        ast = float(ast_raw) if ast_raw.replace(".", "").isdigit() else 0.0
+
+                        fg3 = 0.0
+                        if fg3_raw and "-" in fg3_raw:
+                            try:
+                                fg3 = float(fg3_raw.split("-")[0])
+                            except ValueError:
+                                fg3 = 0.0
+
                         minutes = 0.0
+                        try:
+                            minutes = float(min_raw) if min_raw.isdigit() else 0.0
+                        except ValueError:
+                            minutes = 0.0
 
-                    if pts > 0 or reb > 0 or ast > 0:
-                        game_rows.append({"pts": pts, "reb": reb, "ast": ast, "fg3": fg3, "min": minutes})
-                except (ValueError, IndexError, AttributeError):
-                    continue
+                        if minutes > 0:
+                            all_games.append({"pts": pts, "reb": reb, "ast": ast, "fg3": fg3, "min": minutes})
+                    except (ValueError, IndexError, AttributeError):
+                        continue
 
-            if not game_rows:
+            if not all_games:
                 return None
 
-            if last_game_only and len(game_rows) >= 1:
-                g = game_rows[0]
+            if last_game_only:
+                g = all_games[0]
                 return {
                     "ppg": g["pts"],
                     "rpg": g["reb"],
@@ -211,13 +198,11 @@ class ESPNScraper:
                     "games": 1,
                 }
 
-            last5 = game_rows[:5]
+            last5 = all_games[:5]
 
             def avg(key):
-                vals = [g[key] for g in last5 if g.get(key, 0) > 0 or g.get("min", 0) > 0]
+                vals = [g[key] for g in last5]
                 return round(sum(vals) / len(vals), 1) if vals else 0.0
-
-            result_games = len([g for g in last5 if g.get("pts", 0) > 0 or g.get("reb", 0) > 0 or g.get("ast", 0) > 0])
 
             return {
                 "ppg": avg("pts"),
@@ -225,9 +210,10 @@ class ESPNScraper:
                 "apg": avg("ast"),
                 "tpg": avg("fg3"),
                 "mpg": avg("min"),
-                "games": result_games,
+                "games": len(last5),
             }
-        except Exception:
+        except Exception as e:
+            print(f"Error in get_player_last5: {e}")
             return None
 
             soup = BeautifulSoup(resp.text, "lxml")
