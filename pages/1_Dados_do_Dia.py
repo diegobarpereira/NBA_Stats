@@ -284,11 +284,24 @@ _TEAM_KEYWORDS = {
 
 def _resolve_team(name: str) -> str:
     name_clean = name.strip().upper()
+    
     if name_clean in _TEAM_KEYWORDS:
         return _TEAM_KEYWORDS[name_clean]
+    
+    words = name_clean.split()
+    if len(words) >= 2:
+        two_words = " ".join(words[:2])
+        if two_words in _TEAM_KEYWORDS:
+            return _TEAM_KEYWORDS[two_words]
+        if len(words) >= 3:
+            three_words = " ".join(words[:3])
+            if three_words in _TEAM_KEYWORDS:
+                return _TEAM_KEYWORDS[three_words]
+    
     for kw, full in _TEAM_KEYWORDS.items():
-        if kw in name_clean or name_clean in kw:
+        if " " in kw and (kw == name_clean or name_clean.startswith(kw + " ") or name_clean.endswith(" " + kw)):
             return full
+    
     return name.strip()
 
 
@@ -302,11 +315,20 @@ def _abbr_to_team_name(abbr: str) -> str:
 
 def _team_name_to_abbr(name: str) -> str:
     name_upper = name.strip().upper()
+    
     if name_upper in _TEAM_KEYWORDS:
         return _TEAM_KEYWORDS[name_upper]
-    for kw, full in _TEAM_KEYWORDS.items():
-        if kw in name_upper:
-            return full
+    
+    words = name_upper.split()
+    if len(words) >= 2:
+        two_words = " ".join(words[:2])
+        if two_words in _TEAM_KEYWORDS:
+            return _TEAM_KEYWORDS[two_words]
+        if len(words) >= 3:
+            three_words = " ".join(words[:3])
+            if three_words in _TEAM_KEYWORDS:
+                return _TEAM_KEYWORDS[three_words]
+    
     return name.strip()
 
 
