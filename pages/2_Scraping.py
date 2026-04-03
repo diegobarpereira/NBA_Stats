@@ -306,6 +306,13 @@ if do_l5:
                 updated += 1
             else:
                 errors += 1
+                if last5_data is None:
+                    msg = "❌ Página não encontrada"
+                elif last5_data.get("games", 0) < 2:
+                    msg = "⚠️ Apenas 1 jogo disponível"
+                else:
+                    msg = "❓ Erro desconhecido"
+                status_text.text(f"Atualizados: {updated} | Erros: {errors} | Último: {name} - {msg}")
 
             pct = done / total
             progress_bar.progress(
