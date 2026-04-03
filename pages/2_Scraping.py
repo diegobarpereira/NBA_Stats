@@ -44,43 +44,11 @@ _init_session()
 st.title("🌐 Scraping de Estatísticas")
 st.markdown("Atualize as estatísticas dos jogadores a partir do ESPN.")
 
+st.info("💡 Para buscar jogos e lesões, vá na aba **Dados do Dia** primeiro.")
+
 col_auto1, col_auto2 = st.columns(2)
 
 with col_auto1:
-    st.markdown("#### 🤖 Auto-fetch (GameRead)")
-    st.caption("Busca jogos e lesões automaticamente via API")
-    
-    today = datetime.now().strftime("%Y-%m-%d")
-    date_input = st.text_input("Data (YYYY-MM-DD)", value=today)
-    fetch_btn = st.button("📥 Buscar do GameRead", type="primary")
-    
-    if fetch_btn:
-        with st.spinner("Buscando do GameRead..."):
-            from scrapers.gameread_scraper import fetch_games_from_gameread, fetch_injuries_from_gameread
-            import json
-            try:
-                games = fetch_games_from_gameread(date_input)
-                
-                games_path = config.DATA_FILES["games"]
-                with open(games_path, "w", encoding="utf-8") as f:
-                    json.dump(games, f, indent=2, ensure_ascii=False)
-                
-                injuries = fetch_injuries_from_gameread(date_input)
-                injuries_path = config.DATA_FILES["injuries"]
-                with open(injuries_path, "w", encoding="utf-8") as f:
-                    json.dump(injuries, f, indent=2, ensure_ascii=False)
-                
-                st.session_state.loader.load_all()
-                st.session_state.props_generated = False
-                st.session_state.bilhetes_generated = False
-                
-                total_inj = sum(len(t['jogadores']) for t in injuries['relatorio_lesoes']['times'])
-                st.success(f"✅ {len(games)} jogos + {total_inj} lesões salvos!")
-                st.rerun()
-            except Exception as e:
-                st.error(f"Erro: {e}")
-
-with col_auto2:
     st.markdown("#### 📊 Status Atual")
     st.metric("Jogos do Dia", len(st.session_state.loader.games_data))
     injured = st.session_state.loader.get_injured_players()

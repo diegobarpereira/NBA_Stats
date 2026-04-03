@@ -32,27 +32,29 @@ _init_session()
 
 st.title("📋 Dados do Dia")
 
-col_fetch, col_date = st.columns([2, 2])
+col_tz, col_date = st.columns([1, 1])
 
-with col_fetch:
-    st.markdown("#### 🤖 Auto-fetch GameRead")
-    
+with col_tz:
+    st.markdown("##### 🌎 Fuso Horário")
     timezone_offset = st.selectbox(
-        "Fuso Horário",
+        "Selecione",
         options=[-3, -4, -5, -6, -7, -8],
         index=0,
         format_func=lambda x: f"Brasília (GMT{x})" if x == -3 else f"GMT{x}",
-        help="Selecione o timezone do seu localização"
+        help="Selecione o timezone da sua localização",
+        label_visibility="collapsed"
     )
 
 with col_date:
-    from datetime import timezone, timedelta
+    st.markdown("##### 📅 Data dos Jogos")
     server_now = datetime.now()
     local_dt = server_now + timedelta(hours=timezone_offset)
     today = local_dt.strftime("%Y-%m-%d")
-    auto_date = st.text_input("Data", value=today)
+    auto_date = st.text_input("Data", value=today, label_visibility="collapsed")
 
-if st.button("📥 Buscar do GameRead", type="primary"):
+st.markdown("---")
+
+if st.button("📥 Buscar Jogos e Lesões do GameRead", type="primary", use_container_width=True):
     with st.spinner("Buscando..."):
         from scrapers.gameread_scraper import fetch_games_from_gameread, fetch_injuries_from_gameread
         import json

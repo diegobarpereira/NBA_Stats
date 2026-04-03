@@ -340,7 +340,7 @@ class Bilheteiro:
             print(f"ODD COMBINADA (TODOS OS BILHETES): {total_odds:.2f}x")
             print(f"{'=' * 70}")
 
-    def save_all_tickets(self, tickets: List[Dict], filename: Optional[str] = None) -> Path:
+    def save_all_tickets(self, tickets: List[Dict], filename: Optional[str] = None, push_to_github: bool = True) -> Path:
         if filename is None:
             date_str = datetime.now().strftime("%Y-%m-%d_%H%M%S")
             filename = f"bilhetes_{date_str}.json"
@@ -361,6 +361,13 @@ class Bilheteiro:
 
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(output, f, indent=2, ensure_ascii=False)
+
+        if push_to_github:
+            try:
+                from utils.github_sync import push_bilhetes_to_github
+                push_bilhetes_to_github(output_path)
+            except Exception:
+                pass
 
         return output_path
 
