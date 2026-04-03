@@ -297,7 +297,7 @@ if do_l5:
             done += 1
             name, last5_data = future.result()
 
-            if last5_data and 1 <= last5_data.get("games", 0) <= 10:
+            if last5_data and last5_data.get("games", 0) >= 2:
                 stats[name]["avgPoints_last5"] = last5_data["ppg"]
                 stats[name]["avgRebounds_last5"] = last5_data["rpg"]
                 stats[name]["avgAssists_last5"] = last5_data["apg"]

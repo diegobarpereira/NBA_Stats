@@ -164,7 +164,9 @@ class ESPNScraper:
                 return None
 
             game_rows = []
-            for cells in data_rows[:10]:
+            recent_data = data_rows[:10]
+
+            for cells in recent_data:
                 try:
                     pts_raw = cells[16].get_text(strip=True)
                     reb_raw = cells[10].get_text(strip=True)
