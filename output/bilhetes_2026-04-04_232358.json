@@ -1,0 +1,83 @@
+{
+  "created_at": "2026-04-04T23:23:58.984260",
+  "total_combined_odds": 8.01,
+  "num_tickets": 1,
+  "tickets": [
+    {
+      "created_at": "2026-04-04T23:23:54.387446",
+      "game_id": "76ersvsPistons_2026-04-04",
+      "home": "Detroit Pistons",
+      "away": "Philadelphia 76ers",
+      "datetime": "2026-04-04T20:00:00",
+      "total_odds": 8.01,
+      "num_props": 4,
+      "avg_confidence": 8.8,
+      "props": [
+        {
+          "player": "Tyrese Maxey",
+          "team": "Philadelphia 76ers",
+          "type": "points",
+          "abbrev": "PTS",
+          "line": 20.2,
+          "odds": 1.71,
+          "confidence": 10,
+          "season_avg": 28.8,
+          "last5_avg": 26.6,
+          "injury_status": null,
+          "fallback": false,
+          "matchup_mult": 1.0,
+          "blowout_mult": 0.762,
+          "is_starter": true
+        },
+        {
+          "player": "Tyrese Maxey",
+          "team": "Philadelphia 76ers",
+          "type": "rebounds",
+          "abbrev": "REB",
+          "line": 2.4,
+          "odds": 1.28,
+          "confidence": 9.0,
+          "season_avg": 4.2,
+          "last5_avg": 4.0,
+          "injury_status": null,
+          "fallback": false,
+          "matchup_mult": 0.83,
+          "blowout_mult": 0.762,
+          "is_starter": true
+        },
+        {
+          "player": "Tyrese Maxey",
+          "team": "Philadelphia 76ers",
+          "type": "assists",
+          "abbrev": "AST",
+          "line": 4.3,
+          "odds": 2.14,
+          "confidence": 9.0,
+          "season_avg": 6.8,
+          "last5_avg": 7.4,
+          "injury_status": null,
+          "fallback": false,
+          "matchup_mult": 0.83,
+          "blowout_mult": 0.762,
+          "is_starter": true
+        },
+        {
+          "player": "Adem Bona",
+          "team": "Philadelphia 76ers",
+          "type": "points",
+          "abbrev": "PTS",
+          "line": 5.2,
+          "odds": 1.71,
+          "confidence": 7.0,
+          "season_avg": 4.9,
+          "last5_avg": 4.8,
+          "injury_status": null,
+          "fallback": false,
+          "matchup_mult": 0.9,
+          "blowout_mult": 1.185,
+          "is_starter": false
+        }
+      ]
+    }
+  ]
+}
