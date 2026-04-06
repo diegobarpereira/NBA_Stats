@@ -97,5 +97,37 @@ TEAM_NAME_MAPPING = {
 }
 
 TEAM_NAME_REVERSE = {v: k for k, v in TEAM_NAME_MAPPING.items()}
+TEAM_NAME_REVERSE.update({
+    "Celtics": "BOS",
+    "Raptors": "TOR",
+    "Knicks": "NYK",
+    "Nets": "BKN",
+    "76ers": "PHI",
+    "Wizards": "WAS",
+    "Heat": "MIA",
+    "Magic": "ORL",
+    " Hawks": "ATL",
+    "Hornets": "CHA",
+    "Bulls": "CHI",
+    "Cavaliers": "CLE",
+    "Pacers": "IND",
+    "Pistons": "DET",
+    "Bucks": "MIL",
+    "Timberwolves": "MIN",
+    "Pelicans": "NOP",
+    "Thunder": "OKC",
+    "Suns": "PHX",
+    "Kings": "SAC",
+    "Spurs": "SAS",
+    "Lakers": "LAL",
+    "Clippers": "LAC",
+    "Warriors": "GSW",
+    "Rockets": "HOU",
+    "Grizzlies": "MEM",
+    "Nuggets": "DEN",
+    "Trail Blazers": "POR",
+    "Jazz": "UTA",
+    "Mavericks": "DAL",
+})
 
 ODDSJAM_URL = "https://www.oddsjam.com/nba/player-props"

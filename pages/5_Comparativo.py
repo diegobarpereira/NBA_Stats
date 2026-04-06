@@ -157,8 +157,10 @@ with tab1:
                             if len(parts) >= 2:
                                 teams = parts[0].split("vs")
                                 if len(teams) == 2:
-                                    all_teams_abbr.add(teams[0])
-                                    all_teams_abbr.add(teams[1])
+                                    abbr1 = config.TEAM_NAME_REVERSE.get(teams[0], teams[0])
+                                    abbr2 = config.TEAM_NAME_REVERSE.get(teams[1], teams[1])
+                                    all_teams_abbr.add(abbr1)
+                                    all_teams_abbr.add(abbr2)
 
                 st.session_state.compare_state = {
                     "players_needed": list(all_players_needed),
@@ -188,9 +190,11 @@ with tab1:
                                 all_team_stats[abbr] = ts
 
                     all_playable = []
+                    players_lower = {p.lower() for p in players_needed}
                     for abbr, ts in all_team_stats.items():
                         for p in ts:
-                            if p.get("name") in players_needed and p.get("pid"):
+                            pname = p.get("name", "").lower()
+                            if pname in players_lower and p.get("pid"):
                                 all_playable.append((p["name"], p["pid"]))
 
                     state["team_stats"] = all_team_stats
@@ -317,6 +321,11 @@ with tab1:
                         "diff": f"{diff:+.1f}" if diff is not None else "?",
                         "result": result,
                         "conf": prop.get("confidence", 0),
+                        "trend": prop.get("advanced_filters", {}).get("trend", "stable"),
+                        "consistency": prop.get("advanced_filters", {}).get("consistency", 0),
+                        "is_home": prop.get("is_home", True),
+                        "over_under": prop.get("over_under", "Over"),
+                        "matchup_mult": prop.get("matchup_mult", 1.0),
                     })
 
             if comparison_results:
@@ -341,6 +350,9 @@ with tab1:
                         "diff": st.column_config.TextColumn("Diff"),
                         "result": st.column_config.TextColumn("Resultado"),
                         "conf": st.column_config.NumberColumn("Conf", format="%d"),
+                        "trend": st.column_config.TextColumn("Trend"),
+                        "consistency": st.column_config.TextColumn("Consist."),
+                        "is_home": st.column_config.TextColumn("H/A"),
                     },
                     hide_index=True,
                     use_container_width=True,
@@ -514,7 +526,46 @@ with tab1:
                         "type_analysis": type_analysis,
                         "conf_analysis": conf_analysis,
                         "line_analysis": line_analysis,
+                        "trend_analysis": {},
+                        "consistency_analysis": {},
+                        "home_away_analysis": {},
                     }
+
+                    # Aggregate trend, consistency, home/away analysis
+                    for cr in comparison_results:
+                        # Trend analysis
+                        trend = cr.get("trend", "stable")
+                        if trend not in history_entry["trend_analysis"]:
+                            history_entry["trend_analysis"][trend] = {"hit": 0, "miss": 0}
+                        if "ACERTOU" in cr["result"]:
+                            history_entry["trend_analysis"][trend]["hit"] += 1
+                        elif "ERROU" in cr["result"]:
+                            history_entry["trend_analysis"][trend]["miss"] += 1
+
+                        # Consistency analysis
+                        cons = cr.get("consistency", 0)
+                        if cons >= 70:
+                            key = "high"
+                        elif cons >= 40:
+                            key = "medium"
+                        else:
+                            key = "low"
+                        if key not in history_entry["consistency_analysis"]:
+                            history_entry["consistency_analysis"][key] = {"hit": 0, "miss": 0}
+                        if "ACERTOU" in cr["result"]:
+                            history_entry["consistency_analysis"][key]["hit"] += 1
+                        elif "ERROU" in cr["result"]:
+                            history_entry["consistency_analysis"][key]["miss"] += 1
+
+                        # Home/Away analysis
+                        is_home = cr.get("is_home", True)
+                        ha_key = "home" if is_home else "away"
+                        if ha_key not in history_entry["home_away_analysis"]:
+                            history_entry["home_away_analysis"][ha_key] = {"hit": 0, "miss": 0}
+                        if "ACERTOU" in cr["result"]:
+                            history_entry["home_away_analysis"][ha_key]["hit"] += 1
+                        elif "ERROU" in cr["result"]:
+                            history_entry["home_away_analysis"][ha_key]["miss"] += 1
                     
                     history_file = config.DATA_DIR / "performance_history.json"
                     history_file.parent.mkdir(parents=True, exist_ok=True)
@@ -658,8 +709,6 @@ with tab2:
 
                     scraper = ESPNScraper()
                     
-                    st.info("⏳ Carregando elencos de todos os times...")
-
                     team_players = {}
                     for abbr in team_abbrs:
                         ts = scraper.get_team_stats(abbr)
@@ -723,6 +772,9 @@ with tab2:
                                     "over_under": sel["over_under"],
                                     "actual": actual,
                                     "result": "✅ ACERTOU" if hit else "❌ ERROU",
+                                    "trend": "unknown",
+                                    "consistency": 50,
+                                    "is_home": True,
                                 })
                                 st.write(f"Feito: {actual} | Linha: {sel['line']} | {sel['over_under']} → {'✅' if hit else '❌'}")
                             else:
@@ -733,6 +785,9 @@ with tab2:
                                     "over_under": sel["over_under"],
                                     "actual": "?",
                                     "result": "❓ NÃO ENCONTRADO",
+                                    "trend": "unknown",
+                                    "consistency": 50,
+                                    "is_home": True,
                                 })
                                 st.write("Jogador não encontrado nos elencos")
 

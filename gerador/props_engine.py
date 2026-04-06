@@ -2,6 +2,7 @@ from typing import Dict, List, Optional, Tuple
 
 import config
 from scrapers.matchup_scraper import get_matchup_boost
+from scrapers.advanced_filters import apply_advanced_filters, get_schedule_info
 
 
 class PropsEngine:
@@ -68,6 +69,7 @@ class PropsEngine:
         matchup_data: Optional[Dict[str, Dict]] = None,
         blowout_risk: Optional[Dict] = None,
         is_starter: bool = True,
+        is_home: bool = True,
     ) -> List[Dict]:
         props = []
         team = player_stats.get("team", "")
@@ -81,6 +83,43 @@ class PropsEngine:
 
         if season_games < 10 and last5_games < 3:
             return []
+
+        # Advanced filters: schedule info
+        schedule_info = {}
+        opponent_abbr = ""
+        if opponent:
+            abbr_map = {v: k for k, v in config.TEAM_NAME_MAPPING.items()}
+            opponent_abbr = abbr_map.get(opponent, opponent[:3].upper())
+
+        # Get last5 game values for trend/variance analysis
+        last5_points = []
+        last5_rebounds = []
+        last5_assists = []
+        for i in range(1, 6):
+            pts_key = f"last5_game_{i}_pts"
+            reb_key = f"last5_game_{i}_reb"
+            ast_key = f"last5_game_{i}_ast"
+            if pts_key in player_stats:
+                last5_points.append(player_stats[pts_key])
+            if reb_key in player_stats:
+                last5_rebounds.append(player_stats[reb_key])
+            if ast_key in player_stats:
+                last5_assists.append(player_stats[ast_key])
+
+        advanced_stats = {
+            "last5_points": last5_points,
+            "last5_rebounds": last5_rebounds,
+            "last5_assists": last5_assists,
+            "home_ppg": player_stats.get("home_ppg", 0),
+            "away_ppg": player_stats.get("away_ppg", 0),
+            "home_reb": player_stats.get("home_reb", 0),
+            "away_reb": player_stats.get("away_reb", 0),
+            "home_ast": player_stats.get("home_ast", 0),
+            "away_ast": player_stats.get("away_ast", 0),
+            "avgPoints_season": player_stats.get("avgPoints_season", 0),
+            "avgRebounds_season": player_stats.get("avgRebounds_season", 0),
+            "avgAssists_season": player_stats.get("avgAssists_season", 0),
+        }
 
         for prop_type in self.prop_types:
             if prop_type == "3pt" and player_stats.get("avg3PT_season", 0) < 0.3:
@@ -126,6 +165,10 @@ class PropsEngine:
 
             if player_stats.get("fallback"):
                 prop["fallback"] = True
+
+            # Apply advanced filters
+            if opponent_abbr:
+                prop = apply_advanced_filters(prop, advanced_stats, opponent_abbr, is_home)
 
             props.append(prop)
 
@@ -182,6 +225,7 @@ class PropsEngine:
 
             injury_status = questionable_players.get(player_name)
             opponent = game["away"] if team == game["home"] else game["home"]
+            is_home = team == game["home"]
 
             season_games = player_stats.get("games_season", 0)
             avg_minutes = player_stats.get("avgMinutes_last5", 0.0)
@@ -189,7 +233,7 @@ class PropsEngine:
 
             props = self.generate_props_for_player(
                 player_name, player_stats, injury_status, opponent,
-                matchup_data, blowout_risk, is_starter
+                matchup_data, blowout_risk, is_starter, is_home
             )
 
             for prop in props:
@@ -201,6 +245,7 @@ class PropsEngine:
                 prop["away"] = game["away"]
                 prop["datetime"] = game["datetime"]
                 prop["opponent"] = opponent
+                prop["is_home"] = is_home
                 all_props.append(prop)
 
         return all_props
@@ -281,6 +326,44 @@ class PropsEngine:
             score += 1
         elif matchup_mult < 0.95:
             score -= 1
+
+        # Advanced filters adjustments
+        adv = prop.get("advanced_filters", {})
+        if adv:
+            # Trend adjustment
+            trend = adv.get("trend", "stable")
+            trend_strength = adv.get("trend_strength", 0)
+            
+            if trend == "up" and trend_strength > 0.1:
+                score += min(2, trend_strength * 3)
+            elif trend == "down" and trend_strength < -0.1:
+                score -= min(3, abs(trend_strength) * 4)
+            
+            # Consistency adjustment
+            consistency = adv.get("consistency", 100)
+            if consistency < 30:
+                score -= 2
+            elif consistency < 50:
+                score -= 1
+            elif consistency > 80:
+                score += 1
+            
+            # Volatility penalty
+            vol_penalty = adv.get("volatility_penalty", 0)
+            if vol_penalty > 0:
+                score -= vol_penalty * 5
+            
+            # Pace factor
+            pace_factor = adv.get("pace_factor", 1.0)
+            if pace_factor > 1.03:
+                score += 1
+            elif pace_factor < 0.97:
+                score -= 1
+            
+            # Home/away factor
+            home_factor = adv.get("home_away_factor", 1.0)
+            if home_factor > 1.0:
+                score += 0.5
 
         if self.performance_analyzer:
             player_name = prop.get("player", "")

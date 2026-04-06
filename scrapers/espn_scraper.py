@@ -161,6 +161,10 @@ class ESPNScraper:
                         ast_raw = cells[11].get_text(strip=True)
                         fg3_raw = cells[6].get_text(strip=True) if len(cells) > 6 else ""
                         min_raw = cells[3].get_text(strip=True) if len(cells) > 3 else "0"
+                        
+                        # Detect home/away: "@OPP" = away, "vsOPP" = home
+                        opp_raw = cells[1].get_text(strip=True) if len(cells) > 1 else ""
+                        is_home = "vs" in opp_raw.lower() or "@" not in opp_raw
 
                         pts = float(pts_raw) if pts_raw.replace(".", "").isdigit() else 0.0
                         reb = float(reb_raw) if reb_raw.replace(".", "").isdigit() else 0.0
@@ -180,7 +184,10 @@ class ESPNScraper:
                             minutes = 0.0
 
                         if minutes > 0:
-                            all_games.append({"pts": pts, "reb": reb, "ast": ast, "fg3": fg3, "min": minutes})
+                            all_games.append({
+                                "pts": pts, "reb": reb, "ast": ast, "fg3": fg3,
+                                "min": minutes, "is_home": is_home
+                            })
                     except (ValueError, IndexError, AttributeError):
                         continue
 
@@ -204,14 +211,43 @@ class ESPNScraper:
                 vals = [g[key] for g in last5]
                 return round(sum(vals) / len(vals), 1) if vals else 0.0
 
-            return {
+            home_games = [g for g in last5 if g.get("is_home", True)]
+            away_games = [g for g in last5 if not g.get("is_home", True)]
+
+            def home_avg(key):
+                vals = [g[key] for g in home_games]
+                return round(sum(vals) / len(vals), 1) if vals else 0.0
+
+            def away_avg(key):
+                vals = [g[key] for g in away_games]
+                return round(sum(vals) / len(vals), 1) if vals else 0.0
+
+            result = {
                 "ppg": avg("pts"),
                 "rpg": avg("reb"),
                 "apg": avg("ast"),
                 "tpg": avg("fg3"),
                 "mpg": avg("min"),
                 "games": len(last5),
+                "home_games": len(home_games),
+                "away_games": len(away_games),
+                "home_ppg": home_avg("pts"),
+                "away_ppg": away_avg("pts"),
+                "home_reb": home_avg("reb"),
+                "away_reb": away_avg("reb"),
+                "home_ast": home_avg("ast"),
+                "away_ast": away_avg("ast"),
             }
+
+            # Add individual game values for trend/variance analysis
+            for i, g in enumerate(last5):
+                result[f"game_{i+1}_pts"] = g["pts"]
+                result[f"game_{i+1}_reb"] = g["reb"]
+                result[f"game_{i+1}_ast"] = g["ast"]
+                result[f"game_{i+1}_fg3"] = g["fg3"]
+                result[f"game_{i+1}_home"] = g.get("is_home", True)
+
+            return result
         except Exception as e:
             print(f"Error in get_player_last5: {e}")
             return None

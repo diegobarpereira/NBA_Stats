@@ -303,6 +303,30 @@ if do_l5:
                 stats[name]["avgAssists_last5"] = last5_data["apg"]
                 stats[name]["avg3PT_last5"] = last5_data["tpg"]
                 stats[name]["games_last5"] = last5_data["games"]
+                
+                # Save individual game values for trend/variance analysis
+                for i in range(1, 6):
+                    pts_key = f"game_{i}_pts"
+                    reb_key = f"game_{i}_reb"
+                    ast_key = f"game_{i}_ast"
+                    if pts_key in last5_data:
+                        stats[name][f"last5_game_{i}_pts"] = last5_data[pts_key]
+                    if reb_key in last5_data:
+                        stats[name][f"last5_game_{i}_reb"] = last5_data[reb_key]
+                    if ast_key in last5_data:
+                        stats[name][f"last5_game_{i}_ast"] = last5_data[ast_key]
+                
+                # Save home/away splits
+                if "home_ppg" in last5_data:
+                    stats[name]["home_ppg"] = last5_data["home_ppg"]
+                    stats[name]["away_ppg"] = last5_data["away_ppg"]
+                    stats[name]["home_reb"] = last5_data["home_reb"]
+                    stats[name]["away_reb"] = last5_data["away_reb"]
+                    stats[name]["home_ast"] = last5_data["home_ast"]
+                    stats[name]["away_ast"] = last5_data["away_ast"]
+                    stats[name]["home_games"] = last5_data.get("home_games", 0)
+                    stats[name]["away_games"] = last5_data.get("away_games", 0)
+                
                 updated += 1
             else:
                 errors += 1

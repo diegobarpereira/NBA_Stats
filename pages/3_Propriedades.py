@@ -127,6 +127,15 @@ for p in filtered:
     conf = engine.get_confidence_score(p)
     odds = bilheteiro_obj.calculate_prop_odds(p)
     injury_tag = f" ⚠️ {p.get('injury_status', '')}" if p.get('injury_status') else ""
+    
+    adv = p.get("advanced_filters", {})
+    trend_emoji = {"up": "📈", "down": "📉", "stable": "➡️"}.get(adv.get("trend", "stable"), "➡️")
+    trend_label = f"{trend_emoji} {adv.get('trend', '?')}"
+    consistency = adv.get("consistency", 0)
+    cons_label = f"{consistency:.0f}%"
+    pace = adv.get("pace_factor", 1.0)
+    def_factor = adv.get("defensive_factor", 1.0)
+    
     rows.append({
         "Jogador": p["player"],
         "Time": p["team"],
@@ -136,6 +145,10 @@ for p in filtered:
         "Conf": f"{conf_color(conf)} {conf}",
         "Season Avg": p.get("season_avg", 0),
         "Last5 Avg": p.get("last5_avg", 0),
+        "Trend": trend_label,
+        "Consist.": cons_label,
+        "Pace": f"{pace:.2f}x",
+        "Def": f"{def_factor:.2f}x",
         "Matchup": f"{p.get('matchup_mult', 1.0):.2f}x",
         "Status": injury_tag if injury_tag else "✅ Ativo",
     })
@@ -151,6 +164,10 @@ st.dataframe(
         "Conf": st.column_config.TextColumn("Conf", width="small"),
         "Season Avg": st.column_config.NumberColumn("Season Avg", format="%.1f", width="small"),
         "Last5 Avg": st.column_config.NumberColumn("Last5 Avg", format="%.1f", width="small"),
+        "Trend": st.column_config.TextColumn("Trend", width="small"),
+        "Consist.": st.column_config.TextColumn("Consist.", width="small"),
+        "Pace": st.column_config.TextColumn("Pace", width="small"),
+        "Def": st.column_config.TextColumn("Def", width="small"),
         "Matchup": st.column_config.TextColumn("Matchup", width="small"),
         "Status": st.column_config.TextColumn("Status", width="medium"),
     },
@@ -181,6 +198,9 @@ for gid, game_data in sorted(games_with_props.items()):
         gp_rows = []
         for p in game_props:
             conf = engine.get_confidence_score(p)
+            adv = p.get("advanced_filters", {})
+            trend_emoji = {"up": "📈", "down": "📉", "stable": "➡️"}.get(adv.get("trend", "stable"), "➡️")
+            consistency = adv.get("consistency", 0)
             gp_rows.append({
                 "Jogador": p["player"],
                 "Tipo": p["type"].upper(),
@@ -189,6 +209,8 @@ for gid, game_data in sorted(games_with_props.items()):
                 "Conf": f"{conf_color(conf)} {conf}",
                 "Season": p.get("season_avg", 0),
                 "Last5": p.get("last5_avg", 0),
+                "Trend": trend_emoji,
+                "Consist.": f"{consistency:.0f}%",
                 "Matchup": f"{p.get('matchup_mult', 1.0):.2f}x",
             })
         st.dataframe(
@@ -201,6 +223,8 @@ for gid, game_data in sorted(games_with_props.items()):
                 "Conf": st.column_config.TextColumn("Conf"),
                 "Season": st.column_config.NumberColumn("Season", format="%.1f"),
                 "Last5": st.column_config.NumberColumn("Last5", format="%.1f"),
+                "Trend": st.column_config.TextColumn("Trend"),
+                "Consist.": st.column_config.TextColumn("Consist."),
                 "Matchup": st.column_config.TextColumn("Matchup"),
             },
             hide_index=True,

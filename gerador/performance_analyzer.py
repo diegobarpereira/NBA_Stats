@@ -122,6 +122,92 @@ class PerformanceAnalyzer:
 
         return accuracy
 
+    def get_trend_accuracy(self) -> Dict[str, float]:
+        trend_stats = {"up": {"hits": 0, "total": 0}, "down": {"hits": 0, "total": 0}, "stable": {"hits": 0, "total": 0}}
+
+        for entry in self.data.get("performance_history", []):
+            results = entry.get("comparison_results", [])
+            for r in results:
+                trend = r.get("trend", "stable")
+                if trend not in trend_stats:
+                    continue
+                
+                result = r.get("result", "")
+                is_hit = "ACERTOU" in result
+                
+                if is_hit:
+                    trend_stats[trend]["hits"] += 1
+                trend_stats[trend]["total"] += 1
+
+        accuracy = {}
+        for trend, stats in trend_stats.items():
+            if stats["total"] > 0:
+                accuracy[trend] = stats["hits"] / stats["total"]
+            else:
+                accuracy[trend] = 0.5
+
+        return accuracy
+
+    def get_consistency_accuracy(self) -> Dict[str, float]:
+        consistency_ranges = {
+            "high": {"hits": 0, "total": 0},
+            "medium": {"hits": 0, "total": 0},
+            "low": {"hits": 0, "total": 0},
+        }
+
+        for entry in self.data.get("performance_history", []):
+            results = entry.get("comparison_results", [])
+            for r in results:
+                consistency = r.get("consistency", 0)
+                
+                if consistency >= 70:
+                    key = "high"
+                elif consistency >= 40:
+                    key = "medium"
+                else:
+                    key = "low"
+                
+                result = r.get("result", "")
+                is_hit = "ACERTOU" in result
+                
+                if is_hit:
+                    consistency_ranges[key]["hits"] += 1
+                consistency_ranges[key]["total"] += 1
+
+        accuracy = {}
+        for key, stats in consistency_ranges.items():
+            if stats["total"] > 0:
+                accuracy[key] = stats["hits"] / stats["total"]
+            else:
+                accuracy[key] = 0.5
+
+        return accuracy
+
+    def get_home_away_accuracy(self) -> Dict[str, float]:
+        ha_stats = {"home": {"hits": 0, "total": 0}, "away": {"hits": 0, "total": 0}}
+
+        for entry in self.data.get("performance_history", []):
+            results = entry.get("comparison_results", [])
+            for r in results:
+                is_home = r.get("is_home", True)
+                key = "home" if is_home else "away"
+                
+                result = r.get("result", "")
+                is_hit = "ACERTOU" in result
+                
+                if is_hit:
+                    ha_stats[key]["hits"] += 1
+                ha_stats[key]["total"] += 1
+
+        accuracy = {}
+        for key, stats in ha_stats.items():
+            if stats["total"] > 0:
+                accuracy[key] = stats["hits"] / stats["total"]
+            else:
+                accuracy[key] = 0.5
+
+        return accuracy
+
     def get_recommendations(self) -> List[str]:
         recommendations = []
 
@@ -146,6 +232,22 @@ class PerformanceAnalyzer:
                 recommendations.append(f"📉 {ou_type}: Acurácia muito baixa ({acc:.0%}). Revisar linhas.")
             elif acc > 0.75:
                 recommendations.append(f"📈 {ou_type}: Acurácia muito alta ({acc:.0%}). Sistema favorece esse tipo.")
+
+        trend_acc = self.get_trend_accuracy()
+        for trend, acc in trend_acc.items():
+            if trend != "stable" and acc > 0:
+                if acc < 0.35:
+                    recommendations.append(f"📉 Trend {trend}: Acurácia baixa ({acc:.0%}). Cuidado com essa tendência.")
+                elif acc > 0.65:
+                    recommendations.append(f"📈 Trend {trend}: Acurácia boa ({acc:.0%}). Favoreça jogadores nessa tendência.")
+
+        consistency_acc = self.get_consistency_accuracy()
+        for level, acc in consistency_acc.items():
+            if acc > 0:
+                if level == "low" and acc < 0.40:
+                    recommendations.append(f"⚠️ Baixa consistência: Acurácia ruim ({acc:.0%}). Evite jogadores voláteis.")
+                elif level == "high" and acc > 0.60:
+                    recommendations.append(f"✅ Alta consistência: Acurácia boa ({acc:.0%}). Favoreça jogadores consistentes.")
 
         return recommendations
 
@@ -213,6 +315,9 @@ class PerformanceAnalyzer:
             "type_accuracy": self.get_type_accuracy(),
             "confidence_accuracy": self.get_confidence_accuracy(),
             "over_under_accuracy": self.get_over_under_accuracy(),
+            "trend_accuracy": self.get_trend_accuracy(),
+            "consistency_accuracy": self.get_consistency_accuracy(),
+            "home_away_accuracy": self.get_home_away_accuracy(),
             "recommendations": self.get_recommendations(),
             "suggested_weights": self.get_weight_adjustment(),
             "total_bets": sum(
