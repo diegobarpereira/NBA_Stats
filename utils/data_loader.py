@@ -1,10 +1,79 @@
 import json
 import re
+import os
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 from datetime import datetime
+import time
+import requests
 
 import config
+
+
+def _sync_cache_from_github() -> bool:
+    """
+    Tenta sincronizar o cache do GitHub automaticamente.
+    """
+    CACHE_FILE = config.DATA_DIR / "cache_stats.json"
+    GITHUB_RAW_URL = "https://raw.githubusercontent.com/diegobarpereira/NBA_Stats/main/data/cache_stats.json"
+    MAX_CACHE_AGE_HOURS = 24
+    
+    # Verifica se está no Streamlit Cloud
+    is_cloud = os.environ.get("STREAMLIT_SHARING_MODE") is not None
+    
+    if not is_cloud and not CACHE_FILE.exists():
+        return False
+    
+    if not is_cloud:
+        return False
+    
+    print("Verificando cache do GitHub...")
+    
+    # Verifica se precisa atualizar
+    needs_update = True
+    if CACHE_FILE.exists():
+        try:
+            with open(CACHE_FILE, "r") as f:
+                local_cache = json.load(f)
+            
+            sample_player = list(local_cache.keys())[0] if local_cache else None
+            if sample_player:
+                has_home_ppg = "home_ppg" in local_cache[sample_player]
+                has_last5 = "last5_game_1_pts" in local_cache[sample_player]
+                
+                if has_home_ppg and has_last5:
+                    needs_update = False
+                    print("Cache local já tem dados avançados - usando local")
+        except:
+            needs_update = True
+    
+    if not needs_update:
+        return False
+    
+    # Tenta baixar do GitHub
+    try:
+        for attempt in range(3):
+            try:
+                response = requests.get(GITHUB_RAW_URL, timeout=30)
+                if response.status_code == 200:
+                    github_cache = response.json()
+                    
+                    CACHE_FILE.parent.mkdir(parents=True, exist_ok=True)
+                    with open(CACHE_FILE, "w", encoding="utf-8") as f:
+                        json.dump(github_cache, f, ensure_ascii=False, indent=2)
+                    
+                    print(f"Cache sincronizado: {len(github_cache)} jogadores")
+                    return True
+                break
+            except Exception as e:
+                if attempt < 2:
+                    time.sleep(2 ** attempt)
+                else:
+                    print(f"Erro ao baixar cache: {e}")
+    except Exception as e:
+        print(f"Cache sync error: {e}")
+    
+    return False
 
 
 def _normalize_name(name: str) -> str:
@@ -42,7 +111,9 @@ class DataLoader:
         self.injuries_data: List[Dict] = []
         self.stats_cache: Dict[str, Dict] = {}
         self._injury_index: Dict[str, Dict] = {}
-
+        
+        _sync_cache_from_github()
+    
     def load_all(self) -> None:
         self.load_teams()
         self.load_games()
