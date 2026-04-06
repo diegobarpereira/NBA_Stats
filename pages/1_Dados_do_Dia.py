@@ -75,12 +75,12 @@ if st.button("📥 Buscar Jogos e Lesões do GameRead", type="primary", use_cont
             st.error(f"Erro ao buscar do GameRead: {e}")
             st.info("Tentando usar dados em cache...")
             # Force reload from cache
-            if config.DATA_FILES["games"].exists() and config.DATA_FILES["injuries"].exists():
+            try:
                 st.session_state.loader.load_all()
                 st.warning("Usando dados em cache do último carregamento.")
                 st.rerun()
-            else:
-                st.error("Sem dados em cache disponíveis.")
+            except Exception as cache_err:
+                st.error(f"Erro ao carregar cache: {cache_err}")
 
 st.markdown("---")
 
