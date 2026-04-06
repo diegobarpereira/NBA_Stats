@@ -356,6 +356,21 @@ if do_l5:
     st.session_state.loader.stats_cache = stats.copy()
     progress_bar.progress(1.0, text="Concluído!")
     st.success(f"✅ Last5: {updated} atualizados, {errors} sem dados. Cache salvo.")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("🔄 Git Commit & Push Cache", type="secondary"):
+            with st.spinner(" Fazendo commit e push..."):
+                import subprocess
+                try:
+                    subprocess.run(["git", "add", "data/cache_stats.json"], check=True, capture_output=True)
+                    subprocess.run(["git", "commit", "-m", "Atualiza cache de stats com Last5"], check=True, capture_output=True)
+                    result = subprocess.run(["git", "push"], check=True, capture_output=True, text=True)
+                    st.success("✅ Cache enviado para GitHub!")
+                    st.info("O Cloud vai baixar automaticamente na próxima vez.")
+                except Exception as e:
+                    st.error(f"Erro ao fazer push: {e}")
+    
     st.rerun()
 
 st.markdown("---")
