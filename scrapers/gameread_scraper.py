@@ -1,10 +1,34 @@
 import json
 import requests
 from datetime import datetime, timedelta
-from typing import Dict, List
+from typing import Dict, List, Optional
 from pathlib import Path
+import time
+import logging
 
 import config
+
+logger = logging.getLogger(__name__)
+
+MAX_RETRIES = 3
+RETRY_DELAY = 2
+
+
+def _retry_request(url: str, timeout: int = 30, params: Optional[Dict] = None) -> requests.Response:
+    """Faz requisição com retry e exponential backoff."""
+    for attempt in range(MAX_RETRIES):
+        try:
+            response = requests.get(url, timeout=timeout, params=params)
+            response.raise_for_status()
+            return response
+        except (requests.ConnectTimeout, requests.ConnectionError) as e:
+            if attempt < MAX_RETRIES - 1:
+                wait_time = RETRY_DELAY * (2 ** attempt)
+                logger.warning(f"Tentativa {attempt + 1} falhou, esperando {wait_time}s: {e}")
+                time.sleep(wait_time)
+            else:
+                raise
+    raise requests.RequestException(f"Falhou após {MAX_RETRIES} tentativas")
 
 
 TEAM_ABBR_TO_NAME = {
@@ -40,8 +64,7 @@ def _normalize_injury_status(status: str) -> str:
 
 def fetch_games_from_gameread(date: str, season: int = 2025) -> List[Dict]:
     url = f"https://gameread.app/nba/api/v1/games/day?date={date}&season={season}"
-    response = requests.get(url, timeout=30)
-    response.raise_for_status()
+    response = _retry_request(url, timeout=30)
     data = response.json()
     
     games = []
@@ -83,8 +106,7 @@ def fetch_games_from_gameread(date: str, season: int = 2025) -> List[Dict]:
 
 def fetch_injuries_from_gameread(date: str, season: int = 2025) -> Dict:
     games_url = f"https://gameread.app/nba/api/v1/games/day?date={date}&season={season}"
-    response = requests.get(games_url, timeout=30)
-    response.raise_for_status()
+    response = _retry_request(games_url, timeout=30)
     data = response.json()
     
     by_team = {}
@@ -96,7 +118,7 @@ def fetch_injuries_from_gameread(date: str, season: int = 2025) -> Dict:
         
         matchup_url = f"https://gameread.app/nba/api/v1/games/{game_api_id}/matchup-preview?last=10"
         try:
-            resp = requests.get(matchup_url, timeout=15)
+            resp = _retry_request(matchup_url, timeout=15)
             if resp.status_code != 200:
                 continue
             matchup_data = resp.json()
