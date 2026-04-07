@@ -126,6 +126,7 @@ TEAM_NAME_REVERSE.update({
     "Grizzlies": "MEM",
     "Nuggets": "DEN",
     "Trail Blazers": "POR",
+    "Blazers": "POR",
     "Jazz": "UTA",
     "Mavericks": "DAL",
 })
