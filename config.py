@@ -106,7 +106,7 @@ TEAM_NAME_REVERSE.update({
     "Wizards": "WAS",
     "Heat": "MIA",
     "Magic": "ORL",
-    " Hawks": "ATL",
+    "Hawks": "ATL",
     "Hornets": "CHA",
     "Bulls": "CHI",
     "Cavaliers": "CLE",
