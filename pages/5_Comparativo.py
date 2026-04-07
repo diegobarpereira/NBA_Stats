@@ -140,6 +140,8 @@ with tab1:
             saved_count = len(st.session_state.get("saved_player_last_game", {}))
             if saved_count > 0:
                 st.success(f"💾 {saved_count} jogadores em cache (do último carregamento)")
+            else:
+                st.info("Clique em 'Buscar Stats Reais' para carregar os resultados dos jogos")
             
             if st.button("🔄 Buscar Stats Reais", type="primary", use_container_width=True):
                 all_players_needed = set()
@@ -253,11 +255,20 @@ with tab1:
                     st.rerun()
 
         with col_load:
+            options = [b["file"] for b in all_bilhetes]
+            default_idx = 0
+            if "selected_bilhete_file" in st.session_state and st.session_state.selected_bilhete_file in options:
+                default_idx = options.index(st.session_state.selected_bilhete_file)
+            
             selected_file = st.selectbox(
                 "Arquivo de bilhetes",
-                options=[b["file"] for b in all_bilhetes],
-                index=0,
+                options=options,
+                index=default_idx,
+                key="bilhete_selector",
             )
+            
+            if selected_file:
+                st.session_state.selected_bilhete_file = selected_file
 
         if selected_file:
             selected_bh = next(b for b in all_bilhetes if b["file"] == selected_file)
@@ -283,13 +294,24 @@ with tab1:
                     line = prop.get("line", 0)
 
                     actual = 0
+                    data_source = "none"
 
                     player_last_game = st.session_state.get("player_last_game", {})
                     if not player_last_game and "saved_player_last_game" in st.session_state:
                         player_last_game = st.session_state.saved_player_last_game
+                        data_source = "saved"
+                    
+                    if not player_last_game:
+                        data_source = "empty"
                     
                     pl = player_last_game.get(player, {})
+                    
+                    # Also try with lowercase
+                    if not pl:
+                        pl = player_last_game.get(player.lower(), {})
+                    
                     if pl:
+                        data_source = "found"
                         if prop_type == "PTS":
                             actual = pl.get("pts", 0)
                         elif prop_type == "REB":
