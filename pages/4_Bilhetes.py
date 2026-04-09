@@ -86,7 +86,7 @@ if view_mode in ["📋 Tabela", "📋 Tabela + 🎴 Cartões"]:
             "Tipo": st.column_config.TextColumn("Tipo", width="small"),
             "Linha": st.column_config.TextColumn("Linha", width="small"),
             "Odds": st.column_config.NumberColumn("Odds", format="%.2f", width="small"),
-            "Conf": st.column_config.NumberColumn("Conf", format="%d/10", width="small"),
+            "Conf": st.column_config.NumberColumn("Conf", format="%d", width="small"),
             "Season": st.column_config.NumberColumn("Season", format="%.1f", width="small"),
             "Last5": st.column_config.NumberColumn("Last5", format="%.1f", width="small"),
             "Odd Total": st.column_config.NumberColumn("Odd Total", format="%.2f", width="small"),

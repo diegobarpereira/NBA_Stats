@@ -40,6 +40,7 @@ def fetch_nba_events_for_date(date: str, api_key: str = None) -> List[Dict]:
     events = response.json()
     
     target_date = datetime.strptime(date, "%Y-%m-%d").date()
+    next_date = target_date + timedelta(days=1)
     
     filtered = []
     for event in events:
@@ -49,7 +50,8 @@ def fetch_nba_events_for_date(date: str, api_key: str = None) -> List[Dict]:
         
         event_date = datetime.fromisoformat(commence.replace("Z", "+00:00")).date()
         
-        if event_date == target_date:
+        # Include games on target_date AND next day (covers EST late games that become UTC next day)
+        if event_date == target_date or event_date == next_date:
             filtered.append({
                 "event_id": event["id"],
                 "home_team": event["home_team"],
@@ -180,7 +182,7 @@ def load_cached_odds(date: str) -> Optional[Dict]:
         return None
     
     cache_age = time.time() - cache_path.stat().st_mtime
-    if cache_age > 1800:
+    if cache_age > 21600:
         return None
     
     with open(cache_path, "r", encoding="utf-8") as f:

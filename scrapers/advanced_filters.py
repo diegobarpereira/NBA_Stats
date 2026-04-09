@@ -215,16 +215,20 @@ def calculate_advanced_metrics(
         Dict com todos os filtros avançados
     """
     # Home/away factor based on actual player splits
+    # Limit to reasonable range (0.90 - 1.10) to avoid extreme boosts
     home_ppg = player_stats.get("home_ppg", 0)
     away_ppg = player_stats.get("away_ppg", 0)
     season_ppg = player_stats.get("avgPoints_season", 0)
     
     if is_home and home_ppg > 0:
-        home_away_factor = home_ppg / season_ppg if season_ppg > 0 else 1.0
+        raw_factor = home_ppg / season_ppg if season_ppg > 0 else 1.0
     elif not is_home and away_ppg > 0:
-        home_away_factor = away_ppg / season_ppg if season_ppg > 0 else 1.0
+        raw_factor = away_ppg / season_ppg if season_ppg > 0 else 1.0
     else:
-        home_away_factor = 1.03 if is_home else 0.97
+        raw_factor = 1.0
+    
+    # Clamp to reasonable range (max 10% adjustment)
+    home_away_factor = max(0.90, min(1.10, raw_factor))
     
     result = {
         "pace_factor": get_pace_factor(opponent_abbr),

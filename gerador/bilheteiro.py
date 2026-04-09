@@ -22,33 +22,15 @@ class Bilheteiro:
         self.props_engine = PropsEngine()
         self.game_min_odds = 7.0
         self.game_max_odds = 10.0
+        self.min_confidence = 8.0
         self.default_prop_odds = config.ODDS_CONFIG["default_prop_odds"]
         self.date = date or datetime.now().strftime("%Y-%m-%d")
         
         self._odds_cache = None
-        self._ensure_odds_cache()
 
-    def _ensure_odds_cache(self):
-        self._odds_cache = ensure_odds_for_date(self.date)
-
-    def calculate_prop_odds(self, prop: Dict) -> float:
+    def _calculate_odds_fallback(self, prop: Dict) -> float:
         line = prop.get("line", 0)
         prop_type = prop["type"]
-        
-        api_odds = get_odds_for_player(
-            prop.get("player", ""),
-            prop_type,
-            line,
-            self.date
-        )
-        
-        if api_odds and api_odds.get("source") == "api":
-            prop["odds_source"] = "api"
-            prop["bookmaker"] = api_odds.get("bookmaker", "")
-            return api_odds.get("odds_over", self.default_prop_odds)
-        
-        prop["odds_source"] = "calculated"
-        
         confidence = self.props_engine.get_confidence_score(prop)
         injury_status = prop.get("injury_status")
         is_fallback = prop.get("fallback", False)
@@ -84,6 +66,25 @@ class Bilheteiro:
 
         return round(max(1.10, min(2.10, base)), 2)
 
+    def calculate_prop_odds(self, prop: Dict) -> float:
+        confidence = self.props_engine.get_confidence_score(prop)
+        
+        if confidence >= 7:
+            api_odds = get_odds_for_player(
+                prop.get("player", ""),
+                prop["type"],
+                prop.get("line", 0),
+                self.date
+            )
+            
+            if api_odds and api_odds.get("source") == "api":
+                prop["odds_source"] = "api"
+                prop["bookmaker"] = api_odds.get("bookmaker", "")
+                return api_odds.get("odds_over", self.default_prop_odds)
+        
+        prop["odds_source"] = "calculated"
+        return self._calculate_odds_fallback(prop)
+
     def calculate_total_odds(self, props: List[Dict]) -> float:
         if not props:
             return 0.0
@@ -112,10 +113,15 @@ class Bilheteiro:
         if len(props) < 2:
             return []
 
-        scored = sorted(
-            props,
-            key=lambda p: -self.props_engine.get_confidence_score(p)
-        )
+        scored = [
+            p for p in props
+            if self.props_engine.get_confidence_score(p) >= self.min_confidence
+        ]
+        
+        if len(scored) < 2:
+            return []
+
+        scored.sort(key=lambda p: -self.props_engine.get_confidence_score(p))
 
         best_combo = []
         best_score = -1.0
@@ -248,7 +254,11 @@ class Bilheteiro:
         tickets = []
         for game in games:
             gid = game["id"]
-            game_props = [p for p in all_props if p.get("game_id") == gid]
+            game_props = [
+                p for p in all_props
+                if p.get("game_id") == gid
+                and self.props_engine.get_confidence_score(p) >= self.min_confidence
+            ]
             game_props = self._assign_dynamic_odds(game_props)
 
             if len(game_props) < 2:

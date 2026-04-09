@@ -12,6 +12,12 @@ import config
 from scrapers.espn_scraper import ESPNScraper
 
 
+def _normalize_name(name):
+    import re
+    name = name.lower().replace(".", "").replace("-", " ").replace("'", " ")
+    name = re.sub(r"\s+", " ", name).strip()
+    return name
+
 def _load_comparison_from_file():
     comparison_file = config.DATA_DIR / "comparison_history.json"
     if comparison_file.exists():
@@ -159,10 +165,9 @@ with tab1:
                             if len(parts) >= 2:
                                 teams = parts[0].split("vs")
                                 if len(teams) == 2:
-                                    abbr1 = config.TEAM_NAME_REVERSE.get(teams[0], teams[0])
-                                    abbr2 = config.TEAM_NAME_REVERSE.get(teams[1], teams[1])
-                                    all_teams_abbr.add(abbr1)
-                                    all_teams_abbr.add(abbr2)
+                                    # Keep abbreviations as-is (don't convert to full names)
+                                    all_teams_abbr.add(teams[0])
+                                    all_teams_abbr.add(teams[1])
 
                 st.session_state.compare_state = {
                     "players_needed": list(all_players_needed),
@@ -192,11 +197,13 @@ with tab1:
                                 all_team_stats[abbr] = ts
 
                     all_playable = []
-                    players_lower = {p.lower() for p in players_needed}
+                    players_normalized = {_normalize_name(p): p for p in players_needed}
                     for abbr, ts in all_team_stats.items():
                         for p in ts:
-                            pname = p.get("name", "").lower()
-                            if pname in players_lower and p.get("pid"):
+                            pname = p.get("name", "")
+                            pname_norm = _normalize_name(pname)
+                            original_name = players_normalized.get(pname_norm)
+                            if original_name and p.get("pid"):
                                 all_playable.append((p["name"], p["pid"]))
 
                     state["team_stats"] = all_team_stats
@@ -306,9 +313,13 @@ with tab1:
                     
                     pl = player_last_game.get(player, {})
                     
-                    # Also try with lowercase
+                    # Also try with normalized name
                     if not pl:
-                        pl = player_last_game.get(player.lower(), {})
+                        player_norm = _normalize_name(player)
+                        for key in player_last_game:
+                            if _normalize_name(key) == player_norm:
+                                pl = player_last_game[key]
+                                break
                     
                     if pl:
                         data_source = "found"
@@ -719,6 +730,20 @@ with tab2:
             st.markdown("---")
             st.markdown("### 🔍 Buscar Resultados Reais")
 
+            # Load cached player stats
+            saved_data = _load_comparison_from_file()
+            cached_players = saved_data.get("player_last_game", {}) if saved_data else {}
+            
+            if cached_players:
+                st.info(f"📦 Cache disponível: {len(cached_players)} jogadores")
+            
+            # Get unique players from selections
+            unique_players = list(set(sel.get("player", "") for sel in selections))
+            players_to_fetch = [p for p in unique_players if p not in cached_players]
+            
+            if players_to_fetch:
+                st.warning(f"⚠️ {len(players_to_fetch)} jogadores não estão em cache e precisam ser buscados")
+            
             if st.button("📊 Buscar Stats dos Jogadores"):
                 with st.spinner("Buscando stats..."):
                     from scrapers.espn_scraper import ESPNScraper
@@ -743,6 +768,16 @@ with tab2:
                     st.success(f"✅ {len(team_players)} jogadores carregados")
 
                     def find_last_game(name):
+                        # First check cache
+                        cached = cached_players.get(name)
+                        if cached:
+                            return cached
+                        
+                        # Also check with normalized name
+                        for cached_name, cached_data in cached_players.items():
+                            if _normalize_name(cached_name) == _normalize_name(name):
+                                return cached_data
+                        
                         search_name = name.lower().strip()
                         player_info = team_players.get(search_name)
                         
@@ -767,10 +802,12 @@ with tab2:
                         return None
 
                     results = []
+                    fetched_players = {}
                     for i, sel in enumerate(selections):
                         with st.expander(f"{i+1}. {sel['player']}"):
                             last_game = find_last_game(sel["player"])
                             if last_game:
+                                fetched_players[sel["player"]] = last_game
                                 actual = 0
                                 if sel["type"] == "PTS":
                                     actual = last_game.get("pts", 0)
@@ -813,10 +850,14 @@ with tab2:
                                 })
                                 st.write("Jogador não encontrado nos elencos")
 
+                    # Merge fetched players with cached ones
+                    all_players = cached_players.copy()
+                    all_players.update(fetched_players)
+                    
                     st.session_state.bet365_results = results
                     st.session_state.saved_bet365_results = results.copy()
                     _save_comparison_to_file({
-                        "player_last_game": st.session_state.get("saved_player_last_game", {}),
+                        "player_last_game": all_players,
                         "bet365_results": st.session_state.saved_bet365_results,
                         "comparison_results": st.session_state.get("saved_comparison_results", []),
                     })
