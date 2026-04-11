@@ -1,0 +1,143 @@
+{
+  "created_at": "2026-04-11T04:41:49.550404",
+  "total_combined_odds": 29.3,
+  "num_tickets": 2,
+  "tickets": [
+    {
+      "created_at": "2026-04-11T04:41:40.906148",
+      "game_id": "JazzvsGrizzlies_2026-04-11",
+      "home": "Memphis Grizzlies",
+      "away": "Utah Jazz",
+      "datetime": "2026-04-11T22:30:00",
+      "total_odds": 4.03,
+      "num_props": 3,
+      "avg_confidence": 8.8,
+      "props": [
+        {
+          "player": "Olivier-Maxence Prosper",
+          "team": "Memphis Grizzlies",
+          "type": "points",
+          "abbrev": "PTS",
+          "line": 16.9,
+          "odds": 1.72,
+          "confidence": 9.333,
+          "season_avg": 9.7,
+          "last5_avg": 18.0,
+          "injury_status": null,
+          "fallback": false,
+          "matchup_mult": 1.08,
+          "blowout_mult": 1.2,
+          "is_starter": false
+        },
+        {
+          "player": "DeJon Jarreau",
+          "team": "Memphis Grizzlies",
+          "type": "points",
+          "abbrev": "PTS",
+          "line": 11.4,
+          "odds": 1.53,
+          "confidence": 8.5,
+          "season_avg": 8.0,
+          "last5_avg": 9.8,
+          "injury_status": null,
+          "fallback": false,
+          "matchup_mult": 1.08,
+          "blowout_mult": 1.2,
+          "is_starter": false
+        },
+        {
+          "player": "DeJon Jarreau",
+          "team": "Memphis Grizzlies",
+          "type": "rebounds",
+          "abbrev": "REB",
+          "line": 5.3,
+          "odds": 1.53,
+          "confidence": 8.5,
+          "season_avg": 4.6,
+          "last5_avg": 4.0,
+          "injury_status": null,
+          "fallback": false,
+          "matchup_mult": 1.0,
+          "blowout_mult": 1.2,
+          "is_starter": false
+        }
+      ]
+    },
+    {
+      "created_at": "2026-04-11T04:41:40.913956",
+      "game_id": "BlazersvsClippers_2026-04-11",
+      "home": "Los Angeles Clippers",
+      "away": "Portland Trail Blazers",
+      "datetime": "2026-04-11T23:00:00",
+      "total_odds": 7.27,
+      "num_props": 4,
+      "avg_confidence": 9.5,
+      "props": [
+        {
+          "player": "Deni Avdija",
+          "team": "Portland Trail Blazers",
+          "type": "points",
+          "abbrev": "PTS",
+          "line": 21.3,
+          "odds": 1.76,
+          "confidence": 10,
+          "season_avg": 23.9,
+          "last5_avg": 22.4,
+          "injury_status": null,
+          "fallback": false,
+          "matchup_mult": 1.0,
+          "blowout_mult": 0.88,
+          "is_starter": true
+        },
+        {
+          "player": "Shaedon Sharpe",
+          "team": "Portland Trail Blazers",
+          "type": "points",
+          "abbrev": "PTS",
+          "line": 19.8,
+          "odds": 1.72,
+          "confidence": 10,
+          "season_avg": 21.4,
+          "last5_avg": 19.6,
+          "injury_status": null,
+          "fallback": false,
+          "matchup_mult": 1.04,
+          "blowout_mult": 0.88,
+          "is_starter": true
+        },
+        {
+          "player": "Deni Avdija",
+          "team": "Portland Trail Blazers",
+          "type": "rebounds",
+          "abbrev": "REB",
+          "line": 5.6,
+          "odds": 1.52,
+          "confidence": 9.356,
+          "season_avg": 7.0,
+          "last5_avg": 7.8,
+          "injury_status": null,
+          "fallback": false,
+          "matchup_mult": 0.83,
+          "blowout_mult": 0.88,
+          "is_starter": true
+        },
+        {
+          "player": "Scoot Henderson",
+          "team": "Portland Trail Blazers",
+          "type": "points",
+          "abbrev": "PTS",
+          "line": 14.7,
+          "odds": 1.58,
+          "confidence": 8.597999999999999,
+          "season_avg": 14.0,
+          "last5_avg": 16.4,
+          "injury_status": null,
+          "fallback": false,
+          "matchup_mult": 1.04,
+          "blowout_mult": 0.88,
+          "is_starter": true
+        }
+      ]
+    }
+  ]
+}
