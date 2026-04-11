@@ -1025,5 +1025,5655 @@
         "miss": 0
       }
     }
+  },
+  {
+    "date": "2026-04-03",
+    "comparison_results": [
+      {
+        "game": "Indiana Pacers @ Charlotte Hornets",
+        "player": "Brandon Miller",
+        "type": "PTS",
+        "line": 20.6,
+        "actual": 22,
+        "diff": "+1.4",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "Indiana Pacers @ Charlotte Hornets",
+        "player": "Kon Knueppel",
+        "type": "REB",
+        "line": 6.1,
+        "actual": 4,
+        "diff": "-2.1",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Indiana Pacers @ Charlotte Hornets",
+        "player": "LaMelo Ball",
+        "type": "AST",
+        "line": 6,
+        "actual": 9,
+        "diff": "+3.0",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "Indiana Pacers @ Charlotte Hornets",
+        "player": "Pascal Siakam",
+        "type": "PTS",
+        "line": 23,
+        "actual": 30,
+        "diff": "+7.0",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "Minnesota Timberwolves @ Philadelphia 76ers",
+        "player": "Julius Randle",
+        "type": "PTS",
+        "line": 19.2,
+        "actual": 21,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "Minnesota Timberwolves @ Philadelphia 76ers",
+        "player": "Naz Reid",
+        "type": "REB",
+        "line": 5.4,
+        "actual": 7,
+        "diff": "+1.6",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Philadelphia 76ers",
+        "player": "Tyrese Maxey",
+        "type": "PTS",
+        "line": 28.6,
+        "actual": 21,
+        "diff": "-7.6",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Minnesota Timberwolves @ Philadelphia 76ers",
+        "player": "Tyrese Maxey",
+        "type": "AST",
+        "line": 5.6,
+        "actual": 8,
+        "diff": "+2.4",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "Atlanta Hawks @ Brooklyn Nets",
+        "player": "Jalen Johnson",
+        "type": "PTS",
+        "line": 23.3,
+        "actual": 18,
+        "diff": "-5.3",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Atlanta Hawks @ Brooklyn Nets",
+        "player": "Jalen Johnson",
+        "type": "REB",
+        "line": 8.1,
+        "actual": 11,
+        "diff": "+2.9",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "Atlanta Hawks @ Brooklyn Nets",
+        "player": "Nickeil Alexander-Walker",
+        "type": "PTS",
+        "line": 20.6,
+        "actual": 21,
+        "diff": "+0.4",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "Atlanta Hawks @ Brooklyn Nets",
+        "player": "Nickeil Alexander-Walker",
+        "type": "AST",
+        "line": 3.2,
+        "actual": 3,
+        "diff": "-0.2",
+        "result": "➖ PUSH",
+        "conf": 10.0
+      },
+      {
+        "game": "Chicago Bulls @ New York Knicks",
+        "player": "Karl-Anthony Towns",
+        "type": "PTS",
+        "line": 17.4,
+        "actual": 20,
+        "diff": "+2.6",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Chicago Bulls @ New York Knicks",
+        "player": "OG Anunoby",
+        "type": "AST",
+        "line": 1.9,
+        "actual": 2,
+        "diff": "+0.1",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Chicago Bulls @ New York Knicks",
+        "player": "Jalen Brunson",
+        "type": "PTS",
+        "line": 23.1,
+        "actual": 17,
+        "diff": "-6.1",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      },
+      {
+        "game": "Chicago Bulls @ New York Knicks",
+        "player": "Karl-Anthony Towns",
+        "type": "REB",
+        "line": 8.5,
+        "actual": 11,
+        "diff": "+2.5",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "Utah Jazz @ Houston Rockets",
+        "player": "Alperen Sengun",
+        "type": "PTS",
+        "line": 21.8,
+        "actual": 19,
+        "diff": "-2.8",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Utah Jazz @ Houston Rockets",
+        "player": "Alperen Sengun",
+        "type": "AST",
+        "line": 5.1,
+        "actual": 5,
+        "diff": "-0.1",
+        "result": "➖ PUSH",
+        "conf": 10
+      },
+      {
+        "game": "Utah Jazz @ Houston Rockets",
+        "player": "Amen Thompson",
+        "type": "REB",
+        "line": 7.6,
+        "actual": 8,
+        "diff": "+0.4",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "Utah Jazz @ Houston Rockets",
+        "player": "Kevin Durant",
+        "type": "PTS",
+        "line": 27.2,
+        "actual": 25,
+        "diff": "-2.2",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Toronto Raptors @ Memphis Grizzlies",
+        "player": "RJ Barrett",
+        "type": "PTS",
+        "line": 19,
+        "actual": 25,
+        "diff": "+6.0",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "Toronto Raptors @ Memphis Grizzlies",
+        "player": "RJ Barrett",
+        "type": "REB",
+        "line": 4.1,
+        "actual": 3,
+        "diff": "-1.1",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Toronto Raptors @ Memphis Grizzlies",
+        "player": "Brandon Ingram",
+        "type": "PTS",
+        "line": 17.9,
+        "actual": 17,
+        "diff": "-0.9",
+        "result": "❌ ERROU",
+        "conf": 8.0
+      },
+      {
+        "game": "Toronto Raptors @ Memphis Grizzlies",
+        "player": "Scottie Barnes",
+        "type": "PTS",
+        "line": 17.4,
+        "actual": 10,
+        "diff": "-7.4",
+        "result": "❌ ERROU",
+        "conf": 8.0
+      },
+      {
+        "game": "Boston Celtics @ Milwaukee Bucks",
+        "player": "Jaylen Brown",
+        "type": "PTS",
+        "line": 32.6,
+        "actual": 26,
+        "diff": "-6.6",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Boston Celtics @ Milwaukee Bucks",
+        "player": "Jaylen Brown",
+        "type": "REB",
+        "line": 7.2,
+        "actual": 3,
+        "diff": "-4.2",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Boston Celtics @ Milwaukee Bucks",
+        "player": "Jayson Tatum",
+        "type": "PTS",
+        "line": 22.2,
+        "actual": 23,
+        "diff": "+0.8",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Boston Celtics @ Milwaukee Bucks",
+        "player": "Jaylen Brown",
+        "type": "AST",
+        "line": 4.9,
+        "actual": 4,
+        "diff": "-0.9",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      },
+      {
+        "game": "Orlando Magic @ Dallas Mavericks",
+        "player": "Cooper Flagg",
+        "type": "PTS",
+        "line": 21.2,
+        "actual": 51,
+        "diff": "+29.8",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Orlando Magic @ Dallas Mavericks",
+        "player": "Paolo Banchero",
+        "type": "PTS",
+        "line": 22.7,
+        "actual": 10,
+        "diff": "-12.7",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Orlando Magic @ Dallas Mavericks",
+        "player": "Paolo Banchero",
+        "type": "REB",
+        "line": 6.6,
+        "actual": 7,
+        "diff": "+0.4",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "Orlando Magic @ Dallas Mavericks",
+        "player": "Paolo Banchero",
+        "type": "AST",
+        "line": 4.2,
+        "actual": 5,
+        "diff": "+0.8",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Sacramento Kings",
+        "player": "Saddiq Bey",
+        "type": "PTS",
+        "line": 20.6,
+        "actual": 20,
+        "diff": "-0.6",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "New Orleans Pelicans @ Sacramento Kings",
+        "player": "Zion Williamson",
+        "type": "PTS",
+        "line": 22.6,
+        "actual": 13,
+        "diff": "-9.6",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Sacramento Kings",
+        "player": "Maxime Raynaud",
+        "type": "REB",
+        "line": 6.3,
+        "actual": 9,
+        "diff": "+2.7",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "New Orleans Pelicans @ Sacramento Kings",
+        "player": "DeMar DeRozan",
+        "type": "AST",
+        "line": 3.9,
+        "actual": 5,
+        "diff": "+1.1",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      }
+    ],
+    "type_analysis": {
+      "PTS": {
+        "hit": 8,
+        "miss": 11,
+        "push": 0
+      },
+      "REB": {
+        "hit": 6,
+        "miss": 3,
+        "push": 0
+      },
+      "AST": {
+        "hit": 5,
+        "miss": 1,
+        "push": 2
+      }
+    },
+    "conf_analysis": {
+      "10": {
+        "hit": 17,
+        "miss": 11,
+        "push": 2
+      },
+      "9.0": {
+        "hit": 2,
+        "miss": 2,
+        "push": 0
+      },
+      "8.0": {
+        "hit": 0,
+        "miss": 2,
+        "push": 0
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 19,
+        "miss": 15
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    }
+  },
+  {
+    "date": "2026-04-04",
+    "comparison_results": [
+      {
+        "game": "Washington Wizards @ Miami Heat",
+        "player": "Kel'el Ware",
+        "type": "PTS",
+        "line": 11.6,
+        "actual": 24,
+        "diff": "+12.4",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Washington Wizards @ Miami Heat",
+        "player": "Jaime Jaquez Jr.",
+        "type": "PTS",
+        "line": 15.4,
+        "actual": 32,
+        "diff": "+16.6",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "Washington Wizards @ Miami Heat",
+        "player": "Bam Adebayo",
+        "type": "PTS",
+        "line": 21.8,
+        "actual": 14,
+        "diff": "-7.8",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Washington Wizards @ Miami Heat",
+        "player": "Bam Adebayo",
+        "type": "REB",
+        "line": 8.8,
+        "actual": 9,
+        "diff": "+0.2",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "San Antonio Spurs @ Denver Nuggets",
+        "player": "Stephon Castle",
+        "type": "PTS",
+        "line": 18.2,
+        "actual": 20,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "San Antonio Spurs @ Denver Nuggets",
+        "player": "Jamal Murray",
+        "type": "PTS",
+        "line": 29.4,
+        "actual": 15,
+        "diff": "-14.4",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      },
+      {
+        "game": "San Antonio Spurs @ Denver Nuggets",
+        "player": "Jamal Murray",
+        "type": "AST",
+        "line": 5.9,
+        "actual": 10,
+        "diff": "+4.1",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "San Antonio Spurs @ Denver Nuggets",
+        "player": "Stephon Castle",
+        "type": "REB",
+        "line": 5.7,
+        "actual": 5,
+        "diff": "-0.7",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      },
+      {
+        "game": "Detroit Pistons @ Philadelphia 76ers",
+        "player": "Jalen Duren",
+        "type": "PTS",
+        "line": 19.2,
+        "actual": 16,
+        "diff": "-3.2",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Detroit Pistons @ Philadelphia 76ers",
+        "player": "Jalen Duren",
+        "type": "REB",
+        "line": 8.9,
+        "actual": 7,
+        "diff": "-1.9",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Detroit Pistons @ Philadelphia 76ers",
+        "player": "Tyrese Maxey",
+        "type": "PTS",
+        "line": 27.5,
+        "actual": 23,
+        "diff": "-4.5",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Detroit Pistons @ Philadelphia 76ers",
+        "player": "Tyrese Maxey",
+        "type": "AST",
+        "line": 6,
+        "actual": 1,
+        "diff": "-5.0",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      }
+    ],
+    "type_analysis": {
+      "PTS": {
+        "hit": 3,
+        "miss": 4,
+        "push": 0
+      },
+      "REB": {
+        "hit": 1,
+        "miss": 2,
+        "push": 0
+      },
+      "AST": {
+        "hit": 1,
+        "miss": 1,
+        "push": 0
+      }
+    },
+    "conf_analysis": {
+      "10.0": {
+        "hit": 3,
+        "miss": 4,
+        "push": 0
+      },
+      "9.0": {
+        "hit": 2,
+        "miss": 3,
+        "push": 0
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 5,
+        "miss": 7
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    }
+  },
+  {
+    "date": "2026-04-05",
+    "comparison_results": [
+      {
+        "game": "Boston Celtics @ Toronto Raptors",
+        "player": "Payton Pritchard",
+        "type": "PTS",
+        "line": 20.5,
+        "actual": 17,
+        "diff": "-3.5",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Boston Celtics @ Toronto Raptors",
+        "player": "RJ Barrett",
+        "type": "PTS",
+        "line": 19.4,
+        "actual": 15,
+        "diff": "-4.4",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Boston Celtics @ Toronto Raptors",
+        "player": "Neemias Queta",
+        "type": "REB",
+        "line": 7.1,
+        "actual": 7,
+        "diff": "-0.1",
+        "result": "➖ PUSH",
+        "conf": 9.0
+      },
+      {
+        "game": "Boston Celtics @ Toronto Raptors",
+        "player": "RJ Barrett",
+        "type": "AST",
+        "line": 2.8,
+        "actual": 4,
+        "diff": "+1.2",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "Brooklyn Nets @ Washington Wizards",
+        "player": "Bilal Coulibaly",
+        "type": "PTS",
+        "line": 10.5,
+        "actual": 12,
+        "diff": "+1.5",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "Brooklyn Nets @ Washington Wizards",
+        "player": "Tre Johnson",
+        "type": "PTS",
+        "line": 10.4,
+        "actual": 11,
+        "diff": "+0.6",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "Brooklyn Nets @ Washington Wizards",
+        "player": "Jaden Hardy",
+        "type": "PTS",
+        "line": 13.6,
+        "actual": 8,
+        "diff": "-5.6",
+        "result": "❌ ERROU",
+        "conf": 8.0
+      },
+      {
+        "game": "Brooklyn Nets @ Washington Wizards",
+        "player": "Will Riley",
+        "type": "PTS",
+        "line": 14.4,
+        "actual": 30,
+        "diff": "+15.6",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Brooklyn Nets @ Washington Wizards",
+        "player": "Will Riley",
+        "type": "REB",
+        "line": 2.2,
+        "actual": 4,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Chicago Bulls @ Phoenix Suns",
+        "player": "Devin Booker",
+        "type": "PTS",
+        "line": 26.6,
+        "actual": 30,
+        "diff": "+3.4",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Chicago Bulls @ Phoenix Suns",
+        "player": "Matas Buzelis",
+        "type": "PTS",
+        "line": 14.1,
+        "actual": 11,
+        "diff": "-3.1",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      },
+      {
+        "game": "Chicago Bulls @ Phoenix Suns",
+        "player": "Devin Booker",
+        "type": "AST",
+        "line": 5.2,
+        "actual": 4,
+        "diff": "-1.2",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      },
+      {
+        "game": "Chicago Bulls @ Phoenix Suns",
+        "player": "Mark Williams",
+        "type": "REB",
+        "line": 6.1,
+        "actual": 8,
+        "diff": "+1.9",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Milwaukee Bucks @ Memphis Grizzlies",
+        "player": "Kyle Kuzma",
+        "type": "PTS",
+        "line": 13.9,
+        "actual": 4,
+        "diff": "-9.9",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Milwaukee Bucks @ Memphis Grizzlies",
+        "player": "Ryan Rollins",
+        "type": "PTS",
+        "line": 17.1,
+        "actual": 24,
+        "diff": "+6.9",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "Milwaukee Bucks @ Memphis Grizzlies",
+        "player": "Ryan Rollins",
+        "type": "REB",
+        "line": 4.1,
+        "actual": 4,
+        "diff": "-0.1",
+        "result": "➖ PUSH",
+        "conf": 9.0
+      },
+      {
+        "game": "Milwaukee Bucks @ Memphis Grizzlies",
+        "player": "Kyle Kuzma",
+        "type": "AST",
+        "line": 2,
+        "actual": 6,
+        "diff": "+4.0",
+        "result": "✅ ACERTOU",
+        "conf": 7.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Indiana Pacers",
+        "player": "Donovan Mitchell",
+        "type": "PTS",
+        "line": 29.5,
+        "actual": 38,
+        "diff": "+8.5",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Indiana Pacers",
+        "player": "James Harden",
+        "type": "PTS",
+        "line": 20.3,
+        "actual": 28,
+        "diff": "+7.7",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Indiana Pacers",
+        "player": "James Harden",
+        "type": "AST",
+        "line": 6.8,
+        "actual": 7,
+        "diff": "+0.2",
+        "result": "✅ ACERTOU",
+        "conf": 7.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Indiana Pacers",
+        "player": "Max Strus",
+        "type": "REB",
+        "line": 5.9,
+        "actual": 7,
+        "diff": "+1.1",
+        "result": "✅ ACERTOU",
+        "conf": 7.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Charlotte Hornets",
+        "player": "Brandon Miller",
+        "type": "PTS",
+        "line": 20.7,
+        "actual": 7,
+        "diff": "-13.7",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Charlotte Hornets",
+        "player": "LaMelo Ball",
+        "type": "PTS",
+        "line": 20.1,
+        "actual": 35,
+        "diff": "+14.9",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "Minnesota Timberwolves @ Charlotte Hornets",
+        "player": "Naz Reid",
+        "type": "REB",
+        "line": 5.2,
+        "actual": 7,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Charlotte Hornets",
+        "player": "LaMelo Ball",
+        "type": "AST",
+        "line": 6.2,
+        "actual": 8,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Orlando Magic",
+        "player": "Derik Queen",
+        "type": "PTS",
+        "line": 10.8,
+        "actual": 2,
+        "diff": "-8.8",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Orlando Magic",
+        "player": "Desmond Bane",
+        "type": "PTS",
+        "line": 22,
+        "actual": 27,
+        "diff": "+5.0",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "New Orleans Pelicans @ Orlando Magic",
+        "player": "Wendell Carter Jr.",
+        "type": "REB",
+        "line": 6,
+        "actual": 5,
+        "diff": "-1.0",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Orlando Magic",
+        "player": "Desmond Bane",
+        "type": "AST",
+        "line": 3.4,
+        "actual": 4,
+        "diff": "+0.6",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Oklahoma City Thunder @ Utah Jazz",
+        "player": "Ajay Mitchell",
+        "type": "PTS",
+        "line": 13.7,
+        "actual": 7,
+        "diff": "-6.7",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Oklahoma City Thunder @ Utah Jazz",
+        "player": "Jalen Williams",
+        "type": "PTS",
+        "line": 17.6,
+        "actual": 15,
+        "diff": "-2.6",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Oklahoma City Thunder @ Utah Jazz",
+        "player": "Shai Gilgeous-Alexander",
+        "type": "PTS",
+        "line": 34.6,
+        "actual": 20,
+        "diff": "-14.6",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Oklahoma City Thunder @ Utah Jazz",
+        "player": "Shai Gilgeous-Alexander",
+        "type": "REB",
+        "line": 4.2,
+        "actual": 4,
+        "diff": "-0.2",
+        "result": "➖ PUSH",
+        "conf": 9.0
+      },
+      {
+        "game": "Dallas Mavericks @ Los Angeles Lakers",
+        "player": "Brandon Williams",
+        "type": "REB",
+        "line": 2.7,
+        "actual": 2,
+        "diff": "-0.7",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Dallas Mavericks @ Los Angeles Lakers",
+        "player": "Cooper Flagg",
+        "type": "PTS",
+        "line": 24.8,
+        "actual": 45,
+        "diff": "+20.2",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Dallas Mavericks @ Los Angeles Lakers",
+        "player": "Naji Marshall",
+        "type": "PTS",
+        "line": 18.1,
+        "actual": 13,
+        "diff": "-5.1",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Dallas Mavericks @ Los Angeles Lakers",
+        "player": "Brandon Williams",
+        "type": "AST",
+        "line": 3.4,
+        "actual": 5,
+        "diff": "+1.6",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Sacramento Kings @ Los Angeles Clippers",
+        "player": "DeMar DeRozan",
+        "type": "PTS",
+        "line": 18.5,
+        "actual": 9,
+        "diff": "-9.5",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Sacramento Kings @ Los Angeles Clippers",
+        "player": "Maxime Raynaud",
+        "type": "PTS",
+        "line": 12.6,
+        "actual": 11,
+        "diff": "-1.6",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Sacramento Kings @ Los Angeles Clippers",
+        "player": "Maxime Raynaud",
+        "type": "REB",
+        "line": 6.1,
+        "actual": 15,
+        "diff": "+8.9",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Sacramento Kings @ Los Angeles Clippers",
+        "player": "Kawhi Leonard",
+        "type": "PTS",
+        "line": 29.2,
+        "actual": 26,
+        "diff": "-3.2",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      },
+      {
+        "game": "Golden State Warriors @ Houston Rockets",
+        "player": "Amen Thompson",
+        "type": "PTS",
+        "line": 19.2,
+        "actual": 18,
+        "diff": "-1.2",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Golden State Warriors @ Houston Rockets",
+        "player": "Amen Thompson",
+        "type": "REB",
+        "line": 7.2,
+        "actual": 3,
+        "diff": "-4.2",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Golden State Warriors @ Houston Rockets",
+        "player": "Reed Sheppard",
+        "type": "PTS",
+        "line": 15.8,
+        "actual": 11,
+        "diff": "-4.8",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Golden State Warriors @ Houston Rockets",
+        "player": "Kevin Durant",
+        "type": "PTS",
+        "line": 27.2,
+        "actual": 31,
+        "diff": "+3.8",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      }
+    ],
+    "type_analysis": {
+      "PTS": {
+        "hit": 11,
+        "miss": 16,
+        "push": 0
+      },
+      "REB": {
+        "hit": 5,
+        "miss": 3,
+        "push": 3
+      },
+      "AST": {
+        "hit": 6,
+        "miss": 1,
+        "push": 0
+      }
+    },
+    "conf_analysis": {
+      "10.0": {
+        "hit": 6,
+        "miss": 16,
+        "push": 0
+      },
+      "9.0": {
+        "hit": 6,
+        "miss": 3,
+        "push": 3
+      },
+      "8.0": {
+        "hit": 7,
+        "miss": 1,
+        "push": 0
+      },
+      "7.0": {
+        "hit": 3,
+        "miss": 0,
+        "push": 0
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 22,
+        "miss": 20
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    }
+  },
+  {
+    "date": "2026-04-05",
+    "comparison_results": [
+      {
+        "game": "Boston Celtics @ Toronto Raptors",
+        "player": "Payton Pritchard",
+        "type": "PTS",
+        "line": 20.5,
+        "actual": 17,
+        "diff": "-3.5",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Boston Celtics @ Toronto Raptors",
+        "player": "RJ Barrett",
+        "type": "PTS",
+        "line": 19.4,
+        "actual": 15,
+        "diff": "-4.4",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Boston Celtics @ Toronto Raptors",
+        "player": "Neemias Queta",
+        "type": "REB",
+        "line": 7.1,
+        "actual": 7,
+        "diff": "-0.1",
+        "result": "➖ PUSH",
+        "conf": 9.0
+      },
+      {
+        "game": "Boston Celtics @ Toronto Raptors",
+        "player": "RJ Barrett",
+        "type": "AST",
+        "line": 2.8,
+        "actual": 4,
+        "diff": "+1.2",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "Brooklyn Nets @ Washington Wizards",
+        "player": "Bilal Coulibaly",
+        "type": "PTS",
+        "line": 10.5,
+        "actual": 12,
+        "diff": "+1.5",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "Brooklyn Nets @ Washington Wizards",
+        "player": "Tre Johnson",
+        "type": "PTS",
+        "line": 10.4,
+        "actual": 11,
+        "diff": "+0.6",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "Brooklyn Nets @ Washington Wizards",
+        "player": "Jaden Hardy",
+        "type": "PTS",
+        "line": 13.6,
+        "actual": 8,
+        "diff": "-5.6",
+        "result": "❌ ERROU",
+        "conf": 8.0
+      },
+      {
+        "game": "Brooklyn Nets @ Washington Wizards",
+        "player": "Will Riley",
+        "type": "PTS",
+        "line": 14.4,
+        "actual": 30,
+        "diff": "+15.6",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Brooklyn Nets @ Washington Wizards",
+        "player": "Will Riley",
+        "type": "REB",
+        "line": 2.2,
+        "actual": 4,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Chicago Bulls @ Phoenix Suns",
+        "player": "Devin Booker",
+        "type": "PTS",
+        "line": 26.6,
+        "actual": 30,
+        "diff": "+3.4",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Chicago Bulls @ Phoenix Suns",
+        "player": "Matas Buzelis",
+        "type": "PTS",
+        "line": 14.1,
+        "actual": 11,
+        "diff": "-3.1",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      },
+      {
+        "game": "Chicago Bulls @ Phoenix Suns",
+        "player": "Devin Booker",
+        "type": "AST",
+        "line": 5.2,
+        "actual": 4,
+        "diff": "-1.2",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      },
+      {
+        "game": "Chicago Bulls @ Phoenix Suns",
+        "player": "Mark Williams",
+        "type": "REB",
+        "line": 6.1,
+        "actual": 8,
+        "diff": "+1.9",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Milwaukee Bucks @ Memphis Grizzlies",
+        "player": "Kyle Kuzma",
+        "type": "PTS",
+        "line": 13.9,
+        "actual": 4,
+        "diff": "-9.9",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Milwaukee Bucks @ Memphis Grizzlies",
+        "player": "Ryan Rollins",
+        "type": "PTS",
+        "line": 17.1,
+        "actual": 24,
+        "diff": "+6.9",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "Milwaukee Bucks @ Memphis Grizzlies",
+        "player": "Ryan Rollins",
+        "type": "REB",
+        "line": 4.1,
+        "actual": 4,
+        "diff": "-0.1",
+        "result": "➖ PUSH",
+        "conf": 9.0
+      },
+      {
+        "game": "Milwaukee Bucks @ Memphis Grizzlies",
+        "player": "Kyle Kuzma",
+        "type": "AST",
+        "line": 2,
+        "actual": 6,
+        "diff": "+4.0",
+        "result": "✅ ACERTOU",
+        "conf": 7.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Indiana Pacers",
+        "player": "Donovan Mitchell",
+        "type": "PTS",
+        "line": 29.5,
+        "actual": 38,
+        "diff": "+8.5",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Indiana Pacers",
+        "player": "James Harden",
+        "type": "PTS",
+        "line": 20.3,
+        "actual": 28,
+        "diff": "+7.7",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Indiana Pacers",
+        "player": "James Harden",
+        "type": "AST",
+        "line": 6.8,
+        "actual": 7,
+        "diff": "+0.2",
+        "result": "✅ ACERTOU",
+        "conf": 7.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Indiana Pacers",
+        "player": "Max Strus",
+        "type": "REB",
+        "line": 5.9,
+        "actual": 7,
+        "diff": "+1.1",
+        "result": "✅ ACERTOU",
+        "conf": 7.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Charlotte Hornets",
+        "player": "Brandon Miller",
+        "type": "PTS",
+        "line": 20.7,
+        "actual": 7,
+        "diff": "-13.7",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Charlotte Hornets",
+        "player": "LaMelo Ball",
+        "type": "PTS",
+        "line": 20.1,
+        "actual": 35,
+        "diff": "+14.9",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "Minnesota Timberwolves @ Charlotte Hornets",
+        "player": "Naz Reid",
+        "type": "REB",
+        "line": 5.2,
+        "actual": 7,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Charlotte Hornets",
+        "player": "LaMelo Ball",
+        "type": "AST",
+        "line": 6.2,
+        "actual": 8,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Orlando Magic",
+        "player": "Derik Queen",
+        "type": "PTS",
+        "line": 10.8,
+        "actual": 2,
+        "diff": "-8.8",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Orlando Magic",
+        "player": "Desmond Bane",
+        "type": "PTS",
+        "line": 22,
+        "actual": 27,
+        "diff": "+5.0",
+        "result": "✅ ACERTOU",
+        "conf": 10
+      },
+      {
+        "game": "New Orleans Pelicans @ Orlando Magic",
+        "player": "Wendell Carter Jr.",
+        "type": "REB",
+        "line": 6,
+        "actual": 5,
+        "diff": "-1.0",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Orlando Magic",
+        "player": "Desmond Bane",
+        "type": "AST",
+        "line": 3.4,
+        "actual": 4,
+        "diff": "+0.6",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Oklahoma City Thunder @ Utah Jazz",
+        "player": "Ajay Mitchell",
+        "type": "PTS",
+        "line": 13.7,
+        "actual": 7,
+        "diff": "-6.7",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Oklahoma City Thunder @ Utah Jazz",
+        "player": "Jalen Williams",
+        "type": "PTS",
+        "line": 17.6,
+        "actual": 15,
+        "diff": "-2.6",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Oklahoma City Thunder @ Utah Jazz",
+        "player": "Shai Gilgeous-Alexander",
+        "type": "PTS",
+        "line": 34.6,
+        "actual": 20,
+        "diff": "-14.6",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Oklahoma City Thunder @ Utah Jazz",
+        "player": "Shai Gilgeous-Alexander",
+        "type": "REB",
+        "line": 4.2,
+        "actual": 4,
+        "diff": "-0.2",
+        "result": "➖ PUSH",
+        "conf": 9.0
+      },
+      {
+        "game": "Dallas Mavericks @ Los Angeles Lakers",
+        "player": "Brandon Williams",
+        "type": "REB",
+        "line": 2.7,
+        "actual": 2,
+        "diff": "-0.7",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Dallas Mavericks @ Los Angeles Lakers",
+        "player": "Cooper Flagg",
+        "type": "PTS",
+        "line": 24.8,
+        "actual": 45,
+        "diff": "+20.2",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Dallas Mavericks @ Los Angeles Lakers",
+        "player": "Naji Marshall",
+        "type": "PTS",
+        "line": 18.1,
+        "actual": 13,
+        "diff": "-5.1",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Dallas Mavericks @ Los Angeles Lakers",
+        "player": "Brandon Williams",
+        "type": "AST",
+        "line": 3.4,
+        "actual": 5,
+        "diff": "+1.6",
+        "result": "✅ ACERTOU",
+        "conf": 8.0
+      },
+      {
+        "game": "Sacramento Kings @ Los Angeles Clippers",
+        "player": "DeMar DeRozan",
+        "type": "PTS",
+        "line": 18.5,
+        "actual": 9,
+        "diff": "-9.5",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Sacramento Kings @ Los Angeles Clippers",
+        "player": "Maxime Raynaud",
+        "type": "PTS",
+        "line": 12.6,
+        "actual": 11,
+        "diff": "-1.6",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Sacramento Kings @ Los Angeles Clippers",
+        "player": "Maxime Raynaud",
+        "type": "REB",
+        "line": 6.1,
+        "actual": 15,
+        "diff": "+8.9",
+        "result": "✅ ACERTOU",
+        "conf": 10.0
+      },
+      {
+        "game": "Sacramento Kings @ Los Angeles Clippers",
+        "player": "Kawhi Leonard",
+        "type": "PTS",
+        "line": 29.2,
+        "actual": 26,
+        "diff": "-3.2",
+        "result": "❌ ERROU",
+        "conf": 9.0
+      },
+      {
+        "game": "Golden State Warriors @ Houston Rockets",
+        "player": "Amen Thompson",
+        "type": "PTS",
+        "line": 19.2,
+        "actual": 18,
+        "diff": "-1.2",
+        "result": "❌ ERROU",
+        "conf": 10
+      },
+      {
+        "game": "Golden State Warriors @ Houston Rockets",
+        "player": "Amen Thompson",
+        "type": "REB",
+        "line": 7.2,
+        "actual": 3,
+        "diff": "-4.2",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Golden State Warriors @ Houston Rockets",
+        "player": "Reed Sheppard",
+        "type": "PTS",
+        "line": 15.8,
+        "actual": 11,
+        "diff": "-4.8",
+        "result": "❌ ERROU",
+        "conf": 10.0
+      },
+      {
+        "game": "Golden State Warriors @ Houston Rockets",
+        "player": "Kevin Durant",
+        "type": "PTS",
+        "line": 27.2,
+        "actual": 31,
+        "diff": "+3.8",
+        "result": "✅ ACERTOU",
+        "conf": 9.0
+      }
+    ],
+    "type_analysis": {
+      "PTS": {
+        "hit": 11,
+        "miss": 16,
+        "push": 0
+      },
+      "REB": {
+        "hit": 5,
+        "miss": 3,
+        "push": 3
+      },
+      "AST": {
+        "hit": 6,
+        "miss": 1,
+        "push": 0
+      }
+    },
+    "conf_analysis": {
+      "10.0": {
+        "hit": 6,
+        "miss": 16,
+        "push": 0
+      },
+      "9.0": {
+        "hit": 6,
+        "miss": 3,
+        "push": 3
+      },
+      "8.0": {
+        "hit": 7,
+        "miss": 1,
+        "push": 0
+      },
+      "7.0": {
+        "hit": 3,
+        "miss": 0,
+        "push": 0
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 22,
+        "miss": 20
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    }
+  },
+  {
+    "date": "2026-04-06",
+    "comparison_results": [
+      {
+        "game": "New York Knicks @ Atlanta Hawks",
+        "player": "Jalen Johnson",
+        "type": "PTS",
+        "line": 22.8,
+        "actual": 21,
+        "diff": "-1.8",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "New York Knicks @ Atlanta Hawks",
+        "player": "Jalen Johnson",
+        "type": "REB",
+        "line": 8.4,
+        "actual": 11,
+        "diff": "+2.6",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "New York Knicks @ Atlanta Hawks",
+        "player": "Jalen Johnson",
+        "type": "AST",
+        "line": 6.3,
+        "actual": 5,
+        "diff": "-1.3",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "New York Knicks @ Atlanta Hawks",
+        "player": "Jalen Brunson",
+        "type": "PTS",
+        "line": 24.2,
+        "actual": 30,
+        "diff": "+5.8",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Detroit Pistons @ Orlando Magic",
+        "player": "Jalen Duren",
+        "type": "REB",
+        "line": 5.5,
+        "actual": 9,
+        "diff": "+3.5",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Detroit Pistons @ Orlando Magic",
+        "player": "Jalen Suggs",
+        "type": "PTS",
+        "line": 13.8,
+        "actual": 12,
+        "diff": "-1.8",
+        "result": "❌ ERROU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Detroit Pistons @ Orlando Magic",
+        "player": "Tobias Harris",
+        "type": "PTS",
+        "line": 16.1,
+        "actual": 19,
+        "diff": "+2.9",
+        "result": "✅ ACERTOU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Detroit Pistons @ Orlando Magic",
+        "player": "Paul Reed",
+        "type": "PTS",
+        "line": 17,
+        "actual": 9,
+        "diff": "-8.0",
+        "result": "❌ ERROU",
+        "conf": 8.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Memphis Grizzlies",
+        "player": "Jarrett Allen",
+        "type": "PTS",
+        "line": 18.1,
+        "actual": 13,
+        "diff": "-5.1",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Memphis Grizzlies",
+        "player": "Ty Jerome",
+        "type": "PTS",
+        "line": 16.8,
+        "actual": 17,
+        "diff": "+0.2",
+        "result": "✅ ACERTOU",
+        "conf": 9.707,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Memphis Grizzlies",
+        "player": "Evan Mobley",
+        "type": "PTS",
+        "line": 16.5,
+        "actual": 24,
+        "diff": "+7.5",
+        "result": "✅ ACERTOU",
+        "conf": 9.563,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Memphis Grizzlies",
+        "player": "Jarrett Allen",
+        "type": "REB",
+        "line": 7.6,
+        "actual": 9,
+        "diff": "+1.4",
+        "result": "✅ ACERTOU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Philadelphia 76ers @ San Antonio Spurs",
+        "player": "Joel Embiid",
+        "type": "PTS",
+        "line": 27.6,
+        "actual": 34,
+        "diff": "+6.4",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Philadelphia 76ers @ San Antonio Spurs",
+        "player": "Joel Embiid",
+        "type": "REB",
+        "line": 6.8,
+        "actual": 12,
+        "diff": "+5.2",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Philadelphia 76ers @ San Antonio Spurs",
+        "player": "Tyrese Maxey",
+        "type": "AST",
+        "line": 4.9,
+        "actual": 8,
+        "diff": "+3.1",
+        "result": "✅ ACERTOU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Philadelphia 76ers @ San Antonio Spurs",
+        "player": "Stephon Castle",
+        "type": "PTS",
+        "line": 23.4,
+        "actual": 19,
+        "diff": "-4.4",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Portland Trail Blazers @ Denver Nuggets",
+        "player": "Jamal Murray",
+        "type": "PTS",
+        "line": 33.4,
+        "actual": 20,
+        "diff": "-13.4",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Portland Trail Blazers @ Denver Nuggets",
+        "player": "Jamal Murray",
+        "type": "REB",
+        "line": 5.6,
+        "actual": 1,
+        "diff": "-4.6",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Portland Trail Blazers @ Denver Nuggets",
+        "player": "Jamal Murray",
+        "type": "AST",
+        "line": 7.2,
+        "actual": 7,
+        "diff": "-0.2",
+        "result": "➖ PUSH",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Portland Trail Blazers @ Denver Nuggets",
+        "player": "Deni Avdija",
+        "type": "REB",
+        "line": 7,
+        "actual": 4,
+        "diff": "-3.0",
+        "result": "❌ ERROU",
+        "conf": 9.356,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      }
+    ],
+    "type_analysis": {
+      "PTS": {
+        "hit": 5,
+        "miss": 6,
+        "push": 0
+      },
+      "REB": {
+        "hit": 4,
+        "miss": 2,
+        "push": 0
+      },
+      "AST": {
+        "hit": 1,
+        "miss": 1,
+        "push": 1
+      }
+    },
+    "conf_analysis": {
+      "10": {
+        "hit": 6,
+        "miss": 7,
+        "push": 1
+      },
+      "9.5": {
+        "hit": 2,
+        "miss": 0,
+        "push": 0
+      },
+      "8.5": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "9.707": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.563": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.356": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 10,
+        "miss": 9
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    },
+    "trend_analysis": {
+      "stable": {
+        "hit": 10,
+        "miss": 9
+      }
+    },
+    "consistency_analysis": {
+      "low": {
+        "hit": 10,
+        "miss": 9
+      }
+    },
+    "home_away_analysis": {
+      "home": {
+        "hit": 10,
+        "miss": 9
+      }
+    }
+  },
+  {
+    "date": "2026-04-06",
+    "comparison_results": [
+      {
+        "game": "New York Knicks @ Atlanta Hawks",
+        "player": "Jalen Johnson",
+        "type": "PTS",
+        "line": 22.8,
+        "actual": 21,
+        "diff": "-1.8",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "New York Knicks @ Atlanta Hawks",
+        "player": "Jalen Johnson",
+        "type": "REB",
+        "line": 8.4,
+        "actual": 11,
+        "diff": "+2.6",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "New York Knicks @ Atlanta Hawks",
+        "player": "Jalen Johnson",
+        "type": "AST",
+        "line": 6.3,
+        "actual": 5,
+        "diff": "-1.3",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "New York Knicks @ Atlanta Hawks",
+        "player": "Jalen Brunson",
+        "type": "PTS",
+        "line": 24.2,
+        "actual": 30,
+        "diff": "+5.8",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Detroit Pistons @ Orlando Magic",
+        "player": "Jalen Duren",
+        "type": "REB",
+        "line": 5.5,
+        "actual": 9,
+        "diff": "+3.5",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Detroit Pistons @ Orlando Magic",
+        "player": "Jalen Suggs",
+        "type": "PTS",
+        "line": 13.8,
+        "actual": 12,
+        "diff": "-1.8",
+        "result": "❌ ERROU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Detroit Pistons @ Orlando Magic",
+        "player": "Tobias Harris",
+        "type": "PTS",
+        "line": 16.1,
+        "actual": 19,
+        "diff": "+2.9",
+        "result": "✅ ACERTOU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Detroit Pistons @ Orlando Magic",
+        "player": "Paul Reed",
+        "type": "PTS",
+        "line": 17,
+        "actual": 9,
+        "diff": "-8.0",
+        "result": "❌ ERROU",
+        "conf": 8.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Memphis Grizzlies",
+        "player": "Jarrett Allen",
+        "type": "PTS",
+        "line": 18.1,
+        "actual": 13,
+        "diff": "-5.1",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Memphis Grizzlies",
+        "player": "Ty Jerome",
+        "type": "PTS",
+        "line": 16.8,
+        "actual": 17,
+        "diff": "+0.2",
+        "result": "✅ ACERTOU",
+        "conf": 9.707,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Memphis Grizzlies",
+        "player": "Evan Mobley",
+        "type": "PTS",
+        "line": 16.5,
+        "actual": 24,
+        "diff": "+7.5",
+        "result": "✅ ACERTOU",
+        "conf": 9.563,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Memphis Grizzlies",
+        "player": "Jarrett Allen",
+        "type": "REB",
+        "line": 7.6,
+        "actual": 9,
+        "diff": "+1.4",
+        "result": "✅ ACERTOU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Philadelphia 76ers @ San Antonio Spurs",
+        "player": "Joel Embiid",
+        "type": "PTS",
+        "line": 27.6,
+        "actual": 34,
+        "diff": "+6.4",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Philadelphia 76ers @ San Antonio Spurs",
+        "player": "Joel Embiid",
+        "type": "REB",
+        "line": 6.8,
+        "actual": 12,
+        "diff": "+5.2",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Philadelphia 76ers @ San Antonio Spurs",
+        "player": "Tyrese Maxey",
+        "type": "AST",
+        "line": 4.9,
+        "actual": 8,
+        "diff": "+3.1",
+        "result": "✅ ACERTOU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Philadelphia 76ers @ San Antonio Spurs",
+        "player": "Stephon Castle",
+        "type": "PTS",
+        "line": 23.4,
+        "actual": 19,
+        "diff": "-4.4",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Portland Trail Blazers @ Denver Nuggets",
+        "player": "Jamal Murray",
+        "type": "PTS",
+        "line": 33.4,
+        "actual": 20,
+        "diff": "-13.4",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Portland Trail Blazers @ Denver Nuggets",
+        "player": "Jamal Murray",
+        "type": "REB",
+        "line": 5.6,
+        "actual": 1,
+        "diff": "-4.6",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Portland Trail Blazers @ Denver Nuggets",
+        "player": "Jamal Murray",
+        "type": "AST",
+        "line": 7.2,
+        "actual": 7,
+        "diff": "-0.2",
+        "result": "➖ PUSH",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Portland Trail Blazers @ Denver Nuggets",
+        "player": "Deni Avdija",
+        "type": "REB",
+        "line": 7,
+        "actual": 4,
+        "diff": "-3.0",
+        "result": "❌ ERROU",
+        "conf": 9.356,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      }
+    ],
+    "type_analysis": {
+      "PTS": {
+        "hit": 5,
+        "miss": 6,
+        "push": 0
+      },
+      "REB": {
+        "hit": 4,
+        "miss": 2,
+        "push": 0
+      },
+      "AST": {
+        "hit": 1,
+        "miss": 1,
+        "push": 1
+      }
+    },
+    "conf_analysis": {
+      "10": {
+        "hit": 6,
+        "miss": 7,
+        "push": 1
+      },
+      "9.5": {
+        "hit": 2,
+        "miss": 0,
+        "push": 0
+      },
+      "8.5": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "9.707": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.563": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.356": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 10,
+        "miss": 9
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    },
+    "trend_analysis": {
+      "stable": {
+        "hit": 10,
+        "miss": 9
+      }
+    },
+    "consistency_analysis": {
+      "low": {
+        "hit": 10,
+        "miss": 9
+      }
+    },
+    "home_away_analysis": {
+      "home": {
+        "hit": 10,
+        "miss": 9
+      }
+    }
+  },
+  {
+    "date": "2026-04-07",
+    "comparison_results": [
+      {
+        "game": "Chicago Bulls @ Washington Wizards",
+        "player": "Bilal Coulibaly",
+        "type": "PTS",
+        "line": 10.1,
+        "actual": 19,
+        "diff": "+8.9",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Chicago Bulls @ Washington Wizards",
+        "player": "Collin Sexton",
+        "type": "PTS",
+        "line": 19.8,
+        "actual": 15,
+        "diff": "-4.8",
+        "result": "❌ ERROU",
+        "conf": 9.763,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Chicago Bulls @ Washington Wizards",
+        "player": "Tre Johnson",
+        "type": "REB",
+        "line": 1.8,
+        "actual": 3,
+        "diff": "+1.2",
+        "result": "✅ ACERTOU",
+        "conf": 9.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Chicago Bulls @ Washington Wizards",
+        "player": "Collin Sexton",
+        "type": "AST",
+        "line": 2,
+        "actual": 7,
+        "diff": "+5.0",
+        "result": "✅ ACERTOU",
+        "conf": 8.763,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Minnesota Timberwolves @ Indiana Pacers",
+        "player": "Ayo Dosunmu",
+        "type": "PTS",
+        "line": 18.9,
+        "actual": 24,
+        "diff": "+5.1",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Minnesota Timberwolves @ Indiana Pacers",
+        "player": "Julius Randle",
+        "type": "PTS",
+        "line": 23.6,
+        "actual": 19,
+        "diff": "-4.6",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Indiana Pacers",
+        "player": "Naz Reid",
+        "type": "REB",
+        "line": 5.4,
+        "actual": 2,
+        "diff": "-3.4",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Minnesota Timberwolves @ Indiana Pacers",
+        "player": "Jarace Walker",
+        "type": "AST",
+        "line": 1.6,
+        "actual": 5,
+        "diff": "+3.4",
+        "result": "✅ ACERTOU",
+        "conf": 8.689,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Milwaukee Bucks @ Brooklyn Nets",
+        "player": "Ben Saraf",
+        "type": "PTS",
+        "line": 7.2,
+        "actual": 19,
+        "diff": "+11.8",
+        "result": "✅ ACERTOU",
+        "conf": 9.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Milwaukee Bucks @ Brooklyn Nets",
+        "player": "A.J. Green",
+        "type": "PTS",
+        "line": 12.4,
+        "actual": 20,
+        "diff": "+7.6",
+        "result": "✅ ACERTOU",
+        "conf": 8.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Miami Heat @ Toronto Raptors",
+        "player": "Norman Powell",
+        "type": "PTS",
+        "line": 19.5,
+        "actual": 14,
+        "diff": "-5.5",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Miami Heat @ Toronto Raptors",
+        "player": "RJ Barrett",
+        "type": "PTS",
+        "line": 22.4,
+        "actual": 16,
+        "diff": "-6.4",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Miami Heat @ Toronto Raptors",
+        "player": "Sandro Mamukelashvili",
+        "type": "PTS",
+        "line": 12.4,
+        "actual": 11,
+        "diff": "-1.4",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Miami Heat @ Toronto Raptors",
+        "player": "RJ Barrett",
+        "type": "REB",
+        "line": 4.4,
+        "actual": 8,
+        "diff": "+3.6",
+        "result": "✅ ACERTOU",
+        "conf": 9.682,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Charlotte Hornets @ Boston Celtics",
+        "player": "Jayson Tatum",
+        "type": "PTS",
+        "line": 22.7,
+        "actual": 23,
+        "diff": "+0.3",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Charlotte Hornets @ Boston Celtics",
+        "player": "Brandon Miller",
+        "type": "PTS",
+        "line": 17.4,
+        "actual": 20,
+        "diff": "+2.6",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Charlotte Hornets @ Boston Celtics",
+        "player": "Brandon Miller",
+        "type": "REB",
+        "line": 3.7,
+        "actual": "?",
+        "diff": "?",
+        "result": "SEM DADOS",
+        "conf": 9.338000000000001,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Charlotte Hornets @ Boston Celtics",
+        "player": "Brandon Miller",
+        "type": "AST",
+        "line": 2.6,
+        "actual": 2,
+        "diff": "-0.6",
+        "result": "❌ ERROU",
+        "conf": 9.338000000000001,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Utah Jazz @ New Orleans Pelicans",
+        "player": "Derik Queen",
+        "type": "PTS",
+        "line": 9.6,
+        "actual": 17,
+        "diff": "+7.4",
+        "result": "✅ ACERTOU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Utah Jazz @ New Orleans Pelicans",
+        "player": "Zion Williamson",
+        "type": "PTS",
+        "line": 18.9,
+        "actual": 17,
+        "diff": "-1.9",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Utah Jazz @ New Orleans Pelicans",
+        "player": "Kyle Filipowski",
+        "type": "PTS",
+        "line": 17.7,
+        "actual": 9,
+        "diff": "-8.7",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Utah Jazz @ New Orleans Pelicans",
+        "player": "Kyle Filipowski",
+        "type": "REB",
+        "line": 7.8,
+        "actual": 6,
+        "diff": "-1.8",
+        "result": "❌ ERROU",
+        "conf": 9.541,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Sacramento Kings @ Golden State Warriors",
+        "player": "Brandin Podziemski",
+        "type": "REB",
+        "line": 6,
+        "actual": 1,
+        "diff": "-5.0",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Sacramento Kings @ Golden State Warriors",
+        "player": "Stephen Curry",
+        "type": "PTS",
+        "line": 29.6,
+        "actual": 17,
+        "diff": "-12.6",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Sacramento Kings @ Golden State Warriors",
+        "player": "DeMar DeRozan",
+        "type": "PTS",
+        "line": 20.9,
+        "actual": 9,
+        "diff": "-11.9",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Sacramento Kings @ Golden State Warriors",
+        "player": "DeMar DeRozan",
+        "type": "AST",
+        "line": 3.5,
+        "actual": "?",
+        "diff": "?",
+        "result": "SEM DADOS",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Oklahoma City Thunder @ Los Angeles Lakers",
+        "player": "Ajay Mitchell",
+        "type": "PTS",
+        "line": 13.9,
+        "actual": 9,
+        "diff": "-4.9",
+        "result": "❌ ERROU",
+        "conf": 8.943999999999999,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Oklahoma City Thunder @ Los Angeles Lakers",
+        "player": "Isaiah Joe",
+        "type": "PTS",
+        "line": 10.2,
+        "actual": 18,
+        "diff": "+7.8",
+        "result": "✅ ACERTOU",
+        "conf": 8.75,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Oklahoma City Thunder @ Los Angeles Lakers",
+        "player": "Shai Gilgeous-Alexander",
+        "type": "PTS",
+        "line": 33.9,
+        "actual": 25,
+        "diff": "-8.9",
+        "result": "❌ ERROU",
+        "conf": 8.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Oklahoma City Thunder @ Los Angeles Lakers",
+        "player": "Shai Gilgeous-Alexander",
+        "type": "REB",
+        "line": 5,
+        "actual": 1,
+        "diff": "-4.0",
+        "result": "❌ ERROU",
+        "conf": 8.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Dallas Mavericks @ Los Angeles Clippers",
+        "player": "Naji Marshall",
+        "type": "PTS",
+        "line": 18.8,
+        "actual": 6,
+        "diff": "-12.8",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Dallas Mavericks @ Los Angeles Clippers",
+        "player": "Darius Garland",
+        "type": "PTS",
+        "line": 19.5,
+        "actual": 22,
+        "diff": "+2.5",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Dallas Mavericks @ Los Angeles Clippers",
+        "player": "Kawhi Leonard",
+        "type": "PTS",
+        "line": 27.9,
+        "actual": 34,
+        "diff": "+6.1",
+        "result": "✅ ACERTOU",
+        "conf": 9.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Dallas Mavericks @ Los Angeles Clippers",
+        "player": "Naji Marshall",
+        "type": "REB",
+        "line": 4.6,
+        "actual": 2,
+        "diff": "-2.6",
+        "result": "❌ ERROU",
+        "conf": 8.303,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Houston Rockets @ Phoenix Suns",
+        "player": "Devin Booker",
+        "type": "PTS",
+        "line": 28.1,
+        "actual": 31,
+        "diff": "+2.9",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Houston Rockets @ Phoenix Suns",
+        "player": "Devin Booker",
+        "type": "AST",
+        "line": 5.1,
+        "actual": 8,
+        "diff": "+2.9",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Houston Rockets @ Phoenix Suns",
+        "player": "Alperen Sengun",
+        "type": "PTS",
+        "line": 26.3,
+        "actual": 12,
+        "diff": "-14.3",
+        "result": "❌ ERROU",
+        "conf": 9.655,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Houston Rockets @ Phoenix Suns",
+        "player": "Grayson Allen",
+        "type": "REB",
+        "line": 3,
+        "actual": 4,
+        "diff": "+1.0",
+        "result": "✅ ACERTOU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      }
+    ],
+    "type_analysis": {
+      "PTS": {
+        "hit": 11,
+        "miss": 13,
+        "push": 0
+      },
+      "REB": {
+        "hit": 3,
+        "miss": 5,
+        "push": 1
+      },
+      "AST": {
+        "hit": 3,
+        "miss": 1,
+        "push": 1
+      }
+    },
+    "conf_analysis": {
+      "10": {
+        "hit": 8,
+        "miss": 11,
+        "push": 0
+      },
+      "9.763": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "9.0": {
+        "hit": 3,
+        "miss": 0,
+        "push": 0
+      },
+      "8.763": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "8.689": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "8.5": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.682": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.338000000000001": {
+        "hit": 0,
+        "miss": 1,
+        "push": 1
+      },
+      "9.541": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "9.5": {
+        "hit": 1,
+        "miss": 0,
+        "push": 1
+      },
+      "8.943999999999999": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "8.75": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "8.0": {
+        "hit": 0,
+        "miss": 2,
+        "push": 0
+      },
+      "8.303": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "9.655": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 17,
+        "miss": 19
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    },
+    "trend_analysis": {
+      "stable": {
+        "hit": 17,
+        "miss": 19
+      }
+    },
+    "consistency_analysis": {
+      "low": {
+        "hit": 17,
+        "miss": 19
+      }
+    },
+    "home_away_analysis": {
+      "home": {
+        "hit": 17,
+        "miss": 19
+      }
+    }
+  },
+  {
+    "date": "2026-04-08",
+    "comparison_results": [
+      {
+        "game": "Atlanta Hawks @ Cleveland Cavaliers",
+        "player": "Evan Mobley",
+        "type": "PTS",
+        "line": 20.3,
+        "actual": 22,
+        "diff": "+1.7",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Atlanta Hawks @ Cleveland Cavaliers",
+        "player": "Evan Mobley",
+        "type": "REB",
+        "line": 8.1,
+        "actual": 19,
+        "diff": "+10.9",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Atlanta Hawks @ Cleveland Cavaliers",
+        "player": "Evan Mobley",
+        "type": "AST",
+        "line": 3.4,
+        "actual": 3,
+        "diff": "-0.4",
+        "result": "➖ PUSH",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Atlanta Hawks @ Cleveland Cavaliers",
+        "player": "Jalen Johnson",
+        "type": "PTS",
+        "line": 19.8,
+        "actual": 12,
+        "diff": "-7.8",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Orlando Magic",
+        "player": "Desmond Bane",
+        "type": "PTS",
+        "line": 21.4,
+        "actual": 18,
+        "diff": "-3.4",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Minnesota Timberwolves @ Orlando Magic",
+        "player": "Jalen Suggs",
+        "type": "PTS",
+        "line": 15.5,
+        "actual": 11,
+        "diff": "-4.5",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Minnesota Timberwolves @ Orlando Magic",
+        "player": "Naz Reid",
+        "type": "PTS",
+        "line": 13.1,
+        "actual": 15,
+        "diff": "+1.9",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.95
+      },
+      {
+        "game": "Minnesota Timberwolves @ Orlando Magic",
+        "player": "Rudy Gobert",
+        "type": "REB",
+        "line": 8.2,
+        "actual": 12,
+        "diff": "+3.8",
+        "result": "✅ ACERTOU",
+        "conf": 8.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Milwaukee Bucks @ Detroit Pistons",
+        "player": "Jalen Duren",
+        "type": "PTS",
+        "line": 20.9,
+        "actual": 21,
+        "diff": "+0.1",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.95
+      },
+      {
+        "game": "Milwaukee Bucks @ Detroit Pistons",
+        "player": "Tobias Harris",
+        "type": "PTS",
+        "line": 10.3,
+        "actual": 10,
+        "diff": "-0.3",
+        "result": "➖ PUSH",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Milwaukee Bucks @ Detroit Pistons",
+        "player": "Jalen Duren",
+        "type": "REB",
+        "line": 9.8,
+        "actual": 9,
+        "diff": "-0.8",
+        "result": "❌ ERROU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Milwaukee Bucks @ Detroit Pistons",
+        "player": "Ryan Rollins",
+        "type": "AST",
+        "line": 4.4,
+        "actual": 6,
+        "diff": "+1.6",
+        "result": "✅ ACERTOU",
+        "conf": 8.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Memphis Grizzlies @ Denver Nuggets",
+        "player": "Bruce Brown",
+        "type": "PTS",
+        "line": 9.3,
+        "actual": 13,
+        "diff": "+3.7",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Memphis Grizzlies @ Denver Nuggets",
+        "player": "Cedric Coward",
+        "type": "PTS",
+        "line": 14.3,
+        "actual": 27,
+        "diff": "+12.7",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Memphis Grizzlies @ Denver Nuggets",
+        "player": "Jamal Murray",
+        "type": "PTS",
+        "line": 26.8,
+        "actual": 26,
+        "diff": "-0.8",
+        "result": "❌ ERROU",
+        "conf": 9.647,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Memphis Grizzlies @ Denver Nuggets",
+        "player": "Tim Hardaway Jr.",
+        "type": "REB",
+        "line": 2.2,
+        "actual": 4,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 8.75,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Memphis Grizzlies @ Denver Nuggets",
+        "player": "Cedric Coward",
+        "type": "AST",
+        "line": 2.3,
+        "actual": 2,
+        "diff": "-0.3",
+        "result": "➖ PUSH",
+        "conf": 8.644,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Portland Trail Blazers @ San Antonio Spurs",
+        "player": "Deni Avdija",
+        "type": "PTS",
+        "line": 26.4,
+        "actual": 29,
+        "diff": "+2.6",
+        "result": "✅ ACERTOU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Portland Trail Blazers @ San Antonio Spurs",
+        "player": "Dylan Harper",
+        "type": "PTS",
+        "line": 14.7,
+        "actual": 13,
+        "diff": "-1.7",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Portland Trail Blazers @ San Antonio Spurs",
+        "player": "Jrue Holiday",
+        "type": "AST",
+        "line": 5.4,
+        "actual": 6,
+        "diff": "+0.6",
+        "result": "✅ ACERTOU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Portland Trail Blazers @ San Antonio Spurs",
+        "player": "Deni Avdija",
+        "type": "REB",
+        "line": 6.7,
+        "actual": 6,
+        "diff": "-0.7",
+        "result": "❌ ERROU",
+        "conf": 9.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Oklahoma City Thunder @ Los Angeles Clippers",
+        "player": "John Collins",
+        "type": "PTS",
+        "line": 15,
+        "actual": 12,
+        "diff": "-3.0",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.95
+      },
+      {
+        "game": "Oklahoma City Thunder @ Los Angeles Clippers",
+        "player": "John Collins",
+        "type": "REB",
+        "line": 4.4,
+        "actual": 9,
+        "diff": "+4.6",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Oklahoma City Thunder @ Los Angeles Clippers",
+        "player": "Chet Holmgren",
+        "type": "PTS",
+        "line": 14.3,
+        "actual": 30,
+        "diff": "+15.7",
+        "result": "✅ ACERTOU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Oklahoma City Thunder @ Los Angeles Clippers",
+        "player": "Shai Gilgeous-Alexander",
+        "type": "PTS",
+        "line": 30.5,
+        "actual": 20,
+        "diff": "-10.5",
+        "result": "❌ ERROU",
+        "conf": 9.850999999999999,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Dallas Mavericks @ Phoenix Suns",
+        "player": "Devin Booker",
+        "type": "PTS",
+        "line": 33.8,
+        "actual": 37,
+        "diff": "+3.2",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Dallas Mavericks @ Phoenix Suns",
+        "player": "Devin Booker",
+        "type": "AST",
+        "line": 5.6,
+        "actual": 9,
+        "diff": "+3.4",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Dallas Mavericks @ Phoenix Suns",
+        "player": "Jalen Green",
+        "type": "PTS",
+        "line": 18.4,
+        "actual": "?",
+        "diff": "?",
+        "result": "SEM DADOS",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Dallas Mavericks @ Phoenix Suns",
+        "player": "Devin Booker",
+        "type": "REB",
+        "line": 3.5,
+        "actual": 5,
+        "diff": "+1.5",
+        "result": "✅ ACERTOU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      }
+    ],
+    "type_analysis": {
+      "PTS": {
+        "hit": 8,
+        "miss": 7,
+        "push": 2
+      },
+      "REB": {
+        "hit": 5,
+        "miss": 2,
+        "push": 0
+      },
+      "AST": {
+        "hit": 3,
+        "miss": 0,
+        "push": 2
+      }
+    },
+    "conf_analysis": {
+      "10": {
+        "hit": 11,
+        "miss": 5,
+        "push": 3
+      },
+      "8.0": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.5": {
+        "hit": 2,
+        "miss": 1,
+        "push": 0
+      },
+      "8.5": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.647": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "8.75": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "8.644": {
+        "hit": 0,
+        "miss": 0,
+        "push": 1
+      },
+      "9.0": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "9.850999999999999": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 16,
+        "miss": 9
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    },
+    "trend_analysis": {
+      "stable": {
+        "hit": 16,
+        "miss": 9
+      }
+    },
+    "consistency_analysis": {
+      "low": {
+        "hit": 16,
+        "miss": 9
+      }
+    },
+    "home_away_analysis": {
+      "home": {
+        "hit": 16,
+        "miss": 9
+      }
+    }
+  },
+  {
+    "date": "2026-04-08",
+    "comparison_results": [
+      {
+        "game": "Atlanta Hawks @ Cleveland Cavaliers",
+        "player": "Jalen Johnson",
+        "type": "PTS",
+        "line": 19.8,
+        "actual": 12,
+        "diff": "-7.8",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Atlanta Hawks @ Cleveland Cavaliers",
+        "player": "Evan Mobley",
+        "type": "PTS",
+        "line": 20.3,
+        "actual": 22,
+        "diff": "+1.7",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Atlanta Hawks @ Cleveland Cavaliers",
+        "player": "Evan Mobley",
+        "type": "REB",
+        "line": 8.1,
+        "actual": 19,
+        "diff": "+10.9",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Atlanta Hawks @ Cleveland Cavaliers",
+        "player": "Evan Mobley",
+        "type": "AST",
+        "line": 3.4,
+        "actual": 3,
+        "diff": "-0.4",
+        "result": "➖ PUSH",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Minnesota Timberwolves @ Orlando Magic",
+        "player": "Julius Randle",
+        "type": "PTS",
+        "line": 23.3,
+        "actual": 19,
+        "diff": "-4.3",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Orlando Magic",
+        "player": "Naz Reid",
+        "type": "REB",
+        "line": 5,
+        "actual": 5,
+        "diff": "+0.0",
+        "result": "➖ PUSH",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Minnesota Timberwolves @ Orlando Magic",
+        "player": "Desmond Bane",
+        "type": "PTS",
+        "line": 21.4,
+        "actual": 18,
+        "diff": "-3.4",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Minnesota Timberwolves @ Orlando Magic",
+        "player": "Jalen Suggs",
+        "type": "PTS",
+        "line": 15.5,
+        "actual": 11,
+        "diff": "-4.5",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Milwaukee Bucks @ Detroit Pistons",
+        "player": "Jalen Duren",
+        "type": "PTS",
+        "line": 20.9,
+        "actual": 21,
+        "diff": "+0.1",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.95
+      },
+      {
+        "game": "Milwaukee Bucks @ Detroit Pistons",
+        "player": "Kyle Kuzma",
+        "type": "PTS",
+        "line": 13.4,
+        "actual": 4,
+        "diff": "-9.4",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Milwaukee Bucks @ Detroit Pistons",
+        "player": "Jalen Duren",
+        "type": "REB",
+        "line": 9.8,
+        "actual": 9,
+        "diff": "-0.8",
+        "result": "❌ ERROU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Milwaukee Bucks @ Detroit Pistons",
+        "player": "Kyle Kuzma",
+        "type": "AST",
+        "line": 2.2,
+        "actual": 6,
+        "diff": "+3.8",
+        "result": "✅ ACERTOU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Memphis Grizzlies @ Denver Nuggets",
+        "player": "Bruce Brown",
+        "type": "PTS",
+        "line": 9.3,
+        "actual": 13,
+        "diff": "+3.7",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Memphis Grizzlies @ Denver Nuggets",
+        "player": "Cedric Coward",
+        "type": "PTS",
+        "line": 14.3,
+        "actual": 27,
+        "diff": "+12.7",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Memphis Grizzlies @ Denver Nuggets",
+        "player": "Jamal Murray",
+        "type": "PTS",
+        "line": 26.8,
+        "actual": 26,
+        "diff": "-0.8",
+        "result": "❌ ERROU",
+        "conf": 9.647,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Memphis Grizzlies @ Denver Nuggets",
+        "player": "Tim Hardaway Jr.",
+        "type": "REB",
+        "line": 2.2,
+        "actual": 4,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 8.75,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Memphis Grizzlies @ Denver Nuggets",
+        "player": "Cedric Coward",
+        "type": "AST",
+        "line": 2.3,
+        "actual": 2,
+        "diff": "-0.3",
+        "result": "➖ PUSH",
+        "conf": 8.644,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Portland Trail Blazers @ San Antonio Spurs",
+        "player": "Deni Avdija",
+        "type": "PTS",
+        "line": 26.4,
+        "actual": 29,
+        "diff": "+2.6",
+        "result": "✅ ACERTOU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Portland Trail Blazers @ San Antonio Spurs",
+        "player": "Dylan Harper",
+        "type": "PTS",
+        "line": 14.7,
+        "actual": 13,
+        "diff": "-1.7",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Portland Trail Blazers @ San Antonio Spurs",
+        "player": "Jrue Holiday",
+        "type": "AST",
+        "line": 5.4,
+        "actual": 6,
+        "diff": "+0.6",
+        "result": "✅ ACERTOU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Portland Trail Blazers @ San Antonio Spurs",
+        "player": "Deni Avdija",
+        "type": "REB",
+        "line": 6.7,
+        "actual": 6,
+        "diff": "-0.7",
+        "result": "❌ ERROU",
+        "conf": 9.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Oklahoma City Thunder @ Los Angeles Clippers",
+        "player": "John Collins",
+        "type": "PTS",
+        "line": 15,
+        "actual": 12,
+        "diff": "-3.0",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.95
+      },
+      {
+        "game": "Oklahoma City Thunder @ Los Angeles Clippers",
+        "player": "John Collins",
+        "type": "REB",
+        "line": 4.4,
+        "actual": 9,
+        "diff": "+4.6",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Oklahoma City Thunder @ Los Angeles Clippers",
+        "player": "Chet Holmgren",
+        "type": "PTS",
+        "line": 14.3,
+        "actual": 30,
+        "diff": "+15.7",
+        "result": "✅ ACERTOU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Oklahoma City Thunder @ Los Angeles Clippers",
+        "player": "Shai Gilgeous-Alexander",
+        "type": "PTS",
+        "line": 30.5,
+        "actual": 20,
+        "diff": "-10.5",
+        "result": "❌ ERROU",
+        "conf": 9.850999999999999,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Dallas Mavericks @ Phoenix Suns",
+        "player": "Devin Booker",
+        "type": "PTS",
+        "line": 33.8,
+        "actual": 37,
+        "diff": "+3.2",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Dallas Mavericks @ Phoenix Suns",
+        "player": "Devin Booker",
+        "type": "AST",
+        "line": 5.6,
+        "actual": 9,
+        "diff": "+3.4",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Dallas Mavericks @ Phoenix Suns",
+        "player": "Jalen Green",
+        "type": "PTS",
+        "line": 18.4,
+        "actual": "?",
+        "diff": "?",
+        "result": "SEM DADOS",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Dallas Mavericks @ Phoenix Suns",
+        "player": "Devin Booker",
+        "type": "REB",
+        "line": 3.5,
+        "actual": 5,
+        "diff": "+1.5",
+        "result": "✅ ACERTOU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      }
+    ],
+    "type_analysis": {
+      "PTS": {
+        "hit": 7,
+        "miss": 9,
+        "push": 1
+      },
+      "REB": {
+        "hit": 4,
+        "miss": 2,
+        "push": 1
+      },
+      "AST": {
+        "hit": 3,
+        "miss": 0,
+        "push": 2
+      }
+    },
+    "conf_analysis": {
+      "10": {
+        "hit": 10,
+        "miss": 7,
+        "push": 3
+      },
+      "9.5": {
+        "hit": 3,
+        "miss": 1,
+        "push": 0
+      },
+      "9.647": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "8.75": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "8.644": {
+        "hit": 0,
+        "miss": 0,
+        "push": 1
+      },
+      "9.0": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "9.850999999999999": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 14,
+        "miss": 11
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    },
+    "trend_analysis": {
+      "stable": {
+        "hit": 14,
+        "miss": 11
+      }
+    },
+    "consistency_analysis": {
+      "low": {
+        "hit": 14,
+        "miss": 11
+      }
+    },
+    "home_away_analysis": {
+      "home": {
+        "hit": 14,
+        "miss": 11
+      }
+    }
+  },
+  {
+    "date": "2026-04-09",
+    "comparison_results": [
+      {
+        "game": "Toronto Raptors @ Miami Heat",
+        "player": "Bam Adebayo",
+        "type": "REB",
+        "line": 9.3,
+        "actual": 11,
+        "diff": "+1.7",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Toronto Raptors @ Miami Heat",
+        "player": "Pelle Larsson",
+        "type": "AST",
+        "line": 3,
+        "actual": 2,
+        "diff": "-1.0",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Toronto Raptors @ Miami Heat",
+        "player": "Tyler Herro",
+        "type": "PTS",
+        "line": 24.4,
+        "actual": 15,
+        "diff": "-9.4",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Toronto Raptors @ Miami Heat",
+        "player": "RJ Barrett",
+        "type": "PTS",
+        "line": 21.7,
+        "actual": 22,
+        "diff": "+0.3",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Washington Wizards @ Chicago Bulls",
+        "player": "Collin Sexton",
+        "type": "PTS",
+        "line": 17.9,
+        "actual": 27,
+        "diff": "+9.1",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Washington Wizards @ Chicago Bulls",
+        "player": "Guerschon Yabusele",
+        "type": "PTS",
+        "line": 11.5,
+        "actual": 5,
+        "diff": "-6.5",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Washington Wizards @ Chicago Bulls",
+        "player": "Will Riley",
+        "type": "PTS",
+        "line": 13.5,
+        "actual": 23,
+        "diff": "+9.5",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Washington Wizards @ Chicago Bulls",
+        "player": "Guerschon Yabusele",
+        "type": "REB",
+        "line": 5,
+        "actual": 5,
+        "diff": "+0.0",
+        "result": "➖ PUSH",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Washington Wizards @ Chicago Bulls",
+        "player": "Will Riley",
+        "type": "AST",
+        "line": 1.7,
+        "actual": 7,
+        "diff": "+5.3",
+        "result": "✅ ACERTOU",
+        "conf": 8.032,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Brooklyn Nets @ Indiana Pacers",
+        "player": "Jarace Walker",
+        "type": "PTS",
+        "line": 9.7,
+        "actual": 14,
+        "diff": "+4.3",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Brooklyn Nets @ Indiana Pacers",
+        "player": "Jarace Walker",
+        "type": "REB",
+        "line": 3.1,
+        "actual": 9,
+        "diff": "+5.9",
+        "result": "✅ ACERTOU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Brooklyn Nets @ Indiana Pacers",
+        "player": "Jarace Walker",
+        "type": "AST",
+        "line": 1.8,
+        "actual": 8,
+        "diff": "+6.2",
+        "result": "✅ ACERTOU",
+        "conf": 9.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Brooklyn Nets @ Indiana Pacers",
+        "player": "Drake Powell",
+        "type": "PTS",
+        "line": 9.6,
+        "actual": 2,
+        "diff": "-7.6",
+        "result": "❌ ERROU",
+        "conf": 8.936,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Brooklyn Nets @ Indiana Pacers",
+        "player": "Garrison Mathews",
+        "type": "PTS",
+        "line": 5.8,
+        "actual": 6,
+        "diff": "+0.2",
+        "result": "✅ ACERTOU",
+        "conf": 8.168,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Brooklyn Nets @ Indiana Pacers",
+        "player": "Jay Huff",
+        "type": "PTS",
+        "line": 9.4,
+        "actual": 14,
+        "diff": "+4.6",
+        "result": "✅ ACERTOU",
+        "conf": 8.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "New York Knicks @ Boston Celtics",
+        "player": "Jayson Tatum",
+        "type": "PTS",
+        "line": 23.3,
+        "actual": 24,
+        "diff": "+0.7",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "New York Knicks @ Boston Celtics",
+        "player": "Jayson Tatum",
+        "type": "REB",
+        "line": 8.4,
+        "actual": 13,
+        "diff": "+4.6",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "New York Knicks @ Boston Celtics",
+        "player": "Jalen Brunson",
+        "type": "PTS",
+        "line": 24.8,
+        "actual": 25,
+        "diff": "+0.2",
+        "result": "✅ ACERTOU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "New York Knicks @ Boston Celtics",
+        "player": "Jayson Tatum",
+        "type": "AST",
+        "line": 5.2,
+        "actual": 8,
+        "diff": "+2.8",
+        "result": "✅ ACERTOU",
+        "conf": 8.690999999999999,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Houston Rockets @ Philadelphia 76ers",
+        "player": "Kevin Durant",
+        "type": "PTS",
+        "line": 27.3,
+        "actual": 29,
+        "diff": "+1.7",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Houston Rockets @ Philadelphia 76ers",
+        "player": "Tyrese Maxey",
+        "type": "PTS",
+        "line": 23.7,
+        "actual": 23,
+        "diff": "-0.7",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Houston Rockets @ Philadelphia 76ers",
+        "player": "Tyrese Maxey",
+        "type": "REB",
+        "line": 3,
+        "actual": 3,
+        "diff": "+0.0",
+        "result": "➖ PUSH",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Houston Rockets @ Philadelphia 76ers",
+        "player": "Tyrese Maxey",
+        "type": "AST",
+        "line": 5.1,
+        "actual": 5,
+        "diff": "-0.1",
+        "result": "➖ PUSH",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Golden State Warriors @ Los Angeles Lakers",
+        "player": "Draymond Green",
+        "type": "PTS",
+        "line": 9.6,
+        "actual": 2,
+        "diff": "-7.6",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Golden State Warriors @ Los Angeles Lakers",
+        "player": "Deandre Ayton",
+        "type": "PTS",
+        "line": 11,
+        "actual": 21,
+        "diff": "+10.0",
+        "result": "✅ ACERTOU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.95
+      },
+      {
+        "game": "Golden State Warriors @ Los Angeles Lakers",
+        "player": "Marcus Smart",
+        "type": "PTS",
+        "line": 10,
+        "actual": 2,
+        "diff": "-8.0",
+        "result": "❌ ERROU",
+        "conf": 9.25,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Golden State Warriors @ Los Angeles Lakers",
+        "player": "Rui Hachimura",
+        "type": "PTS",
+        "line": 13.4,
+        "actual": 12,
+        "diff": "-1.4",
+        "result": "❌ ERROU",
+        "conf": 8.176,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Golden State Warriors @ Los Angeles Lakers",
+        "player": "Gui Santos",
+        "type": "PTS",
+        "line": 13.3,
+        "actual": 15,
+        "diff": "+1.7",
+        "result": "✅ ACERTOU",
+        "conf": 8.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      }
+    ],
+    "type_analysis": {
+      "REB": {
+        "hit": 3,
+        "miss": 0,
+        "push": 2
+      },
+      "AST": {
+        "hit": 3,
+        "miss": 1,
+        "push": 1
+      },
+      "PTS": {
+        "hit": 11,
+        "miss": 7,
+        "push": 0
+      }
+    },
+    "conf_analysis": {
+      "10": {
+        "hit": 11,
+        "miss": 5,
+        "push": 2
+      },
+      "9.5": {
+        "hit": 0,
+        "miss": 0,
+        "push": 1
+      },
+      "8.032": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.0": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "8.936": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "8.168": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "8.0": {
+        "hit": 2,
+        "miss": 0,
+        "push": 0
+      },
+      "8.690999999999999": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.25": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "8.176": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 17,
+        "miss": 8
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    },
+    "trend_analysis": {
+      "stable": {
+        "hit": 17,
+        "miss": 8
+      }
+    },
+    "consistency_analysis": {
+      "low": {
+        "hit": 17,
+        "miss": 8
+      }
+    },
+    "home_away_analysis": {
+      "home": {
+        "hit": 17,
+        "miss": 8
+      }
+    }
+  },
+  {
+    "date": "2026-04-10",
+    "comparison_results": [
+      {
+        "game": "Detroit Pistons @ Charlotte Hornets",
+        "player": "Brandon Miller",
+        "type": "PTS",
+        "line": 19,
+        "actual": 22,
+        "diff": "+3.0",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Detroit Pistons @ Charlotte Hornets",
+        "player": "Miles Bridges",
+        "type": "PTS",
+        "line": 19.5,
+        "actual": 10,
+        "diff": "-9.5",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Detroit Pistons @ Charlotte Hornets",
+        "player": "Jalen Duren",
+        "type": "PTS",
+        "line": 16.2,
+        "actual": 20,
+        "diff": "+3.8",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.95
+      },
+      {
+        "game": "Detroit Pistons @ Charlotte Hornets",
+        "player": "Jalen Duren",
+        "type": "REB",
+        "line": 7.2,
+        "actual": 9,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Miami Heat @ Washington Wizards",
+        "player": "Andrew Wiggins",
+        "type": "PTS",
+        "line": 14,
+        "actual": 11,
+        "diff": "-3.0",
+        "result": "❌ ERROU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Miami Heat @ Washington Wizards",
+        "player": "Bam Adebayo",
+        "type": "PTS",
+        "line": 18.3,
+        "actual": 20,
+        "diff": "+1.7",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.15
+      },
+      {
+        "game": "Miami Heat @ Washington Wizards",
+        "player": "Bam Adebayo",
+        "type": "REB",
+        "line": 6.9,
+        "actual": 11,
+        "diff": "+4.1",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Miami Heat @ Washington Wizards",
+        "player": "Jaime Jaquez Jr.",
+        "type": "PTS",
+        "line": 13.3,
+        "actual": 23,
+        "diff": "+9.7",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Miami Heat @ Washington Wizards",
+        "player": "Bam Adebayo",
+        "type": "AST",
+        "line": 2.6,
+        "actual": 8,
+        "diff": "+5.4",
+        "result": "✅ ACERTOU",
+        "conf": 8.545,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Cleveland Cavaliers @ Atlanta Hawks",
+        "player": "Dyson Daniels",
+        "type": "AST",
+        "line": 5,
+        "actual": 12,
+        "diff": "+7.0",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Cleveland Cavaliers @ Atlanta Hawks",
+        "player": "Jalen Johnson",
+        "type": "PTS",
+        "line": 20.6,
+        "actual": 18,
+        "diff": "-2.6",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Cleveland Cavaliers @ Atlanta Hawks",
+        "player": "Jalen Johnson",
+        "type": "REB",
+        "line": 9.1,
+        "actual": 9,
+        "diff": "-0.1",
+        "result": "➖ PUSH",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Cleveland Cavaliers @ Atlanta Hawks",
+        "player": "Evan Mobley",
+        "type": "PTS",
+        "line": 19.2,
+        "actual": 10,
+        "diff": "-9.2",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Boston Celtics",
+        "player": "Neemias Queta",
+        "type": "PTS",
+        "line": 13.4,
+        "actual": 7,
+        "diff": "-6.4",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "New Orleans Pelicans @ Boston Celtics",
+        "player": "Neemias Queta",
+        "type": "REB",
+        "line": 7.7,
+        "actual": 10,
+        "diff": "+2.3",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "New Orleans Pelicans @ Boston Celtics",
+        "player": "Jaylen Brown",
+        "type": "PTS",
+        "line": 34,
+        "actual": 23,
+        "diff": "-11.0",
+        "result": "❌ ERROU",
+        "conf": 8.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "New Orleans Pelicans @ Boston Celtics",
+        "player": "Neemias Queta",
+        "type": "AST",
+        "line": 1.9,
+        "actual": 2,
+        "diff": "+0.1",
+        "result": "✅ ACERTOU",
+        "conf": 8.399000000000001,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Philadelphia 76ers @ Indiana Pacers",
+        "player": "Paul George",
+        "type": "REB",
+        "line": 4.9,
+        "actual": 5,
+        "diff": "+0.1",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Philadelphia 76ers @ Indiana Pacers",
+        "player": "Tyrese Maxey",
+        "type": "PTS",
+        "line": 26.6,
+        "actual": 32,
+        "diff": "+5.4",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Philadelphia 76ers @ Indiana Pacers",
+        "player": "Tyrese Maxey",
+        "type": "AST",
+        "line": 5.1,
+        "actual": 5,
+        "diff": "-0.1",
+        "result": "➖ PUSH",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Philadelphia 76ers @ Indiana Pacers",
+        "player": "VJ Edgecombe",
+        "type": "PTS",
+        "line": 22.6,
+        "actual": 16,
+        "diff": "-6.6",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Toronto Raptors @ New York Knicks",
+        "player": "Jalen Brunson",
+        "type": "PTS",
+        "line": 22.4,
+        "actual": 29,
+        "diff": "+6.6",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Toronto Raptors @ New York Knicks",
+        "player": "Karl-Anthony Towns",
+        "type": "REB",
+        "line": 8.3,
+        "actual": 10,
+        "diff": "+1.7",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Toronto Raptors @ New York Knicks",
+        "player": "RJ Barrett",
+        "type": "PTS",
+        "line": 20.2,
+        "actual": 22,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Toronto Raptors @ New York Knicks",
+        "player": "Jamal Shead",
+        "type": "AST",
+        "line": 5.4,
+        "actual": 2,
+        "diff": "-3.4",
+        "result": "❌ ERROU",
+        "conf": 8.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Orlando Magic @ Chicago Bulls",
+        "player": "Desmond Bane",
+        "type": "PTS",
+        "line": 22.4,
+        "actual": 2,
+        "diff": "-20.4",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Orlando Magic @ Chicago Bulls",
+        "player": "Matas Buzelis",
+        "type": "PTS",
+        "line": 16.7,
+        "actual": 14,
+        "diff": "-2.7",
+        "result": "❌ ERROU",
+        "conf": 9.285,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Orlando Magic @ Chicago Bulls",
+        "player": "Wendell Carter Jr.",
+        "type": "PTS",
+        "line": 14.2,
+        "actual": 11,
+        "diff": "-3.2",
+        "result": "❌ ERROU",
+        "conf": 9.25,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Orlando Magic @ Chicago Bulls",
+        "player": "Wendell Carter Jr.",
+        "type": "REB",
+        "line": 6.1,
+        "actual": 6,
+        "diff": "-0.1",
+        "result": "➖ PUSH",
+        "conf": 8.25,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Brooklyn Nets @ Milwaukee Bucks",
+        "player": "Kyle Kuzma",
+        "type": "PTS",
+        "line": 11.6,
+        "actual": 8,
+        "diff": "-3.6",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Brooklyn Nets @ Milwaukee Bucks",
+        "player": "Ryan Rollins",
+        "type": "PTS",
+        "line": 20.8,
+        "actual": 23,
+        "diff": "+2.2",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Brooklyn Nets @ Milwaukee Bucks",
+        "player": "Ryan Rollins",
+        "type": "AST",
+        "line": 4.7,
+        "actual": 6,
+        "diff": "+1.3",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Brooklyn Nets @ Milwaukee Bucks",
+        "player": "Ryan Rollins",
+        "type": "REB",
+        "line": 3.6,
+        "actual": 2,
+        "diff": "-1.6",
+        "result": "❌ ERROU",
+        "conf": 9.382,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Brooklyn Nets @ Milwaukee Bucks",
+        "player": "Kyle Kuzma",
+        "type": "REB",
+        "line": 3.4,
+        "actual": 1,
+        "diff": "-2.4",
+        "result": "❌ ERROU",
+        "conf": 9.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Dallas Mavericks @ San Antonio Spurs",
+        "player": "Stephon Castle",
+        "type": "PTS",
+        "line": 19.4,
+        "actual": 19,
+        "diff": "-0.4",
+        "result": "➖ PUSH",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Dallas Mavericks @ San Antonio Spurs",
+        "player": "Victor Wembanyama",
+        "type": "PTS",
+        "line": 27.4,
+        "actual": 40,
+        "diff": "+12.6",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Dallas Mavericks @ San Antonio Spurs",
+        "player": "Cooper Flagg",
+        "type": "AST",
+        "line": 3.2,
+        "actual": 5,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 9.75,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Dallas Mavericks @ San Antonio Spurs",
+        "player": "Victor Wembanyama",
+        "type": "REB",
+        "line": 10.1,
+        "actual": 13,
+        "diff": "+2.9",
+        "result": "✅ ACERTOU",
+        "conf": 9.411999999999999,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Oklahoma City Thunder @ Denver Nuggets",
+        "player": "Bruce Brown",
+        "type": "PTS",
+        "line": 9.6,
+        "actual": 10,
+        "diff": "+0.4",
+        "result": "✅ ACERTOU",
+        "conf": 9.85,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Oklahoma City Thunder @ Denver Nuggets",
+        "player": "Bruce Brown",
+        "type": "REB",
+        "line": 3.4,
+        "actual": 8,
+        "diff": "+4.6",
+        "result": "✅ ACERTOU",
+        "conf": 8.85,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Oklahoma City Thunder @ Denver Nuggets",
+        "player": "Tim Hardaway Jr.",
+        "type": "PTS",
+        "line": 9.1,
+        "actual": 13,
+        "diff": "+3.9",
+        "result": "✅ ACERTOU",
+        "conf": 8.749,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Houston Rockets",
+        "player": "Alperen Sengun",
+        "type": "PTS",
+        "line": 19,
+        "actual": 22,
+        "diff": "+3.0",
+        "result": "✅ ACERTOU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Houston Rockets",
+        "player": "Amen Thompson",
+        "type": "PTS",
+        "line": 23.7,
+        "actual": 41,
+        "diff": "+17.3",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Minnesota Timberwolves @ Houston Rockets",
+        "player": "Amen Thompson",
+        "type": "REB",
+        "line": 8.8,
+        "actual": 9,
+        "diff": "+0.2",
+        "result": "✅ ACERTOU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Houston Rockets",
+        "player": "Amen Thompson",
+        "type": "AST",
+        "line": 5.5,
+        "actual": 7,
+        "diff": "+1.5",
+        "result": "✅ ACERTOU",
+        "conf": 8.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Los Angeles Clippers @ Portland Trail Blazers",
+        "player": "Kawhi Leonard",
+        "type": "PTS",
+        "line": 27.3,
+        "actual": 24,
+        "diff": "-3.3",
+        "result": "❌ ERROU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Los Angeles Clippers @ Portland Trail Blazers",
+        "player": "Jrue Holiday",
+        "type": "PTS",
+        "line": 18.6,
+        "actual": 9,
+        "diff": "-9.6",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Los Angeles Clippers @ Portland Trail Blazers",
+        "player": "Jrue Holiday",
+        "type": "AST",
+        "line": 5.3,
+        "actual": 4,
+        "diff": "-1.3",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Los Angeles Clippers @ Portland Trail Blazers",
+        "player": "John Collins",
+        "type": "REB",
+        "line": 5.1,
+        "actual": 2,
+        "diff": "-3.1",
+        "result": "❌ ERROU",
+        "conf": 9.703,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Golden State Warriors @ Sacramento Kings",
+        "player": "Kristaps Porzingis",
+        "type": "PTS",
+        "line": 20.7,
+        "actual": 11,
+        "diff": "-9.7",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Golden State Warriors @ Sacramento Kings",
+        "player": "Malik Monk",
+        "type": "AST",
+        "line": 2.4,
+        "actual": "?",
+        "diff": "?",
+        "result": "SEM DADOS",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Golden State Warriors @ Sacramento Kings",
+        "player": "Stephen Curry",
+        "type": "PTS",
+        "line": 31.4,
+        "actual": 11,
+        "diff": "-20.4",
+        "result": "❌ ERROU",
+        "conf": 9.984,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Golden State Warriors @ Sacramento Kings",
+        "player": "Kristaps Porzingis",
+        "type": "REB",
+        "line": 5.2,
+        "actual": 7,
+        "diff": "+1.8",
+        "result": "✅ ACERTOU",
+        "conf": 8.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Phoenix Suns @ Los Angeles Lakers",
+        "player": "Grayson Allen",
+        "type": "PTS",
+        "line": 11.2,
+        "actual": 8,
+        "diff": "-3.2",
+        "result": "❌ ERROU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Phoenix Suns @ Los Angeles Lakers",
+        "player": "Grayson Allen",
+        "type": "REB",
+        "line": 2.4,
+        "actual": 4,
+        "diff": "+1.6",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Phoenix Suns @ Los Angeles Lakers",
+        "player": "Oso Ighodaro",
+        "type": "PTS",
+        "line": 6,
+        "actual": 8,
+        "diff": "+2.0",
+        "result": "✅ ACERTOU",
+        "conf": 9.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Phoenix Suns @ Los Angeles Lakers",
+        "player": "Deandre Ayton",
+        "type": "PTS",
+        "line": 10.7,
+        "actual": 10,
+        "diff": "-0.7",
+        "result": "❌ ERROU",
+        "conf": 8.75,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Phoenix Suns @ Los Angeles Lakers",
+        "player": "Jalen Green",
+        "type": "PTS",
+        "line": 15.3,
+        "actual": "?",
+        "diff": "?",
+        "result": "SEM DADOS",
+        "conf": 8.25,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Phoenix Suns @ Los Angeles Lakers",
+        "player": "Grayson Allen",
+        "type": "AST",
+        "line": 2,
+        "actual": 1,
+        "diff": "-1.0",
+        "result": "❌ ERROU",
+        "conf": 8.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      }
+    ],
+    "type_analysis": {
+      "PTS": {
+        "hit": 14,
+        "miss": 17,
+        "push": 2
+      },
+      "REB": {
+        "hit": 10,
+        "miss": 3,
+        "push": 2
+      },
+      "AST": {
+        "hit": 6,
+        "miss": 3,
+        "push": 2
+      }
+    },
+    "conf_analysis": {
+      "10": {
+        "hit": 19,
+        "miss": 13,
+        "push": 4
+      },
+      "8.545": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "8.5": {
+        "hit": 2,
+        "miss": 2,
+        "push": 0
+      },
+      "8.399000000000001": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.285": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "9.25": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "8.25": {
+        "hit": 0,
+        "miss": 0,
+        "push": 2
+      },
+      "9.382": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "9.0": {
+        "hit": 1,
+        "miss": 1,
+        "push": 0
+      },
+      "9.75": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.411999999999999": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.85": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "8.85": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "8.749": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.5": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.703": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "9.984": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "8.75": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "8.0": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 30,
+        "miss": 23
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    },
+    "trend_analysis": {
+      "stable": {
+        "hit": 30,
+        "miss": 23
+      }
+    },
+    "consistency_analysis": {
+      "low": {
+        "hit": 30,
+        "miss": 23
+      }
+    },
+    "home_away_analysis": {
+      "home": {
+        "hit": 30,
+        "miss": 23
+      }
+    }
   }
 ]
