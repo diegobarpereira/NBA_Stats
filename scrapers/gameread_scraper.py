@@ -10,18 +10,18 @@ import config
 
 logger = logging.getLogger(__name__)
 
-MAX_RETRIES = 3
-RETRY_DELAY = 2
+MAX_RETRIES = 5
+RETRY_DELAY = 3
 
 
-def _retry_request(url: str, timeout: int = 30, params: Optional[Dict] = None) -> requests.Response:
+def _retry_request(url: str, timeout: int = 60, params: Optional[Dict] = None) -> requests.Response:
     """Faz requisição com retry e exponential backoff."""
     for attempt in range(MAX_RETRIES):
         try:
             response = requests.get(url, timeout=timeout, params=params)
             response.raise_for_status()
             return response
-        except (requests.ConnectTimeout, requests.ConnectionError) as e:
+        except (requests.ConnectTimeout, requests.ConnectionError, requests.Timeout) as e:
             if attempt < MAX_RETRIES - 1:
                 wait_time = RETRY_DELAY * (2 ** attempt)
                 logger.warning(f"Tentativa {attempt + 1} falhou, esperando {wait_time}s: {e}")
