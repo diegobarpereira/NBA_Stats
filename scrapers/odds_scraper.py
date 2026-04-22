@@ -41,6 +41,101 @@ def clean_player_label(label: str) -> str:
     return parsed or "-"
 
 
+def _to_float(value, default: float = 0.0) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def _decimal_to_probability(odds: float) -> float:
+    odds = max(_to_float(odds, 2.0), 1.01)
+    return 1.0 / odds
+
+
+def _probability_to_decimal(probability: float) -> float:
+    probability = max(0.05, min(probability, 0.95))
+    return round(1.0 / probability, 2)
+
+
+def _get_probability_slope(prop_type: str) -> float:
+    return {
+        "points": 0.055,
+        "rebounds": 0.085,
+        "assists": 0.09,
+        "3pt": 0.11,
+    }.get(prop_type, 0.07)
+
+
+def _approximate_probability_from_market_lines(prop_type: str, target_line: float, market_lines: List[Dict]) -> Optional[Dict]:
+    usable = []
+    for market in market_lines:
+        line = _to_float(market.get("line"), -1)
+        over = _to_float(market.get("over"), 0)
+        if line < 0 or over <= 1.01:
+            continue
+        usable.append({
+            "line": line,
+            "over": over,
+            "probability": _decimal_to_probability(over),
+            "player": market.get("player", ""),
+            "bookmaker": market.get("bookmaker", "Bet365"),
+        })
+
+    usable.sort(key=lambda item: item["line"])
+    if not usable:
+        return None
+
+    exact_match = next((item for item in usable if abs(item["line"] - target_line) <= 0.26), None)
+    if exact_match is not None:
+        return {
+            "player": exact_match["player"],
+            "type": prop_type,
+            "line": exact_match["line"],
+            "reference_line": exact_match["line"],
+            "odds_over": exact_match["over"],
+            "bookmaker": exact_match["bookmaker"],
+            "source": "api",
+        }
+
+    lower = None
+    upper = None
+    for item in usable:
+        if item["line"] <= target_line:
+            lower = item
+        if item["line"] >= target_line and upper is None:
+            upper = item
+
+    if lower and upper and lower["line"] != upper["line"]:
+        ratio = (target_line - lower["line"]) / (upper["line"] - lower["line"])
+        probability = lower["probability"] + (upper["probability"] - lower["probability"]) * ratio
+        nearest = lower if abs(target_line - lower["line"]) <= abs(target_line - upper["line"]) else upper
+        return {
+            "player": nearest["player"],
+            "type": prop_type,
+            "line": round(target_line, 1),
+            "reference_line": nearest["line"],
+            "reference_lines": [lower["line"], upper["line"]],
+            "odds_over": _probability_to_decimal(probability),
+            "bookmaker": nearest["bookmaker"],
+            "source": "market_approx",
+        }
+
+    nearest = min(usable, key=lambda item: abs(item["line"] - target_line))
+    delta = target_line - nearest["line"]
+    probability = nearest["probability"] - (delta * _get_probability_slope(prop_type))
+    return {
+        "player": nearest["player"],
+        "type": prop_type,
+        "line": round(target_line, 1),
+        "reference_line": nearest["line"],
+        "reference_lines": [nearest["line"]],
+        "odds_over": _probability_to_decimal(probability),
+        "bookmaker": nearest["bookmaker"],
+        "source": "market_approx",
+    }
+
+
 def fetch_nba_events_for_date(date: str, api_key: str = None) -> List[Dict]:
     if api_key is None:
         api_key = config.THE_ODDS_API_KEY
@@ -127,7 +222,8 @@ def fetch_player_props_for_event(event_id: str, api_key: str = None) -> Dict:
                 if not player or player == "-":
                     continue
                 
-                key = f"{_normalize_player_name(player)}::{prop_type}"
+                line_key = "-" if line is None else str(line)
+                key = f"{_normalize_player_name(player)}::{prop_type}::{line_key}"
                 
                 if key not in result:
                     result[key] = {
@@ -223,8 +319,7 @@ def get_odds_for_player(player_name: str, prop_type: str, line: float, date: str
     props = cached.get("player_props", [])
     normalize_name = _normalize_player_name(player_name)
     
-    best_match = None
-    best_diff = 999
+    matching_lines = []
     
     for prop in props:
         if prop.get("prop_type") != prop_type:
@@ -232,24 +327,35 @@ def get_odds_for_player(player_name: str, prop_type: str, line: float, date: str
         
         prop_player = prop.get("player", "")
         if _normalize_player_name(prop_player) == normalize_name:
-            prop_line = prop.get("line", 0)
-            diff = abs(prop_line - line) if line > 0 else abs(prop_line)
-            if diff < best_diff:
-                best_diff = diff
-                best_match = prop
-    
-    if best_match and best_diff < 2.0:
+            matching_lines.append(prop)
+
+    if not matching_lines:
+        return None
+
+    approximated = _approximate_probability_from_market_lines(prop_type, _to_float(line, 0.0), matching_lines)
+    if approximated is None:
+        return None
+
+    exact_line = next(
+        (
+            item for item in matching_lines
+            if abs(_to_float(item.get("line"), -99) - _to_float(line, 0.0)) <= 0.26
+        ),
+        None,
+    )
+    if exact_line is not None:
         return {
-            "player": best_match.get("player"),
-            "type": best_match.get("prop_type"),
-            "line": best_match.get("line", 0),
-            "odds_over": best_match.get("over"),
-            "odds_under": best_match.get("under"),
-            "bookmaker": best_match.get("bookmaker", "Bet365"),
+            "player": exact_line.get("player"),
+            "type": exact_line.get("prop_type"),
+            "line": exact_line.get("line", 0),
+            "reference_line": exact_line.get("line", 0),
+            "odds_over": exact_line.get("over"),
+            "odds_under": exact_line.get("under"),
+            "bookmaker": exact_line.get("bookmaker", "Bet365"),
             "source": "api",
         }
-    
-    return None
+
+    return approximated
 
 
 def ensure_odds_for_date(date: str) -> Dict:

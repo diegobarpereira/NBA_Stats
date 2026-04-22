@@ -238,19 +238,33 @@ if st.session_state.get("bilhetes_v2"):
                 o = prop.get("dynamic_odds", 0)
                 aggr = prop.get("aggressiveness", 0)
                 conf = prop.get("confidence", 0)
+                hit_prob = prop.get("calibrated_hit_probability", 0.5)
+                fair_odds = prop.get("fair_odds_over")
+                prob_edge = prop.get("probability_edge", 0.0)
                 odds_source = prop.get("odds_source", "calculated")
                 market_line = prop.get("market_line")
+                market_target_line = prop.get("market_target_line")
                 label = PROP_LABELS.get(t, t or "prop")
 
                 aggr_emoji = "🟢" if aggr < 0.15 else "🟡" if aggr < 0.25 else "🔴"
 
                 line_text = f"{l}+ {label}"
-                if market_line is not None:
+                if odds_source == "market_approx" and market_line is not None:
+                    target_line = market_target_line if market_target_line is not None else l
+                    line_text = f"modelo {l}+ {label} | aprox mercado {target_line}+ {label} (ref {market_line}+ {label})"
+                elif market_line is not None:
                     line_text = f"modelo {l}+ {label} | mercado {market_line}+ {label}"
 
-                source_text = "Bet365" if odds_source == "api" else "calc"
+                source_text = {
+                    "api": "Bet365",
+                    "market_approx": "mkt_approx",
+                    "calculated": "calc",
+                }.get(odds_source, odds_source)
+                edge_text = f"Edge: {prob_edge:+.1%}"
+                fair_text = f"fair {fair_odds:.2f}" if fair_odds else "fair -"
                 st.markdown(
                     f"- **{p}** ({label}): {line_text} | Odd: {o:.2f} [{source_text}] | "
+                    f"Prob: {hit_prob:.0%} | {edge_text} | {fair_text} | "
                     f"Aggr: {aggr_emoji} {aggr:.0%} | Conf: {conf:.0f}"
                 )
 

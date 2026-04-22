@@ -8381,5 +8381,330 @@
         "miss": 4
       }
     }
+  },
+  {
+    "date": "2026-04-21",
+    "comparison_results": [
+      {
+        "game": "Boston Celtics @ Philadelphia 76ers",
+        "player": "Jayson Tatum",
+        "type": "PTS",
+        "line": 23,
+        "actual": 19,
+        "diff": "-4.0",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0,
+        "aggressiveness": null,
+        "odds_source": "unknown",
+        "market_line": null,
+        "market_gap": null,
+        "history_multiplier": null
+      },
+      {
+        "game": "Boston Celtics @ Philadelphia 76ers",
+        "player": "Tyrese Maxey",
+        "type": "PTS",
+        "line": 23.3,
+        "actual": 29,
+        "diff": "+5.7",
+        "result": "✅ ACERTOU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0,
+        "aggressiveness": null,
+        "odds_source": "unknown",
+        "market_line": null,
+        "market_gap": null,
+        "history_multiplier": null
+      },
+      {
+        "game": "Boston Celtics @ Philadelphia 76ers",
+        "player": "Jayson Tatum",
+        "type": "REB",
+        "line": 8.7,
+        "actual": 14,
+        "diff": "+5.3",
+        "result": "✅ ACERTOU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83,
+        "aggressiveness": null,
+        "odds_source": "unknown",
+        "market_line": null,
+        "market_gap": null,
+        "history_multiplier": null
+      },
+      {
+        "game": "Boston Celtics @ Philadelphia 76ers",
+        "player": "Derrick White",
+        "type": "AST",
+        "line": 3.7,
+        "actual": 3,
+        "diff": "-0.7",
+        "result": "❌ ERROU",
+        "conf": 8.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83,
+        "aggressiveness": null,
+        "odds_source": "unknown",
+        "market_line": null,
+        "market_gap": null,
+        "history_multiplier": null
+      },
+      {
+        "game": "San Antonio Spurs @ Portland Trail Blazers",
+        "player": "Deni Avdija",
+        "type": "REB",
+        "line": 6.2,
+        "actual": 4,
+        "diff": "-2.2",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83,
+        "aggressiveness": null,
+        "odds_source": "unknown",
+        "market_line": null,
+        "market_gap": null,
+        "history_multiplier": null
+      },
+      {
+        "game": "San Antonio Spurs @ Portland Trail Blazers",
+        "player": "Deni Avdija",
+        "type": "AST",
+        "line": 6.5,
+        "actual": 3,
+        "diff": "-3.5",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83,
+        "aggressiveness": null,
+        "odds_source": "unknown",
+        "market_line": null,
+        "market_gap": null,
+        "history_multiplier": null
+      },
+      {
+        "game": "San Antonio Spurs @ Portland Trail Blazers",
+        "player": "Jrue Holiday",
+        "type": "PTS",
+        "line": 16.1,
+        "actual": 16,
+        "diff": "-0.1",
+        "result": "➖ PUSH",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04,
+        "aggressiveness": null,
+        "odds_source": "unknown",
+        "market_line": null,
+        "market_gap": null,
+        "history_multiplier": null
+      },
+      {
+        "game": "San Antonio Spurs @ Portland Trail Blazers",
+        "player": "Victor Wembanyama",
+        "type": "REB",
+        "line": 9.9,
+        "actual": 4,
+        "diff": "-5.9",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83,
+        "aggressiveness": null,
+        "odds_source": "unknown",
+        "market_line": null,
+        "market_gap": null,
+        "history_multiplier": null
+      },
+      {
+        "game": "Los Angeles Lakers @ Houston Rockets",
+        "player": "Amen Thompson",
+        "type": "PTS",
+        "line": 22.3,
+        "actual": 16,
+        "diff": "-6.3",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0,
+        "aggressiveness": null,
+        "odds_source": "unknown",
+        "market_line": null,
+        "market_gap": null,
+        "history_multiplier": null
+      },
+      {
+        "game": "Los Angeles Lakers @ Houston Rockets",
+        "player": "Kevin Durant",
+        "type": "PTS",
+        "line": 28.8,
+        "actual": 23,
+        "diff": "-5.8",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08,
+        "aggressiveness": null,
+        "odds_source": "unknown",
+        "market_line": null,
+        "market_gap": null,
+        "history_multiplier": null
+      },
+      {
+        "game": "Los Angeles Lakers @ Houston Rockets",
+        "player": "Deandre Ayton",
+        "type": "REB",
+        "line": 7.7,
+        "actual": 5,
+        "diff": "-2.7",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83,
+        "aggressiveness": null,
+        "odds_source": "unknown",
+        "market_line": null,
+        "market_gap": null,
+        "history_multiplier": null
+      },
+      {
+        "game": "Los Angeles Lakers @ Houston Rockets",
+        "player": "Amen Thompson",
+        "type": "AST",
+        "line": 5.3,
+        "actual": 9,
+        "diff": "+3.7",
+        "result": "✅ ACERTOU",
+        "conf": 9.589,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83,
+        "aggressiveness": null,
+        "odds_source": "unknown",
+        "market_line": null,
+        "market_gap": null,
+        "history_multiplier": null
+      }
+    ],
+    "type_analysis": {
+      "PTS": {
+        "hit": 1,
+        "miss": 3,
+        "push": 1
+      },
+      "REB": {
+        "hit": 1,
+        "miss": 3,
+        "push": 0
+      },
+      "AST": {
+        "hit": 1,
+        "miss": 2,
+        "push": 0
+      }
+    },
+    "conf_analysis": {
+      "10": {
+        "hit": 1,
+        "miss": 7,
+        "push": 1
+      },
+      "9.5": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "8.0": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "9.589": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 3,
+        "miss": 8
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    },
+    "trend_analysis": {
+      "stable": {
+        "hit": 3,
+        "miss": 8
+      }
+    },
+    "consistency_analysis": {
+      "low": {
+        "hit": 3,
+        "miss": 8
+      }
+    },
+    "home_away_analysis": {
+      "home": {
+        "hit": 3,
+        "miss": 8
+      }
+    },
+    "aggressiveness_analysis": {},
+    "market_gap_analysis": {
+      "no_market": {
+        "hit": 3,
+        "miss": 8
+      }
+    },
+    "odds_source_analysis": {
+      "unknown": {
+        "hit": 3,
+        "miss": 8
+      }
+    }
   }
 ]

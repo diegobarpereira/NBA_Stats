@@ -10,6 +10,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import config
 from scrapers.espn_scraper import ESPNScraper
+from gerador.performance_analyzer import save_calibration_snapshot, save_mode_backtest_summary
 
 
 def _normalize_name(name):
@@ -662,8 +663,13 @@ with tab1:
                     
                     with open(history_file, "w", encoding="utf-8") as f:
                         json.dump(existing, f, ensure_ascii=False, indent=2)
+
+                    snapshot_file = save_calibration_snapshot()
+                    backtest_file = save_mode_backtest_summary()
                     
                     st.success(f"✅ Salvo! Total de {len(existing)} registros")
+                    st.caption(f"Calibração automática atualizada em {snapshot_file.name}")
+                    st.caption(f"Backtest automático por modo atualizado em {backtest_file.name}")
 
 # ==========================================
 # TAB 2: Minhas Apostas (Bet365)

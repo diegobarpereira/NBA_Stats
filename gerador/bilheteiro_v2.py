@@ -27,15 +27,44 @@ class BilheteiroV2:
             return None
         return float(model_line) - float(market_line)
 
+    def _refresh_prop_calibration(self, prop: Dict) -> None:
+        market_gap = self._get_market_gap(prop)
+        prop["market_gap"] = round(market_gap, 2) if market_gap is not None else None
+
+        calibrated_prob = 0.5
+        probability_components = {}
+        analyzer = getattr(self.props_engine, "performance_analyzer", None)
+        if analyzer is not None:
+            calibrated_prob, probability_components = analyzer.estimate_hit_probability(prop)
+
+        odds = prop.get("dynamic_odds", self.default_prop_odds) or self.default_prop_odds
+        try:
+            odds = float(odds)
+        except (TypeError, ValueError):
+            odds = self.default_prop_odds
+
+        implied_prob = 1.0 / max(odds, 1.01)
+        probability_edge = calibrated_prob - implied_prob
+        expected_value = (calibrated_prob * odds) - 1.0
+
+        prop["calibrated_hit_probability"] = round(calibrated_prob, 3)
+        prop["probability_components"] = probability_components
+        prop["implied_probability"] = round(implied_prob, 3)
+        prop["probability_edge"] = round(probability_edge, 3)
+        prop["expected_value_over"] = round(expected_value, 3)
+        prop["fair_odds_over"] = round(1.0 / calibrated_prob, 2) if calibrated_prob > 0 else None
+
     def _is_prop_allowed_for_mode(self, prop: Dict, mode: str, min_confidence: float) -> bool:
         confidence = float(prop.get("confidence", 0))
         if confidence < min_confidence:
             return False
 
+        calibrated_prob = float(prop.get("calibrated_hit_probability", 0.5))
+
         if mode == "aggressive":
             return True
 
-        if prop.get("odds_source") != "api" or prop.get("market_line") is None:
+        if prop.get("odds_source") not in {"api", "market_approx"} or prop.get("market_line") is None:
             return False
 
         market_gap = self._get_market_gap(prop)
@@ -45,10 +74,10 @@ class BilheteiroV2:
         aggressiveness = float(prop.get("aggressiveness", 0))
 
         if mode == "conservative":
-            return market_gap >= -0.25 and aggressiveness <= 0.22
+            return market_gap >= -0.25 and aggressiveness <= 0.22 and calibrated_prob >= 0.53
 
         if mode == "balanced":
-            return market_gap >= -0.75 and aggressiveness <= 0.32
+            return market_gap >= -0.75 and aggressiveness <= 0.32 and calibrated_prob >= 0.50
 
         return True
 
@@ -99,15 +128,19 @@ class BilheteiroV2:
             self.date
         )
 
-        if api_odds and api_odds.get("source") == "api":
-            prop["odds_source"] = "api"
+        if api_odds and api_odds.get("source") in {"api", "market_approx"}:
+            prop["odds_source"] = api_odds.get("source")
             prop["bookmaker"] = api_odds.get("bookmaker", "")
-            prop["market_line"] = api_odds.get("line")
+            prop["market_line"] = api_odds.get("reference_line", api_odds.get("line"))
+            prop["market_target_line"] = api_odds.get("line")
+            prop["market_reference_lines"] = api_odds.get("reference_lines", [prop["market_line"]] if prop.get("market_line") is not None else [])
             prop["market_odds_over"] = api_odds.get("odds_over", self.default_prop_odds)
             return float(api_odds.get("odds_over", self.default_prop_odds))
         
         prop["odds_source"] = "calculated"
         prop["market_line"] = None
+        prop["market_target_line"] = None
+        prop["market_reference_lines"] = []
         prop["market_odds_over"] = None
         return self._calculate_odds_fallback(prop)
 
@@ -131,6 +164,7 @@ class BilheteiroV2:
         for p in props:
             p = dict(p)
             p["dynamic_odds"] = self.calculate_prop_odds(p)
+            self._refresh_prop_calibration(p)
             result.append(p)
         return result
 
@@ -139,6 +173,9 @@ class BilheteiroV2:
             return 0.0
         
         avg_conf = sum(p.get("confidence", 5) for p in combo) / len(combo)
+        avg_calibrated_prob = sum(p.get("calibrated_hit_probability", 0.5) for p in combo) / len(combo)
+        avg_prob_edge = sum(p.get("probability_edge", 0.0) for p in combo) / len(combo)
+        avg_expected_value = sum(p.get("expected_value_over", 0.0) for p in combo) / len(combo)
         
         avg_aggr = sum(p.get("aggressiveness", 0.3) for p in combo) / len(combo)
 
@@ -169,11 +206,14 @@ class BilheteiroV2:
         size_bonus = max(0, len(combo) - 2) * 0.45
         
         score = (
-            avg_conf * 0.95 +
-            (1 - avg_aggr) * 1.6 +
+            avg_conf * 0.65 +
+            avg_calibrated_prob * 6.5 +
+            avg_prob_edge * 10.0 +
+            avg_expected_value * 2.0 +
+            (1 - avg_aggr) * 1.4 +
             type_bonus +
             player_bonus +
-            (avg_market_alignment * 1.25) +
+            (avg_market_alignment * 1.1) +
             size_bonus
         )
         
@@ -205,6 +245,8 @@ class BilheteiroV2:
             "num_props": len(combo),
             "odds": total_odds,
             "quality_score": quality_score,
+            "avg_calibrated_probability": round(sum(p.get("calibrated_hit_probability", 0.5) for p in combo) / len(combo), 3),
+            "avg_probability_edge": round(sum(p.get("probability_edge", 0.0) for p in combo) / len(combo), 3),
             "within_target_odds": within_target,
             "selection_score": round(quality_score - (distance * 1.5) + (len(combo) * 0.2), 2),
         }
@@ -261,7 +303,14 @@ class BilheteiroV2:
                 if self._is_prop_allowed_for_mode(p, mode, min_confidence)
             ]
             
-            qualified.sort(key=lambda p: -p.get("confidence", 5))
+            qualified.sort(
+                key=lambda p: (
+                    p.get("calibrated_hit_probability", 0.5),
+                    p.get("probability_edge", 0.0),
+                    p.get("confidence", 5),
+                ),
+                reverse=True,
+            )
 
             game_candidates = []
 

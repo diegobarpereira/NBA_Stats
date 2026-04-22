@@ -340,6 +340,12 @@ class PropsEngineV2:
                 "confidence": confidence,
                 "matchup_mult": boost,
                 "blowout_mult": blowout_mult,
+                "market_gap": None,
+                "calibrated_hit_probability": 0.5,
+                "implied_probability": None,
+                "probability_edge": 0.0,
+                "expected_value_over": 0.0,
+                "fair_odds_over": None,
                 "odds_over": self.odds_config["prop_over_odds"],
                 "odds_under": self.odds_config["prop_under_odds"],
             }
