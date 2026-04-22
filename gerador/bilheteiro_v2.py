@@ -11,8 +11,8 @@ from scrapers.odds_scraper import ensure_odds_for_date, get_odds_for_player
 class BilheteiroV2:
     def __init__(self, date: str = None):
         self.props_engine = PropsEngineV2()
-        self.game_min_odds = 7.0
-        self.game_max_odds = 10.0
+        self.game_min_odds = config.ODDS_CONFIG["min_total_odds"]
+        self.game_max_odds = config.ODDS_CONFIG["max_total_odds"]
         self.min_confidence = 7.0
         self.default_prop_odds = config.ODDS_CONFIG["default_prop_odds"]
         self.date = date or datetime.now().strftime("%Y-%m-%d")
@@ -308,8 +308,8 @@ class BilheteiroV2:
             ]
         
         min_confidence = {"conservative": 8.0, "balanced": 7.0, "aggressive": 6.0}.get(mode, 7.0)
-        min_odds = {"conservative": 7.5, "balanced": 7.0, "aggressive": 6.5}.get(mode, 7.0)
-        max_odds = 10.0
+        min_odds = self.game_min_odds
+        max_odds = self.game_max_odds
         
         candidates = self.generate_combo_candidates(
             props_by_game, min_odds, max_odds, min_confidence, mode

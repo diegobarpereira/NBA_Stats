@@ -20,8 +20,8 @@ def _blowout_arrow(mult: float) -> str:
 class Bilheteiro:
     def __init__(self, date: str = None):
         self.props_engine = PropsEngine()
-        self.game_min_odds = 7.0
-        self.game_max_odds = 10.0
+        self.game_min_odds = config.ODDS_CONFIG["min_total_odds"]
+        self.game_max_odds = config.ODDS_CONFIG["max_total_odds"]
         self.min_confidence = 8.0
         self.default_prop_odds = config.ODDS_CONFIG["default_prop_odds"]
         self.date = date or datetime.now().strftime("%Y-%m-%d")

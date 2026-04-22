@@ -28,7 +28,7 @@ DATA_FILES = {
 
 ODDS_CONFIG = {
     "min_total_odds": 5.0,
-    "max_total_odds": 8.0,
+    "max_total_odds": 9.0,
     "default_prop_odds": 1.35,
     "prop_over_odds": 1.35,
     "prop_under_odds": 1.38,
