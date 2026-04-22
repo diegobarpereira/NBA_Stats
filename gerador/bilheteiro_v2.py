@@ -20,6 +20,38 @@ class BilheteiroV2:
         self._odds_cache = None
         self._odds_initialized = False
 
+    def _get_market_gap(self, prop: Dict) -> Optional[float]:
+        market_line = prop.get("market_line")
+        model_line = prop.get("line")
+        if market_line is None or model_line is None:
+            return None
+        return float(model_line) - float(market_line)
+
+    def _is_prop_allowed_for_mode(self, prop: Dict, mode: str, min_confidence: float) -> bool:
+        confidence = float(prop.get("confidence", 0))
+        if confidence < min_confidence:
+            return False
+
+        if mode == "aggressive":
+            return True
+
+        if prop.get("odds_source") != "api" or prop.get("market_line") is None:
+            return False
+
+        market_gap = self._get_market_gap(prop)
+        if market_gap is None:
+            return False
+
+        aggressiveness = float(prop.get("aggressiveness", 0))
+
+        if mode == "conservative":
+            return market_gap >= -0.25 and aggressiveness <= 0.22
+
+        if mode == "balanced":
+            return market_gap >= -0.75 and aggressiveness <= 0.32
+
+        return True
+
     def _ensure_odds_cache(self) -> None:
         if self._odds_initialized:
             return
@@ -210,6 +242,7 @@ class BilheteiroV2:
         min_odds: float = 7.0,
         max_odds: float = 10.0,
         min_confidence: float = 7.0,
+        mode: str = "balanced",
     ) -> List[Dict]:
         candidates = []
         size_limits = {2: 18, 3: 15, 4: 12, 5: 10, 6: 8}
@@ -219,7 +252,7 @@ class BilheteiroV2:
             
             qualified = [
                 p for p in game_props_with_odds
-                if p.get("confidence", 5) >= min_confidence
+                if self._is_prop_allowed_for_mode(p, mode, min_confidence)
             ]
             
             qualified.sort(key=lambda p: -p.get("confidence", 5))
@@ -242,7 +275,7 @@ class BilheteiroV2:
 
             if not game_candidates:
                 fallback_candidate = self._get_best_effort_candidate(game_id, qualified, min_odds, max_odds)
-                if fallback_candidate:
+                if fallback_candidate and mode == "aggressive":
                     game_candidates.append(fallback_candidate)
 
             candidates.extend(game_candidates)
@@ -273,7 +306,7 @@ class BilheteiroV2:
         max_odds = 10.0
         
         candidates = self.generate_combo_candidates(
-            props_by_game, min_odds, max_odds, min_confidence
+            props_by_game, min_odds, max_odds, min_confidence, mode
         )
         
         by_game = {}
