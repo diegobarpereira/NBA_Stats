@@ -127,7 +127,7 @@ def fetch_player_props_for_event(event_id: str, api_key: str = None) -> Dict:
                 if not player or player == "-":
                     continue
                 
-                key = _normalize_player_name(player)
+                key = f"{_normalize_player_name(player)}::{prop_type}"
                 
                 if key not in result:
                     result[key] = {
@@ -139,10 +139,12 @@ def fetch_player_props_for_event(event_id: str, api_key: str = None) -> Dict:
                         "bookmaker": "Bet365",
                     }
                 else:
-                    if over and not result[key].get("over"):
+                    if over is not None:
                         result[key]["over"] = over
-                    if under and not result[key].get("under"):
+                    if under is not None:
                         result[key]["under"] = under
+                    if line is not None:
+                        result[key]["line"] = line
     
     return result
 
@@ -221,23 +223,31 @@ def get_odds_for_player(player_name: str, prop_type: str, line: float, date: str
     props = cached.get("player_props", [])
     normalize_name = _normalize_player_name(player_name)
     
+    best_match = None
+    best_diff = 999
+    
     for prop in props:
         if prop.get("prop_type") != prop_type:
             continue
         
         prop_player = prop.get("player", "")
         if _normalize_player_name(prop_player) == normalize_name:
-            line_match = abs(prop.get("line", 0) - line) < 0.5
-            if line_match or line == 0:
-                return {
-                    "player": prop.get("player"),
-                    "type": prop.get("prop_type"),
-                    "line": prop.get("line", 0),
-                    "odds_over": prop.get("over"),
-                    "odds_under": prop.get("under"),
-                    "bookmaker": prop.get("bookmaker", "Bet365"),
-                    "source": "api",
-                }
+            prop_line = prop.get("line", 0)
+            diff = abs(prop_line - line) if line > 0 else abs(prop_line)
+            if diff < best_diff:
+                best_diff = diff
+                best_match = prop
+    
+    if best_match and best_diff < 2.0:
+        return {
+            "player": best_match.get("player"),
+            "type": best_match.get("prop_type"),
+            "line": best_match.get("line", 0),
+            "odds_over": best_match.get("over"),
+            "odds_under": best_match.get("under"),
+            "bookmaker": best_match.get("bookmaker", "Bet365"),
+            "source": "api",
+        }
     
     return None
 

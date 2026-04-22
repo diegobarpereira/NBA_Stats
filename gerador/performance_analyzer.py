@@ -60,7 +60,10 @@ class PerformanceAnalyzer:
         for entry in self.data.get("performance_history", []):
             analysis = entry.get("conf_analysis", {})
             for conf, stats in analysis.items():
-                conf_int = int(conf) if conf else 0
+                try:
+                    conf_int = int(float(conf)) if conf is not None else 0
+                except (TypeError, ValueError):
+                    conf_int = 0
                 if conf_int not in conf_stats:
                     conf_stats[conf_int] = {"hits": 0, "total": 0}
                 conf_stats[conf_int]["hits"] += stats.get("hit", 0)
@@ -75,7 +78,7 @@ class PerformanceAnalyzer:
 
         return accuracy
 
-    def get_player_history(self) -> Dict[str, Dict]:
+    def get_player_history(self, *args, **kwargs) -> Dict[str, Dict]:
         player_stats = {}
 
         for entry in self.data.get("performance_history", []):
@@ -148,6 +151,21 @@ class PerformanceAnalyzer:
 
         return accuracy
 
+    def get_trend_multipliers(self) -> Dict[str, float]:
+        trend_acc = self.get_trend_accuracy()
+        multipliers = {}
+
+        for trend in ["up", "down", "stable"]:
+            acc = trend_acc.get(trend, 0.5)
+            if acc < 0.35:
+                multipliers[trend] = 0.9
+            elif acc > 0.65:
+                multipliers[trend] = 1.08
+            else:
+                multipliers[trend] = 1.0
+
+        return multipliers
+
     def get_consistency_accuracy(self) -> Dict[str, float]:
         consistency_ranges = {
             "high": {"hits": 0, "total": 0},
@@ -182,6 +200,70 @@ class PerformanceAnalyzer:
                 accuracy[key] = 0.5
 
         return accuracy
+
+    def get_consistency_multipliers(self) -> Dict[str, float]:
+        consistency_acc = self.get_consistency_accuracy()
+        multipliers = {}
+
+        for level in ["high", "medium", "low"]:
+            acc = consistency_acc.get(level, 0.5)
+            if acc < 0.35:
+                multipliers[level] = 0.88
+            elif acc > 0.65:
+                multipliers[level] = 1.08
+            else:
+                multipliers[level] = 1.0
+
+        return multipliers
+
+    def get_matchup_bucket_accuracy(self) -> Dict[str, float]:
+        matchup_stats = {
+            "good": {"hits": 0, "total": 0},
+            "neutral": {"hits": 0, "total": 0},
+            "bad": {"hits": 0, "total": 0},
+        }
+
+        for entry in self.data.get("performance_history", []):
+            results = entry.get("comparison_results", [])
+            for row in results:
+                matchup_mult = row.get("matchup_mult", 1.0)
+                if matchup_mult > 1.05:
+                    bucket = "good"
+                elif matchup_mult < 0.95:
+                    bucket = "bad"
+                else:
+                    bucket = "neutral"
+
+                result = row.get("result", "")
+                is_hit = "ACERTOU" in result
+
+                if is_hit:
+                    matchup_stats[bucket]["hits"] += 1
+                matchup_stats[bucket]["total"] += 1
+
+        accuracy = {}
+        for bucket, stats in matchup_stats.items():
+            if stats["total"] > 0:
+                accuracy[bucket] = stats["hits"] / stats["total"]
+            else:
+                accuracy[bucket] = 0.5
+
+        return accuracy
+
+    def get_matchup_multipliers(self) -> Dict[str, float]:
+        matchup_acc = self.get_matchup_bucket_accuracy()
+        multipliers = {}
+
+        for bucket in ["good", "neutral", "bad"]:
+            acc = matchup_acc.get(bucket, 0.5)
+            if acc < 0.35:
+                multipliers[bucket] = 0.88
+            elif acc > 0.60:
+                multipliers[bucket] = 1.06
+            else:
+                multipliers[bucket] = 1.0
+
+        return multipliers
 
     def get_home_away_accuracy(self) -> Dict[str, float]:
         ha_stats = {"home": {"hits": 0, "total": 0}, "away": {"hits": 0, "total": 0}}

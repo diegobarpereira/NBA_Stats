@@ -90,7 +90,13 @@ class Bilheteiro:
             return 0.0
         total = 1.0
         for prop in props:
-            odds = prop.get("dynamic_odds", prop.get("odds_over", self.default_prop_odds))
+            odds = prop.get("dynamic_odds", prop.get("odds_over"))
+            if odds is None:
+                odds = self.default_prop_odds
+            try:
+                odds = float(odds)
+            except (TypeError, ValueError):
+                odds = self.default_prop_odds
             total *= odds
         return round(total, 2)
 

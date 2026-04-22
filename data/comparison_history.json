@@ -1,511 +1,346 @@
 {
   "player_last_game": {
-    "Stephon Castle": {
-      "pts": 10,
-      "reb": 11,
-      "ast": 9,
-      "fg3": 2
-    },
-    "Aaron Holiday": {
-      "pts": 7,
-      "reb": 3,
-      "ast": 2,
-      "fg3": 2
-    },
-    "Tari Eason": {
-      "pts": 20,
-      "reb": 8,
-      "ast": 3,
-      "fg3": 1
-    },
-    "Victor Wembanyama": {
-      "pts": 40,
-      "reb": 13,
-      "ast": 5,
-      "fg3": 2
-    },
-    "Devin Vassell": {
-      "pts": 19,
-      "reb": 4,
-      "ast": 2,
-      "fg3": 3
-    },
-    "Dylan Harper": {
-      "pts": 9,
-      "reb": 3,
-      "ast": 1,
-      "fg3": 0
-    },
-    "Cade Cunningham": {
-      "pts": 7,
-      "reb": 8,
-      "ast": 14,
-      "fg3": 1
-    },
-    "Ausar Thompson": {
-      "pts": 7,
-      "reb": 5,
-      "ast": 4,
-      "fg3": 0
-    },
-    "Paolo Banchero": {
-      "pts": 23,
-      "reb": 10,
-      "ast": 11,
-      "fg3": 0
-    },
-    "Daniss Jenkins": {
-      "pts": 2,
-      "reb": 5,
-      "ast": 4,
-      "fg3": 0
-    },
-    "Jalen Suggs": {
-      "pts": 23,
-      "reb": 6,
-      "ast": 3,
-      "fg3": 7
-    },
-    "Desmond Bane": {
-      "pts": 8,
+    "Jalen Brunson": {
+      "pts": 29,
       "reb": 2,
+      "ast": 7,
+      "fg3": 4
+    },
+    "Naz Reid": {
+      "pts": 11,
+      "reb": 9,
       "ast": 1,
       "fg3": 1
     },
-    "Coby White": {
-      "pts": 19,
-      "reb": 1,
-      "ast": 2,
-      "fg3": 3
-    },
-    "Collin Sexton": {
-      "pts": 19,
-      "reb": 3,
+    "Rudy Gobert": {
+      "pts": 2,
+      "reb": 7,
       "ast": 1,
-      "fg3": 1
-    },
-    "Jarred Vanderbilt": {
-      "pts": 4,
-      "reb": 4,
-      "ast": 2,
       "fg3": 0
     },
-    "Jrue Holiday": {
-      "pts": 23,
-      "reb": 7,
-      "ast": 3,
+    "Karl-Anthony Towns": {
+      "pts": 18,
+      "reb": 8,
+      "ast": 2,
       "fg3": 2
     },
-    "Darius Garland": {
-      "pts": 15,
-      "reb": 1,
-      "ast": 6,
+    "Evan Mobley": {
+      "pts": 25,
+      "reb": 8,
+      "ast": 2,
       "fg3": 1
     },
-    "Toumani Camara": {
-      "pts": 15,
-      "reb": 4,
-      "ast": 2,
+    "Donovan Mitchell": {
+      "pts": 30,
+      "reb": 7,
+      "ast": 5,
+      "fg3": 4
+    },
+    "Tim Hardaway Jr.": {
+      "pts": 16,
+      "reb": 3,
+      "ast": 0,
       "fg3": 3
     },
-    "John Collins": {
-      "pts": 18,
-      "reb": 9,
+    "Tim Hardaway Jr": {
+      "pts": 16,
+      "reb": 3,
       "ast": 0,
+      "fg3": 3
+    },
+    "Jamal Murray": {
+      "pts": 30,
+      "reb": 7,
+      "ast": 7,
+      "fg3": 6
+    },
+    "Aaron Gordon": {
+      "pts": 8,
+      "reb": 7,
+      "ast": 4,
+      "fg3": 1
+    },
+    "Jaden McDaniels": {
+      "pts": 14,
+      "reb": 2,
+      "ast": 3,
       "fg3": 0
     },
-    "Kawhi Leonard": {
-      "pts": 24,
-      "reb": 8,
+    "Ayo Dosunmu": {
+      "pts": 9,
+      "reb": 4,
       "ast": 5,
       "fg3": 1
     },
-    "Alondes Williams": {
-      "pts": 5,
-      "reb": 3,
-      "ast": 0,
+    "Cameron Johnson": {
+      "pts": 13,
+      "reb": 1,
+      "ast": 2,
+      "fg3": 1
+    },
+    "Jalen Johnson": {
+      "pts": 17,
+      "reb": 8,
+      "ast": 3,
       "fg3": 0
+    },
+    "Nickeil Alexander-Walker": {
+      "pts": 9,
+      "reb": 5,
+      "ast": 6,
+      "fg3": 2
     },
     "RJ Barrett": {
+      "pts": 22,
+      "reb": 9,
+      "ast": 5,
+      "fg3": 0
+    },
+    "James Harden": {
+      "pts": 28,
+      "reb": 5,
+      "ast": 4,
+      "fg3": 3
+    },
+    "Scottie Barnes": {
       "pts": 26,
+      "reb": 4,
+      "ast": 5,
+      "fg3": 1
+    },
+    "Donte DiVincenzo": {
+      "pts": 16,
+      "reb": 7,
+      "ast": 6,
+      "fg3": 4
+    },
+    "Bruce Brown Jr": {
+      "pts": 7,
       "reb": 3,
       "ast": 2,
       "fg3": 2
     },
-    "Will Riley": {
-      "pts": 6,
-      "reb": 5,
-      "ast": 4,
-      "fg3": 0
-    },
-    "Immanuel Quickley": {
-      "pts": 4,
-      "reb": 2,
-      "ast": 5,
-      "fg3": 0
-    },
-    "Cooper Flagg": {
-      "pts": 10,
-      "reb": 4,
-      "ast": 1,
-      "fg3": 0
-    },
-    "Olivier-Maxence Prosper": {
+    "Nikola Jokic": {
       "pts": 24,
+      "reb": 15,
+      "ast": 8,
+      "fg3": 1
+    },
+    "CJ McCollum": {
+      "pts": 32,
       "reb": 3,
-      "ast": 0,
-      "fg3": 4
-    },
-    "Jamal Shead": {
-      "pts": 6,
-      "reb": 1,
-      "ast": 4,
-      "fg3": 0
-    },
-    "Jakob Poeltl": {
-      "pts": 11,
-      "reb": 5,
-      "ast": 2,
-      "fg3": 0
-    },
-    "Brice Sensabaugh": {
-      "pts": 15,
-      "reb": 2,
-      "ast": 1,
+      "ast": 6,
       "fg3": 3
     },
-    "Bam Adebayo": {
-      "pts": 25,
-      "reb": 10,
-      "ast": 3,
-      "fg3": 1
-    },
-    "Jaime Jaquez Jr.": {
-      "pts": 26,
-      "reb": 1,
-      "ast": 5,
-      "fg3": 1
-    },
-    "Andrew Wiggins": {
-      "pts": 4,
-      "reb": 2,
-      "ast": 2,
-      "fg3": 0
-    },
-    "Jalen Green": {
-      "pts": 0,
-      "reb": 1,
-      "ast": 0,
-      "fg3": 0
-    },
-    "Oso Ighodaro": {
-      "pts": 2,
-      "reb": 6,
-      "ast": 5,
-      "fg3": 0
-    },
-    "Kristaps Porzingis": {
-      "pts": 12,
+    "Onyeka Okongwu": {
+      "pts": 15,
       "reb": 8,
       "ast": 1,
-      "fg3": 0
+      "fg3": 2
     },
-    "Mark Williams": {
-      "pts": 7,
-      "reb": 5,
-      "ast": 0,
-      "fg3": 0
+    "Mikal Bridges": {
+      "pts": 10,
+      "reb": 1,
+      "ast": 2,
+      "fg3": 2
     },
     "Max Strus": {
-      "pts": 10,
-      "reb": 5,
-      "ast": 2,
-      "fg3": 1
-    },
-    "Paul George": {
-      "pts": 11,
-      "reb": 5,
-      "ast": 2,
-      "fg3": 1
-    },
-    "Nae'Qwan Tomlin": {
-      "pts": 26,
-      "reb": 8,
-      "ast": 5,
-      "fg3": 4
-    },
-    "Brandon Miller": {
-      "pts": 19,
-      "reb": 3,
-      "ast": 2,
-      "fg3": 3
-    },
-    "Luguentz Dort": {
-      "pts": 6,
-      "reb": 1,
-      "ast": 1,
-      "fg3": 2
-    },
-    "Miles Bridges": {
-      "pts": 7,
-      "reb": 1,
-      "ast": 2,
-      "fg3": 0
-    },
-    "Moussa Diabate": {
-      "pts": 4,
-      "reb": 9,
-      "ast": 3,
-      "fg3": 0
-    },
-    "Stephen Curry": {
-      "pts": 24,
-      "reb": 6,
-      "ast": 3,
-      "fg3": 4
-    },
-    "Ace Bailey": {
-      "pts": 15,
-      "reb": 3,
-      "ast": 1,
-      "fg3": 1
-    },
-    "Luke Kennard": {
-      "pts": 3,
-      "reb": 0,
-      "ast": 1,
-      "fg3": 0
-    },
-    "Rui Hachimura": {
-      "pts": 22,
-      "reb": 10,
-      "ast": 0,
-      "fg3": 3
-    },
-    "DeAndre Ayton": {
-      "pts": 22,
-      "reb": 10,
-      "ast": 1,
-      "fg3": 0
-    },
-    "LeBron James": {
-      "pts": 18,
-      "reb": 4,
-      "ast": 6,
-      "fg3": 0
-    },
-    "Cody Williams": {
-      "pts": 14,
-      "reb": 3,
-      "ast": 6,
-      "fg3": 0
-    },
-    "Oscar Tshiebwe": {
-      "pts": 29,
-      "reb": 17,
-      "ast": 3,
-      "fg3": 0
-    },
-    "Deni Avdija": {
-      "pts": 25,
-      "reb": 6,
-      "ast": 10,
-      "fg3": 5
-    },
-    "Donovan Clingan": {
-      "pts": 13,
-      "reb": 10,
-      "ast": 1,
-      "fg3": 1
-    },
-    "Maxime Raynaud": {
-      "pts": 21,
-      "reb": 9,
-      "ast": 2,
-      "fg3": 3
-    },
-    "Aaron Wiggins": {
-      "pts": 3,
-      "reb": 2,
-      "ast": 5,
-      "fg3": 1
-    },
-    "Jahmai Mashack": {
-      "pts": 11,
-      "reb": 1,
-      "ast": 11,
-      "fg3": 2
-    },
-    "Reed Sheppard": {
-      "pts": 19,
-      "reb": 4,
-      "ast": 3,
-      "fg3": 4
-    },
-    "Brandin Podziemski": {
-      "pts": 10,
-      "reb": 4,
-      "ast": 2,
-      "fg3": 2
-    },
-    "Gui Santos": {
-      "pts": 7,
-      "reb": 7,
-      "ast": 2,
-      "fg3": 0
-    },
-    "Klay Thompson": {
-      "pts": 12,
-      "reb": 0,
-      "ast": 1,
-      "fg3": 4
-    },
-    "Max Christie": {
-      "pts": 12,
-      "reb": 1,
-      "ast": 1,
-      "fg3": 2
-    },
-    "Tre Jones": {
       "pts": 6,
       "reb": 3,
-      "ast": 2,
-      "fg3": 0
-    },
-    "Leonard Miller": {
-      "pts": 17,
-      "reb": 7,
-      "ast": 2,
-      "fg3": 1
-    },
-    "Julian Champagnie": {
-      "pts": 7,
-      "reb": 4,
-      "ast": 1,
-      "fg3": 1
-    },
-    "Franz Wagner": {
-      "pts": 20,
-      "reb": 4,
-      "ast": 1,
+      "ast": 3,
       "fg3": 2
-    },
-    "Wendell Carter Jr": {
-      "pts": 3,
-      "reb": 8,
-      "ast": 2,
-      "fg3": 0
-    },
-    "LaMelo Ball": {
-      "pts": 19,
-      "reb": 7,
-      "ast": 6,
-      "fg3": 5
-    },
-    "Kon Knueppel": {
-      "pts": 14,
-      "reb": 6,
-      "ast": 5,
-      "fg3": 3
-    },
-    "E.J. Liddell": {
-      "pts": 17,
-      "reb": 4,
-      "ast": 1,
-      "fg3": 3
     }
   },
   "bet365_results": [
     {
-      "player": "Will Riley",
-      "type": "REB",
-      "line": 3.0,
-      "over_under": "Over",
-      "actual": 5,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Carlton Carrington",
-      "type": "AST",
-      "line": 3.0,
-      "over_under": "Over",
-      "actual": "?",
-      "result": "❓ NÃO ENCONTRADO",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Paolo Banchero",
-      "type": "PTS",
-      "line": 15.0,
-      "over_under": "Over",
-      "actual": 23,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Franz Wagner",
-      "type": "PTS",
-      "line": 15.0,
-      "over_under": "Over",
-      "actual": 20,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Jalen Suggs",
+      "player": "Donte DiVincenzo",
       "type": "PTS",
       "line": 10.0,
       "over_under": "Over",
-      "actual": 23,
+      "actual": 16,
       "result": "✅ ACERTOU",
       "trend": "unknown",
       "consistency": 50,
       "is_home": true
     },
     {
-      "player": "Wendell Carter Jr",
-      "type": "REB",
-      "line": 5.0,
-      "over_under": "Over",
-      "actual": 8,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Paul George",
+      "player": "Naz Reid",
       "type": "PTS",
-      "line": 15.0,
+      "line": 10.0,
       "over_under": "Over",
       "actual": 11,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Rudy Gobert",
+      "type": "PTS",
+      "line": 5.0,
+      "over_under": "Over",
+      "actual": 2,
       "result": "❌ ERROU",
       "trend": "unknown",
       "consistency": 50,
       "is_home": true
     },
     {
-      "player": "Paul George",
+      "player": "Rudy Gobert",
       "type": "REB",
-      "line": 3.0,
+      "line": 7.0,
       "over_under": "Over",
-      "actual": 5,
+      "actual": 7,
       "result": "✅ ACERTOU",
       "trend": "unknown",
       "consistency": 50,
       "is_home": true
     },
     {
-      "player": "Paul George",
+      "player": "Tim Hardaway Jr",
+      "type": "PTS",
+      "line": 10.0,
+      "over_under": "Over",
+      "actual": 16,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Aaron Gordon",
+      "type": "PTS",
+      "line": 10.0,
+      "over_under": "Over",
+      "actual": 8,
+      "result": "❌ ERROU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Jamal Murray",
+      "type": "PTS",
+      "line": 25.0,
+      "over_under": "Over",
+      "actual": 30,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Bruce Brown Jr",
+      "type": "PTS",
+      "line": 5.0,
+      "over_under": "Over",
+      "actual": 7,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Nikola Jokic",
+      "type": "AST",
+      "line": 10.0,
+      "over_under": "Over",
+      "actual": 8,
+      "result": "❌ ERROU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Nikola Jokic",
+      "type": "REB",
+      "line": 10.0,
+      "over_under": "Over",
+      "actual": 15,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "CJ McCollum",
+      "type": "PTS",
+      "line": 20.0,
+      "over_under": "Over",
+      "actual": 32,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Nickeil Alexander-Walker",
+      "type": "PTS",
+      "line": 15.0,
+      "over_under": "Over",
+      "actual": 9,
+      "result": "❌ ERROU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Onyeka Okongwu",
+      "type": "PTS",
+      "line": 10.0,
+      "over_under": "Over",
+      "actual": 15,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Jalen Brunson",
+      "type": "PTS",
+      "line": 25.0,
+      "over_under": "Over",
+      "actual": 29,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Jalen Brunson",
+      "type": "REB",
+      "line": 3.0,
+      "over_under": "Over",
+      "actual": 2,
+      "result": "❌ ERROU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Jalen Brunson",
+      "type": "AST",
+      "line": 5.0,
+      "over_under": "Over",
+      "actual": 7,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Karl-Anthony Towns",
+      "type": "PTS",
+      "line": 20.0,
+      "over_under": "Over",
+      "actual": 18,
+      "result": "❌ ERROU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Karl-Anthony Towns",
       "type": "AST",
       "line": 3.0,
       "over_under": "Over",
@@ -516,174 +351,9 @@
       "is_home": true
     },
     {
-      "player": "Cade Cunningham",
-      "type": "PTS",
-      "line": 15.0,
-      "over_under": "Over",
-      "actual": 7,
-      "result": "❌ ERROU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Cade Cunningham",
-      "type": "AST",
-      "line": 5.0,
-      "over_under": "Over",
-      "actual": 14,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Ausar Thompson",
-      "type": "REB",
-      "line": 5.0,
-      "over_under": "Over",
-      "actual": 5,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Brandon Miller",
-      "type": "PTS",
-      "line": 15.0,
-      "over_under": "Over",
-      "actual": 19,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Miles Bridges",
+      "player": "Mikal Bridges",
       "type": "PTS",
       "line": 10.0,
-      "over_under": "Over",
-      "actual": 7,
-      "result": "❌ ERROU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Coby White",
-      "type": "PTS",
-      "line": 10.0,
-      "over_under": "Over",
-      "actual": 19,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Moussa Diabate",
-      "type": "REB",
-      "line": 5.0,
-      "over_under": "Over",
-      "actual": 9,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "LaMelo Ball",
-      "type": "AST",
-      "line": 5.0,
-      "over_under": "Over",
-      "actual": 6,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Kon Knueppel",
-      "type": "REB",
-      "line": 3.0,
-      "over_under": "Over",
-      "actual": 6,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "RJ Barrett",
-      "type": "PTS",
-      "line": 15.0,
-      "over_under": "Over",
-      "actual": 26,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Immanuel Quickley",
-      "type": "PTS",
-      "line": 10.0,
-      "over_under": "Over",
-      "actual": 4,
-      "result": "❌ ERROU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "RJ Barrett",
-      "type": "REB",
-      "line": 3.0,
-      "over_under": "Over",
-      "actual": 3,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "E.J. Liddell",
-      "type": "PTS",
-      "line": 10.0,
-      "over_under": "Over",
-      "actual": 17,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Andrew Wiggins",
-      "type": "PTS",
-      "line": 15.0,
-      "over_under": "Over",
-      "actual": 4,
-      "result": "❌ ERROU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Bam Adebayo",
-      "type": "PTS",
-      "line": 20.0,
-      "over_under": "Over",
-      "actual": 25,
-      "result": "✅ ACERTOU",
-      "trend": "unknown",
-      "consistency": 50,
-      "is_home": true
-    },
-    {
-      "player": "Bam Adebayo",
-      "type": "REB",
-      "line": 7.0,
       "over_under": "Over",
       "actual": 10,
       "result": "✅ ACERTOU",
@@ -692,11 +362,110 @@
       "is_home": true
     },
     {
-      "player": "Jaime Jaquez Jr.",
+      "player": "RJ Barrett",
+      "type": "PTS",
+      "line": 20.0,
+      "over_under": "Over",
+      "actual": 22,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "RJ Barrett",
+      "type": "REB",
+      "line": 3.0,
+      "over_under": "Over",
+      "actual": 9,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "RJ Barrett",
       "type": "AST",
       "line": 3.0,
       "over_under": "Over",
       "actual": 5,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Donovan Mitchell",
+      "type": "PTS",
+      "line": 25.0,
+      "over_under": "Over",
+      "actual": 30,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Evan Mobley",
+      "type": "PTS",
+      "line": 15.0,
+      "over_under": "Over",
+      "actual": 25,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "James Harden",
+      "type": "PTS",
+      "line": 20.0,
+      "over_under": "Over",
+      "actual": 28,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Max Strus",
+      "type": "PTS",
+      "line": 10.0,
+      "over_under": "Over",
+      "actual": 6,
+      "result": "❌ ERROU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Evan Mobley",
+      "type": "REB",
+      "line": 7.0,
+      "over_under": "Over",
+      "actual": 8,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Scottie Barnes",
+      "type": "AST",
+      "line": 5.0,
+      "over_under": "Over",
+      "actual": 5,
+      "result": "✅ ACERTOU",
+      "trend": "unknown",
+      "consistency": 50,
+      "is_home": true
+    },
+    {
+      "player": "Scottie Barnes",
+      "type": "PTS",
+      "line": 15.0,
+      "over_under": "Over",
+      "actual": 26,
       "result": "✅ ACERTOU",
       "trend": "unknown",
       "consistency": 50,

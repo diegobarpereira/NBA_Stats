@@ -359,6 +359,11 @@ with tab1:
                         "is_home": prop.get("is_home", True),
                         "over_under": prop.get("over_under", "Over"),
                         "matchup_mult": prop.get("matchup_mult", 1.0),
+                        "aggressiveness": prop.get("aggressiveness"),
+                        "odds_source": prop.get("odds_source", "unknown"),
+                        "market_line": prop.get("market_line"),
+                        "market_gap": round(line - float(prop.get("market_line")), 2) if prop.get("market_line") is not None else None,
+                        "history_multiplier": prop.get("history_multiplier"),
                     })
 
             if comparison_results:
@@ -562,6 +567,9 @@ with tab1:
                         "trend_analysis": {},
                         "consistency_analysis": {},
                         "home_away_analysis": {},
+                        "aggressiveness_analysis": {},
+                        "market_gap_analysis": {},
+                        "odds_source_analysis": {},
                     }
 
                     # Aggregate trend, consistency, home/away analysis
@@ -599,6 +607,45 @@ with tab1:
                             history_entry["home_away_analysis"][ha_key]["hit"] += 1
                         elif "ERROU" in cr["result"]:
                             history_entry["home_away_analysis"][ha_key]["miss"] += 1
+
+                        aggr = cr.get("aggressiveness")
+                        if isinstance(aggr, (int, float)):
+                            if aggr < 0.15:
+                                aggr_key = "low"
+                            elif aggr < 0.25:
+                                aggr_key = "medium"
+                            else:
+                                aggr_key = "high"
+                            if aggr_key not in history_entry["aggressiveness_analysis"]:
+                                history_entry["aggressiveness_analysis"][aggr_key] = {"hit": 0, "miss": 0}
+                            if "ACERTOU" in cr["result"]:
+                                history_entry["aggressiveness_analysis"][aggr_key]["hit"] += 1
+                            elif "ERROU" in cr["result"]:
+                                history_entry["aggressiveness_analysis"][aggr_key]["miss"] += 1
+
+                        market_gap = cr.get("market_gap")
+                        if market_gap is None:
+                            gap_key = "no_market"
+                        elif market_gap >= 0.5:
+                            gap_key = "model_above_market"
+                        elif market_gap <= -0.5:
+                            gap_key = "market_above_model"
+                        else:
+                            gap_key = "aligned"
+                        if gap_key not in history_entry["market_gap_analysis"]:
+                            history_entry["market_gap_analysis"][gap_key] = {"hit": 0, "miss": 0}
+                        if "ACERTOU" in cr["result"]:
+                            history_entry["market_gap_analysis"][gap_key]["hit"] += 1
+                        elif "ERROU" in cr["result"]:
+                            history_entry["market_gap_analysis"][gap_key]["miss"] += 1
+
+                        odds_source = cr.get("odds_source", "unknown")
+                        if odds_source not in history_entry["odds_source_analysis"]:
+                            history_entry["odds_source_analysis"][odds_source] = {"hit": 0, "miss": 0}
+                        if "ACERTOU" in cr["result"]:
+                            history_entry["odds_source_analysis"][odds_source]["hit"] += 1
+                        elif "ERROU" in cr["result"]:
+                            history_entry["odds_source_analysis"][odds_source]["miss"] += 1
                     
                     history_file = config.DATA_DIR / "performance_history.json"
                     history_file.parent.mkdir(parents=True, exist_ok=True)

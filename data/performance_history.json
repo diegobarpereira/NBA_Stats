@@ -8129,5 +8129,257 @@
         "miss": 14
       }
     }
+  },
+  {
+    "date": "2026-04-20",
+    "comparison_results": [
+      {
+        "game": "Toronto Raptors @ Cleveland Cavaliers",
+        "player": "Donovan Mitchell",
+        "type": "PTS",
+        "line": 32,
+        "actual": 30,
+        "diff": "-2.0",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Toronto Raptors @ Cleveland Cavaliers",
+        "player": "Evan Mobley",
+        "type": "PTS",
+        "line": 16.7,
+        "actual": 25,
+        "diff": "+8.3",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.95
+      },
+      {
+        "game": "Toronto Raptors @ Cleveland Cavaliers",
+        "player": "Evan Mobley",
+        "type": "REB",
+        "line": 7.6,
+        "actual": 8,
+        "diff": "+0.4",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Toronto Raptors @ Cleveland Cavaliers",
+        "player": "Donovan Mitchell",
+        "type": "AST",
+        "line": 4.7,
+        "actual": 5,
+        "diff": "+0.3",
+        "result": "✅ ACERTOU",
+        "conf": 9.5,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Atlanta Hawks @ New York Knicks",
+        "player": "Jalen Brunson",
+        "type": "PTS",
+        "line": 25.2,
+        "actual": 29,
+        "diff": "+3.8",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.04
+      },
+      {
+        "game": "Atlanta Hawks @ New York Knicks",
+        "player": "Jalen Brunson",
+        "type": "AST",
+        "line": 5.8,
+        "actual": 7,
+        "diff": "+1.2",
+        "result": "✅ ACERTOU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Atlanta Hawks @ New York Knicks",
+        "player": "Karl-Anthony Towns",
+        "type": "PTS",
+        "line": 20.9,
+        "actual": 18,
+        "diff": "-2.9",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Atlanta Hawks @ New York Knicks",
+        "player": "Karl-Anthony Towns",
+        "type": "REB",
+        "line": 9.7,
+        "actual": 8,
+        "diff": "-1.7",
+        "result": "❌ ERROU",
+        "conf": 10,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Minnesota Timberwolves @ Denver Nuggets",
+        "player": "Tim Hardaway Jr.",
+        "type": "PTS",
+        "line": 10.9,
+        "actual": 16,
+        "diff": "+5.1",
+        "result": "✅ ACERTOU",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.08
+      },
+      {
+        "game": "Minnesota Timberwolves @ Denver Nuggets",
+        "player": "Naz Reid",
+        "type": "PTS",
+        "line": 11,
+        "actual": 11,
+        "diff": "+0.0",
+        "result": "➖ PUSH",
+        "conf": 10.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 1.0
+      },
+      {
+        "game": "Minnesota Timberwolves @ Denver Nuggets",
+        "player": "Rudy Gobert",
+        "type": "REB",
+        "line": 8.3,
+        "actual": 7,
+        "diff": "-1.3",
+        "result": "❌ ERROU",
+        "conf": 9.75,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      },
+      {
+        "game": "Minnesota Timberwolves @ Denver Nuggets",
+        "player": "Tim Hardaway Jr.",
+        "type": "AST",
+        "line": 1,
+        "actual": "?",
+        "diff": "?",
+        "result": "SEM DADOS",
+        "conf": 9.0,
+        "trend": "stable",
+        "consistency": 0,
+        "is_home": true,
+        "over_under": "Over",
+        "matchup_mult": 0.83
+      }
+    ],
+    "type_analysis": {
+      "PTS": {
+        "hit": 3,
+        "miss": 2,
+        "push": 1
+      },
+      "REB": {
+        "hit": 1,
+        "miss": 2,
+        "push": 0
+      },
+      "AST": {
+        "hit": 2,
+        "miss": 0,
+        "push": 1
+      }
+    },
+    "conf_analysis": {
+      "10": {
+        "hit": 5,
+        "miss": 3,
+        "push": 1
+      },
+      "9.5": {
+        "hit": 1,
+        "miss": 0,
+        "push": 0
+      },
+      "9.75": {
+        "hit": 0,
+        "miss": 1,
+        "push": 0
+      },
+      "9.0": {
+        "hit": 0,
+        "miss": 0,
+        "push": 1
+      }
+    },
+    "line_analysis": {
+      "Over": {
+        "hit": 6,
+        "miss": 4
+      },
+      "Under": {
+        "hit": 0,
+        "miss": 0
+      }
+    },
+    "trend_analysis": {
+      "stable": {
+        "hit": 6,
+        "miss": 4
+      }
+    },
+    "consistency_analysis": {
+      "low": {
+        "hit": 6,
+        "miss": 4
+      }
+    },
+    "home_away_analysis": {
+      "home": {
+        "hit": 6,
+        "miss": 4
+      }
+    }
   }
 ]

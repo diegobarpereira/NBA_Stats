@@ -157,6 +157,7 @@ pg = st.navigation([
     st.Page("pages/2_Scraping.py", title="🌐 Scraping"),
     st.Page("pages/3_Propriedades.py", title="📊 Propriedades"),
     st.Page("pages/4_Bilhetes.py", title="🎫 Bilhetes"),
+    st.Page("pages/A_BetSlip.py", title="🎲 BetSlip v2"),
     st.Page("pages/5_Comparativo.py", title="📈 Comparativo"),
 ])
 pg.run()

@@ -1,0 +1,39 @@
+﻿game,player,type,line,actual,diff,result,conf,trend,consistency,is_home,over_under,matchup_mult
+Chicago Bulls @ Washington Wizards,Bilal Coulibaly,PTS,10.1,?,?,SEM DADOS,10,stable,0,true,Over,1
+Chicago Bulls @ Washington Wizards,Collin Sexton,PTS,19.8,?,?,SEM DADOS,9.763,stable,0,true,Over,1.04
+Chicago Bulls @ Washington Wizards,Tre Johnson,REB,1.8,?,?,SEM DADOS,9,stable,0,true,Over,0.83
+Chicago Bulls @ Washington Wizards,Collin Sexton,AST,2,?,?,SEM DADOS,8.763,stable,0,true,Over,0.83
+Minnesota Timberwolves @ Indiana Pacers,Ayo Dosunmu,PTS,18.9,?,?,SEM DADOS,10,stable,0,true,Over,1.08
+Minnesota Timberwolves @ Indiana Pacers,Julius Randle,PTS,23.6,?,?,SEM DADOS,10,stable,0,true,Over,1
+Minnesota Timberwolves @ Indiana Pacers,Naz Reid,REB,5.4,?,?,SEM DADOS,10,stable,0,true,Over,0.83
+Minnesota Timberwolves @ Indiana Pacers,Jarace Walker,AST,1.6,?,?,SEM DADOS,8.689,stable,0,true,Over,0.83
+Milwaukee Bucks @ Brooklyn Nets,Ben Saraf,PTS,7.2,?,?,SEM DADOS,9,stable,0,true,Over,1.08
+Milwaukee Bucks @ Brooklyn Nets,A.J. Green,PTS,12.4,?,?,SEM DADOS,8.5,stable,0,true,Over,1
+Miami Heat @ Toronto Raptors,Norman Powell,PTS,19.5,?,?,SEM DADOS,10,stable,0,true,Over,1.08
+Miami Heat @ Toronto Raptors,RJ Barrett,PTS,22.4,?,?,SEM DADOS,10,stable,0,true,Over,1.04
+Miami Heat @ Toronto Raptors,Sandro Mamukelashvili,PTS,12.4,?,?,SEM DADOS,10,stable,0,true,Over,1.04
+Miami Heat @ Toronto Raptors,RJ Barrett,REB,4.4,?,?,SEM DADOS,9.682,stable,0,true,Over,0.83
+Charlotte Hornets @ Boston Celtics,Jayson Tatum,PTS,22.7,?,?,SEM DADOS,10,stable,0,true,Over,1
+Charlotte Hornets @ Boston Celtics,Brandon Miller,PTS,17.4,?,?,SEM DADOS,10,stable,0,true,Over,1
+Charlotte Hornets @ Boston Celtics,Brandon Miller,REB,3.7,?,?,SEM DADOS,9.338000000000001,stable,0,true,Over,0.83
+Charlotte Hornets @ Boston Celtics,Brandon Miller,AST,2.6,?,?,SEM DADOS,9.338000000000001,stable,0,true,Over,0.83
+Utah Jazz @ New Orleans Pelicans,Derik Queen,PTS,9.6,17,+7.4,✅ ACERTOU,10,stable,0,true,Over,1
+Utah Jazz @ New Orleans Pelicans,Zion Williamson,PTS,18.9,17,-1.9,❌ ERROU,10,stable,0,true,Over,1.08
+Utah Jazz @ New Orleans Pelicans,Kyle Filipowski,PTS,17.7,?,?,SEM DADOS,10,stable,0,true,Over,1.04
+Utah Jazz @ New Orleans Pelicans,Kyle Filipowski,REB,7.8,?,?,SEM DADOS,9.541,stable,0,true,Over,0.83
+Sacramento Kings @ Golden State Warriors,Brandin Podziemski,REB,6,1,-5.0,❌ ERROU,10,stable,0,true,Over,1
+Sacramento Kings @ Golden State Warriors,Stephen Curry,PTS,29.6,17,-12.6,❌ ERROU,10,stable,0,true,Over,1.08
+Sacramento Kings @ Golden State Warriors,DeMar DeRozan,PTS,20.9,?,?,SEM DADOS,10,stable,0,true,Over,1.08
+Sacramento Kings @ Golden State Warriors,DeMar DeRozan,AST,3.5,?,?,SEM DADOS,9.5,stable,0,true,Over,0.83
+Oklahoma City Thunder @ Los Angeles Lakers,Ajay Mitchell,PTS,13.9,?,?,SEM DADOS,8.943999999999999,stable,0,true,Over,1
+Oklahoma City Thunder @ Los Angeles Lakers,Isaiah Joe,PTS,10.2,?,?,SEM DADOS,8.75,stable,0,true,Over,1
+Oklahoma City Thunder @ Los Angeles Lakers,Shai Gilgeous-Alexander,PTS,33.9,?,?,SEM DADOS,8,stable,0,true,Over,1
+Oklahoma City Thunder @ Los Angeles Lakers,Shai Gilgeous-Alexander,REB,5,?,?,SEM DADOS,8,stable,0,true,Over,1.04
+Dallas Mavericks @ Los Angeles Clippers,Naji Marshall,PTS,18.8,?,?,SEM DADOS,10,stable,0,true,Over,1
+Dallas Mavericks @ Los Angeles Clippers,Darius Garland,PTS,19.5,22,+2.5,✅ ACERTOU,10,stable,0,true,Over,1.08
+Dallas Mavericks @ Los Angeles Clippers,Kawhi Leonard,PTS,27.9,34,+6.1,✅ ACERTOU,9,stable,0,true,Over,1.04
+Dallas Mavericks @ Los Angeles Clippers,Naji Marshall,REB,4.6,?,?,SEM DADOS,8.303,stable,0,true,Over,0.83
+Houston Rockets @ Phoenix Suns,Devin Booker,PTS,28.1,?,?,SEM DADOS,10,stable,0,true,Over,1
+Houston Rockets @ Phoenix Suns,Devin Booker,AST,5.1,?,?,SEM DADOS,10,stable,0,true,Over,0.83
+Houston Rockets @ Phoenix Suns,Alperen Sengun,PTS,26.3,?,?,SEM DADOS,9.655,stable,0,true,Over,1
+Houston Rockets @ Phoenix Suns,Grayson Allen,REB,3,?,?,SEM DADOS,9.5,stable,0,true,Over,0.83

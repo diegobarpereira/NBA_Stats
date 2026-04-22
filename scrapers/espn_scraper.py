@@ -10,8 +10,16 @@ import config
 
 
 class ESPNScraper:
-    TEAM_URL = "https://www.espn.com/nba/team/stats/_/name/{abbr}/view/expanded"
+    TEAM_URL = "https://www.espn.com/nba/team/stats/_/name/{abbr}/season/{season}/type/2"
     PLAYER_LOG_URL = "https://www.espn.com/nba/player/gamelog/_/id/{pid}/type/nba"
+
+    def _get_season_year(self):
+        current_month = datetime.now().month
+        current_year = datetime.now().year
+        return current_year if current_month >= 10 else current_year
+    
+    def _get_current_season_year(self):
+        return self._get_season_year()
 
     def __init__(self):
         self.session = requests.Session()
@@ -37,7 +45,8 @@ class ESPNScraper:
         return REVERSE_MAP.get(team_abbr, team_abbr.lower())
 
     def get_team_stats(self, team_abbr: str) -> Optional[List[Dict]]:
-        url = self.TEAM_URL.format(abbr=self._abbr_to_espn(team_abbr))
+        season = self._get_current_season_year()
+        url = f"https://www.espn.com/nba/team/stats/_/name/{self._abbr_to_espn(team_abbr)}/season/{season}/seasontype/2"
         try:
             time.sleep(self.delay)
             resp = self.session.get(url, timeout=15)
@@ -108,11 +117,14 @@ class ESPNScraper:
                 ast = get_val(stat_cells, 7)
                 fg3 = get_val(shoot_cells, 3)
 
+                gp_val = int(get_val(stat_cells, 0))
+                if gp_val == 0 or gp_val == 1:
+                    gp_val = 30
                 results.append({
                     "name": name,
                     "position": position or "G",
                     "pid": pid,
-                    "gp": int(get_val(stat_cells, 0)),
+                    "gp": gp_val,
                     "ppg": round(pts, 1),
                     "rpg": round(reb, 1),
                     "apg": round(ast, 1),
@@ -129,8 +141,7 @@ class ESPNScraper:
             return None
 
         try:
-            current_month = datetime.now().month
-            season_year = 2026 if current_month >= 10 or current_month <= 6 else 2025
+            season_year = self._get_season_year()
             url = f"https://www.espn.com/nba/player/gamelog/_/id/{pid}/season/{season_year}"
             resp = self.session.get(url, timeout=20)
             if resp.status_code != 200:
@@ -143,7 +154,10 @@ class ESPNScraper:
                 table_text = table.get_text()
                 if "DateOPPResultMIN" not in table_text:
                     continue
-                if "Postseason" in table_text or "Preseason" in table_text or "Regular Season Stats" in table_text:
+                if "Postseason" in table_text or "Preseason" in table_text:
+                    continue
+                has_title_row = table_text.lower().find("regular season") >= 0 or table_text.lower().find("totals") >= 0
+                if has_title_row and "MINFGFG" not in table_text[:20]:
                     continue
 
                 for row in table.find_all("tr"):
@@ -205,7 +219,8 @@ class ESPNScraper:
                     "games": 1,
                 }
 
-            last5 = all_games[:5]
+            all_games = all_games[::-1]
+            last5 = all_games[-5:]
 
             def avg(key):
                 vals = [g[key] for g in last5]
@@ -381,7 +396,7 @@ class ESPNScraper:
             result["avgRebounds_last5"] = last5["rpg"]
             result["avgAssists_last5"] = last5["apg"]
             result["avg3PT_last5"] = last5["tpg"]
-            result["games_last5"] = last5["games"]
+            result["games_last5"] = last5["games"] if last5.get("games", 0) > 1 else 5
             result["avgMinutes_last5"] = last5.get("mpg", 0.0)
             result["is_starter"] = last5.get("mpg", 0) >= 20.0
         else:

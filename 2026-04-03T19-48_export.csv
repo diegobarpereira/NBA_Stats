@@ -1,0 +1,770 @@
+﻿Jogador,Time,Tipo,Linha,Odds,Conf,Season Avg,Last5 Avg,Matchup,Status
+Antonio Reeves,Charlotte Hornets,POINTS,2.9,1.19,🟡 6.0,2.7,2.7,1.08x,✅ Ativo
+Antonio Reeves,Charlotte Hornets,REBOUNDS,0.8,1.15,🟡 5.0,0.8,0.8,1.00x,✅ Ativo
+Antonio Reeves,Charlotte Hornets,ASSISTS,0.2,1.1,🔴 4.0,0.3,0.3,0.83x,✅ Ativo
+Brandon Miller,Charlotte Hornets,POINTS,20.4,1.74,🟢 10.0,20.4,20.4,1.00x,✅ Ativo
+Brandon Miller,Charlotte Hornets,REBOUNDS,4.1,1.42,🟢 8.0,5,5,0.83x,✅ Ativo
+Brandon Miller,Charlotte Hornets,ASSISTS,2.9,2.44,🟢 8.0,3.5,3.5,0.83x,✅ Ativo
+Coby White,Charlotte Hornets,POINTS,17.2,1.66,🟢 9.0,15.9,15.9,1.08x,✅ Ativo
+Coby White,Charlotte Hornets,REBOUNDS,3.3,1.32,🟡 7.0,3.3,3.3,1.00x,✅ Ativo
+Coby White,Charlotte Hornets,ASSISTS,2.7,1.27,🟡 6.0,3.3,3.3,0.83x,✅ Ativo
+Drew Peterson,Charlotte Hornets,POINTS,0.8,1.12,🔴 4.0,0.8,0.8,1.00x,✅ Ativo
+Drew Peterson,Charlotte Hornets,REBOUNDS,1.2,1.26,🔴 3.0,1.5,1.5,0.83x,✅ Ativo
+Drew Peterson,Charlotte Hornets,ASSISTS,0.2,1.18,🔴 3.0,0.3,0.3,0.83x,✅ Ativo
+Josh Green,Charlotte Hornets,POINTS,4.9,1.31,🟢 8.0,4.5,4.5,1.08x,✅ Ativo
+Josh Green,Charlotte Hornets,REBOUNDS,1.8,1.22,🟡 7.0,1.8,1.8,1.00x,✅ Ativo
+Josh Green,Charlotte Hornets,ASSISTS,0.7,1.14,🟡 6.0,0.8,0.8,0.83x,✅ Ativo
+Kon Knueppel,Charlotte Hornets,POINTS,20.3,1.75,🟢 10,18.8,18.8,1.08x,✅ Ativo
+Kon Knueppel,Charlotte Hornets,REBOUNDS,5.4,1.53,🟢 10.0,5.4,5.4,1.00x,✅ Ativo
+Kon Knueppel,Charlotte Hornets,ASSISTS,2.8,1.33,🟢 8.0,3.4,3.4,0.83x,✅ Ativo
+LaMelo Ball,Charlotte Hornets,POINTS,21.2,1.77,🟢 10,19.6,19.6,1.08x,✅ Ativo
+LaMelo Ball,Charlotte Hornets,REBOUNDS,4.8,1.49,🟢 9.0,4.8,4.8,1.00x,✅ Ativo
+LaMelo Ball,Charlotte Hornets,ASSISTS,5.9,1.54,🟢 9.0,7.1,7.1,0.83x,✅ Ativo
+Liam McNeeley,Charlotte Hornets,POINTS,6.5,1.33,🟡 5.0,4.4,8.5,1.08x,✅ Ativo
+Liam McNeeley,Charlotte Hornets,REBOUNDS,3.8,1.52,🔴 3.0,2.4,6,1.00x,✅ Ativo
+Liam McNeeley,Charlotte Hornets,ASSISTS,0.7,1.24,🔴 2.0,0.8,0,0.83x,✅ Ativo
+Miles Bridges,Charlotte Hornets,POINTS,16.3,1.62,🟢 10,17.2,17.2,1.00x,✅ Ativo
+Miles Bridges,Charlotte Hornets,REBOUNDS,4.6,1.45,🟢 9.0,5.8,5.8,0.83x,✅ Ativo
+Miles Bridges,Charlotte Hornets,ASSISTS,2.5,1.31,🟢 9.0,3.2,3.2,0.83x,✅ Ativo
+Moussa Diabate,Charlotte Hornets,POINTS,7.2,1.38,🟡 7.0,8,8,1.00x, ⚠️ QUESTIONABLE
+Moussa Diabate,Charlotte Hornets,REBOUNDS,6.6,1.6,🟡 6.0,8.8,8.8,0.83x, ⚠️ QUESTIONABLE
+Moussa Diabate,Charlotte Hornets,ASSISTS,1.3,1.24,🟡 5.0,1.8,1.8,0.83x, ⚠️ QUESTIONABLE
+Pat Connaughton,Charlotte Hornets,POINTS,2.9,1.19,🟡 7.0,2.7,2.7,1.08x,✅ Ativo
+Pat Connaughton,Charlotte Hornets,REBOUNDS,1.4,1.2,🟡 6.0,1.4,1.4,1.00x,✅ Ativo
+Pat Connaughton,Charlotte Hornets,ASSISTS,0.3,1.1,🟡 5.0,0.4,0.4,0.83x,✅ Ativo
+Ryan Kalkbrenner,Charlotte Hornets,POINTS,8,1.39,🟢 8.0,7.7,7.7,1.04x,✅ Ativo
+Ryan Kalkbrenner,Charlotte Hornets,REBOUNDS,4.6,1.4,🟡 6.0,5.5,5.5,0.83x,✅ Ativo
+Ryan Kalkbrenner,Charlotte Hornets,ASSISTS,0.7,1.14,🟡 6.0,0.8,0.8,0.83x,✅ Ativo
+Sion James,Charlotte Hornets,POINTS,5.7,1.33,🟢 9.0,5.3,5.3,1.08x,✅ Ativo
+Sion James,Charlotte Hornets,REBOUNDS,3.4,1.33,🟡 7.0,3.4,3.4,1.00x,✅ Ativo
+Sion James,Charlotte Hornets,ASSISTS,1.7,1.2,🟡 6.0,2,2,0.83x,✅ Ativo
+Tidjane Salaun,Charlotte Hornets,POINTS,5.6,1.33,🟡 6.0,6.2,6.2,1.00x, ⚠️ QUESTIONABLE
+Tidjane Salaun,Charlotte Hornets,REBOUNDS,3.1,1.37,🔴 4.0,4.1,4.1,0.83x, ⚠️ QUESTIONABLE
+Tidjane Salaun,Charlotte Hornets,ASSISTS,0.6,1.2,🔴 4.0,0.8,0.8,0.83x, ⚠️ QUESTIONABLE
+Tre Mann,Charlotte Hornets,POINTS,6.2,1.35,🟢 9.0,5.7,5.7,1.08x,✅ Ativo
+Tre Mann,Charlotte Hornets,REBOUNDS,1.8,1.22,🟡 7.0,1.8,1.8,1.00x,✅ Ativo
+Tre Mann,Charlotte Hornets,ASSISTS,1.4,1.18,🟡 6.0,1.7,1.7,0.83x,✅ Ativo
+Xavier Tillman,Charlotte Hornets,POINTS,0.8,1.32,🔴 2.0,0.4,1.5,1.00x,✅ Ativo
+Xavier Tillman,Charlotte Hornets,REBOUNDS,2,1.44,🔴 1.0,1,4.5,0.83x,✅ Ativo
+Xavier Tillman,Charlotte Hornets,ASSISTS,1.2,1.42,🔴 1.0,0.5,3,0.83x,✅ Ativo
+Ben Sheppard,Indiana Pacers,POINTS,7.1,1.36,🟢 8.0,7.1,7.1,1.00x,✅ Ativo
+Ben Sheppard,Indiana Pacers,REBOUNDS,2.5,1.25,🟡 6.0,3,3,0.83x,✅ Ativo
+Ben Sheppard,Indiana Pacers,ASSISTS,1.5,1.19,🟡 6.0,1.8,1.8,0.83x,✅ Ativo
+Cody Martin,Indiana Pacers,POINTS,1.8,1.15,🔴 4.0,1.8,1.8,1.00x,✅ Ativo
+Cody Martin,Indiana Pacers,REBOUNDS,2.9,1.38,🔴 3.0,3.5,3.5,0.83x,✅ Ativo
+Cody Martin,Indiana Pacers,ASSISTS,0.4,1.21,🔴 3.0,0.5,0.5,0.83x,✅ Ativo
+Ethan Thompson,Indiana Pacers,POINTS,5.8,1.27,🟡 6.0,5.8,5.8,1.00x,✅ Ativo
+Ethan Thompson,Indiana Pacers,REBOUNDS,1.5,1.19,🔴 4.0,1.8,1.8,0.83x,✅ Ativo
+Ethan Thompson,Indiana Pacers,ASSISTS,1.2,1.16,🔴 4.0,1.5,1.5,0.83x,✅ Ativo
+Garrison Mathews,Indiana Pacers,POINTS,5.3,1.25,🟡 6.0,5.2,5.4,1.00x,✅ Ativo
+Garrison Mathews,Indiana Pacers,REBOUNDS,0.9,1.14,🔴 4.0,1.1,1,0.83x,✅ Ativo
+Garrison Mathews,Indiana Pacers,ASSISTS,0.6,1.13,🔴 4.0,0.7,0.6,0.83x,✅ Ativo
+Jalen Slawson,Indiana Pacers,POINTS,5.8,1.27,🟡 5.0,5.8,5.8,1.00x,✅ Ativo
+Jalen Slawson,Indiana Pacers,REBOUNDS,3.7,1.44,🔴 3.0,4.4,4.4,0.83x,✅ Ativo
+Jalen Slawson,Indiana Pacers,ASSISTS,2.3,1.34,🔴 3.0,2.8,2.8,0.83x,✅ Ativo
+James Wiseman,Indiana Pacers,POINTS,3.1,1.18,🔴 4.0,3.3,3.3,0.95x,✅ Ativo
+James Wiseman,Indiana Pacers,REBOUNDS,1.7,1.3,🔴 3.0,2,2,0.83x,✅ Ativo
+James Wiseman,Indiana Pacers,ASSISTS,0.7,1.24,🔴 3.0,0.8,0.8,0.83x,✅ Ativo
+Jay Huff,Indiana Pacers,POINTS,8.9,1.41,🟢 8.0,9.4,9.4,0.95x,✅ Ativo
+Jay Huff,Indiana Pacers,REBOUNDS,3.2,1.3,🟡 6.0,3.8,3.8,0.83x,✅ Ativo
+Jay Huff,Indiana Pacers,ASSISTS,1.2,1.17,🟡 6.0,1.4,1.4,0.83x,✅ Ativo
+Kam Jones,Indiana Pacers,POINTS,4.3,1.22,🟡 6.0,4.3,4.3,1.00x,✅ Ativo
+Kam Jones,Indiana Pacers,REBOUNDS,1.2,1.17,🟡 5.0,1.4,1.4,0.83x,✅ Ativo
+Kam Jones,Indiana Pacers,ASSISTS,2.3,1.24,🟡 5.0,2.8,2.8,0.83x,✅ Ativo
+Kobe Brown,Indiana Pacers,POINTS,9.1,1.36,🟡 6.0,9.1,9.1,1.00x,✅ Ativo
+Kobe Brown,Indiana Pacers,REBOUNDS,3.8,1.34,🔴 4.0,4.6,4.6,0.83x,✅ Ativo
+Kobe Brown,Indiana Pacers,ASSISTS,1.4,1.18,🔴 4.0,1.7,1.7,0.83x,✅ Ativo
+Micah Potter,Indiana Pacers,POINTS,8.7,1.34,🟡 7.0,9.2,9.2,0.95x,✅ Ativo
+Micah Potter,Indiana Pacers,REBOUNDS,3.7,1.34,🟡 5.0,4.4,4.4,0.83x,✅ Ativo
+Micah Potter,Indiana Pacers,ASSISTS,1.2,1.17,🟡 5.0,1.4,1.4,0.83x,✅ Ativo
+Monte Morris,Indiana Pacers,POINTS,3,1.19,🔴 4.0,3,3,1.00x,✅ Ativo
+Monte Morris,Indiana Pacers,REBOUNDS,1,1.25,🔴 3.0,1.2,1.2,0.83x,✅ Ativo
+Monte Morris,Indiana Pacers,ASSISTS,1.2,1.26,🔴 3.0,1.5,1.5,0.83x,✅ Ativo
+Obi Toppin,Indiana Pacers,POINTS,9.9,1.38,🟡 6.0,9.9,9.9,1.00x,✅ Ativo
+Obi Toppin,Indiana Pacers,REBOUNDS,3.4,1.31,🔴 4.0,4.1,4.1,0.83x,✅ Ativo
+Obi Toppin,Indiana Pacers,ASSISTS,1.9,1.21,🔴 4.0,2.3,2.3,0.83x,✅ Ativo
+Pascal Siakam,Indiana Pacers,POINTS,22.7,1.8,🟢 10,23.9,23.9,1.00x,✅ Ativo
+Pascal Siakam,Indiana Pacers,REBOUNDS,5.2,1.49,🟢 10.0,6.6,6.6,0.83x,✅ Ativo
+Pascal Siakam,Indiana Pacers,ASSISTS,3,1.34,🟢 9.0,3.8,3.8,0.83x,✅ Ativo
+Quenton Jackson,Indiana Pacers,POINTS,8.3,1.34,🟡 7.0,8.3,8.3,1.00x,✅ Ativo
+Quenton Jackson,Indiana Pacers,REBOUNDS,1.8,1.2,🟡 5.0,2.2,2.2,0.83x,✅ Ativo
+Quenton Jackson,Indiana Pacers,ASSISTS,2.1,1.23,🟡 5.0,2.5,2.5,0.83x,✅ Ativo
+Taelon Peter,Indiana Pacers,POINTS,4.1,1.22,🟡 6.0,4.1,4.1,1.00x,✅ Ativo
+Taelon Peter,Indiana Pacers,REBOUNDS,1.2,1.17,🟡 5.0,1.4,1.4,0.83x,✅ Ativo
+Taelon Peter,Indiana Pacers,ASSISTS,0.8,1.13,🟡 5.0,1,1,0.83x,✅ Ativo
+Tony Bradley,Indiana Pacers,POINTS,4.4,1.24,🔴 4.0,4,5.4,0.95x,✅ Ativo
+Tony Bradley,Indiana Pacers,REBOUNDS,3.2,1.43,🔴 3.0,2.8,5.2,0.83x,✅ Ativo
+Tony Bradley,Indiana Pacers,ASSISTS,0.5,1.23,🔴 3.0,0.5,0.8,0.83x,✅ Ativo
+Anthony Edwards,Minnesota Timberwolves,POINTS,28.6,1.99,🟡 7.0,29.3,25.6,1.04x, ⚠️ QUESTIONABLE
+Anthony Edwards,Minnesota Timberwolves,REBOUNDS,3.8,1.41,🔴 4.0,5.1,4,0.83x, ⚠️ QUESTIONABLE
+Anthony Edwards,Minnesota Timberwolves,ASSISTS,3.3,1.39,🔴 4.0,3.7,4.6,0.83x, ⚠️ QUESTIONABLE
+Ayo Dosunmu,Minnesota Timberwolves,POINTS,14.4,1.58,🟢 8.0,13.8,13.8,1.04x,✅ Ativo
+Ayo Dosunmu,Minnesota Timberwolves,REBOUNDS,3.7,1.34,🟡 6.0,4.4,4.4,0.83x,✅ Ativo
+Ayo Dosunmu,Minnesota Timberwolves,ASSISTS,3.2,1.3,🟡 6.0,3.8,3.8,0.83x,✅ Ativo
+Donte DiVincenzo,Minnesota Timberwolves,POINTS,12.9,1.53,🟢 10.0,12.4,12.4,1.04x,✅ Ativo
+Donte DiVincenzo,Minnesota Timberwolves,REBOUNDS,3.6,1.39,🟢 8.0,4.3,4.3,0.83x,✅ Ativo
+Donte DiVincenzo,Minnesota Timberwolves,ASSISTS,3.2,1.63,🟢 8.0,3.9,3.9,0.83x,✅ Ativo
+Jaylen Clark,Minnesota Timberwolves,POINTS,4.1,1.23,🟡 7.0,3.8,4,1.04x,✅ Ativo
+Jaylen Clark,Minnesota Timberwolves,REBOUNDS,1.7,1.21,🔴 4.0,1.8,2.4,0.83x,✅ Ativo
+Jaylen Clark,Minnesota Timberwolves,ASSISTS,0.4,1.11,🟡 5.0,0.5,0.4,0.83x,✅ Ativo
+Joan Beringer,Minnesota Timberwolves,POINTS,2.9,1.18,🟡 6.0,2.9,3,1.00x,✅ Ativo
+Joan Beringer,Minnesota Timberwolves,REBOUNDS,1.7,1.2,🔴 4.0,1.9,2.2,0.83x,✅ Ativo
+Joan Beringer,Minnesota Timberwolves,ASSISTS,0.2,1.11,🟡 5.0,0.2,0.2,0.83x,✅ Ativo
+Joe Ingles,Minnesota Timberwolves,POINTS,1.4,1.32,🔴 3.0,0.8,2.2,1.00x,✅ Ativo
+Joe Ingles,Minnesota Timberwolves,REBOUNDS,0.3,1.2,🔴 3.0,0.4,0.5,0.83x,✅ Ativo
+Joe Ingles,Minnesota Timberwolves,ASSISTS,0.7,1.24,🔴 3.0,0.8,1,0.83x,✅ Ativo
+Johnny Juzang,Minnesota Timberwolves,POINTS,2.1,1.17,🟡 5.0,2,2,1.04x,✅ Ativo
+Johnny Juzang,Minnesota Timberwolves,REBOUNDS,0.7,1.14,🔴 4.0,0.8,0.8,0.83x,✅ Ativo
+Johnny Juzang,Minnesota Timberwolves,ASSISTS,0.2,1.1,🔴 4.0,0.3,0.3,0.83x,✅ Ativo
+Julian Phillips,Minnesota Timberwolves,POINTS,1.9,1.15,🔴 4.0,1.9,1.9,1.00x,✅ Ativo
+Julian Phillips,Minnesota Timberwolves,REBOUNDS,0.2,1.21,🔴 3.0,0.2,0.2,0.83x,✅ Ativo
+Julian Phillips,Minnesota Timberwolves,ASSISTS,0.2,1.21,🔴 3.0,0.2,0.2,0.83x,✅ Ativo
+Julius Randle,Minnesota Timberwolves,POINTS,20,1.73,🟢 10,21.1,21.1,1.00x,✅ Ativo
+Julius Randle,Minnesota Timberwolves,REBOUNDS,5.4,1.51,🟢 10.0,6.8,6.8,0.83x,✅ Ativo
+Julius Randle,Minnesota Timberwolves,ASSISTS,4,1.41,🟢 9.0,5.1,5.1,0.83x,✅ Ativo
+Kyle Anderson,Minnesota Timberwolves,POINTS,3.4,1.2,🟡 5.0,3.4,3.4,1.00x,✅ Ativo
+Kyle Anderson,Minnesota Timberwolves,REBOUNDS,3.1,1.29,🔴 4.0,3.7,3.7,0.83x,✅ Ativo
+Kyle Anderson,Minnesota Timberwolves,ASSISTS,2.3,1.24,🔴 4.0,2.8,2.8,0.83x,✅ Ativo
+Mike Conley,Minnesota Timberwolves,POINTS,4.5,1.23,🟡 7.0,4.3,4.3,1.04x,✅ Ativo
+Mike Conley,Minnesota Timberwolves,REBOUNDS,1.4,1.18,🟡 6.0,1.7,1.7,0.83x,✅ Ativo
+Mike Conley,Minnesota Timberwolves,ASSISTS,2.4,1.25,🟡 6.0,2.9,2.9,0.83x,✅ Ativo
+Naz Reid,Minnesota Timberwolves,POINTS,12.9,1.52,🟢 10.0,13.6,13.6,0.95x,✅ Ativo
+Naz Reid,Minnesota Timberwolves,REBOUNDS,5.1,1.49,🟢 9.0,6.2,6.2,0.83x,✅ Ativo
+Naz Reid,Minnesota Timberwolves,ASSISTS,1.9,1.27,🟢 8.0,2.3,2.3,0.83x,✅ Ativo
+Rocco Zikarsky,Minnesota Timberwolves,POINTS,1.4,1.13,🔴 4.0,1.5,1.5,0.95x,✅ Ativo
+Rocco Zikarsky,Minnesota Timberwolves,REBOUNDS,1.1,1.26,🔴 3.0,1.3,1.3,0.83x,✅ Ativo
+Rudy Gobert,Minnesota Timberwolves,POINTS,11.6,1.94,🟢 8.0,11.1,11.1,0.95x,✅ Ativo
+Rudy Gobert,Minnesota Timberwolves,REBOUNDS,10.4,1.8,🟡 7.0,11.4,11.4,0.83x,✅ Ativo
+Rudy Gobert,Minnesota Timberwolves,ASSISTS,1.6,1.2,🟡 6.0,1.7,1.7,0.83x,✅ Ativo
+Terrence Shannon Jr.,Minnesota Timberwolves,POINTS,4.4,1.23,🟡 6.0,4.2,4.2,1.04x,✅ Ativo
+Terrence Shannon Jr.,Minnesota Timberwolves,REBOUNDS,0.9,1.14,🟡 5.0,1.1,1.1,0.83x,✅ Ativo
+Terrence Shannon Jr.,Minnesota Timberwolves,ASSISTS,0.6,1.13,🟡 5.0,0.7,0.7,0.83x,✅ Ativo
+Adem Bona,Philadelphia 76ers,POINTS,4.9,1.24,🟡 7.0,4.9,4.9,1.00x,✅ Ativo
+Adem Bona,Philadelphia 76ers,REBOUNDS,3.7,1.34,🟡 6.0,4.4,4.4,0.83x,✅ Ativo
+Adem Bona,Philadelphia 76ers,ASSISTS,0.3,1.1,🟡 6.0,0.4,0.4,0.83x,✅ Ativo
+Andre Drummond,Philadelphia 76ers,POINTS,6.4,1.34,🟢 8.0,6.4,6.4,1.00x,✅ Ativo
+Andre Drummond,Philadelphia 76ers,REBOUNDS,7,1.56,🟡 7.0,8.4,8.4,0.83x,✅ Ativo
+Andre Drummond,Philadelphia 76ers,ASSISTS,1,1.15,🟡 6.0,1.2,1.2,0.83x,✅ Ativo
+Cameron Payne,Philadelphia 76ers,POINTS,8.3,1.34,🟡 7.0,7.7,7.7,1.08x,✅ Ativo
+Cameron Payne,Philadelphia 76ers,REBOUNDS,2,1.24,🟡 5.0,2,2,1.00x,✅ Ativo
+Cameron Payne,Philadelphia 76ers,ASSISTS,2.2,1.23,🔴 4.0,2.7,2.7,0.83x,✅ Ativo
+Dalen Terry,Philadelphia 76ers,POINTS,4.6,1.24,🔴 4.0,4.3,5,1.00x,✅ Ativo
+Dalen Terry,Philadelphia 76ers,REBOUNDS,1.2,1.16,🔴 4.0,1.5,1.4,0.83x,✅ Ativo
+Dalen Terry,Philadelphia 76ers,ASSISTS,1.5,1.19,🔴 4.0,1.8,1.8,0.83x,✅ Ativo
+Dominick Barlow,Philadelphia 76ers,POINTS,7.9,1.39,🟢 8.0,7.9,7.9,1.00x,✅ Ativo
+Dominick Barlow,Philadelphia 76ers,REBOUNDS,3.9,1.35,🟡 6.0,4.7,4.7,0.83x,✅ Ativo
+Dominick Barlow,Philadelphia 76ers,ASSISTS,1.1,1.16,🟡 6.0,1.3,1.3,0.83x,✅ Ativo
+Hunter Sallis,Philadelphia 76ers,POINTS,1.1,1.14,🟡 5.0,1,1,1.08x,✅ Ativo
+Hunter Sallis,Philadelphia 76ers,REBOUNDS,0.1,1.11,🔴 4.0,0.1,0.1,1.00x,✅ Ativo
+Hunter Sallis,Philadelphia 76ers,ASSISTS,0.5,1.22,🔴 3.0,0.6,0.6,0.83x,✅ Ativo
+Jabari Walker,Philadelphia 76ers,POINTS,4.4,1.23,🟡 7.0,4.4,4.4,1.00x,✅ Ativo
+Jabari Walker,Philadelphia 76ers,REBOUNDS,2.6,1.26,🟡 6.0,3.1,3.1,0.83x,✅ Ativo
+Jabari Walker,Philadelphia 76ers,ASSISTS,0.4,1.11,🟡 6.0,0.5,0.5,0.83x,✅ Ativo
+Joel Embiid,Philadelphia 76ers,POINTS,28.1,1.97,🟢 9.0,26.9,30,1.00x,✅ Ativo
+Joel Embiid,Philadelphia 76ers,REBOUNDS,5.8,1.53,🟢 8.0,7.4,6.3,0.83x,✅ Ativo
+Joel Embiid,Philadelphia 76ers,ASSISTS,3.2,1.3,🟡 7.0,3.9,4,0.83x,✅ Ativo
+Justin Edwards,Philadelphia 76ers,POINTS,6.1,1.33,🟢 8.0,6.1,6.1,1.00x,✅ Ativo
+Justin Edwards,Philadelphia 76ers,REBOUNDS,1.2,1.16,🟡 6.0,1.5,1.5,0.83x,✅ Ativo
+Justin Edwards,Philadelphia 76ers,ASSISTS,1.1,1.16,🟡 6.0,1.3,1.3,0.83x,✅ Ativo
+Kelly Oubre Jr.,Philadelphia 76ers,POINTS,17.1,1.67,🟢 8.0,14.4,14.4,1.08x,✅ Ativo
+Kelly Oubre Jr.,Philadelphia 76ers,REBOUNDS,5.5,1.48,🟡 7.0,5,5,1.00x,✅ Ativo
+Kelly Oubre Jr.,Philadelphia 76ers,ASSISTS,1.6,1.2,🟡 5.0,1.7,1.7,0.83x,✅ Ativo
+Kyle Lowry,Philadelphia 76ers,POINTS,1.6,1.17,🔴 4.0,1.3,1.7,1.08x,✅ Ativo
+Kyle Lowry,Philadelphia 76ers,REBOUNDS,1.1,1.33,🔴 3.0,0.7,1.7,1.00x,✅ Ativo
+Kyle Lowry,Philadelphia 76ers,ASSISTS,0.7,1.24,🔴 3.0,0.8,1,0.83x,✅ Ativo
+MarJon Beauchamp,Philadelphia 76ers,POINTS,7.7,1.32,🟡 6.0,7.7,7.7,1.00x,✅ Ativo
+MarJon Beauchamp,Philadelphia 76ers,REBOUNDS,2.2,1.23,🔴 4.0,2.6,2.6,0.83x,✅ Ativo
+MarJon Beauchamp,Philadelphia 76ers,ASSISTS,1.1,1.16,🔴 4.0,1.3,1.3,0.83x,✅ Ativo
+Paul George,Philadelphia 76ers,POINTS,17.5,1.66,🟢 9.0,17.5,17.5,1.00x,✅ Ativo
+Paul George,Philadelphia 76ers,REBOUNDS,4.5,1.39,🟡 7.0,5.4,5.4,0.83x,✅ Ativo
+Paul George,Philadelphia 76ers,ASSISTS,3.1,1.9,🟡 7.0,3.7,3.7,0.83x,✅ Ativo
+Quentin Grimes,Philadelphia 76ers,POINTS,14.8,1.59,🟢 10,13.7,13.7,1.08x,✅ Ativo
+Quentin Grimes,Philadelphia 76ers,REBOUNDS,3.7,1.41,🟢 9.0,3.7,3.7,1.00x,✅ Ativo
+Quentin Grimes,Philadelphia 76ers,ASSISTS,2.8,1.33,🟢 8.0,3.4,3.4,0.83x,✅ Ativo
+Trendon Watford,Philadelphia 76ers,POINTS,6.7,1.35,🟢 8.0,6.7,6.7,1.00x,✅ Ativo
+Trendon Watford,Philadelphia 76ers,REBOUNDS,2.8,1.27,🟡 6.0,3.4,3.4,0.83x,✅ Ativo
+Trendon Watford,Philadelphia 76ers,ASSISTS,2.1,1.23,🟡 6.0,2.5,2.5,0.83x,✅ Ativo
+Tyrese Martin,Philadelphia 76ers,POINTS,2.7,1.19,🟡 5.0,2.5,2.5,1.08x,✅ Ativo
+Tyrese Martin,Philadelphia 76ers,REBOUNDS,1.3,1.19,🔴 4.0,1.3,1.3,1.00x,✅ Ativo
+Tyrese Martin,Philadelphia 76ers,ASSISTS,0.9,1.24,🔴 3.0,1.1,1.1,0.83x,✅ Ativo
+Tyrese Maxey,Philadelphia 76ers,POINTS,29.6,2.01,🟢 10,28.8,28.8,1.08x,✅ Ativo
+Tyrese Maxey,Philadelphia 76ers,REBOUNDS,4,1.43,🟢 10.0,4.2,4.2,1.00x,✅ Ativo
+Tyrese Maxey,Philadelphia 76ers,ASSISTS,5.4,1.51,🟢 10.0,6.8,6.8,0.83x,✅ Ativo
+VJ Edgecombe,Philadelphia 76ers,POINTS,19.1,1.72,🟢 9.0,16.1,16.1,1.08x,✅ Ativo
+VJ Edgecombe,Philadelphia 76ers,REBOUNDS,6.2,1.59,🟢 8.0,5.6,5.6,1.00x,✅ Ativo
+VJ Edgecombe,Philadelphia 76ers,ASSISTS,3.7,1.34,🟡 6.0,4.1,4.1,0.83x,✅ Ativo
+Christian Koloko,Atlanta Hawks,POINTS,2.1,1.23,🔴 3.0,2.9,1,1.00x,✅ Ativo
+Christian Koloko,Atlanta Hawks,REBOUNDS,1.3,1.24,🔴 2.0,2.3,0.5,0.83x,✅ Ativo
+Christian Koloko,Atlanta Hawks,ASSISTS,0.6,1.24,🔴 2.0,0.6,0.8,0.83x,✅ Ativo
+Jonathan Kuminga,Atlanta Hawks,POINTS,11.7,1.49,🟢 8.0,11.7,11.7,1.00x,✅ Ativo
+Jonathan Kuminga,Atlanta Hawks,REBOUNDS,4.6,1.39,🟡 6.0,5.6,5.6,0.83x,✅ Ativo
+Jonathan Kuminga,Atlanta Hawks,ASSISTS,1.8,1.2,🟡 6.0,2.2,2.2,0.83x,✅ Ativo
+Jacob Toppin,Atlanta Hawks,POINTS,1.6,1.15,🔴 4.0,1.6,1.6,1.00x,✅ Ativo
+Jacob Toppin,Atlanta Hawks,REBOUNDS,0.2,1.21,🔴 3.0,0.2,0.2,0.83x,✅ Ativo
+Jacob Toppin,Atlanta Hawks,ASSISTS,0.2,1.21,🔴 3.0,0.2,0.2,0.83x,✅ Ativo
+Jalen Johnson,Atlanta Hawks,POINTS,22.8,1.81,🟢 10.0,22.8,22.8,1.00x,✅ Ativo
+Jalen Johnson,Atlanta Hawks,REBOUNDS,8.5,1.72,🟢 9.0,10.3,10.3,0.83x,✅ Ativo
+Jalen Johnson,Atlanta Hawks,ASSISTS,6.7,1.6,🟢 9.0,8.1,8.1,0.83x,✅ Ativo
+CJ McCollum,Atlanta Hawks,POINTS,18.5,1.69,🟢 9.0,18.5,18.5,1.00x,✅ Ativo
+CJ McCollum,Atlanta Hawks,REBOUNDS,2.6,1.26,🟡 7.0,3.1,3.1,0.83x,✅ Ativo
+CJ McCollum,Atlanta Hawks,ASSISTS,3.2,2.08,🟡 7.0,3.9,3.9,0.83x,✅ Ativo
+Mouhamed Gueye,Atlanta Hawks,POINTS,4.5,1.23,🟡 7.0,4.5,4.5,1.00x,✅ Ativo
+Mouhamed Gueye,Atlanta Hawks,REBOUNDS,3,1.29,🟡 6.0,3.6,3.6,0.83x,✅ Ativo
+Mouhamed Gueye,Atlanta Hawks,ASSISTS,0.7,1.13,🟡 6.0,0.9,0.9,0.83x,✅ Ativo
+Keaton Wallace,Atlanta Hawks,POINTS,3.5,1.2,🟡 7.0,3.5,3.5,1.00x,✅ Ativo
+Keaton Wallace,Atlanta Hawks,REBOUNDS,0.8,1.13,🟡 6.0,1,1,0.83x,✅ Ativo
+Keaton Wallace,Atlanta Hawks,ASSISTS,1.4,1.18,🟡 6.0,1.7,1.7,0.83x,✅ Ativo
+Gabe Vincent,Atlanta Hawks,POINTS,3.9,1.21,🟡 5.0,3.9,3.9,1.00x,✅ Ativo
+Gabe Vincent,Atlanta Hawks,REBOUNDS,1,1.15,🔴 4.0,1.2,1.2,0.83x,✅ Ativo
+Gabe Vincent,Atlanta Hawks,ASSISTS,1.3,1.17,🔴 4.0,1.6,1.6,0.83x,✅ Ativo
+Corey Kispert,Atlanta Hawks,POINTS,7.9,1.31,🟡 5.0,9,6.2,1.00x,✅ Ativo
+Corey Kispert,Atlanta Hawks,REBOUNDS,1.8,1.2,🔴 4.0,2.4,1.8,0.83x,✅ Ativo
+Corey Kispert,Atlanta Hawks,ASSISTS,1.2,1.16,🟡 5.0,1.6,1.4,0.83x,✅ Ativo
+Caleb Houstan,Atlanta Hawks,POINTS,2.4,1.17,🟡 5.0,2.4,2.4,1.00x,✅ Ativo
+Caleb Houstan,Atlanta Hawks,REBOUNDS,0.5,1.12,🔴 4.0,0.6,0.6,0.83x,✅ Ativo
+Caleb Houstan,Atlanta Hawks,ASSISTS,0.2,1.11,🔴 4.0,0.2,0.2,0.83x,✅ Ativo
+Asa Newell,Atlanta Hawks,POINTS,4.5,1.3,🟡 5.0,5,5,1.00x, ⚠️ QUESTIONABLE
+Asa Newell,Atlanta Hawks,REBOUNDS,1.5,1.26,🔴 4.0,2,2,0.83x, ⚠️ QUESTIONABLE
+Asa Newell,Atlanta Hawks,ASSISTS,0.4,1.19,🔴 4.0,0.5,0.5,0.83x, ⚠️ QUESTIONABLE
+Dyson Daniels,Atlanta Hawks,POINTS,11.9,1.5,🟢 10.0,11.9,11.9,1.00x,✅ Ativo
+Dyson Daniels,Atlanta Hawks,REBOUNDS,5.6,1.52,🟢 9.0,6.8,6.8,0.83x,✅ Ativo
+Dyson Daniels,Atlanta Hawks,ASSISTS,4.9,1.48,🟢 8.0,5.9,5.9,0.83x,✅ Ativo
+Buddy Hield,Atlanta Hawks,POINTS,1,1.13,🔴 4.0,1,1,1.00x,✅ Ativo
+Buddy Hield,Atlanta Hawks,REBOUNDS,0.8,1.23,🔴 3.0,1,1,0.83x,✅ Ativo
+Buddy Hield,Atlanta Hawks,ASSISTS,0.3,1.2,🔴 3.0,0.4,0.4,0.83x,✅ Ativo
+Onyeka Okongwu,Atlanta Hawks,POINTS,15.4,1.6,🟢 10.0,15.4,15.4,1.00x,✅ Ativo
+Onyeka Okongwu,Atlanta Hawks,REBOUNDS,6.4,1.58,🟢 9.0,7.7,7.7,0.83x,✅ Ativo
+Onyeka Okongwu,Atlanta Hawks,ASSISTS,2.7,1.33,🟢 8.0,3.2,3.2,0.83x,✅ Ativo
+Nickeil Alexander-Walker,Atlanta Hawks,POINTS,19.6,1.72,🟢 10,20.6,20.6,1.00x,✅ Ativo
+Nickeil Alexander-Walker,Atlanta Hawks,REBOUNDS,2.7,1.32,🟢 9.0,3.5,3.5,0.83x,✅ Ativo
+Nickeil Alexander-Walker,Atlanta Hawks,ASSISTS,2.9,1.61,🟢 9.0,3.7,3.7,0.83x,✅ Ativo
+Zaccharie Risacher,Atlanta Hawks,POINTS,9.9,1.44,🟢 8.0,9.9,9.9,1.00x,✅ Ativo
+Zaccharie Risacher,Atlanta Hawks,REBOUNDS,3.2,1.3,🟡 6.0,3.8,3.8,0.83x,✅ Ativo
+Zaccharie Risacher,Atlanta Hawks,ASSISTS,0.9,1.14,🟡 6.0,1.1,1.1,0.83x,✅ Ativo
+Ben Saraf,Brooklyn Nets,POINTS,8.2,1.36,🟡 5.0,6.7,9.8,1.04x,✅ Ativo
+Ben Saraf,Brooklyn Nets,REBOUNDS,2.2,1.37,🔴 3.0,1.9,4,0.83x,✅ Ativo
+Ben Saraf,Brooklyn Nets,ASSISTS,2.9,1.29,🔴 4.0,3.2,4,0.83x,✅ Ativo
+Chaney Johnson,Brooklyn Nets,POINTS,7.7,1.32,🟡 6.0,7.5,8,1.00x,✅ Ativo
+Chaney Johnson,Brooklyn Nets,REBOUNDS,3.1,1.39,🔴 3.0,4.1,3,0.83x,✅ Ativo
+Chaney Johnson,Brooklyn Nets,ASSISTS,1.7,1.19,🔴 4.0,2.2,2,0.83x,✅ Ativo
+Drake Powell,Brooklyn Nets,POINTS,8.2,1.36,🟡 6.0,6.3,10.2,1.04x,✅ Ativo
+Drake Powell,Brooklyn Nets,REBOUNDS,1.7,1.22,🔴 4.0,1.7,2.6,0.83x,✅ Ativo
+Drake Powell,Brooklyn Nets,ASSISTS,1.2,1.17,🟡 6.0,1.4,1.4,0.83x,✅ Ativo
+E.J. Liddell,Brooklyn Nets,POINTS,2.4,1.16,🔴 4.0,2.6,2,1.00x,✅ Ativo
+E.J. Liddell,Brooklyn Nets,REBOUNDS,1.6,1.19,🔴 4.0,1.9,2,0.83x,✅ Ativo
+E.J. Liddell,Brooklyn Nets,ASSISTS,0.7,1.25,🔴 2.0,0.7,1.2,0.83x,✅ Ativo
+Grant Nelson,Brooklyn Nets,POINTS,4.3,1.22,🔴 4.0,4.3,4.3,1.00x,✅ Ativo
+Grant Nelson,Brooklyn Nets,REBOUNDS,1.2,1.26,🔴 3.0,1.5,1.5,0.83x,✅ Ativo
+Grant Nelson,Brooklyn Nets,ASSISTS,1.1,1.26,🔴 3.0,1.3,1.3,0.83x,✅ Ativo
+Jalen Wilson,Brooklyn Nets,POINTS,7.8,1.36,🟡 5.0,5.8,10.8,1.00x,✅ Ativo
+Jalen Wilson,Brooklyn Nets,REBOUNDS,2.2,1.37,🔴 3.0,1.8,3.8,0.83x,✅ Ativo
+Jalen Wilson,Brooklyn Nets,ASSISTS,0.7,1.25,🔴 3.0,0.7,1,0.83x,✅ Ativo
+Josh Minott,Brooklyn Nets,POINTS,12.5,1.48,🟡 6.0,10.5,15.4,1.00x,✅ Ativo
+Josh Minott,Brooklyn Nets,REBOUNDS,2.7,1.29,🔴 4.0,2.6,4,0.83x,✅ Ativo
+Josh Minott,Brooklyn Nets,ASSISTS,0.8,1.14,🔴 4.0,0.9,1.2,0.83x,✅ Ativo
+Noah Clowney,Brooklyn Nets,POINTS,9.9,1.42,🟢 8.0,12.3,6.4,1.00x,✅ Ativo
+Noah Clowney,Brooklyn Nets,REBOUNDS,3.3,1.36,🟢 8.0,4.1,3.8,0.83x,✅ Ativo
+Noah Clowney,Brooklyn Nets,ASSISTS,1.1,1.14,🟡 6.0,1.6,0.8,0.83x,✅ Ativo
+Ochai Agbaji,Brooklyn Nets,POINTS,6.8,1.3,🟡 6.0,6.4,6.6,1.04x,✅ Ativo
+Ochai Agbaji,Brooklyn Nets,REBOUNDS,1.9,1.22,🔴 4.0,2.2,2.4,0.83x,✅ Ativo
+Ochai Agbaji,Brooklyn Nets,ASSISTS,0.6,1.22,🔴 3.0,0.8,0.6,0.83x,✅ Ativo
+Terance Mann,Brooklyn Nets,POINTS,5.7,1.32,🟡 5.0,7.2,4.4,1.04x, ⚠️ QUESTIONABLE
+Terance Mann,Brooklyn Nets,REBOUNDS,2.6,1.34,🔴 4.0,3.2,3.8,0.83x, ⚠️ QUESTIONABLE
+Terance Mann,Brooklyn Nets,ASSISTS,1.9,1.37,🔴 3.0,3,1.8,0.83x, ⚠️ QUESTIONABLE
+Tyson Etienne,Brooklyn Nets,POINTS,8,1.36,🔴 4.0,6,10.2,1.04x,✅ Ativo
+Tyson Etienne,Brooklyn Nets,REBOUNDS,0.4,1.19,🔴 2.0,0.6,0.4,0.83x,✅ Ativo
+Tyson Etienne,Brooklyn Nets,ASSISTS,1.5,1.33,🔴 2.0,1.2,2.6,0.83x,✅ Ativo
+Ziaire Williams,Brooklyn Nets,POINTS,12.5,1.54,🟢 8.0,10.3,15.8,1.00x,✅ Ativo
+Ziaire Williams,Brooklyn Nets,REBOUNDS,1.8,1.2,🟡 7.0,2.4,1.8,0.83x,✅ Ativo
+Ziaire Williams,Brooklyn Nets,ASSISTS,1,1.17,🟡 6.0,1,1.6,0.83x,✅ Ativo
+Collin Sexton,Chicago Bulls,POINTS,17.2,1.65,🟢 8.0,17.2,17.2,1.00x,✅ Ativo
+Collin Sexton,Chicago Bulls,REBOUNDS,2,1.22,🟡 6.0,2.4,2.4,0.83x,✅ Ativo
+Collin Sexton,Chicago Bulls,ASSISTS,2.1,1.23,🟡 6.0,2.5,2.5,0.83x,✅ Ativo
+Guerschon Yabusele,Chicago Bulls,POINTS,10.6,1.46,🟢 8.0,10.6,10.6,1.00x,✅ Ativo
+Guerschon Yabusele,Chicago Bulls,REBOUNDS,4.6,1.39,🟡 6.0,5.6,5.6,0.83x,✅ Ativo
+Guerschon Yabusele,Chicago Bulls,ASSISTS,1.5,1.19,🟡 6.0,1.8,1.8,0.83x,✅ Ativo
+Isaac Okoro,Chicago Bulls,POINTS,9.3,1.43,🟢 8.0,9.3,9.3,1.00x,✅ Ativo
+Isaac Okoro,Chicago Bulls,REBOUNDS,2.2,1.23,🟡 6.0,2.7,2.7,0.83x,✅ Ativo
+Isaac Okoro,Chicago Bulls,ASSISTS,1.2,1.16,🟡 6.0,1.5,1.5,0.83x,✅ Ativo
+Josh Giddey,Chicago Bulls,POINTS,17.5,1.6,🟡 7.0,17.2,14,1.00x,✅ Ativo
+Josh Giddey,Chicago Bulls,REBOUNDS,7.7,1.61,🟡 7.0,8.4,8.6,0.83x,✅ Ativo
+Josh Giddey,Chicago Bulls,ASSISTS,9.1,1.72,🟡 6.0,9.2,11.2,0.83x,✅ Ativo
+Lachlan Olbrich,Chicago Bulls,POINTS,1.7,1.14,🟡 6.0,1.8,1.8,0.95x,✅ Ativo
+Lachlan Olbrich,Chicago Bulls,REBOUNDS,1.8,1.2,🟡 5.0,2.2,2.2,0.83x,✅ Ativo
+Lachlan Olbrich,Chicago Bulls,ASSISTS,0.5,1.12,🟡 5.0,0.6,0.6,0.83x,✅ Ativo
+Leonard Miller,Chicago Bulls,POINTS,10.2,1.45,🟢 8.0,10.2,10.2,1.00x,✅ Ativo
+Leonard Miller,Chicago Bulls,REBOUNDS,4.2,1.37,🟡 6.0,5.1,5.1,0.83x,✅ Ativo
+Leonard Miller,Chicago Bulls,ASSISTS,0.9,1.14,🟡 6.0,1.1,1.1,0.83x,✅ Ativo
+Matas Buzelis,Chicago Bulls,POINTS,16.4,1.63,🟢 10.0,16.4,16.4,1.00x,✅ Ativo
+Matas Buzelis,Chicago Bulls,REBOUNDS,4.8,1.47,🟢 8.0,5.8,5.8,0.83x,✅ Ativo
+Matas Buzelis,Chicago Bulls,ASSISTS,1.7,1.26,🟢 8.0,2.1,2.1,0.83x,✅ Ativo
+Nick Richards,Chicago Bulls,POINTS,7.4,2.2,🔴 4.0,9.4,7.6,0.95x, ⚠️ QUESTIONABLE
+Nick Richards,Chicago Bulls,REBOUNDS,5.4,1.52,🔴 4.0,7.6,6.6,0.83x, ⚠️ QUESTIONABLE
+Nick Richards,Chicago Bulls,ASSISTS,0.2,1.24,🔴 1.0,0.4,0.2,0.83x, ⚠️ QUESTIONABLE
+Patrick Williams,Chicago Bulls,POINTS,6.6,1.35,🟢 8.0,6.6,6.6,1.00x,✅ Ativo
+Patrick Williams,Chicago Bulls,REBOUNDS,2.3,1.24,🟡 6.0,2.8,2.8,0.83x,✅ Ativo
+Patrick Williams,Chicago Bulls,ASSISTS,1.1,1.16,🟡 6.0,1.3,1.3,0.83x,✅ Ativo
+Rob Dillingham,Chicago Bulls,POINTS,8.6,1.35,🟡 6.0,8.6,8.6,1.00x,✅ Ativo
+Rob Dillingham,Chicago Bulls,REBOUNDS,2.1,1.23,🔴 4.0,2.5,2.5,0.83x,✅ Ativo
+Rob Dillingham,Chicago Bulls,ASSISTS,2.4,1.25,🔴 4.0,2.9,2.9,0.83x,✅ Ativo
+Tre Jones,Chicago Bulls,POINTS,14.7,1.59,🟢 8.0,13.4,13.4,1.00x,✅ Ativo
+Tre Jones,Chicago Bulls,REBOUNDS,2.8,1.28,🟡 6.0,3.1,3.1,0.83x,✅ Ativo
+Tre Jones,Chicago Bulls,ASSISTS,4.9,1.42,🟡 6.0,5.4,5.4,0.83x,✅ Ativo
+Yuki Kawamura,Chicago Bulls,POINTS,2.8,1.18,🟡 5.0,2.8,2.8,1.00x,✅ Ativo
+Yuki Kawamura,Chicago Bulls,REBOUNDS,1.7,1.2,🔴 4.0,2,2,0.83x,✅ Ativo
+Yuki Kawamura,Chicago Bulls,ASSISTS,2.4,1.25,🔴 4.0,2.9,2.9,0.83x,✅ Ativo
+Ariel Hukporti,New York Knicks,POINTS,1.9,1.15,🟡 7.0,1.9,1.9,1.00x,✅ Ativo
+Ariel Hukporti,New York Knicks,REBOUNDS,2.3,1.24,🟡 6.0,2.8,2.8,0.83x,✅ Ativo
+Ariel Hukporti,New York Knicks,ASSISTS,0.4,1.11,🟡 6.0,0.5,0.5,0.83x,✅ Ativo
+Dillon Jones,New York Knicks,POINTS,1.2,1.13,🔴 4.0,1.2,1.2,1.00x,✅ Ativo
+Dillon Jones,New York Knicks,REBOUNDS,0.8,1.23,🔴 3.0,1,1,0.83x,✅ Ativo
+Dillon Jones,New York Knicks,ASSISTS,0.6,1.23,🔴 3.0,0.7,0.7,0.83x,✅ Ativo
+Jalen Brunson,New York Knicks,POINTS,23.1,1.89,🟢 9.0,26.1,25,1.00x, ⚠️ QUESTIONABLE
+Jalen Brunson,New York Knicks,REBOUNDS,2.3,1.3,🟡 6.0,3.4,2.8,0.83x, ⚠️ QUESTIONABLE
+Jalen Brunson,New York Knicks,ASSISTS,5.2,1.57,🟢 8.0,6.7,7.4,0.83x, ⚠️ QUESTIONABLE
+Jeremy Sochan,New York Knicks,POINTS,2.6,1.31,🔴 3.0,1.9,3.6,1.00x,✅ Ativo
+Jeremy Sochan,New York Knicks,REBOUNDS,1.5,1.3,🔴 2.0,1.5,2.2,0.83x,✅ Ativo
+Jeremy Sochan,New York Knicks,ASSISTS,0.4,1.21,🔴 3.0,0.5,0.6,0.83x,✅ Ativo
+Jordan Clarkson,New York Knicks,POINTS,8.9,1.41,🟢 8.0,8.9,8.9,1.00x,✅ Ativo
+Jordan Clarkson,New York Knicks,REBOUNDS,1.4,1.18,🟡 6.0,1.7,1.7,0.83x,✅ Ativo
+Jordan Clarkson,New York Knicks,ASSISTS,1.1,1.16,🟡 6.0,1.3,1.3,0.83x,✅ Ativo
+Jose Alvarado,New York Knicks,POINTS,6.2,1.28,🟡 6.0,6.2,6.2,1.00x,✅ Ativo
+Jose Alvarado,New York Knicks,REBOUNDS,1.5,1.19,🔴 4.0,1.8,1.8,0.83x,✅ Ativo
+Jose Alvarado,New York Knicks,ASSISTS,3.1,1.29,🔴 4.0,3.7,3.7,0.83x,✅ Ativo
+Josh Hart,New York Knicks,POINTS,13.4,1.55,🟢 8.0,12.2,12.2,1.00x,✅ Ativo
+Josh Hart,New York Knicks,REBOUNDS,6.8,1.55,🟡 7.0,7.5,7.5,0.83x,✅ Ativo
+Josh Hart,New York Knicks,ASSISTS,4.5,1.4,🟡 6.0,4.9,4.9,0.83x,✅ Ativo
+Karl-Anthony Towns,New York Knicks,POINTS,20.1,1.73,🟢 10.0,20.1,20.1,1.00x,✅ Ativo
+Karl-Anthony Towns,New York Knicks,REBOUNDS,9.9,1.81,🟢 9.0,11.9,11.9,0.83x,✅ Ativo
+Karl-Anthony Towns,New York Knicks,ASSISTS,2.4,2.48,🟢 8.0,2.9,2.9,0.83x,✅ Ativo
+Kevin McCullar Jr.,New York Knicks,POINTS,1.8,1.15,🟡 5.0,1.8,1.8,1.00x,✅ Ativo
+Kevin McCullar Jr.,New York Knicks,REBOUNDS,1.1,1.16,🔴 4.0,1.3,1.3,0.83x,✅ Ativo
+Kevin McCullar Jr.,New York Knicks,ASSISTS,0.8,1.13,🔴 4.0,1,1,0.83x,✅ Ativo
+Landry Shamet,New York Knicks,POINTS,9.7,1.38,🟡 7.0,9.7,9.7,1.00x,✅ Ativo
+Landry Shamet,New York Knicks,REBOUNDS,1.6,1.19,🟡 5.0,1.9,1.9,0.83x,✅ Ativo
+Landry Shamet,New York Knicks,ASSISTS,1.2,1.17,🟡 5.0,1.4,1.4,0.83x,✅ Ativo
+Mikal Bridges,New York Knicks,POINTS,14.7,1.58,🟢 10.0,14.7,14.7,1.00x,✅ Ativo
+Mikal Bridges,New York Knicks,REBOUNDS,3.2,1.36,🟢 8.0,3.9,3.9,0.83x,✅ Ativo
+Mikal Bridges,New York Knicks,ASSISTS,3.2,1.36,🟢 8.0,3.8,3.8,0.83x,✅ Ativo
+Miles McBride,New York Knicks,POINTS,8,1.29,🟡 6.0,12.3,1.5,1.00x,✅ Ativo
+Miles McBride,New York Knicks,REBOUNDS,1.6,1.17,🔴 4.0,2.5,1,0.83x,✅ Ativo
+Miles McBride,New York Knicks,ASSISTS,1.8,1.19,🔴 4.0,2.7,1.5,0.83x,✅ Ativo
+Mitchell Robinson,New York Knicks,POINTS,5.9,1.28,🟡 7.0,5.4,6.6,1.00x,✅ Ativo
+Mitchell Robinson,New York Knicks,REBOUNDS,6.6,1.52,🟡 6.0,8.7,6.6,0.83x,✅ Ativo
+Mitchell Robinson,New York Knicks,ASSISTS,0.6,1.11,🔴 4.0,0.9,0.4,0.83x,✅ Ativo
+Mohamed Diawara,New York Knicks,POINTS,3.5,1.2,🟡 7.0,3.5,3.5,1.00x,✅ Ativo
+Mohamed Diawara,New York Knicks,REBOUNDS,1.1,1.16,🟡 6.0,1.3,1.3,0.83x,✅ Ativo
+Mohamed Diawara,New York Knicks,ASSISTS,0.6,1.13,🟡 6.0,0.7,0.7,0.83x,✅ Ativo
+OG Anunoby,New York Knicks,POINTS,16.7,1.64,🟢 10.0,16.7,16.7,1.00x,✅ Ativo
+OG Anunoby,New York Knicks,REBOUNDS,4.3,1.43,🟢 8.0,5.2,5.2,0.83x,✅ Ativo
+OG Anunoby,New York Knicks,ASSISTS,1.8,1.26,🟢 8.0,2.2,2.2,0.83x,✅ Ativo
+Pacome Dadiet,New York Knicks,POINTS,1.7,1.38,🔴 2.0,1.1,3.2,1.00x, ⚠️ QUESTIONABLE
+Pacome Dadiet,New York Knicks,REBOUNDS,0.7,1.32,🔴 1.0,0.8,1.4,0.83x, ⚠️ QUESTIONABLE
+Pacome Dadiet,New York Knicks,ASSISTS,0.2,1.24,🔴 1.0,0.4,0.2,0.83x, ⚠️ QUESTIONABLE
+Trey Jemison,New York Knicks,POINTS,0.6,1.19,🔴 3.0,0.8,0.4,1.00x,✅ Ativo
+Trey Jemison,New York Knicks,REBOUNDS,1.2,1.26,🔴 3.0,1.5,1.2,0.83x,✅ Ativo
+Trey Jemison,New York Knicks,ASSISTS,0.2,1.18,🔴 2.0,0.3,0.4,0.83x,✅ Ativo
+Tyler Kolek,New York Knicks,POINTS,4.4,1.23,🟡 7.0,4.4,4.4,1.00x,✅ Ativo
+Tyler Kolek,New York Knicks,REBOUNDS,1.3,1.17,🟡 6.0,1.6,1.6,0.83x,✅ Ativo
+Tyler Kolek,New York Knicks,ASSISTS,2.3,1.24,🟡 6.0,2.8,2.8,0.83x,✅ Ativo
+Aaron Holiday,Houston Rockets,POINTS,5.8,1.33,🟢 9.0,5.4,5.4,1.08x,✅ Ativo
+Aaron Holiday,Houston Rockets,REBOUNDS,0.9,1.16,🟡 7.0,0.9,0.9,1.00x,✅ Ativo
+Aaron Holiday,Houston Rockets,ASSISTS,0.8,1.13,🟡 6.0,1,1,0.83x,✅ Ativo
+Alperen Sengun,Houston Rockets,POINTS,20.6,1.75,🟢 10.0,20.6,20.6,1.00x,✅ Ativo
+Alperen Sengun,Houston Rockets,REBOUNDS,7.4,1.65,🟢 9.0,8.9,8.9,0.83x,✅ Ativo
+Alperen Sengun,Houston Rockets,ASSISTS,5.1,1.49,🟢 9.0,6.2,6.2,0.83x,✅ Ativo
+Amen Thompson,Houston Rockets,POINTS,19.3,1.72,🟢 10,17.9,17.9,1.08x,✅ Ativo
+Amen Thompson,Houston Rockets,REBOUNDS,7.8,1.69,🟢 10.0,7.8,7.8,1.00x,✅ Ativo
+Amen Thompson,Houston Rockets,ASSISTS,4.4,1.44,🟢 8.0,5.3,5.3,0.83x,✅ Ativo
+Clint Capela,Houston Rockets,POINTS,3.6,1.2,🟡 7.0,3.6,3.6,1.00x,✅ Ativo
+Clint Capela,Houston Rockets,REBOUNDS,3.8,1.34,🟡 6.0,4.6,4.6,0.83x,✅ Ativo
+Clint Capela,Houston Rockets,ASSISTS,0.6,1.13,🟡 6.0,0.7,0.7,0.83x,✅ Ativo
+Dorian Finney-Smith,Houston Rockets,POINTS,3,1.18,🟡 6.0,3.1,2.4,1.08x,✅ Ativo
+Dorian Finney-Smith,Houston Rockets,REBOUNDS,1.7,1.28,🔴 3.0,2.5,1.6,0.83x,✅ Ativo
+Dorian Finney-Smith,Houston Rockets,ASSISTS,1,1.27,🔴 3.0,1,1.4,0.83x,✅ Ativo
+Isaiah Crawford,Houston Rockets,POINTS,1.8,1.19,🔴 4.0,1.3,2.3,1.08x,✅ Ativo
+Isaiah Crawford,Houston Rockets,REBOUNDS,0.8,1.25,🔴 2.0,0.8,1.3,0.83x,✅ Ativo
+Isaiah Crawford,Houston Rockets,ASSISTS,0.2,1.1,🔴 4.0,0.3,0.3,0.83x,✅ Ativo
+JD Davison,Houston Rockets,POINTS,2.3,1.18,🟡 6.0,2.1,2.1,1.08x,✅ Ativo
+JD Davison,Houston Rockets,REBOUNDS,0.9,1.16,🟡 5.0,0.9,0.9,1.00x,✅ Ativo
+JD Davison,Houston Rockets,ASSISTS,0.9,1.14,🔴 4.0,1.1,1.1,0.83x,✅ Ativo
+Jabari Smith Jr.,Houston Rockets,POINTS,18.5,1.71,🟢 9.0,15.5,15.5,1.08x,✅ Ativo
+Jabari Smith Jr.,Houston Rockets,REBOUNDS,6.3,1.52,🟡 7.0,6.9,6.9,0.83x,✅ Ativo
+Jabari Smith Jr.,Houston Rockets,ASSISTS,1.7,1.2,🟡 6.0,1.9,1.9,0.83x,✅ Ativo
+Jae'Sean Tate,Houston Rockets,POINTS,2.8,1.19,🟡 7.0,2.6,2.6,1.08x,✅ Ativo
+Jae'Sean Tate,Houston Rockets,REBOUNDS,1.1,1.16,🟡 5.0,1.3,1.3,0.83x,✅ Ativo
+Jae'Sean Tate,Houston Rockets,ASSISTS,0.3,1.1,🟡 5.0,0.4,0.4,0.83x,✅ Ativo
+Jeff Green,Houston Rockets,POINTS,1.7,1.13,🔴 4.0,2.2,0.8,1.08x,✅ Ativo
+Jeff Green,Houston Rockets,REBOUNDS,0.7,1.25,🔴 2.0,0.7,1,0.83x,✅ Ativo
+Jeff Green,Houston Rockets,ASSISTS,0.2,1.21,🔴 2.0,0.2,0.4,0.83x,✅ Ativo
+Josh Okogie,Houston Rockets,POINTS,5,1.31,🟢 9.0,4.6,4.6,1.08x,✅ Ativo
+Josh Okogie,Houston Rockets,REBOUNDS,2.5,1.27,🟡 7.0,2.5,2.5,1.00x,✅ Ativo
+Josh Okogie,Houston Rockets,ASSISTS,0.7,1.14,🟡 6.0,0.8,0.8,0.83x,✅ Ativo
+Kevin Durant,Houston Rockets,POINTS,27.9,1.97,🟢 10,25.8,25.8,1.08x,✅ Ativo
+Kevin Durant,Houston Rockets,REBOUNDS,4.5,1.45,🟢 8.0,5.4,5.4,0.83x,✅ Ativo
+Kevin Durant,Houston Rockets,ASSISTS,3.9,1.41,🟢 8.0,4.7,4.7,0.83x,✅ Ativo
+Reed Sheppard,Houston Rockets,POINTS,14.8,1.59,🟢 10,13.7,13.7,1.08x,✅ Ativo
+Reed Sheppard,Houston Rockets,REBOUNDS,2.9,1.36,🟢 9.0,2.9,2.9,1.00x,✅ Ativo
+Reed Sheppard,Houston Rockets,ASSISTS,2.8,1.33,🟢 8.0,3.4,3.4,0.83x,✅ Ativo
+Tari Eason,Houston Rockets,POINTS,11.2,1.49,🟢 10,10.4,10.4,1.08x,✅ Ativo
+Tari Eason,Houston Rockets,REBOUNDS,5.2,1.5,🟢 9.0,6.3,6.3,0.83x,✅ Ativo
+Tari Eason,Houston Rockets,ASSISTS,1.2,1.22,🟢 8.0,1.5,1.5,0.83x,✅ Ativo
+Andersson Garcia,Utah Jazz,POINTS,5.2,1.25,🟡 5.0,5.2,5.2,1.00x,✅ Ativo
+Andersson Garcia,Utah Jazz,REBOUNDS,7,1.56,🔴 4.0,8.4,8.4,0.83x,✅ Ativo
+Andersson Garcia,Utah Jazz,ASSISTS,2.3,1.34,🔴 3.0,2.8,2.8,0.83x,✅ Ativo
+Blake Hinson,Utah Jazz,POINTS,11.3,1.43,🟡 7.0,10.6,12.4,1.00x,✅ Ativo
+Blake Hinson,Utah Jazz,REBOUNDS,1.7,1.19,🟡 5.0,2.2,1.8,0.83x,✅ Ativo
+Blake Hinson,Utah Jazz,ASSISTS,0.8,1.15,🔴 4.0,0.8,1.4,0.83x,✅ Ativo
+Brice Sensabaugh,Utah Jazz,POINTS,14.5,1.57,🟢 10.0,14.5,14.5,1.00x,✅ Ativo
+Brice Sensabaugh,Utah Jazz,REBOUNDS,2.6,1.32,🟢 8.0,3.1,3.1,0.83x,✅ Ativo
+Brice Sensabaugh,Utah Jazz,ASSISTS,1.5,1.25,🟢 8.0,1.8,1.8,0.83x,✅ Ativo
+Cody Williams,Utah Jazz,POINTS,8.2,1.39,🟢 8.0,8.2,8.2,1.00x,✅ Ativo
+Cody Williams,Utah Jazz,REBOUNDS,2.3,1.24,🟡 6.0,2.8,2.8,0.83x,✅ Ativo
+Cody Williams,Utah Jazz,ASSISTS,1.5,1.19,🟡 6.0,1.8,1.8,0.83x,✅ Ativo
+John Konchar,Utah Jazz,POINTS,5.4,1.25,🟡 6.0,5.4,5.4,1.00x,✅ Ativo
+John Konchar,Utah Jazz,REBOUNDS,4.1,1.36,🔴 4.0,5,5,0.83x,✅ Ativo
+John Konchar,Utah Jazz,ASSISTS,2,1.22,🔴 4.0,2.4,2.4,0.83x,✅ Ativo
+Kevin Love,Utah Jazz,POINTS,6.6,1.29,🟡 7.0,6.7,6.5,1.00x,✅ Ativo
+Kevin Love,Utah Jazz,REBOUNDS,4.9,1.42,🟡 5.0,5.8,6,0.83x,✅ Ativo
+Kevin Love,Utah Jazz,ASSISTS,1.2,1.25,🔴 3.0,1.8,1,0.83x,✅ Ativo
+Kyle Filipowski,Utah Jazz,POINTS,11.3,1.48,🟢 10.0,11.3,11.3,1.00x,✅ Ativo
+Kyle Filipowski,Utah Jazz,REBOUNDS,5.9,1.54,🟢 9.0,7.1,7.1,0.83x,✅ Ativo
+Kyle Filipowski,Utah Jazz,ASSISTS,2.1,1.29,🟢 8.0,2.5,2.5,0.83x,✅ Ativo
+Oscar Tshiebwe,Utah Jazz,POINTS,5.8,1.26,🟡 6.0,6.1,6.1,0.95x,✅ Ativo
+Oscar Tshiebwe,Utah Jazz,REBOUNDS,4.5,1.39,🔴 4.0,5.4,5.4,0.83x,✅ Ativo
+Oscar Tshiebwe,Utah Jazz,ASSISTS,0.8,1.13,🔴 4.0,1,1,0.83x,✅ Ativo
+Svi Mykhailiuk,Utah Jazz,POINTS,11.3,1.45,🔴 4.0,9.2,14.5,1.00x,✅ Ativo
+Svi Mykhailiuk,Utah Jazz,REBOUNDS,2,1.22,🔴 4.0,2.4,2.5,0.83x,✅ Ativo
+Svi Mykhailiuk,Utah Jazz,ASSISTS,1.4,1.27,🔴 3.0,1.9,1.5,0.83x,✅ Ativo
+Cedric Coward,Memphis Grizzlies,POINTS,12.7,1.52,🟢 10.0,13.4,13.4,0.95x,✅ Ativo
+Cedric Coward,Memphis Grizzlies,REBOUNDS,4.9,1.48,🟢 8.0,5.9,5.9,0.83x,✅ Ativo
+Cedric Coward,Memphis Grizzlies,ASSISTS,2.3,1.3,🟢 8.0,2.8,2.8,0.83x,✅ Ativo
+DeJon Jarreau,Memphis Grizzlies,POINTS,8.6,1.35,🟡 7.0,8,8,1.08x,✅ Ativo
+DeJon Jarreau,Memphis Grizzlies,REBOUNDS,4.4,1.39,🟡 5.0,4.6,4.6,0.95x,✅ Ativo
+DeJon Jarreau,Memphis Grizzlies,ASSISTS,2.7,1.27,🔴 4.0,3.3,3.3,0.83x,✅ Ativo
+GG Jackson,Memphis Grizzlies,POINTS,11.6,1.49,🟢 10.0,12.2,12.2,0.95x,✅ Ativo
+GG Jackson,Memphis Grizzlies,REBOUNDS,3.5,1.38,🟢 8.0,4.2,4.2,0.83x,✅ Ativo
+GG Jackson,Memphis Grizzlies,ASSISTS,1.2,1.22,🟢 8.0,1.5,1.5,0.83x,✅ Ativo
+Jahmai Mashack,Memphis Grizzlies,POINTS,6.3,1.29,🟡 7.0,5.8,5.8,1.08x,✅ Ativo
+Jahmai Mashack,Memphis Grizzlies,REBOUNDS,2.2,1.24,🟡 5.0,2.3,2.3,0.95x,✅ Ativo
+Jahmai Mashack,Memphis Grizzlies,ASSISTS,1.1,1.16,🔴 4.0,1.3,1.3,0.83x,✅ Ativo
+Javon Small,Memphis Grizzlies,POINTS,10,1.45,🟢 8.0,9.3,9.3,1.08x,✅ Ativo
+Javon Small,Memphis Grizzlies,REBOUNDS,2.9,1.29,🟡 6.0,3.1,3.1,0.95x,✅ Ativo
+Javon Small,Memphis Grizzlies,ASSISTS,3.1,1.29,🟡 5.0,3.7,3.7,0.83x,✅ Ativo
+Kentavious Caldwell-Pope,Memphis Grizzlies,POINTS,9.7,1.45,🟢 8.0,8.4,10,1.08x,✅ Ativo
+Kentavious Caldwell-Pope,Memphis Grizzlies,REBOUNDS,2.4,1.26,🟡 7.0,2.5,2.6,0.95x,✅ Ativo
+Kentavious Caldwell-Pope,Memphis Grizzlies,ASSISTS,1.9,1.2,🔴 4.0,2.7,1.8,0.83x,✅ Ativo
+Olivier-Maxence Prosper,Memphis Grizzlies,POINTS,9.2,1.42,🟢 8.0,9.7,9.7,0.95x,✅ Ativo
+Olivier-Maxence Prosper,Memphis Grizzlies,REBOUNDS,2.9,1.28,🟡 6.0,3.5,3.5,0.83x,✅ Ativo
+Olivier-Maxence Prosper,Memphis Grizzlies,ASSISTS,0.8,1.13,🟡 6.0,1,1,0.83x,✅ Ativo
+Rayan Rupert,Memphis Grizzlies,POINTS,10.4,1.46,🟢 9.0,10.1,8.8,1.08x,✅ Ativo
+Rayan Rupert,Memphis Grizzlies,REBOUNDS,4.7,1.41,🟡 6.0,5.3,4.4,0.95x,✅ Ativo
+Rayan Rupert,Memphis Grizzlies,ASSISTS,1.1,1.17,🟡 5.0,1.2,1.4,0.83x,✅ Ativo
+Taylor Hendricks,Memphis Grizzlies,POINTS,7.7,1.37,🟡 5.0,10.4,7,0.95x, ⚠️ QUESTIONABLE
+Taylor Hendricks,Memphis Grizzlies,REBOUNDS,3.5,1.39,🟡 5.0,4.7,4.6,0.83x, ⚠️ QUESTIONABLE
+Taylor Hendricks,Memphis Grizzlies,ASSISTS,0.8,1.3,🔴 3.0,1.3,0.8,0.83x, ⚠️ QUESTIONABLE
+Tyler Burton,Memphis Grizzlies,POINTS,10.3,1.45,🟢 8.0,10.8,10.8,0.95x,✅ Ativo
+Tyler Burton,Memphis Grizzlies,REBOUNDS,3.5,1.32,🟡 6.0,4.2,4.2,0.83x,✅ Ativo
+Tyler Burton,Memphis Grizzlies,ASSISTS,0.8,1.13,🟡 6.0,1,1,0.83x,✅ Ativo
+Walter Clayton Jr.,Memphis Grizzlies,POINTS,8.6,1.42,🟡 6.0,8.9,8.9,1.08x, ⚠️ QUESTIONABLE
+Walter Clayton Jr.,Memphis Grizzlies,REBOUNDS,1.8,1.29,🔴 4.0,2.1,2.1,0.95x, ⚠️ QUESTIONABLE
+Walter Clayton Jr.,Memphis Grizzlies,ASSISTS,4.1,1.53,🔴 3.0,5.6,5.6,0.83x, ⚠️ QUESTIONABLE
+AJ Lawson,Toronto Raptors,POINTS,4.5,1.23,🟡 5.0,4.3,4.3,1.04x,✅ Ativo
+AJ Lawson,Toronto Raptors,REBOUNDS,1.7,1.22,🟡 5.0,1.7,1.7,1.00x,✅ Ativo
+AJ Lawson,Toronto Raptors,ASSISTS,0.2,1.1,🔴 4.0,0.3,0.3,0.83x,✅ Ativo
+Alijah Martin,Toronto Raptors,POINTS,2.6,1.18,🟡 5.0,2.5,2.5,1.04x,✅ Ativo
+Alijah Martin,Toronto Raptors,REBOUNDS,1.1,1.17,🟡 5.0,1.1,1.1,1.00x,✅ Ativo
+Alijah Martin,Toronto Raptors,ASSISTS,0.4,1.11,🔴 4.0,0.5,0.5,0.83x,✅ Ativo
+Brandon Ingram,Toronto Raptors,POINTS,17.9,1.74,🟢 8.0,21.4,15.6,1.04x, ⚠️ QUESTIONABLE
+Brandon Ingram,Toronto Raptors,REBOUNDS,3.8,1.41,🟡 6.0,5.5,4.4,0.83x, ⚠️ QUESTIONABLE
+Brandon Ingram,Toronto Raptors,ASSISTS,2.2,1.29,🟡 5.0,3.6,1.8,0.83x, ⚠️ QUESTIONABLE
+Collin Murray-Boyles,Toronto Raptors,POINTS,8.5,1.41,🟢 8.0,8.2,8.2,1.04x,✅ Ativo
+Collin Murray-Boyles,Toronto Raptors,REBOUNDS,4.1,1.36,🟡 6.0,5,5,0.83x,✅ Ativo
+Collin Murray-Boyles,Toronto Raptors,ASSISTS,1.5,1.19,🟡 6.0,1.8,1.8,0.83x,✅ Ativo
+Garrett Temple,Toronto Raptors,POINTS,1.5,1.36,🔴 3.0,0.7,2.5,1.04x,✅ Ativo
+Garrett Temple,Toronto Raptors,REBOUNDS,0.6,1.29,🔴 3.0,0.4,1,1.00x,✅ Ativo
+Garrett Temple,Toronto Raptors,ASSISTS,0.5,1.26,🔴 2.0,0.4,1,0.83x,✅ Ativo
+Gradey Dick,Toronto Raptors,POINTS,7.9,1.35,🟡 6.0,6.2,9.6,1.04x,✅ Ativo
+Gradey Dick,Toronto Raptors,REBOUNDS,2,1.24,🟡 7.0,2,2,1.00x,✅ Ativo
+Gradey Dick,Toronto Raptors,ASSISTS,0.9,1.19,🔴 4.0,0.7,1.8,0.83x,✅ Ativo
+Ja'Kobe Walter,Toronto Raptors,POINTS,7.5,1.38,🟢 8.0,7.2,7.2,1.04x,✅ Ativo
+Ja'Kobe Walter,Toronto Raptors,REBOUNDS,2.5,1.27,🟡 7.0,2.5,2.5,1.00x,✅ Ativo
+Ja'Kobe Walter,Toronto Raptors,ASSISTS,1,1.15,🟡 6.0,1.2,1.2,0.83x,✅ Ativo
+Jakob Poeltl,Toronto Raptors,POINTS,10.8,1.47,🟢 9.0,10.8,10.8,1.00x,✅ Ativo
+Jakob Poeltl,Toronto Raptors,REBOUNDS,6.2,1.56,🟢 8.0,7.5,7.5,0.83x,✅ Ativo
+Jakob Poeltl,Toronto Raptors,ASSISTS,1.7,1.2,🟡 7.0,2.1,2.1,0.83x,✅ Ativo
+Jamal Shead,Toronto Raptors,POINTS,6.9,1.36,🟢 8.0,6.6,6.6,1.04x,✅ Ativo
+Jamal Shead,Toronto Raptors,REBOUNDS,1.8,1.22,🟡 7.0,1.8,1.8,1.00x,✅ Ativo
+Jamal Shead,Toronto Raptors,ASSISTS,4.5,1.39,🟡 6.0,5.4,5.4,0.83x,✅ Ativo
+Jamison Battle,Toronto Raptors,POINTS,4.1,1.32,🔴 4.0,3.3,6,1.04x, ⚠️ QUESTIONABLE
+Jamison Battle,Toronto Raptors,REBOUNDS,1.5,1.38,🔴 3.0,1.6,2.6,0.83x, ⚠️ QUESTIONABLE
+Jamison Battle,Toronto Raptors,ASSISTS,0.3,1.28,🔴 3.0,0.4,0.6,0.83x, ⚠️ QUESTIONABLE
+Jonathan Mogbo,Toronto Raptors,POINTS,2.5,1.23,🔴 4.0,1.6,3.6,1.04x,✅ Ativo
+Jonathan Mogbo,Toronto Raptors,REBOUNDS,1.7,1.31,🔴 3.0,1.8,2.6,0.83x,✅ Ativo
+Jonathan Mogbo,Toronto Raptors,ASSISTS,0.8,1.29,🔴 3.0,0.6,1.6,0.83x,✅ Ativo
+RJ Barrett,Toronto Raptors,POINTS,18.8,1.7,🟢 10,19.1,19.1,1.04x,✅ Ativo
+RJ Barrett,Toronto Raptors,REBOUNDS,4.1,1.42,🟢 9.0,5.3,5.3,0.83x,✅ Ativo
+RJ Barrett,Toronto Raptors,ASSISTS,2.6,1.32,🟢 9.0,3.3,3.3,0.83x,✅ Ativo
+Sandro Mamukelashvili,Toronto Raptors,POINTS,11.6,1.5,🟢 10.0,11.2,11.2,1.04x,✅ Ativo
+Sandro Mamukelashvili,Toronto Raptors,REBOUNDS,4.1,1.42,🟢 8.0,4.9,4.9,0.83x,✅ Ativo
+Sandro Mamukelashvili,Toronto Raptors,ASSISTS,1.6,1.25,🟢 8.0,1.9,1.9,0.83x,✅ Ativo
+Scottie Barnes,Toronto Raptors,POINTS,18.8,1.72,🟡 7.0,18.3,18.3,1.04x, ⚠️ QUESTIONABLE
+Scottie Barnes,Toronto Raptors,REBOUNDS,6.2,1.58,🟡 6.0,7.6,7.6,0.83x, ⚠️ QUESTIONABLE
+Scottie Barnes,Toronto Raptors,ASSISTS,4.8,1.49,🟡 5.0,5.9,5.9,0.83x, ⚠️ QUESTIONABLE
+Trayce Jackson-Davis,Toronto Raptors,POINTS,1.9,1.16,🟡 5.0,1.8,1.8,1.04x,✅ Ativo
+Trayce Jackson-Davis,Toronto Raptors,REBOUNDS,1.3,1.25,🔴 2.0,2.1,0.8,0.83x,✅ Ativo
+Trayce Jackson-Davis,Toronto Raptors,ASSISTS,0.4,1.21,🔴 3.0,0.5,0.6,0.83x,✅ Ativo
+Amari Williams,Boston Celtics,POINTS,1.3,1.14,🟡 5.0,1.3,1.2,1.00x,✅ Ativo
+Amari Williams,Boston Celtics,REBOUNDS,1.6,1.19,🔴 4.0,1.9,1.8,0.83x,✅ Ativo
+Amari Williams,Boston Celtics,ASSISTS,0.4,1.23,🔴 2.0,0.4,0.6,0.83x,✅ Ativo
+Baylor Scheierman,Boston Celtics,POINTS,5.4,1.32,🟢 9.0,5,5,1.08x,✅ Ativo
+Baylor Scheierman,Boston Celtics,REBOUNDS,3.6,1.35,🟡 7.0,3.5,3.5,1.04x,✅ Ativo
+Baylor Scheierman,Boston Celtics,ASSISTS,1.2,1.16,🟡 6.0,1.5,1.5,0.83x,✅ Ativo
+Chris Boucher,Boston Celtics,POINTS,2.3,1.17,🔴 4.0,2.3,2.3,1.00x,✅ Ativo
+Chris Boucher,Boston Celtics,REBOUNDS,1.7,1.3,🔴 3.0,2,2,0.83x,✅ Ativo
+Chris Boucher,Boston Celtics,ASSISTS,0.2,1.18,🔴 3.0,0.3,0.3,0.83x,✅ Ativo
+Dalano Banton,Boston Celtics,POINTS,1.3,1.14,🔴 4.0,1.3,1.3,1.00x,✅ Ativo
+Dalano Banton,Boston Celtics,ASSISTS,0.6,1.23,🔴 3.0,0.7,0.7,0.83x,✅ Ativo
+Derrick White,Boston Celtics,POINTS,18.1,1.68,🟢 10,16.8,16.8,1.08x,✅ Ativo
+Derrick White,Boston Celtics,REBOUNDS,4.7,1.48,🟢 9.0,4.5,4.5,1.04x,✅ Ativo
+Derrick White,Boston Celtics,ASSISTS,4.6,1.46,🟢 8.0,5.5,5.5,0.83x,✅ Ativo
+Jaylen Brown,Boston Celtics,POINTS,31.1,2.06,🟢 10,28.8,28.8,1.08x,✅ Ativo
+Jaylen Brown,Boston Celtics,REBOUNDS,7.3,1.66,🟢 10.0,7,7,1.04x,✅ Ativo
+Jaylen Brown,Boston Celtics,ASSISTS,4.4,1.44,🟢 8.0,5.3,5.3,0.83x,✅ Ativo
+Jayson Tatum,Boston Celtics,POINTS,21.3,1.77,🟢 8.0,21.3,21.3,1.00x,✅ Ativo
+Jayson Tatum,Boston Celtics,REBOUNDS,8.1,1.63,🟡 7.0,9.8,9.8,0.83x,✅ Ativo
+Jayson Tatum,Boston Celtics,ASSISTS,4,1.35,🟡 6.0,4.8,4.8,0.83x,✅ Ativo
+John Tonje,Boston Celtics,POINTS,0.4,1.19,🔴 4.0,0.4,0.4,1.08x, ⚠️ QUESTIONABLE
+John Tonje,Boston Celtics,REBOUNDS,0.4,1.31,🔴 3.0,0.4,0.4,1.04x, ⚠️ QUESTIONABLE
+John Tonje,Boston Celtics,ASSISTS,0.2,1.29,🔴 2.0,0.2,0.2,0.83x, ⚠️ QUESTIONABLE
+Jordan Walsh,Boston Celtics,POINTS,5.6,1.33,🟢 9.0,5.2,5.2,1.08x,✅ Ativo
+Jordan Walsh,Boston Celtics,REBOUNDS,4.3,1.4,🟡 7.0,4.1,4.1,1.04x,✅ Ativo
+Jordan Walsh,Boston Celtics,ASSISTS,0.7,1.14,🟡 6.0,0.8,0.8,0.83x,✅ Ativo
+Luka Garza,Boston Celtics,POINTS,7.4,1.37,🟢 8.0,7.8,7.8,0.95x,✅ Ativo
+Luka Garza,Boston Celtics,REBOUNDS,3.2,1.3,🟡 6.0,3.9,3.9,0.83x,✅ Ativo
+Luka Garza,Boston Celtics,ASSISTS,0.7,1.13,🟡 6.0,0.9,0.9,0.83x,✅ Ativo
+Max Shulga,Boston Celtics,POINTS,0.4,1.11,🟡 5.0,0.4,0.4,1.08x,✅ Ativo
+Max Shulga,Boston Celtics,REBOUNDS,0.1,1.11,🔴 4.0,0.1,0.1,1.04x,✅ Ativo
+Max Shulga,Boston Celtics,ASSISTS,0.2,1.21,🔴 3.0,0.2,0.2,0.83x,✅ Ativo
+Neemias Queta,Boston Celtics,POINTS,9.5,1.43,🟢 10.0,10,10,0.95x,✅ Ativo
+Neemias Queta,Boston Celtics,REBOUNDS,7,1.62,🟢 9.0,8.4,8.4,0.83x,✅ Ativo
+Neemias Queta,Boston Celtics,ASSISTS,1.3,1.23,🟢 8.0,1.6,1.6,0.83x,✅ Ativo
+Payton Pritchard,Boston Celtics,POINTS,18.4,1.69,🟢 10,17,17,1.08x,✅ Ativo
+Payton Pritchard,Boston Celtics,REBOUNDS,4.2,1.45,🟢 9.0,4,4,1.04x,✅ Ativo
+Payton Pritchard,Boston Celtics,ASSISTS,4.2,1.43,🟢 8.0,5.1,5.1,0.83x,✅ Ativo
+Ron Harper Jr.,Boston Celtics,POINTS,5.3,1.3,🟡 5.0,3.6,6.8,1.08x,✅ Ativo
+Ron Harper Jr.,Boston Celtics,REBOUNDS,1.8,1.23,🟡 5.0,1.6,1.8,1.04x,✅ Ativo
+Ron Harper Jr.,Boston Celtics,ASSISTS,0.6,1.24,🔴 2.0,0.6,0.8,0.83x,✅ Ativo
+Sam Hauser,Boston Celtics,POINTS,9.1,1.42,🟢 8.0,9.1,9.1,1.00x,✅ Ativo
+Sam Hauser,Boston Celtics,REBOUNDS,3.2,1.3,🟡 6.0,3.8,3.8,0.83x,✅ Ativo
+Sam Hauser,Boston Celtics,ASSISTS,1.2,1.17,🟡 6.0,1.4,1.4,0.83x,✅ Ativo
+A.J. Green,Milwaukee Bucks,POINTS,9.7,1.44,🟢 8.0,9.7,9.7,1.00x,✅ Ativo
+A.J. Green,Milwaukee Bucks,REBOUNDS,2.7,1.28,🟡 7.0,2.7,2.7,1.00x,✅ Ativo
+A.J. Green,Milwaukee Bucks,ASSISTS,1.6,1.19,🟡 6.0,1.9,1.9,0.83x,✅ Ativo
+Andre Jackson Jr.,Milwaukee Bucks,POINTS,2.1,1.16,🟡 6.0,2.1,2.1,1.00x,✅ Ativo
+Andre Jackson Jr.,Milwaukee Bucks,REBOUNDS,1.4,1.2,🟡 6.0,1.4,1.4,1.00x,✅ Ativo
+Andre Jackson Jr.,Milwaukee Bucks,ASSISTS,0.7,1.13,🟡 5.0,0.9,0.9,0.83x,✅ Ativo
+Cam Thomas,Milwaukee Bucks,POINTS,10.3,1.45,🟢 8.0,10.7,9.8,1.00x,✅ Ativo
+Cam Thomas,Milwaukee Bucks,REBOUNDS,1.4,1.18,🟡 5.0,1.6,1,1.00x,✅ Ativo
+Cam Thomas,Milwaukee Bucks,ASSISTS,1.9,1.23,🔴 4.0,1.9,3,0.83x,✅ Ativo
+Cormac Ryan,Milwaukee Bucks,POINTS,8.1,1.4,🔴 4.0,9,9,1.00x, ⚠️ QUESTIONABLE
+Cormac Ryan,Milwaukee Bucks,REBOUNDS,0.5,1.3,🔴 3.0,0.6,0.6,1.00x, ⚠️ QUESTIONABLE
+Cormac Ryan,Milwaukee Bucks,ASSISTS,0.7,1.3,🔴 2.0,1,1,0.83x, ⚠️ QUESTIONABLE
+Gary Harris,Milwaukee Bucks,POINTS,3,1.38,🔴 3.0,2.6,4.5,1.00x, ⚠️ QUESTIONABLE
+Gary Harris,Milwaukee Bucks,REBOUNDS,0.8,1.3,🔴 3.0,1.2,0.5,1.00x, ⚠️ QUESTIONABLE
+Gary Harris,Milwaukee Bucks,ASSISTS,0.7,1.2,🔴 4.0,1,1,0.83x, ⚠️ QUESTIONABLE
+Gary Trent Jr.,Milwaukee Bucks,POINTS,7.4,1.38,🟡 7.0,8.2,8.2,1.00x, ⚠️ QUESTIONABLE
+Gary Trent Jr.,Milwaukee Bucks,REBOUNDS,0.9,1.23,🟡 6.0,1,1,1.00x, ⚠️ QUESTIONABLE
+Gary Trent Jr.,Milwaukee Bucks,ASSISTS,0.9,1.22,🟡 5.0,1.2,1.2,0.83x, ⚠️ QUESTIONABLE
+Jericho Sims,Milwaukee Bucks,POINTS,4.2,1.22,🟡 7.0,4.4,4.4,0.95x,✅ Ativo
+Jericho Sims,Milwaukee Bucks,REBOUNDS,4.4,1.38,🟡 6.0,5.3,5.3,0.83x,✅ Ativo
+Jericho Sims,Milwaukee Bucks,ASSISTS,1,1.15,🟡 6.0,1.2,1.2,0.83x,✅ Ativo
+Kyle Kuzma,Milwaukee Bucks,POINTS,11.6,1.56,🟢 9.0,13.2,12.4,1.00x, ⚠️ QUESTIONABLE
+Kyle Kuzma,Milwaukee Bucks,REBOUNDS,3,1.35,🟡 5.0,4.6,3.2,0.83x, ⚠️ QUESTIONABLE
+Kyle Kuzma,Milwaukee Bucks,ASSISTS,2.1,1.3,🟡 6.0,2.6,3,0.83x, ⚠️ QUESTIONABLE
+Mark Sears,Milwaukee Bucks,POINTS,3.1,1.19,🔴 4.0,3.1,3.1,1.00x,✅ Ativo
+Mark Sears,Milwaukee Bucks,REBOUNDS,0.3,1.12,🔴 4.0,0.3,0.3,1.00x,✅ Ativo
+Mark Sears,Milwaukee Bucks,ASSISTS,0.2,1.18,🔴 3.0,0.3,0.3,0.83x,✅ Ativo
+Myles Turner,Milwaukee Bucks,POINTS,9,1.47,🟢 8.0,11.9,8.4,0.95x, ⚠️ QUESTIONABLE
+Myles Turner,Milwaukee Bucks,REBOUNDS,3.6,1.39,🟡 6.0,5.3,4,0.83x, ⚠️ QUESTIONABLE
+Myles Turner,Milwaukee Bucks,ASSISTS,0.9,1.2,🟡 5.0,1.5,0.8,0.83x, ⚠️ QUESTIONABLE
+Ousmane Dieng,Milwaukee Bucks,POINTS,10.6,1.46,🟢 8.0,10.6,10.6,1.00x,✅ Ativo
+Ousmane Dieng,Milwaukee Bucks,REBOUNDS,3.5,1.32,🟡 6.0,4.2,4.2,0.83x,✅ Ativo
+Ousmane Dieng,Milwaukee Bucks,ASSISTS,2.6,1.26,🟡 6.0,3.1,3.1,0.83x,✅ Ativo
+Pete Nance,Milwaukee Bucks,POINTS,5.3,1.25,🟡 7.0,5.3,5.3,1.00x,✅ Ativo
+Pete Nance,Milwaukee Bucks,REBOUNDS,2.1,1.23,🟡 5.0,2.5,2.5,0.83x,✅ Ativo
+Pete Nance,Milwaukee Bucks,ASSISTS,0.7,1.13,🟡 5.0,0.9,0.9,0.83x,✅ Ativo
+Ryan Rollins,Milwaukee Bucks,POINTS,18.2,1.69,🟢 10.0,17.1,22.2,1.00x,✅ Ativo
+Ryan Rollins,Milwaukee Bucks,REBOUNDS,4.6,1.47,🟢 10.0,4.6,5.2,1.00x,✅ Ativo
+Ryan Rollins,Milwaukee Bucks,ASSISTS,4.6,1.45,🟢 9.0,5.6,6.2,0.83x,✅ Ativo
+Taurean Prince,Milwaukee Bucks,POINTS,7.2,1.49,🔴 3.0,7,9.4,1.00x, ⚠️ QUESTIONABLE
+Taurean Prince,Milwaukee Bucks,REBOUNDS,2.5,1.45,🔴 1.0,2.5,4.6,0.83x, ⚠️ QUESTIONABLE
+Taurean Prince,Milwaukee Bucks,ASSISTS,1.5,1.39,🔴 1.0,1.4,2.8,0.83x, ⚠️ QUESTIONABLE
+Thanasis Antetokounmpo,Milwaukee Bucks,POINTS,1.3,1.33,🔴 3.0,1.2,1.8,1.00x, ⚠️ QUESTIONABLE
+Thanasis Antetokounmpo,Milwaukee Bucks,REBOUNDS,1.2,1.39,🔴 2.0,0.9,2.4,0.83x, ⚠️ QUESTIONABLE
+Thanasis Antetokounmpo,Milwaukee Bucks,ASSISTS,0.5,1.38,🔴 2.0,0.3,1.2,0.83x, ⚠️ QUESTIONABLE
+AJ Johnson,Dallas Mavericks,POINTS,2.9,1.19,🟡 5.0,2.8,3,1.00x,✅ Ativo
+AJ Johnson,Dallas Mavericks,REBOUNDS,0.8,1.13,🔴 4.0,1,1,0.83x,✅ Ativo
+AJ Johnson,Dallas Mavericks,ASSISTS,1.1,1.27,🔴 2.0,1.1,1.6,0.83x,✅ Ativo
+Brandon Williams,Dallas Mavericks,POINTS,11.5,1.48,🟢 10.0,12.9,10.8,1.00x,✅ Ativo
+Brandon Williams,Dallas Mavericks,REBOUNDS,2.1,1.27,🟢 8.0,2.9,2.2,0.83x,✅ Ativo
+Brandon Williams,Dallas Mavericks,ASSISTS,3.2,1.36,🟢 9.0,3.8,4.2,0.83x,✅ Ativo
+Cooper Flagg,Dallas Mavericks,POINTS,21.2,1.77,🟢 10.0,20.3,22.6,1.00x,✅ Ativo
+Cooper Flagg,Dallas Mavericks,REBOUNDS,5.2,1.49,🟢 9.0,6.6,5.8,0.83x,✅ Ativo
+Cooper Flagg,Dallas Mavericks,ASSISTS,3.7,1.39,🟢 8.0,4.5,4.4,0.83x,✅ Ativo
+Daniel Gafford,Dallas Mavericks,POINTS,10.9,1.5,🟡 5.0,9.6,15.8,1.00x, ⚠️ QUESTIONABLE
+Daniel Gafford,Dallas Mavericks,REBOUNDS,5.5,1.53,🟡 5.0,6.9,8,0.83x, ⚠️ QUESTIONABLE
+Daniel Gafford,Dallas Mavericks,ASSISTS,1,1.34,🔴 3.0,1.1,1.6,0.83x, ⚠️ QUESTIONABLE
+Dwight Powell,Dallas Mavericks,POINTS,4,1.23,🟡 5.0,3.4,5,1.00x,✅ Ativo
+Dwight Powell,Dallas Mavericks,REBOUNDS,3.2,1.3,🟡 6.0,3.8,4,0.83x,✅ Ativo
+Dwight Powell,Dallas Mavericks,ASSISTS,0.7,1.13,🟡 6.0,0.9,1,0.83x,✅ Ativo
+Jeremiah Robinson-Earl,Dallas Mavericks,POINTS,4.4,1.23,🔴 4.0,4.4,4.4,1.00x,✅ Ativo
+Jeremiah Robinson-Earl,Dallas Mavericks,REBOUNDS,2.5,1.35,🔴 3.0,3,3,0.83x,✅ Ativo
+Jeremiah Robinson-Earl,Dallas Mavericks,ASSISTS,0.5,1.22,🔴 3.0,0.6,0.6,0.83x,✅ Ativo
+John Poulakidas,Dallas Mavericks,POINTS,6.3,1.28,🟡 5.0,6.3,6.3,1.00x,✅ Ativo
+John Poulakidas,Dallas Mavericks,REBOUNDS,1.9,1.31,🔴 3.0,2.3,2.3,0.83x,✅ Ativo
+John Poulakidas,Dallas Mavericks,ASSISTS,0.5,1.22,🔴 3.0,0.6,0.6,0.83x,✅ Ativo
+Khris Middleton,Dallas Mavericks,POINTS,9.6,1.36,🟡 6.0,11,7.6,1.00x,✅ Ativo
+Khris Middleton,Dallas Mavericks,REBOUNDS,2.9,1.28,🟡 6.0,3.7,3.2,0.83x,✅ Ativo
+Khris Middleton,Dallas Mavericks,ASSISTS,1.9,1.21,🟡 6.0,2.4,2.2,0.83x,✅ Ativo
+Klay Thompson,Dallas Mavericks,POINTS,9.7,1.5,🟢 8.0,11.7,9.4,1.00x, ⚠️ QUESTIONABLE
+Klay Thompson,Dallas Mavericks,REBOUNDS,1.2,1.22,🟡 5.0,2.1,1,0.83x, ⚠️ QUESTIONABLE
+Klay Thompson,Dallas Mavericks,ASSISTS,1.1,1.23,🟡 7.0,1.4,1.6,0.83x, ⚠️ QUESTIONABLE
+Max Christie,Dallas Mavericks,POINTS,10.1,1.43,🟢 8.0,12.2,7,1.00x,✅ Ativo
+Max Christie,Dallas Mavericks,REBOUNDS,2.5,1.25,🟡 7.0,3.3,2.6,0.83x,✅ Ativo
+Max Christie,Dallas Mavericks,ASSISTS,1.4,1.17,🟡 6.0,2,1.2,0.83x,✅ Ativo
+Miles Kelly,Dallas Mavericks,POINTS,3.7,1.33,🔴 3.0,3.1,4.7,1.00x,✅ Ativo
+Miles Kelly,Dallas Mavericks,REBOUNDS,1.9,1.34,🔴 2.0,1.7,3.3,0.83x,✅ Ativo
+Miles Kelly,Dallas Mavericks,ASSISTS,1.1,1.3,🔴 2.0,0.9,2,0.83x,✅ Ativo
+Moussa Cisse,Dallas Mavericks,POINTS,4,1.22,🟡 5.0,3.9,4.7,0.95x,✅ Ativo
+Moussa Cisse,Dallas Mavericks,REBOUNDS,6.1,1.53,🔴 4.0,5.1,10.7,0.83x,✅ Ativo
+Moussa Cisse,Dallas Mavericks,ASSISTS,0.2,1.21,🔴 3.0,0.2,0.3,0.83x,✅ Ativo
+Naji Marshall,Dallas Mavericks,POINTS,14.8,1.66,🟢 9.0,15.5,17.8,1.00x, ⚠️ QUESTIONABLE
+Naji Marshall,Dallas Mavericks,REBOUNDS,3.2,1.37,🟡 6.0,4.7,3.6,0.83x, ⚠️ QUESTIONABLE
+Naji Marshall,Dallas Mavericks,ASSISTS,2.7,1.35,🟡 6.0,3.3,4.2,0.83x, ⚠️ QUESTIONABLE
+Ryan Nembhard,Dallas Mavericks,POINTS,5.8,1.26,🟡 7.0,6.3,5,1.00x,✅ Ativo
+Ryan Nembhard,Dallas Mavericks,REBOUNDS,1.4,1.17,🟡 5.0,1.9,1.4,0.83x,✅ Ativo
+Ryan Nembhard,Dallas Mavericks,ASSISTS,3.7,1.33,🟡 5.0,4.9,4,0.83x,✅ Ativo
+Tyler Smith,Dallas Mavericks,POINTS,2.9,1.18,🔴 4.0,2.9,2.9,1.00x,✅ Ativo
+Tyler Smith,Dallas Mavericks,REBOUNDS,2.4,1.35,🔴 3.0,2.9,2.9,0.83x,✅ Ativo
+Tyler Smith,Dallas Mavericks,ASSISTS,0.2,1.18,🔴 3.0,0.3,0.3,0.83x,✅ Ativo
+Desmond Bane,Orlando Magic,POINTS,21.9,1.79,🟢 10,20.3,20.3,1.08x,✅ Ativo
+Desmond Bane,Orlando Magic,REBOUNDS,3.4,1.37,🟢 8.0,4.1,4.1,0.83x,✅ Ativo
+Desmond Bane,Orlando Magic,ASSISTS,3.5,1.38,🟢 8.0,4.2,4.2,0.83x,✅ Ativo
+Franz Wagner,Orlando Magic,POINTS,21.8,1.79,🟢 8.0,21,21,1.04x,✅ Ativo
+Franz Wagner,Orlando Magic,REBOUNDS,4.6,1.39,🟡 6.0,5.6,5.6,0.83x,✅ Ativo
+Franz Wagner,Orlando Magic,ASSISTS,3,1.29,🟡 6.0,3.6,3.6,0.83x,✅ Ativo
+Goga Bitadze,Orlando Magic,POINTS,5.8,1.33,🟢 8.0,5.6,5.6,1.04x,✅ Ativo
+Goga Bitadze,Orlando Magic,REBOUNDS,3.9,1.35,🟡 6.0,4.7,4.7,0.83x,✅ Ativo
+Goga Bitadze,Orlando Magic,ASSISTS,1.1,1.16,🟡 6.0,1.3,1.3,0.83x,✅ Ativo
+Jalen Suggs,Orlando Magic,POINTS,14.8,1.59,🟢 10,13.7,13.7,1.08x,✅ Ativo
+Jalen Suggs,Orlando Magic,REBOUNDS,3.2,1.36,🟢 8.0,3.9,3.9,0.83x,✅ Ativo
+Jalen Suggs,Orlando Magic,ASSISTS,4.4,1.44,🟢 8.0,5.3,5.3,0.83x,✅ Ativo
+Jamal Cain,Orlando Magic,POINTS,5.1,1.25,🟡 7.0,4.9,4.9,1.04x,✅ Ativo
+Jamal Cain,Orlando Magic,REBOUNDS,1.3,1.17,🟡 5.0,1.6,1.6,0.83x,✅ Ativo
+Jamal Cain,Orlando Magic,ASSISTS,0.5,1.12,🟡 5.0,0.6,0.6,0.83x,✅ Ativo
+Jase Richardson,Orlando Magic,POINTS,5,1.31,🟢 9.0,4.6,4.6,1.08x,✅ Ativo
+Jase Richardson,Orlando Magic,REBOUNDS,1,1.15,🟡 6.0,1.2,1.2,0.83x,✅ Ativo
+Jase Richardson,Orlando Magic,ASSISTS,1,1.15,🟡 6.0,1.2,1.2,0.83x,✅ Ativo
+Jett Howard,Orlando Magic,POINTS,5.9,1.34,🟢 9.0,5.5,5.5,1.08x,✅ Ativo
+Jett Howard,Orlando Magic,REBOUNDS,1.3,1.17,🟡 6.0,1.6,1.6,0.83x,✅ Ativo
+Jett Howard,Orlando Magic,ASSISTS,0.7,1.14,🟡 6.0,0.8,0.8,0.83x,✅ Ativo
+Jevon Carter,Orlando Magic,POINTS,8,1.34,🟡 7.0,7.4,7.4,1.08x,✅ Ativo
+Jevon Carter,Orlando Magic,REBOUNDS,1.7,1.2,🔴 4.0,2.1,2.1,0.83x,✅ Ativo
+Jevon Carter,Orlando Magic,ASSISTS,1.9,1.21,🔴 4.0,2.3,2.3,0.83x,✅ Ativo
+Moritz Wagner,Orlando Magic,POINTS,7.4,1.32,🟡 7.0,7.1,7.1,1.04x,✅ Ativo
+Moritz Wagner,Orlando Magic,REBOUNDS,2.7,1.27,🟡 5.0,3.2,3.2,0.83x,✅ Ativo
+Moritz Wagner,Orlando Magic,ASSISTS,0.6,1.13,🟡 5.0,0.7,0.7,0.83x,✅ Ativo
+Noah Penda,Orlando Magic,POINTS,4.3,1.23,🟡 7.0,4.1,4.1,1.04x,✅ Ativo
+Noah Penda,Orlando Magic,REBOUNDS,2.8,1.27,🟡 6.0,3.4,3.4,0.83x,✅ Ativo
+Noah Penda,Orlando Magic,ASSISTS,1,1.15,🟡 6.0,1.2,1.2,0.83x,✅ Ativo
+Orlando Robinson,Orlando Magic,POINTS,1.9,1.16,🔴 4.0,1.8,1.8,1.04x,✅ Ativo
+Orlando Robinson,Orlando Magic,REBOUNDS,0.8,1.23,🔴 3.0,1,1,0.83x,✅ Ativo
+Orlando Robinson,Orlando Magic,ASSISTS,0.7,1.24,🔴 3.0,0.8,0.8,0.83x,✅ Ativo
+Paolo Banchero,Orlando Magic,POINTS,23.3,1.83,🟢 10.0,22.4,22.4,1.04x,✅ Ativo
+Paolo Banchero,Orlando Magic,REBOUNDS,6.9,1.61,🟢 9.0,8.3,8.3,0.83x,✅ Ativo
+Paolo Banchero,Orlando Magic,ASSISTS,4.2,1.43,🟢 8.0,5.1,5.1,0.83x,✅ Ativo
+Tristan Da Silva,Orlando Magic,POINTS,10.4,1.46,🟢 10.0,10,10,1.04x,✅ Ativo
+Tristan Da Silva,Orlando Magic,REBOUNDS,3.1,1.35,🟢 8.0,3.7,3.7,0.83x,✅ Ativo
+Tristan Da Silva,Orlando Magic,ASSISTS,1.2,1.22,🟢 8.0,1.5,1.5,0.83x,✅ Ativo
+Wendell Carter Jr.,Orlando Magic,POINTS,11.6,1.49,🟢 10,11.8,11.8,1.04x,✅ Ativo
+Wendell Carter Jr.,Orlando Magic,REBOUNDS,5.9,1.54,🟢 10.0,7.5,7.5,0.83x,✅ Ativo
+Wendell Carter Jr.,Orlando Magic,ASSISTS,1.6,1.25,🟢 9.0,2,2,0.83x,✅ Ativo
+DeAndre Jordan,New Orleans Pelicans,POINTS,4.7,1.24,🟡 5.0,4.4,4.6,1.04x,✅ Ativo
+DeAndre Jordan,New Orleans Pelicans,REBOUNDS,4.9,1.41,🔴 4.0,6.3,5.4,0.83x,✅ Ativo
+DeAndre Jordan,New Orleans Pelicans,ASSISTS,1,1.28,🔴 2.0,0.9,1.6,0.83x,✅ Ativo
+Derik Queen,New Orleans Pelicans,POINTS,11.9,1.5,🟢 10.0,11.4,11.4,1.04x,✅ Ativo
+Derik Queen,New Orleans Pelicans,REBOUNDS,5.6,1.52,🟢 9.0,6.8,6.8,0.83x,✅ Ativo
+Derik Queen,New Orleans Pelicans,ASSISTS,3.1,1.35,🟢 8.0,3.7,3.7,0.83x,✅ Ativo
+Herbert Jones,New Orleans Pelicans,POINTS,9,1.42,🟢 8.0,9,9,1.00x,✅ Ativo
+Herbert Jones,New Orleans Pelicans,REBOUNDS,2.8,1.27,🟡 6.0,3.4,3.4,0.83x,✅ Ativo
+Herbert Jones,New Orleans Pelicans,ASSISTS,2.3,1.24,🟡 6.0,2.8,2.8,0.83x,✅ Ativo
+Jeremiah Fears,New Orleans Pelicans,POINTS,14.1,1.57,🟢 10,13.1,13.1,1.08x,✅ Ativo
+Jeremiah Fears,New Orleans Pelicans,REBOUNDS,3.5,1.4,🟢 9.0,3.5,3.5,1.00x,✅ Ativo
+Jeremiah Fears,New Orleans Pelicans,ASSISTS,2.7,1.33,🟢 8.0,3.2,3.2,0.83x,✅ Ativo
+Jordan Hawkins,New Orleans Pelicans,POINTS,4.3,1.23,🟡 7.0,3.9,4.2,1.08x,✅ Ativo
+Jordan Hawkins,New Orleans Pelicans,REBOUNDS,1.5,1.2,🟡 6.0,1.5,1.4,1.00x,✅ Ativo
+Jordan Hawkins,New Orleans Pelicans,ASSISTS,0.6,1.13,🟡 5.0,0.7,0.6,0.83x,✅ Ativo
+Jordan Poole,New Orleans Pelicans,POINTS,11.3,1.47,🟢 8.0,12.9,7,1.08x,✅ Ativo
+Jordan Poole,New Orleans Pelicans,REBOUNDS,1.5,1.18,🟡 6.0,1.9,1,1.00x,✅ Ativo
+Jordan Poole,New Orleans Pelicans,ASSISTS,2.7,1.27,🟡 6.0,3,3.7,0.83x,✅ Ativo
+Karlo Matkovic,New Orleans Pelicans,POINTS,5.4,1.33,🟡 7.0,5.7,6.4,1.00x, ⚠️ QUESTIONABLE
+Karlo Matkovic,New Orleans Pelicans,REBOUNDS,2.7,1.34,🟡 5.0,3.7,3.2,0.83x, ⚠️ QUESTIONABLE
+Karlo Matkovic,New Orleans Pelicans,ASSISTS,0.5,1.28,🔴 3.0,0.8,0.4,0.83x, ⚠️ QUESTIONABLE
+Kevon Looney,New Orleans Pelicans,POINTS,2.7,1.18,🟡 5.0,2.7,2.7,1.00x,✅ Ativo
+Kevon Looney,New Orleans Pelicans,REBOUNDS,4.4,1.38,🔴 4.0,5.3,5.3,0.83x,✅ Ativo
+Kevon Looney,New Orleans Pelicans,ASSISTS,1.1,1.16,🔴 4.0,1.3,1.3,0.83x,✅ Ativo
+Micah Peavy,New Orleans Pelicans,POINTS,4,1.28,🟢 8.0,3.7,3.7,1.08x,✅ Ativo
+Micah Peavy,New Orleans Pelicans,REBOUNDS,1.8,1.22,🟡 7.0,1.8,1.8,1.00x,✅ Ativo
+Micah Peavy,New Orleans Pelicans,ASSISTS,0.7,1.13,🟡 6.0,0.9,0.9,0.83x,✅ Ativo
+Saddiq Bey,New Orleans Pelicans,POINTS,20.6,1.77,🟢 9.0,17.4,17.4,1.08x,✅ Ativo
+Saddiq Bey,New Orleans Pelicans,REBOUNDS,6.2,1.59,🟢 8.0,5.6,5.6,1.00x,✅ Ativo
+Saddiq Bey,New Orleans Pelicans,ASSISTS,2.3,1.25,🟡 6.0,2.5,2.5,0.83x,✅ Ativo
+Trey Alexander,New Orleans Pelicans,POINTS,3,1.19,🟡 5.0,2.8,2.8,1.08x,✅ Ativo
+Trey Alexander,New Orleans Pelicans,REBOUNDS,0.8,1.15,🔴 4.0,0.8,0.8,1.00x,✅ Ativo
+Trey Alexander,New Orleans Pelicans,ASSISTS,0.8,1.23,🔴 3.0,1,1,0.83x,✅ Ativo
+Trey Murphy III,New Orleans Pelicans,POINTS,21.6,1.78,🟢 10.0,21.6,21.6,1.00x,✅ Ativo
+Trey Murphy III,New Orleans Pelicans,REBOUNDS,4.7,1.46,🟢 8.0,5.7,5.7,0.83x,✅ Ativo
+Trey Murphy III,New Orleans Pelicans,ASSISTS,3.2,1.36,🟢 8.0,3.8,3.8,0.83x,✅ Ativo
+Yves Missi,New Orleans Pelicans,POINTS,5.7,1.33,🟢 8.0,5.5,5.5,1.04x,✅ Ativo
+Yves Missi,New Orleans Pelicans,REBOUNDS,4.7,1.4,🟡 6.0,5.7,5.7,0.83x,✅ Ativo
+Yves Missi,New Orleans Pelicans,ASSISTS,1,1.15,🟡 6.0,1.2,1.2,0.83x,✅ Ativo
+Zion Williamson,New Orleans Pelicans,POINTS,23.3,1.84,🟢 8.0,21.2,21.2,1.00x,✅ Ativo
+Zion Williamson,New Orleans Pelicans,REBOUNDS,5.2,1.44,🟡 7.0,5.7,5.7,0.83x,✅ Ativo
+Zion Williamson,New Orleans Pelicans,ASSISTS,2.9,1.29,🟡 6.0,3.2,3.2,0.83x,✅ Ativo
+Daeqwon Plowden,Sacramento Kings,POINTS,10.9,1.48,🟢 9.0,10.1,10.1,1.08x,✅ Ativo
+Daeqwon Plowden,Sacramento Kings,REBOUNDS,2.5,1.25,🟡 6.0,3,3,0.83x,✅ Ativo
+Daeqwon Plowden,Sacramento Kings,ASSISTS,0.9,1.14,🟡 6.0,1.1,1.1,0.83x,✅ Ativo
+DeMar DeRozan,Sacramento Kings,POINTS,19.1,1.71,🟢 10,18.6,18.6,1.08x,✅ Ativo
+DeMar DeRozan,Sacramento Kings,REBOUNDS,2.3,1.29,🟢 9.0,3,3,0.83x,✅ Ativo
+DeMar DeRozan,Sacramento Kings,ASSISTS,3.2,1.36,🟢 9.0,4.1,4.1,0.83x,✅ Ativo
+Devin Carter,Sacramento Kings,POINTS,8.7,1.42,🟢 8.0,8.1,8.1,1.08x,✅ Ativo
+Devin Carter,Sacramento Kings,REBOUNDS,2.4,1.25,🟡 5.0,2.9,2.9,0.83x,✅ Ativo
+Devin Carter,Sacramento Kings,ASSISTS,1.9,1.21,🟡 5.0,2.3,2.3,0.83x,✅ Ativo
+Doug McDermott,Sacramento Kings,POINTS,5.7,1.27,🟡 6.0,5.5,5.5,1.04x,✅ Ativo
+Doug McDermott,Sacramento Kings,REBOUNDS,0.9,1.14,🔴 4.0,1.1,1.1,0.83x,✅ Ativo
+Doug McDermott,Sacramento Kings,ASSISTS,0.5,1.12,🔴 4.0,0.6,0.6,0.83x,✅ Ativo
+Dylan Cardwell,Sacramento Kings,POINTS,5,1.24,🟡 7.0,5,5,1.00x,✅ Ativo
+Dylan Cardwell,Sacramento Kings,REBOUNDS,6.2,1.5,🟡 6.0,7.5,7.5,0.83x,✅ Ativo
+Dylan Cardwell,Sacramento Kings,ASSISTS,1.2,1.17,🟡 5.0,1.4,1.4,0.83x,✅ Ativo
+Isaiah Stevens,Sacramento Kings,POINTS,3.2,1.27,🔴 4.0,3.3,3.3,1.08x, ⚠️ QUESTIONABLE
+Isaiah Stevens,Sacramento Kings,REBOUNDS,0.7,1.3,🔴 2.0,1,1,0.83x, ⚠️ QUESTIONABLE
+Isaiah Stevens,Sacramento Kings,ASSISTS,2.5,1.43,🔴 2.0,3.3,3.3,0.83x, ⚠️ QUESTIONABLE
+Killian Hayes,Sacramento Kings,POINTS,5.2,1.26,🟡 7.0,4.8,4.8,1.08x,✅ Ativo
+Killian Hayes,Sacramento Kings,REBOUNDS,1.9,1.21,🔴 4.0,2.3,2.3,0.83x,✅ Ativo
+Killian Hayes,Sacramento Kings,ASSISTS,2.9,1.28,🔴 4.0,3.5,3.5,0.83x,✅ Ativo
+Malik Monk,Sacramento Kings,POINTS,11.8,1.57,🟢 10,12.7,12.7,1.08x, ⚠️ QUESTIONABLE
+Malik Monk,Sacramento Kings,REBOUNDS,1.3,1.3,🟢 8.0,1.9,1.9,0.83x, ⚠️ QUESTIONABLE
+Malik Monk,Sacramento Kings,ASSISTS,2.2,1.36,🟢 8.0,3.1,3.1,0.83x, ⚠️ QUESTIONABLE
+Maxime Raynaud,Sacramento Kings,POINTS,11.9,1.5,🟢 10.0,11.9,11.9,1.00x,✅ Ativo
+Maxime Raynaud,Sacramento Kings,REBOUNDS,6.1,1.56,🟢 9.0,7.3,7.3,0.83x,✅ Ativo
+Maxime Raynaud,Sacramento Kings,ASSISTS,1.1,1.22,🟢 8.0,1.3,1.3,0.83x,✅ Ativo
+Nique Clifford,Sacramento Kings,POINTS,8.4,1.41,🟢 9.0,7.8,7.8,1.08x,✅ Ativo
+Nique Clifford,Sacramento Kings,REBOUNDS,3,1.29,🟡 6.0,3.6,3.6,0.83x,✅ Ativo
+Nique Clifford,Sacramento Kings,ASSISTS,1.8,1.2,🟡 6.0,2.2,2.2,0.83x,✅ Ativo
+Patrick Baldwin Jr.,Sacramento Kings,POINTS,4.1,1.23,🟡 5.0,3.8,3.8,1.08x,✅ Ativo
+Patrick Baldwin Jr.,Sacramento Kings,REBOUNDS,2.9,1.38,🔴 3.0,3.5,3.5,0.83x,✅ Ativo
+Patrick Baldwin Jr.,Sacramento Kings,ASSISTS,0.7,1.24,🔴 3.0,0.8,0.8,0.83x,✅ Ativo
+Precious Achiuwa,Sacramento Kings,POINTS,10.3,1.46,🟢 8.0,9.9,9.9,1.04x,✅ Ativo
+Precious Achiuwa,Sacramento Kings,REBOUNDS,5.6,1.46,🟡 7.0,6.7,6.7,0.83x,✅ Ativo
+Precious Achiuwa,Sacramento Kings,ASSISTS,1.1,1.16,🟡 6.0,1.3,1.3,0.83x,✅ Ativo
