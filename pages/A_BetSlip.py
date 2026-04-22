@@ -199,7 +199,6 @@ if st.session_state.get("bilhetes_v2_error"):
 
 if st.session_state.get("bilhetes_v2"):
     tickets = st.session_state.bilhetes_v2
-    grouped_options = st.session_state.get("bilhetes_v2_options", {})
     
     st.success(f"✅ Gerados {len(tickets)} bilhetes")
 
@@ -220,50 +219,43 @@ if st.session_state.get("bilhetes_v2"):
                     key="download_bilhetes_v2",
                 )
     
-    for game in st.session_state.loader_v2.games_data:
-        options = grouped_options.get(game.get("id", ""), [])
-        if not options:
-            continue
-
+    for ticket in tickets:
         st.markdown("---")
 
-        st.subheader(f"{game.get('away', '')} vs {game.get('home', '')}")
-        st.caption(f"{len(options)} opções válidas dentro dos requisitos para o modo {mode}.")
+        st.subheader(f"{ticket.get('away', '')} vs {ticket.get('home', '')}")
+        cols = st.columns([1, 3, 1])
 
-        for option_index, option in enumerate(options, 1):
-            cols = st.columns([1, 3, 1])
+        with cols[0]:
+            st.metric("Odd Total", f"{ticket.get('odds', 0):.2f}")
+            st.metric("Quality Score", f"{ticket.get('quality', 0):.2f}")
+            st.metric("Atletas", ticket.get("num_props", len(ticket.get("props", []))))
 
-            with cols[0]:
-                st.markdown(f"**Opção {option_index}**")
-                st.metric("Odd Total", f"{option.get('odds', 0):.2f}")
-                st.metric("Quality Score", f"{option.get('quality_score', 0):.2f}")
+        with cols[1]:
+            for prop in ticket.get("props", []):
+                p = prop.get("player", "")
+                t = prop.get("type", "")
+                l = prop.get("line", 0)
+                o = prop.get("dynamic_odds", 0)
+                aggr = prop.get("aggressiveness", 0)
+                conf = prop.get("confidence", 0)
+                odds_source = prop.get("odds_source", "calculated")
+                market_line = prop.get("market_line")
+                label = PROP_LABELS.get(t, t or "prop")
 
-            with cols[1]:
-                for prop in option.get("props", []):
-                    p = prop.get("player", "")
-                    t = prop.get("type", "")
-                    l = prop.get("line", 0)
-                    o = prop.get("dynamic_odds", 0)
-                    aggr = prop.get("aggressiveness", 0)
-                    conf = prop.get("confidence", 0)
-                    odds_source = prop.get("odds_source", "calculated")
-                    market_line = prop.get("market_line")
-                    label = PROP_LABELS.get(t, t or "prop")
+                aggr_emoji = "🟢" if aggr < 0.15 else "🟡" if aggr < 0.25 else "🔴"
 
-                    aggr_emoji = "🟢" if aggr < 0.15 else "🟡" if aggr < 0.25 else "🔴"
+                line_text = f"{l}+ {label}"
+                if market_line is not None:
+                    line_text = f"modelo {l}+ {label} | mercado {market_line}+ {label}"
 
-                    line_text = f"{l}+ {label}"
-                    if market_line is not None:
-                        line_text = f"modelo {l}+ {label} | mercado {market_line}+ {label}"
+                source_text = "Bet365" if odds_source == "api" else "calc"
+                st.markdown(
+                    f"- **{p}** ({label}): {line_text} | Odd: {o:.2f} [{source_text}] | "
+                    f"Aggr: {aggr_emoji} {aggr:.0%} | Conf: {conf:.0f}"
+                )
 
-                    source_text = "Bet365" if odds_source == "api" else "calc"
-                    st.markdown(
-                        f"- **{p}** ({label}): {line_text} | Odd: {o:.2f} [{source_text}] | "
-                        f"Aggr: {aggr_emoji} {aggr:.0%} | Conf: {conf:.0f}"
-                    )
-
-            with cols[2]:
-                pass
+        with cols[2]:
+            pass
 
 else:
     if st.session_state.get("bilhetes_v2_attempted"):

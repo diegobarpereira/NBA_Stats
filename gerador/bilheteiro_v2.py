@@ -163,13 +163,18 @@ class BilheteiroV2:
         players = [p.get("player") for p in combo]
         unique_players = len(set(players))
         player_bonus = min(unique_players * 0.3, 0.9)
+
+        # Prefer combinations that fit the odds target with more athletes,
+        # as long as quality and market alignment remain acceptable.
+        size_bonus = max(0, len(combo) - 2) * 0.45
         
         score = (
             avg_conf * 0.95 +
             (1 - avg_aggr) * 1.6 +
             type_bonus +
             player_bonus +
-            (avg_market_alignment * 1.25)
+            (avg_market_alignment * 1.25) +
+            size_bonus
         )
         
         return round(score, 2)
@@ -197,10 +202,11 @@ class BilheteiroV2:
         return {
             "game_id": game_id,
             "props": combo,
+            "num_props": len(combo),
             "odds": total_odds,
             "quality_score": quality_score,
             "within_target_odds": within_target,
-            "selection_score": round(quality_score - (distance * 1.5), 2),
+            "selection_score": round(quality_score - (distance * 1.5) + (len(combo) * 0.2), 2),
         }
 
     def _get_best_effort_candidate(
@@ -213,7 +219,7 @@ class BilheteiroV2:
         size_limits = {6: 8, 5: 10, 4: 12, 3: 15, 2: 18}
         best_candidate = None
 
-        for combo_size in (4, 5, 6, 3, 2):
+        for combo_size in (6, 5, 4, 3, 2):
             limited_props = qualified[:size_limits[combo_size]]
             if len(limited_props) < combo_size:
                 continue
@@ -259,7 +265,7 @@ class BilheteiroV2:
 
             game_candidates = []
 
-            for combo_size in (2, 3, 4, 5, 6):
+            for combo_size in (6, 5, 4, 3, 2):
                 limited_props = qualified[:size_limits[combo_size]]
                 if len(limited_props) < combo_size:
                     continue
@@ -318,7 +324,7 @@ class BilheteiroV2:
         
         for gid in by_game:
             by_game[gid].sort(
-                key=lambda c: (c["within_target_odds"], c["quality_score"], c["selection_score"]),
+                key=lambda c: (c["within_target_odds"], c.get("num_props", len(c.get("props", []))), c["quality_score"], c["selection_score"]),
                 reverse=True,
             )
             by_game[gid] = by_game[gid][:5]
@@ -390,6 +396,7 @@ class BilheteiroV2:
                     "home": game.get("home", ""),
                     "away": game.get("away", ""),
                     "props": opt["props"],
+                    "num_props": opt.get("num_props", len(opt.get("props", []))),
                     "odds": opt["odds"],
                     "quality": opt["quality_score"],
                     "mode": mode,
