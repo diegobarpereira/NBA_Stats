@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import os
 from typing import Callable, Dict, List, Optional, Set, Tuple
 
 import config
@@ -19,6 +20,14 @@ def _emit_progress(callback: ProgressCallback, value: float, message: str) -> No
 def _emit_log(callback: LogCallback, message: str) -> None:
     if callback is not None:
         callback(message)
+
+
+def _is_streamlit_cloud() -> bool:
+    return os.environ.get("STREAMLIT_SHARING_MODE") is not None
+
+
+def _get_worker_count(local_workers: int, cloud_workers: int) -> int:
+    return cloud_workers if _is_streamlit_cloud() else local_workers
 
 
 def clear_stats_cache(loader) -> None:
@@ -42,12 +51,14 @@ def scrape_season_stats(
     progress_callback: ProgressCallback = None,
     log_callback: LogCallback = None,
 ) -> Dict:
-    clear_stats_cache(loader)
     loader.load_teams()
+    existing_stats = loader.stats_cache.copy()
 
     teams_needed = sorted(collect_teams_needed(loader))
     _emit_progress(progress_callback, 0.02, "Preparando scraping de Season Stats...")
     _emit_log(log_callback, f"Times do dia: {', '.join(teams_needed)}")
+    if _is_streamlit_cloud():
+        _emit_log(log_callback, "Streamlit Cloud detectado: reduzindo paralelismo do scraping ESPN")
 
     scraper = ESPNScraper()
     team_stats_cache: Dict[str, List[Dict]] = {}
@@ -62,7 +73,7 @@ def scrape_season_stats(
                 continue
         return team_abbr, None
 
-    with ThreadPoolExecutor(max_workers=4) as executor:
+    with ThreadPoolExecutor(max_workers=_get_worker_count(4, 1)) as executor:
         futures = {executor.submit(fetch_team, abbr): abbr for abbr in teams_needed}
         done = 0
         total = len(futures) or 1
@@ -76,6 +87,19 @@ def scrape_season_stats(
                 _emit_log(log_callback, f"{abbr}: sem resposta")
             _emit_progress(progress_callback, 0.05 + (done / total) * 0.20, f"Carregando elencos ESPN... {done}/{total}")
 
+    if not team_stats_cache:
+        if existing_stats:
+            _emit_log(log_callback, "ESPN indisponivel para Season Stats; preservando cache existente")
+            return {
+                "stats": existing_stats,
+                "teams_needed": teams_needed,
+                "players_expected": 0,
+                "players_saved": 0,
+                "failed_teams": teams_needed,
+                "used_cached_stats": True,
+            }
+        raise RuntimeError("Nao foi possivel carregar nenhum elenco da ESPN no ambiente atual")
+
     tasks = []
     for team_abbr, team_stats in team_stats_cache.items():
         team_players = [
@@ -87,7 +111,8 @@ def scrape_season_stats(
         for player in team_players:
             tasks.append((team_abbr, team_stats, player))
 
-    results: Dict[str, Dict] = {}
+    results: Dict[str, Dict] = existing_stats.copy()
+    freshly_saved = 0
 
     def scrape_player(task: Tuple[str, List[Dict], Dict]) -> Tuple[str, Optional[Dict]]:
         team_abbr, team_stats, player = task
@@ -100,7 +125,7 @@ def scrape_season_stats(
                 player_stats = scraper._match_player_from_cache(name, team_stats, team_abbr)
         return name, player_stats
 
-    with ThreadPoolExecutor(max_workers=8) as executor:
+    with ThreadPoolExecutor(max_workers=_get_worker_count(8, 3)) as executor:
         futures = {executor.submit(scrape_player, task): task for task in tasks}
         done = 0
         total = len(futures) or 1
@@ -109,17 +134,31 @@ def scrape_season_stats(
             name, player_stats = future.result()
             if player_stats:
                 results[name] = player_stats
+                freshly_saved += 1
             if done % 10 == 0 or done == total:
                 _emit_progress(progress_callback, 0.25 + (done / total) * 0.40, f"Buscando Season Stats... {done}/{total}")
 
+    if freshly_saved == 0 and existing_stats:
+        _emit_log(log_callback, "Nenhum Season Stats novo foi obtido; preservando cache existente")
+        return {
+            "stats": existing_stats,
+            "teams_needed": teams_needed,
+            "players_expected": len(tasks),
+            "players_saved": 0,
+            "failed_teams": [abbr for abbr in teams_needed if abbr not in team_stats_cache],
+            "used_cached_stats": True,
+        }
+
     loader.save_stats_cache(results)
-    _emit_log(log_callback, f"Season Stats salvos: {len(results)} jogadores")
+    _emit_log(log_callback, f"Season Stats salvos: {freshly_saved} jogadores do dia | cache total: {len(results)}")
 
     return {
         "stats": results,
         "teams_needed": teams_needed,
         "players_expected": len(tasks),
-        "players_saved": len(results),
+        "players_saved": freshly_saved,
+        "failed_teams": [abbr for abbr in teams_needed if abbr not in team_stats_cache],
+        "used_cached_stats": False,
     }
 
 
@@ -140,6 +179,18 @@ def enrich_last5_stats(
     total = len(players_to_scrape) or 1
 
     _emit_log(log_callback, f"Last5 pendentes: {len(players_to_scrape)}")
+    if _is_streamlit_cloud() and players_to_scrape:
+        _emit_log(log_callback, "Streamlit Cloud detectado: reduzindo paralelismo do Last5")
+
+    if not players_to_scrape:
+        loader.save_stats_cache(stats)
+        loader.stats_cache = stats.copy()
+        return {
+            "stats": stats,
+            "updated": 0,
+            "errors": 0,
+            "requested": 0,
+        }
 
     def fetch_last5(item: Tuple[str, Dict]) -> Tuple[str, Optional[Dict]]:
         name, data = item
@@ -151,7 +202,7 @@ def enrich_last5_stats(
         except Exception:
             return name, None
 
-    with ThreadPoolExecutor(max_workers=10) as executor:
+    with ThreadPoolExecutor(max_workers=_get_worker_count(10, 3)) as executor:
         futures = {executor.submit(fetch_last5, item): item for item in players_to_scrape}
         done = 0
         for future in as_completed(futures):

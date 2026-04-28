@@ -39,6 +39,9 @@ def _init_session():
     if "daily_refresh_summary" not in st.session_state:
         st.session_state.daily_refresh_summary = None
 
+    if "daily_refresh_logs" not in st.session_state:
+        st.session_state.daily_refresh_logs = []
+
 
 def _render_games_section(games_data):
     if not games_data:
@@ -187,7 +190,10 @@ if st.button("📥 Atualizar dados do dia", type="primary", use_container_width=
                 "last5_updated": refresh_summary["last5"]["updated"],
                 "last5_errors": refresh_summary["last5"]["errors"],
                 "teams": refresh_summary["season"]["teams_needed"],
+                "failed_teams": refresh_summary["season"].get("failed_teams", []),
+                "used_cached_stats": refresh_summary["season"].get("used_cached_stats", False),
             }
+            st.session_state.daily_refresh_logs = log_lines.copy()
 
         progress_bar.progress(1.0, text="Atualização concluída")
         status_placeholder.success("Dados do dia, Season Stats e Last5 atualizados.")
@@ -210,17 +216,25 @@ m3.metric("Season Stats", len(stats_cache))
 m4.metric("Last5 válidos", sum(1 for stats in stats_cache.values() if (stats.get("games_last5") or 0) >= 2))
 
 if summary:
-    st.success(
-        " | ".join(
-            [
-                f"Jogos: {summary['games']}",
-                f"Lesões: {summary['injuries']}",
-                f"Season: {summary['season_players']}/{summary['season_expected']}",
-                f"Last5: {summary['last5_updated']} atualizados",
-            ]
-        )
+    summary_message = " | ".join(
+        [
+            f"Jogos: {summary['games']}",
+            f"Lesões: {summary['injuries']}",
+            f"Season: {summary['season_players']}/{summary['season_expected']}",
+            f"Last5: {summary['last5_updated']} atualizados",
+        ]
     )
+    if summary.get("used_cached_stats"):
+        st.warning(f"{summary_message} | usando cache existente para preservar dados")
+    else:
+        st.success(summary_message)
     st.caption(f"Times processados: {', '.join(summary['teams'])}")
+    if summary.get("failed_teams"):
+        st.caption(f"Times sem resposta da ESPN: {', '.join(summary['failed_teams'])}")
+
+if st.session_state.daily_refresh_logs:
+    with st.expander("Log do refresh"):
+        st.code("\n".join(st.session_state.daily_refresh_logs[-20:]), language="text")
 
 tab_games, tab_season, tab_last5 = st.tabs(["Jogos do dia - Relatorio de lesoes", "Season Stats", "Last5"])
 

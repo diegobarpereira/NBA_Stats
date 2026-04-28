@@ -36,8 +36,33 @@ class ESPNScraper:
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "Accept-Language": "en-US,en;q=0.9",
+            "Referer": "https://www.espn.com/nba/",
         })
         self.delay = config.SCRAPING_CONFIG["request_delay_seconds"]
+
+    def _get(self, url: str, timeout: int = 20, attempts: int = 3) -> Optional[requests.Response]:
+        last_error = None
+        for attempt in range(1, attempts + 1):
+            try:
+                time.sleep(self.delay)
+                response = self.session.get(url, timeout=timeout)
+                if response.status_code == 200:
+                    return response
+                if response.status_code in {403, 408, 429, 500, 502, 503, 504}:
+                    print(f"ESPN retry {attempt}/{attempts} for {url} -> HTTP {response.status_code}")
+                    last_error = RuntimeError(f"HTTP {response.status_code}")
+                    time.sleep(min(6, attempt * 2))
+                    continue
+                print(f"ESPN request failed for {url} -> HTTP {response.status_code}")
+                return response
+            except requests.RequestException as exc:
+                last_error = exc
+                print(f"ESPN request error {attempt}/{attempts} for {url}: {exc}")
+                time.sleep(min(6, attempt * 2))
+
+        if last_error:
+            print(f"ESPN request exhausted retries for {url}: {last_error}")
+        return None
 
     def _parse_html(self, html: str) -> BeautifulSoup:
         try:
@@ -92,8 +117,8 @@ class ESPNScraper:
 
         season_year = self._get_season_year()
         url = f"https://www.espn.com/nba/player/gamelog/_/id/{pid}/season/{season_year}"
-        resp = self.session.get(url, timeout=20)
-        if resp.status_code != 200:
+        resp = self._get(url, timeout=20)
+        if resp is None or resp.status_code != 200:
             return []
 
         soup = self._parse_html(resp.text)
@@ -166,14 +191,15 @@ class ESPNScraper:
         season = self._get_current_season_year()
         url = f"https://www.espn.com/nba/team/stats/_/name/{self._abbr_to_espn(team_abbr)}/season/{season}/seasontype/2"
         try:
-            time.sleep(self.delay)
-            resp = self.session.get(url, timeout=15)
-            if resp.status_code != 200:
+            resp = self._get(url, timeout=15)
+            if resp is None or resp.status_code != 200:
                 return None
 
             soup = self._parse_html(resp.text)
             tables = soup.find_all("table")
             if len(tables) < 4:
+                page_title = soup.title.get_text(strip=True) if soup.title else "sem titulo"
+                print(f"ESPN team page unexpected structure for {team_abbr}: {len(tables)} tables | {page_title}")
                 return None
 
             name_table = tables[0]
