@@ -12,6 +12,9 @@ import config
 class ESPNScraper:
     TEAM_URL = "https://www.espn.com/nba/team/stats/_/name/{abbr}/season/{season}/type/2"
     PLAYER_LOG_URL = "https://www.espn.com/nba/player/gamelog/_/id/{pid}/type/nba"
+    TEAM_DIRECTORY_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams"
+    TEAM_ROSTER_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/{team_id}/roster"
+    ATHLETE_STATS_URL = "https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/seasons/{season}/types/2/athletes/{pid}/statistics?lang=en&region=us"
 
     TEAM_ABBR_ALIASES = {
         "SA": "SAS",
@@ -39,6 +42,7 @@ class ESPNScraper:
             "Referer": "https://www.espn.com/nba/",
         })
         self.delay = config.SCRAPING_CONFIG["request_delay_seconds"]
+        self._team_id_cache: Dict[str, str] = {}
 
     def _get(self, url: str, timeout: int = 20, attempts: int = 3) -> Optional[requests.Response]:
         last_error = None
@@ -63,6 +67,16 @@ class ESPNScraper:
         if last_error:
             print(f"ESPN request exhausted retries for {url}: {last_error}")
         return None
+
+    def _get_json(self, url: str, timeout: int = 20, attempts: int = 3) -> Optional[Dict]:
+        response = self._get(url, timeout=timeout, attempts=attempts)
+        if response is None or response.status_code != 200:
+            return None
+        try:
+            return response.json()
+        except ValueError as exc:
+            print(f"ESPN JSON decode failed for {url}: {exc}")
+            return None
 
     def _parse_html(self, html: str) -> BeautifulSoup:
         try:
@@ -187,6 +201,107 @@ class ESPNScraper:
         }
         return REVERSE_MAP.get(team_abbr, team_abbr.lower())
 
+    def _abbr_to_api(self, team_abbr: str) -> str:
+        api_map = {
+            "GSW": "GS",
+            "NOP": "NO",
+            "NYK": "NY",
+            "SAS": "SA",
+            "UTA": "UTAH",
+        }
+        return api_map.get(team_abbr, team_abbr)
+
+    def _get_team_id(self, team_abbr: str) -> Optional[str]:
+        api_abbr = self._abbr_to_api(team_abbr)
+        if api_abbr in self._team_id_cache:
+            return self._team_id_cache[api_abbr]
+
+        payload = self._get_json(self.TEAM_DIRECTORY_URL, timeout=20)
+        if not payload:
+            return None
+
+        try:
+            teams = payload["sports"][0]["leagues"][0]["teams"]
+        except (KeyError, IndexError, TypeError):
+            print("ESPN team directory returned unexpected payload")
+            return None
+
+        for team_entry in teams:
+            team = team_entry.get("team", {})
+            abbreviation = str(team.get("abbreviation", "")).upper()
+            team_id = str(team.get("id", "")).strip()
+            if abbreviation and team_id:
+                self._team_id_cache[abbreviation] = team_id
+
+        return self._team_id_cache.get(api_abbr)
+
+    def _extract_stat_value(self, stats_payload: Dict, stat_name: str, default: float = 0.0) -> float:
+        categories = stats_payload.get("splits", {}).get("categories", [])
+        for category in categories:
+            for stat in category.get("stats", []):
+                if stat.get("name") == stat_name:
+                    value = stat.get("value")
+                    if value is None:
+                        return default
+                    try:
+                        return float(value)
+                    except (TypeError, ValueError):
+                        return default
+        return default
+
+    def _get_team_stats_via_api(self, team_abbr: str) -> Optional[List[Dict]]:
+        team_id = self._get_team_id(team_abbr)
+        if not team_id:
+            print(f"ESPN API team id not found for {team_abbr}")
+            return None
+
+        roster_url = self.TEAM_ROSTER_URL.format(team_id=team_id)
+        roster_payload = self._get_json(roster_url, timeout=20)
+        if not roster_payload:
+            print(f"ESPN API roster unavailable for {team_abbr}")
+            return None
+
+        athletes = roster_payload.get("athletes", [])
+        if not athletes:
+            print(f"ESPN API roster empty for {team_abbr}")
+            return None
+
+        season = self._get_current_season_year()
+        results = []
+        for athlete in athletes:
+            pid = str(athlete.get("id", "")).strip()
+            name = athlete.get("displayName") or athlete.get("fullName") or ""
+            position = athlete.get("position", {}).get("abbreviation", "G")
+            if not pid or not name:
+                continue
+
+            stats_url = self.ATHLETE_STATS_URL.format(season=season, pid=pid)
+            stats_payload = self._get_json(stats_url, timeout=20)
+            if not stats_payload:
+                continue
+
+            gp_val = int(self._extract_stat_value(stats_payload, "gamesPlayed", 0))
+            if gp_val == 0 or gp_val == 1:
+                gp_val = 30
+
+            results.append({
+                "name": name,
+                "position": position or "G",
+                "pid": pid,
+                "gp": gp_val,
+                "ppg": round(self._extract_stat_value(stats_payload, "avgPoints", 0.0), 1),
+                "rpg": round(self._extract_stat_value(stats_payload, "avgRebounds", 0.0), 1),
+                "apg": round(self._extract_stat_value(stats_payload, "avgAssists", 0.0), 1),
+                "tpg": round(self._extract_stat_value(stats_payload, "avgThreePointFieldGoalsMade", 0.0), 1),
+            })
+
+        if not results:
+            print(f"ESPN API returned no player statistics for {team_abbr}")
+            return None
+
+        print(f"ESPN API fallback succeeded for {team_abbr}: {len(results)} jogadores")
+        return results
+
     def get_team_stats(self, team_abbr: str) -> Optional[List[Dict]]:
         season = self._get_current_season_year()
         url = f"https://www.espn.com/nba/team/stats/_/name/{self._abbr_to_espn(team_abbr)}/season/{season}/seasontype/2"
@@ -200,7 +315,7 @@ class ESPNScraper:
             if len(tables) < 4:
                 page_title = soup.title.get_text(strip=True) if soup.title else "sem titulo"
                 print(f"ESPN team page unexpected structure for {team_abbr}: {len(tables)} tables | {page_title}")
-                return None
+                return self._get_team_stats_via_api(team_abbr)
 
             name_table = tables[0]
             stats_table = tables[1]
@@ -278,7 +393,7 @@ class ESPNScraper:
             return results
         except Exception as e:
             print(f"    Erro team {team_abbr}: {e}")
-            return None
+            return self._get_team_stats_via_api(team_abbr)
 
     def get_player_last5(self, pid: str, player_name: str, last_game_only: bool = False) -> Optional[Dict]:
         if not pid:
