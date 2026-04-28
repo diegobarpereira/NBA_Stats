@@ -308,7 +308,9 @@ class ESPNScraper:
         try:
             resp = self._get(url, timeout=15)
             if resp is None or resp.status_code != 200:
-                return None
+                status = resp.status_code if resp is not None else "sem resposta"
+                print(f"ESPN HTML team request failed for {team_abbr}: {status}")
+                return self._get_team_stats_via_api(team_abbr)
 
             soup = self._parse_html(resp.text)
             tables = soup.find_all("table")
