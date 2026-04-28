@@ -132,6 +132,12 @@ _TICKET_CSS = """
     color: #888;
 }
 .boost-tag, .damp-tag { margin-right: 3px; }
+.prop-free {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+    color: #94a3b8;
+}
 </style>
 """
 
@@ -189,6 +195,13 @@ def render_ticket_card(ticket: dict, ticket_num: int):
     for i, prop in enumerate(props_list):
         ptype = prop.get("type", "points")
         icon = TYPE_ICONS.get(ptype, "🏀 PTS")
+        free_projection = prop.get("free_projection")
+        free_score = prop.get("free_score")
+        free_text = ""
+        if isinstance(free_projection, (int, float)) or isinstance(free_score, (int, float)):
+            proj_text = f"Proj {free_projection:.2f}" if isinstance(free_projection, (int, float)) else "Proj -"
+            score_text = f"Livre {free_score:.2f}" if isinstance(free_score, (int, float)) else "Livre -"
+            free_text = f'<span class="prop-free">{proj_text} | {score_text}</span>'
         injury_tag = ""
         if prop.get("injury_status"):
             injury_tag = f'<span class="injury-tag">{prop["injury_status"]}</span>'
@@ -204,9 +217,10 @@ def render_ticket_card(ticket: dict, ticket_num: int):
             <td class="prop-player">
                 {matchup_tag}{prop['player']}{injury_tag}
                 <span class="prop-team">{TEAM_ABBR.get(prop.get('team', ''), prop.get('team', ''))}</span>
+                {free_text}
             </td>
             <td class="prop-type">{icon}</td>
-            <td class="prop-line">+{prop['line']}</td>
+            <td class="prop-line">{prop.get('over_under', 'Over')} +{prop['line']}</td>
             <td class="prop-odds">@ {prop['odds']:.2f}</td>
             <td class="prop-conf">
                 <span class="conf-dot" style="background:{conf_color}"></span>

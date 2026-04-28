@@ -310,6 +310,28 @@ class PerformanceAnalyzer:
 
         return accuracy
 
+    def get_market_price_accuracy(self) -> Dict[str, float]:
+        price_stats = {
+            "bet365_better": {"hits": 0, "total": 0},
+            "near_market": {"hits": 0, "total": 0},
+            "market_better": {"hits": 0, "total": 0},
+            "no_reference": {"hits": 0, "total": 0},
+        }
+
+        for entry in self.data.get("performance_history", []):
+            analysis = entry.get("market_price_analysis", {})
+            for bucket, stats in analysis.items():
+                if bucket not in price_stats:
+                    price_stats[bucket] = {"hits": 0, "total": 0}
+                price_stats[bucket]["hits"] += stats.get("hit", 0)
+                price_stats[bucket]["total"] += stats.get("hit", 0) + stats.get("miss", 0)
+
+        accuracy = {}
+        for bucket, stats in price_stats.items():
+            accuracy[bucket] = stats["hits"] / stats["total"] if stats["total"] > 0 else 0.5
+
+        return accuracy
+
     def get_aggressiveness_accuracy(self) -> Dict[str, float]:
         aggr_stats = {"low": {"hits": 0, "total": 0}, "medium": {"hits": 0, "total": 0}, "high": {"hits": 0, "total": 0}}
 
@@ -354,6 +376,55 @@ class PerformanceAnalyzer:
                 accuracy[key] = 0.5
 
         return accuracy
+
+    def get_roi_summary(self) -> Dict:
+        summary = {
+            "total_stake": 0.0,
+            "total_profit": 0.0,
+            "roi_pct": 0.0,
+            "by_type": {},
+            "by_side": {},
+            "by_market_price": {},
+            "entries_with_profit": 0,
+        }
+
+        for entry in self.data.get("performance_history", []):
+            entry_has_profit = False
+            for row in entry.get("comparison_results", []):
+                profit = row.get("profit")
+                stake = row.get("stake", 1.0)
+                if profit is None:
+                    continue
+                entry_has_profit = True
+                summary["total_stake"] += stake
+                summary["total_profit"] += profit
+
+                type_key = row.get("type", "unknown")
+                side_key = row.get("over_under", "Over")
+                market_price_key = row.get("market_price_bucket", "no_reference")
+
+                for bucket, key in ((summary["by_type"], type_key), (summary["by_side"], side_key), (summary["by_market_price"], market_price_key)):
+                    if key not in bucket:
+                        bucket[key] = {"stake": 0.0, "profit": 0.0, "roi_pct": 0.0}
+                    bucket[key]["stake"] += stake
+                    bucket[key]["profit"] += profit
+
+            if entry_has_profit:
+                summary["entries_with_profit"] += 1
+
+        if summary["total_stake"] > 0:
+            summary["roi_pct"] = round((summary["total_profit"] / summary["total_stake"]) * 100, 2)
+
+        for bucket in (summary["by_type"], summary["by_side"], summary["by_market_price"]):
+            for key, stats in bucket.items():
+                stake = stats["stake"]
+                stats["stake"] = round(stake, 2)
+                stats["profit"] = round(stats["profit"], 2)
+                stats["roi_pct"] = round((stats["profit"] / stake) * 100, 2) if stake > 0 else 0.0
+
+        summary["total_stake"] = round(summary["total_stake"], 2)
+        summary["total_profit"] = round(summary["total_profit"], 2)
+        return summary
 
     def get_recommendations(self) -> List[str]:
         recommendations = []
@@ -584,10 +655,15 @@ class PerformanceAnalyzer:
         components.append((0.18, conf_acc))
         component_values["confidence_accuracy"] = round(conf_acc, 3)
 
+        over_under = prop.get("over_under", "Over")
+        over_under_acc = self.get_over_under_accuracy().get(over_under, 0.5)
+        components.append((0.08, over_under_acc))
+        component_values["over_under_accuracy"] = round(over_under_acc, 3)
+
         adv = prop.get("advanced_filters", {})
         trend_key = adv.get("trend", "stable")
         trend_acc = self.get_trend_accuracy().get(trend_key, 0.5)
-        components.append((0.10, trend_acc))
+        components.append((0.08, trend_acc))
         component_values["trend_accuracy"] = round(trend_acc, 3)
 
         consistency = adv.get("consistency", 50)
@@ -598,7 +674,7 @@ class PerformanceAnalyzer:
         else:
             consistency_key = "low"
         consistency_acc = self.get_consistency_accuracy().get(consistency_key, 0.5)
-        components.append((0.10, consistency_acc))
+        components.append((0.09, consistency_acc))
         component_values["consistency_accuracy"] = round(consistency_acc, 3)
 
         matchup_mult = float(prop.get("matchup_mult", 1.0))
@@ -641,6 +717,21 @@ class PerformanceAnalyzer:
         components.append((0.02, odds_source_acc))
         component_values["odds_source_accuracy"] = round(odds_source_acc, 3)
 
+        market_price_bucket = prop.get("market_price_bucket")
+        if not market_price_bucket:
+            price_delta = prop.get("price_delta_under") if prop.get("over_under", "Over") == "Under" else prop.get("price_delta_over")
+            if price_delta is None:
+                market_price_bucket = "no_reference"
+            elif float(price_delta) >= 0.05:
+                market_price_bucket = "bet365_better"
+            elif float(price_delta) <= -0.05:
+                market_price_bucket = "market_better"
+            else:
+                market_price_bucket = "near_market"
+        market_price_acc = self.get_market_price_accuracy().get(market_price_bucket, 0.5)
+        components.append((0.03, market_price_acc))
+        component_values["market_price_accuracy"] = round(market_price_acc, 3)
+
         total_weight = sum(weight for weight, _ in components)
         weighted_prob = sum(weight * value for weight, value in components) / total_weight if total_weight else 0.5
 
@@ -663,9 +754,11 @@ class PerformanceAnalyzer:
             "consistency_accuracy": self.get_consistency_accuracy(),
             "matchup_accuracy": self.get_matchup_bucket_accuracy(),
             "market_gap_accuracy": self.get_market_gap_accuracy(),
+            "market_price_accuracy": self.get_market_price_accuracy(),
             "odds_source_accuracy": self.get_odds_source_accuracy(),
             "aggressiveness_accuracy": self.get_aggressiveness_accuracy(),
             "home_away_accuracy": self.get_home_away_accuracy(),
+            "roi_summary": self.get_roi_summary(),
             "recommendations": self.get_recommendations(),
             "suggested_weights": self.get_weight_adjustment(),
             "total_bets": sum(

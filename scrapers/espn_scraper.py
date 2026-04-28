@@ -1,6 +1,6 @@
 import time
 import re
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from typing import Dict, List, Optional, Tuple
 
 import requests
@@ -12,6 +12,15 @@ import config
 class ESPNScraper:
     TEAM_URL = "https://www.espn.com/nba/team/stats/_/name/{abbr}/season/{season}/type/2"
     PLAYER_LOG_URL = "https://www.espn.com/nba/player/gamelog/_/id/{pid}/type/nba"
+
+    TEAM_ABBR_ALIASES = {
+        "SA": "SAS",
+        "GS": "GSW",
+        "NO": "NOP",
+        "NY": "NYK",
+        "UTH": "UTA",
+        "WSH": "WAS",
+    }
 
     def _get_season_year(self):
         current_month = datetime.now().month
@@ -29,6 +38,109 @@ class ESPNScraper:
             "Accept-Language": "en-US,en;q=0.9",
         })
         self.delay = config.SCRAPING_CONFIG["request_delay_seconds"]
+
+    def _extract_opponent_abbr(self, opponent_raw: str) -> str:
+        cleaned = str(opponent_raw or "").upper().replace("VS", "").replace("@", "").strip()
+        match = re.search(r"\b([A-Z]{2,3})\b", cleaned)
+        if not match:
+            return ""
+        return self.TEAM_ABBR_ALIASES.get(match.group(1), match.group(1))
+
+    def _parse_minutes_value(self, minutes_raw: str) -> float:
+        text = str(minutes_raw or "").strip()
+        if not text:
+            return 0.0
+        if text.isdigit():
+            return float(text)
+        if ":" in text:
+            parts = text.split(":", 1)
+            if parts[0].isdigit() and parts[1].isdigit():
+                return float(parts[0]) + (float(parts[1]) / 60.0)
+        return 0.0
+
+    def _safe_stat_float(self, cells, idx: int) -> float:
+        try:
+            raw = cells[idx].get_text(strip=True)
+        except IndexError:
+            return 0.0
+        return float(raw) if raw.replace(".", "").isdigit() else 0.0
+
+    def _parse_game_date(self, date_text: str) -> Optional[date]:
+        match = re.search(r"(\d{1,2})/(\d{1,2})", str(date_text or ""))
+        if not match:
+            return None
+
+        month = int(match.group(1))
+        day = int(match.group(2))
+        season_year = self._get_season_year()
+        game_year = season_year - 1 if month >= 10 else season_year
+
+        try:
+            return date(game_year, month, day)
+        except ValueError:
+            return None
+
+    def _fetch_player_game_log_rows(self, pid: str) -> List[Dict]:
+        if not pid:
+            return []
+
+        season_year = self._get_season_year()
+        url = f"https://www.espn.com/nba/player/gamelog/_/id/{pid}/season/{season_year}"
+        resp = self.session.get(url, timeout=20)
+        if resp.status_code != 200:
+            return []
+
+        soup = BeautifulSoup(resp.text, "lxml")
+        rows_out = []
+
+        for table in soup.find_all("table"):
+            table_text = table.get_text()
+            if "DateOPPResultMIN" not in table_text:
+                continue
+            if "Postseason" in table_text or "Preseason" in table_text:
+                continue
+
+            for row in table.find_all("tr"):
+                cells = row.find_all(["td"])
+                if len(cells) < 4:
+                    continue
+
+                date_text = cells[0].get_text(strip=True)
+                if not re.search(r"\d+/\d+", date_text):
+                    continue
+
+                opponent_raw = cells[1].get_text(strip=True) if len(cells) > 1 else ""
+                result_raw = cells[2].get_text(strip=True) if len(cells) > 2 else ""
+                minutes_raw = cells[3].get_text(strip=True) if len(cells) > 3 else ""
+                minutes = self._parse_minutes_value(minutes_raw)
+                played = minutes > 0
+
+                fg3 = 0.0
+                if len(cells) > 6:
+                    fg3_raw = cells[6].get_text(strip=True)
+                    if fg3_raw and "-" in fg3_raw:
+                        try:
+                            fg3 = float(fg3_raw.split("-")[0])
+                        except ValueError:
+                            fg3 = 0.0
+
+                rows_out.append({
+                    "date": date_text,
+                    "game_date": self._parse_game_date(date_text),
+                    "opponent_raw": opponent_raw,
+                    "opponent_abbr": self._extract_opponent_abbr(opponent_raw),
+                    "result_raw": result_raw,
+                    "minutes_raw": minutes_raw,
+                    "minutes": minutes,
+                    "played": played,
+                    "is_home": "vs" in opponent_raw.lower() or "@" not in opponent_raw,
+                    "pts": self._safe_stat_float(cells, 16) if played else 0.0,
+                    "reb": self._safe_stat_float(cells, 10) if played else 0.0,
+                    "ast": self._safe_stat_float(cells, 11) if played else 0.0,
+                    "fg3": fg3 if played else 0.0,
+                })
+
+        return rows_out
 
     def _abbr_to_espn(self, team_abbr: str) -> str:
         REVERSE_MAP = {
@@ -141,69 +253,19 @@ class ESPNScraper:
             return None
 
         try:
-            season_year = self._get_season_year()
-            url = f"https://www.espn.com/nba/player/gamelog/_/id/{pid}/season/{season_year}"
-            resp = self.session.get(url, timeout=20)
-            if resp.status_code != 200:
-                return None
-
-            soup = BeautifulSoup(resp.text, "lxml")
-
-            all_games = []
-            for table in soup.find_all("table"):
-                table_text = table.get_text()
-                if "DateOPPResultMIN" not in table_text:
-                    continue
-                if "Postseason" in table_text or "Preseason" in table_text:
-                    continue
-                has_title_row = table_text.lower().find("regular season") >= 0 or table_text.lower().find("totals") >= 0
-                if has_title_row and "MINFGFG" not in table_text[:20]:
-                    continue
-
-                for row in table.find_all("tr"):
-                    cells = row.find_all(["td"])
-                    if len(cells) < 15:
-                        continue
-                    
-                    date_text = cells[0].get_text(strip=True)
-                    if not re.search(r'\d+/\d+', date_text):
-                        continue
-
-                    try:
-                        pts_raw = cells[16].get_text(strip=True)
-                        reb_raw = cells[10].get_text(strip=True)
-                        ast_raw = cells[11].get_text(strip=True)
-                        fg3_raw = cells[6].get_text(strip=True) if len(cells) > 6 else ""
-                        min_raw = cells[3].get_text(strip=True) if len(cells) > 3 else "0"
-                        
-                        # Detect home/away: "@OPP" = away, "vsOPP" = home
-                        opp_raw = cells[1].get_text(strip=True) if len(cells) > 1 else ""
-                        is_home = "vs" in opp_raw.lower() or "@" not in opp_raw
-
-                        pts = float(pts_raw) if pts_raw.replace(".", "").isdigit() else 0.0
-                        reb = float(reb_raw) if reb_raw.replace(".", "").isdigit() else 0.0
-                        ast = float(ast_raw) if ast_raw.replace(".", "").isdigit() else 0.0
-
-                        fg3 = 0.0
-                        if fg3_raw and "-" in fg3_raw:
-                            try:
-                                fg3 = float(fg3_raw.split("-")[0])
-                            except ValueError:
-                                fg3 = 0.0
-
-                        minutes = 0.0
-                        try:
-                            minutes = float(min_raw) if min_raw.isdigit() else 0.0
-                        except ValueError:
-                            minutes = 0.0
-
-                        if minutes > 0:
-                            all_games.append({
-                                "pts": pts, "reb": reb, "ast": ast, "fg3": fg3,
-                                "min": minutes, "is_home": is_home
-                            })
-                    except (ValueError, IndexError, AttributeError):
-                        continue
+            rows = self._fetch_player_game_log_rows(pid)
+            all_games = [
+                {
+                    "pts": row["pts"],
+                    "reb": row["reb"],
+                    "ast": row["ast"],
+                    "fg3": row["fg3"],
+                    "min": row["minutes"],
+                    "is_home": row["is_home"],
+                }
+                for row in rows
+                if row.get("played")
+            ]
 
             if not all_games:
                 return None
@@ -229,6 +291,29 @@ class ESPNScraper:
             home_games = [g for g in last5 if g.get("is_home", True)]
             away_games = [g for g in last5 if not g.get("is_home", True)]
 
+            minute_values = [g["min"] for g in last5 if g.get("min", 0) > 0]
+
+            def minute_window_avg(values, take_last: bool) -> float:
+                if not values:
+                    return 0.0
+                if len(values) == 1:
+                    return round(values[0], 1)
+                window = values[-2:] if take_last else values[:2]
+                return round(sum(window) / len(window), 1)
+
+            def minute_volatility(values) -> float:
+                if not values:
+                    return 0.0
+                avg_minutes = sum(values) / len(values)
+                if avg_minutes <= 0:
+                    return 0.0
+                spread = sum(abs(value - avg_minutes) for value in values) / len(values)
+                return round(spread / avg_minutes, 3)
+
+            early_minutes_avg = minute_window_avg(minute_values, take_last=False)
+            recent_minutes_avg = minute_window_avg(minute_values, take_last=True)
+            minute_trend = round(recent_minutes_avg - early_minutes_avg, 1) if minute_values else 0.0
+
             def home_avg(key):
                 vals = [g[key] for g in home_games]
                 return round(sum(vals) / len(vals), 1) if vals else 0.0
@@ -252,6 +337,10 @@ class ESPNScraper:
                 "away_reb": away_avg("reb"),
                 "home_ast": home_avg("ast"),
                 "away_ast": away_avg("ast"),
+                "early_minutes_avg": early_minutes_avg,
+                "recent_minutes_avg": recent_minutes_avg,
+                "minute_trend": minute_trend,
+                "minute_volatility": minute_volatility(minute_values),
             }
 
             # Add individual game values for trend/variance analysis
@@ -260,11 +349,78 @@ class ESPNScraper:
                 result[f"game_{i+1}_reb"] = g["reb"]
                 result[f"game_{i+1}_ast"] = g["ast"]
                 result[f"game_{i+1}_fg3"] = g["fg3"]
+                result[f"game_{i+1}_min"] = g["min"]
                 result[f"game_{i+1}_home"] = g.get("is_home", True)
 
             return result
         except Exception as e:
             print(f"Error in get_player_last5: {e}")
+            return None
+
+    def get_player_game_against_opponent(
+        self,
+        pid: str,
+        player_name: str,
+        opponent_abbr: str,
+        reference_date: Optional[date] = None,
+        max_age_days: int = 5,
+    ) -> Optional[Dict]:
+        if not pid or not opponent_abbr:
+            return None
+
+        try:
+            rows = self._fetch_player_game_log_rows(pid)
+            if not rows:
+                return None
+
+            opponent_abbr = self.TEAM_ABBR_ALIASES.get(opponent_abbr.upper(), opponent_abbr.upper())
+            matching_rows = [row for row in rows if row.get("opponent_abbr") == opponent_abbr]
+            if reference_date is not None:
+                recent_rows = []
+                for row in matching_rows:
+                    game_date = row.get("game_date")
+                    if game_date is None:
+                        continue
+                    age_days = (reference_date - game_date).days
+                    if 0 <= age_days <= max_age_days:
+                        recent_rows.append(row)
+                if recent_rows:
+                    matching_rows = recent_rows
+                else:
+                    matching_rows = []
+
+            target_row = matching_rows[0] if matching_rows else None
+
+            if target_row is None:
+                return {
+                    "status": "void",
+                    "reason": "no_recent_game_for_opponent",
+                    "opponent": opponent_abbr,
+                    "games": 0,
+                }
+
+            if not target_row.get("played"):
+                return {
+                    "status": "void",
+                    "reason": target_row.get("minutes_raw") or target_row.get("result_raw") or "did_not_play",
+                    "opponent": opponent_abbr,
+                    "date": target_row.get("date"),
+                    "games": 1,
+                }
+
+            return {
+                "status": "played",
+                "ppg": target_row.get("pts", 0.0),
+                "rpg": target_row.get("reb", 0.0),
+                "apg": target_row.get("ast", 0.0),
+                "tpg": target_row.get("fg3", 0.0),
+                "mpg": target_row.get("minutes", 0.0),
+                "games": 1,
+                "date": target_row.get("date"),
+                "opponent": opponent_abbr,
+            }
+        except Exception as e:
+            print(f"Error in get_player_game_against_opponent: {e}")
             return None
 
             soup = BeautifulSoup(resp.text, "lxml")

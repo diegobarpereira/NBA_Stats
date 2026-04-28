@@ -65,12 +65,23 @@ if view_mode in ["📋 Tabela", "📋 Tabela + 🎴 Cartões"]:
     table_rows = []
     for t in bilhetes:
         for prop in t["props"]:
+            over_under = prop.get("over_under", "Over")
+            reference_odds = prop.get("reference_odds_over") if over_under == "Over" else prop.get("reference_odds_under")
+            price_delta = prop.get("price_delta_over") if over_under == "Over" else prop.get("price_delta_under")
+            odds_source = prop.get("odds_source", "unknown")
             table_rows.append({
                 "Jogo": f"{t['away']} @ {t['home']}",
                 "Jogador": prop["player"],
+                "Lado": over_under,
                 "Tipo": prop["type"].upper(),
                 "Linha": f"+{prop['line']}",
+                "Proj Livre": prop.get("free_projection"),
+                "Livre": prop.get("free_score"),
                 "Odds": prop["odds"],
+                "Fonte": odds_source,
+                "Ref": f"{reference_odds:.2f}" if isinstance(reference_odds, (int, float)) else "-",
+                "Ref Casa": prop.get("reference_bookmaker") or "-",
+                "Δ B365": f"{price_delta:+.2f}" if isinstance(price_delta, (int, float)) else "-",
                 "Conf": prop["confidence"],
                 "Season": prop.get("season_avg", 0),
                 "Last5": prop.get("last5_avg", 0),
@@ -83,9 +94,16 @@ if view_mode in ["📋 Tabela", "📋 Tabela + 🎴 Cartões"]:
         column_config={
             "Jogo": st.column_config.TextColumn("Jogo", width="medium"),
             "Jogador": st.column_config.TextColumn("Jogador", width="medium"),
+            "Lado": st.column_config.TextColumn("Lado", width="small"),
             "Tipo": st.column_config.TextColumn("Tipo", width="small"),
             "Linha": st.column_config.TextColumn("Linha", width="small"),
+            "Proj Livre": st.column_config.NumberColumn("Proj Livre", format="%.2f", width="small"),
+            "Livre": st.column_config.NumberColumn("Livre", format="%.2f", width="small"),
             "Odds": st.column_config.NumberColumn("Odds", format="%.2f", width="small"),
+            "Fonte": st.column_config.TextColumn("Fonte", width="small"),
+            "Ref": st.column_config.TextColumn("Ref", width="small"),
+            "Ref Casa": st.column_config.TextColumn("Ref Casa", width="small"),
+            "Δ B365": st.column_config.TextColumn("Δ B365", width="small"),
             "Conf": st.column_config.NumberColumn("Conf", format="%d", width="small"),
             "Season": st.column_config.NumberColumn("Season", format="%.1f", width="small"),
             "Last5": st.column_config.NumberColumn("Last5", format="%.1f", width="small"),

@@ -21,6 +21,98 @@ class PropsEngineV2:
             except Exception:
                 pass
 
+    def _get_prop_stat_keys(self, prop_type: str) -> Tuple[str, str]:
+        special_keys = {
+            "3pt": ("avg3PT_season", "avg3PT_last5"),
+        }
+        return special_keys.get(
+            prop_type,
+            (f"avg{prop_type.capitalize()}_season", f"avg{prop_type.capitalize()}_last5"),
+        )
+
+    def _build_minute_profile(self, player_stats: Dict, prop_type: str, is_starter: bool) -> Dict:
+        avg_minutes = float(player_stats.get("avgMinutes_last5", 0) or 0.0)
+        early_minutes_avg = float(player_stats.get("early_minutes_avg", avg_minutes) or avg_minutes)
+        recent_minutes_avg = float(player_stats.get("recent_minutes_avg", avg_minutes) or avg_minutes)
+        minute_trend = float(player_stats.get("minute_trend", recent_minutes_avg - early_minutes_avg) or 0.0)
+        minute_volatility = float(player_stats.get("minute_volatility", 0.0) or 0.0)
+
+        last5_key = f"avg{prop_type.capitalize()}_last5"
+        last5_avg = float(player_stats.get(last5_key, 0) or 0.0)
+        production_per_minute = round(last5_avg / avg_minutes, 3) if avg_minutes > 0 else 0.0
+
+        benchmark_by_type = {
+            "points": 0.55,
+            "rebounds": 0.18,
+            "assists": 0.14,
+            "3pt": 0.05,
+        }
+        benchmark = benchmark_by_type.get(prop_type, 0.0)
+
+        confidence_delta = 0.0
+        line_multiplier = 1.0
+        opportunity_label = "stable"
+
+        if avg_minutes >= 28:
+            confidence_delta += 1.0
+        elif avg_minutes >= 24:
+            confidence_delta += 0.5
+        elif avg_minutes < 14 and not is_starter:
+            confidence_delta -= 1.5
+            opportunity_label = "low_minutes"
+        elif avg_minutes < 18 and not is_starter:
+            confidence_delta -= 0.5
+            opportunity_label = "thin_rotation"
+
+        if minute_trend >= 3:
+            confidence_delta += 1.0
+            line_multiplier += 0.03
+            opportunity_label = "minutes_up"
+        elif minute_trend >= 1.5:
+            confidence_delta += 0.5
+            line_multiplier += 0.015
+            opportunity_label = "minutes_up"
+        elif minute_trend <= -3:
+            confidence_delta -= 1.0
+            line_multiplier -= 0.03
+            opportunity_label = "minutes_down"
+        elif minute_trend <= -1.5:
+            confidence_delta -= 0.5
+            line_multiplier -= 0.015
+            opportunity_label = "minutes_down"
+
+        if minute_volatility >= 0.32:
+            confidence_delta -= 0.75
+            line_multiplier -= 0.02
+            opportunity_label = "volatile_minutes"
+        elif minute_volatility >= 0.22:
+            confidence_delta -= 0.35
+
+        if (
+            not is_starter
+            and avg_minutes >= 18
+            and recent_minutes_avg >= avg_minutes
+            and minute_trend >= 1.5
+            and production_per_minute >= benchmark
+        ):
+            confidence_delta += 1.5
+            line_multiplier += 0.035
+            opportunity_label = "bench_opportunity"
+
+        line_multiplier = max(0.9, min(line_multiplier, 1.08))
+
+        return {
+            "avg_minutes": round(avg_minutes, 1),
+            "early_minutes_avg": round(early_minutes_avg, 1),
+            "recent_minutes_avg": round(recent_minutes_avg, 1),
+            "minute_trend": round(minute_trend, 1),
+            "minute_volatility": round(minute_volatility, 3),
+            "production_per_minute": production_per_minute,
+            "confidence_delta": confidence_delta,
+            "line_multiplier": round(line_multiplier, 3),
+            "opportunity_label": opportunity_label,
+        }
+
     def calculate_adjusted_line(
         self,
         player_stats: Dict,
@@ -28,8 +120,7 @@ class PropsEngineV2:
         injury_status: Optional[str] = None,
         player_name: Optional[str] = None,
     ) -> float:
-        season_key = f"avg{prop_type.capitalize()}_season"
-        last5_key = f"avg{prop_type.capitalize()}_last5"
+        season_key, last5_key = self._get_prop_stat_keys(prop_type)
 
         season_avg = player_stats.get(season_key, 0)
         last5_avg = player_stats.get(last5_key, 0)
@@ -218,6 +309,16 @@ class PropsEngineV2:
                 "matchup_hist_mult": round(matchup_hist_mult, 3),
             }
 
+        minute_confidence_delta = prop.get("minute_confidence_delta", 0.0)
+        if minute_confidence_delta:
+            score += minute_confidence_delta
+
+        minute_profile = prop.get("minute_profile", "stable")
+        if minute_profile == "bench_opportunity":
+            score += 0.5
+        elif minute_profile in {"minutes_down", "volatile_minutes", "low_minutes"}:
+            score -= 0.5
+
         return max(0, min(score, 10))
 
     def generate_props_for_player(
@@ -282,8 +383,7 @@ class PropsEngineV2:
         schedule_info = {}
 
         for prop_type in self.prop_types:
-            season_key = f"avg{prop_type.capitalize()}_season"
-            last5_key = f"avg{prop_type.capitalize()}_last5"
+            season_key, last5_key = self._get_prop_stat_keys(prop_type)
 
             season_avg = player_stats.get(season_key, 0)
             last5_avg = player_stats.get(last5_key, 0)
@@ -299,6 +399,9 @@ class PropsEngineV2:
             )
 
             line = round(base_line * 0.9, 1)
+
+            minute_profile = self._build_minute_profile(player_stats, prop_type, is_starter)
+            line = round(line * minute_profile["line_multiplier"], 1)
 
             player_position = player_stats.get("position", "G")
             boost = get_matchup_boost(team, player_position, prop_type, matchup_data)
@@ -336,6 +439,13 @@ class PropsEngineV2:
                 "is_starter": is_starter,
                 "is_home": is_home,
                 "avgMinutes_last5": player_stats.get("avgMinutes_last5", 0),
+                "early_minutes_avg": minute_profile["early_minutes_avg"],
+                "recent_minutes_avg": minute_profile["recent_minutes_avg"],
+                "minute_trend": minute_profile["minute_trend"],
+                "minute_volatility": minute_profile["minute_volatility"],
+                "production_per_minute": minute_profile["production_per_minute"],
+                "minute_confidence_delta": minute_profile["confidence_delta"],
+                "minute_profile": minute_profile["opportunity_label"],
                 "aggressiveness": aggressiveness,
                 "confidence": confidence,
                 "matchup_mult": boost,

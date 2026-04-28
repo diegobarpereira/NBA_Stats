@@ -86,7 +86,7 @@ st.markdown("""
 """)
 
 if not st.session_state.get("stats_loaded_v2"):
-    st.error("Execute o scraping primeiro.")
+    st.error("Atualize os dados na aba **Dados do Dia** antes de gerar o Bet Slip.")
     st.stop()
 
 if not st.session_state.loader_v2.games_data:
@@ -239,21 +239,25 @@ if st.session_state.get("bilhetes_v2"):
                 aggr = prop.get("aggressiveness", 0)
                 conf = prop.get("confidence", 0)
                 hit_prob = prop.get("calibrated_hit_probability", 0.5)
-                fair_odds = prop.get("fair_odds_over")
+                fair_odds = prop.get("fair_odds", prop.get("fair_odds_over"))
                 prob_edge = prop.get("probability_edge", 0.0)
                 odds_source = prop.get("odds_source", "calculated")
                 market_line = prop.get("market_line")
                 market_target_line = prop.get("market_target_line")
+                reference_odds = prop.get("reference_odds_over") if prop.get("over_under", "Over") == "Over" else prop.get("reference_odds_under")
+                reference_bookmaker = prop.get("reference_bookmaker", "")
+                price_delta = prop.get("price_delta_over") if prop.get("over_under", "Over") == "Over" else prop.get("price_delta_under")
+                over_under = prop.get("over_under", "Over")
                 label = PROP_LABELS.get(t, t or "prop")
 
                 aggr_emoji = "🟢" if aggr < 0.15 else "🟡" if aggr < 0.25 else "🔴"
 
-                line_text = f"{l}+ {label}"
+                line_text = f"{over_under} {l}+ {label}"
                 if odds_source == "market_approx" and market_line is not None:
                     target_line = market_target_line if market_target_line is not None else l
-                    line_text = f"modelo {l}+ {label} | aprox mercado {target_line}+ {label} (ref {market_line}+ {label})"
+                    line_text = f"{over_under} modelo {l}+ {label} | aprox mercado {target_line}+ {label} (ref {market_line}+ {label})"
                 elif market_line is not None:
-                    line_text = f"modelo {l}+ {label} | mercado {market_line}+ {label}"
+                    line_text = f"{over_under} modelo {l}+ {label} | mercado {market_line}+ {label}"
 
                 source_text = {
                     "api": "Bet365",
@@ -262,10 +266,15 @@ if st.session_state.get("bilhetes_v2"):
                 }.get(odds_source, odds_source)
                 edge_text = f"Edge: {prob_edge:+.1%}"
                 fair_text = f"fair {fair_odds:.2f}" if fair_odds else "fair -"
+                market_compare_text = ""
+                if reference_odds:
+                    delta_text = f"{price_delta:+.2f}" if price_delta is not None else "n/a"
+                    ref_book_text = reference_bookmaker or "FD/DK"
+                    market_compare_text = f" | Ref {ref_book_text}: {reference_odds:.2f} | B365-ref: {delta_text}"
                 st.markdown(
                     f"- **{p}** ({label}): {line_text} | Odd: {o:.2f} [{source_text}] | "
                     f"Prob: {hit_prob:.0%} | {edge_text} | {fair_text} | "
-                    f"Aggr: {aggr_emoji} {aggr:.0%} | Conf: {conf:.0f}"
+                    f"Aggr: {aggr_emoji} {aggr:.0%} | Conf: {conf:.0f}{market_compare_text}"
                 )
 
         with cols[2]:

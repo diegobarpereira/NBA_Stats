@@ -1,36 +1,125 @@
-import streamlit as st
+import json
 import sys
-import re
-from pathlib import Path
 from datetime import datetime, timedelta
+from pathlib import Path
+
+import pandas as pd
+import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import config
+from scrapers.gameread_scraper import fetch_games_from_gameread, fetch_injuries_from_gameread
+from utils.scraping_workflow import run_full_stats_refresh
 
 
 def _init_session():
     if "loader" not in st.session_state:
         from utils.data_loader import DataLoader
+
         st.session_state.loader = DataLoader()
         try:
             st.session_state.loader.load_all()
         except FileNotFoundError:
             pass
+
     if "stats" not in st.session_state:
         st.session_state.stats = st.session_state.loader.stats_cache.copy()
         st.session_state.stats_loaded = bool(st.session_state.stats)
+
     if "matchup_data" not in st.session_state:
         st.session_state.matchup_data = None
+
     if "props_generated" not in st.session_state:
         st.session_state.props_generated = False
+
     if "bilhetes_generated" not in st.session_state:
         st.session_state.bilhetes_generated = False
+
+    if "daily_refresh_summary" not in st.session_state:
+        st.session_state.daily_refresh_summary = None
+
+
+def _render_games_section(games_data):
+    if not games_data:
+        st.info("Nenhum jogo carregado para a data selecionada.")
+        return
+
+    st.dataframe(pd.DataFrame(games_data), use_container_width=True, hide_index=True)
+
+
+def _render_injuries_section(injuries_data):
+    if not injuries_data:
+        st.info("Nenhuma lesão reportada.")
+        return
+
+    if isinstance(injuries_data, dict) and "relatorio_lesoes" in injuries_data:
+        rows = []
+        for team in injuries_data.get("relatorio_lesoes", {}).get("times", []):
+            for player in team.get("jogadores", []):
+                rows.append(
+                    {
+                        "team": team.get("team", ""),
+                        "abbr": team.get("abbr", ""),
+                        "player": player.get("nome", ""),
+                        "status": player.get("status", ""),
+                    }
+                )
+        if rows:
+            st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+        else:
+            st.info("Nenhuma lesão reportada.")
+        return
+
+    st.dataframe(pd.DataFrame(injuries_data), use_container_width=True, hide_index=True)
+
+
+def _render_season_section(stats_cache):
+    season_rows = [
+        {
+            "player": name,
+            "team": stats.get("team", ""),
+            "ppg": stats.get("avgPoints_season", stats.get("ppg", 0)),
+            "rpg": stats.get("avgRebounds_season", stats.get("rpg", 0)),
+            "apg": stats.get("avgAssists_season", stats.get("apg", 0)),
+            "tpg": stats.get("avg3PT_season", stats.get("tpg", 0)),
+            "games": stats.get("games_season", stats.get("gp", 0)),
+        }
+        for name, stats in stats_cache.items()
+    ]
+
+    if not season_rows:
+        st.info("Season Stats ainda não carregados.")
+        return
+
+    st.dataframe(pd.DataFrame(season_rows), use_container_width=True, hide_index=True)
+
+
+def _render_last5_section(stats_cache):
+    last5_rows = [
+        {
+            "player": name,
+            "team": stats.get("team", ""),
+            "games_last5": stats.get("games_last5", 0),
+            "avgPoints_last5": stats.get("avgPoints_last5", 0),
+            "avgRebounds_last5": stats.get("avgRebounds_last5", 0),
+            "avgAssists_last5": stats.get("avgAssists_last5", 0),
+        }
+        for name, stats in stats_cache.items()
+        if (stats.get("games_last5") or 0) >= 2
+    ]
+
+    if not last5_rows:
+        st.info("Last5 ainda não carregado.")
+        return
+
+    st.dataframe(pd.DataFrame(last5_rows), use_container_width=True, hide_index=True)
 
 
 _init_session()
 
 st.title("📋 Dados do Dia")
+st.caption("Ao buscar no GameRead, a página já atualiza jogos, lesões, Season Stats e Last5 em sequência.")
 
 col_tz, col_date = st.columns([1, 1])
 
@@ -40,9 +129,9 @@ with col_tz:
         "Selecione",
         options=[-3, -4, -5, -6, -7, -8],
         index=0,
-        format_func=lambda x: f"Brasília (GMT{x})" if x == -3 else f"GMT{x}",
+        format_func=lambda value: f"Brasília (GMT{value})" if value == -3 else f"GMT{value}",
         help="Selecione o timezone da sua localização",
-        label_visibility="collapsed"
+        label_visibility="collapsed",
     )
 
 with col_date:
@@ -50,464 +139,99 @@ with col_date:
     server_now = datetime.now()
     local_dt = server_now + timedelta(hours=timezone_offset)
     today = local_dt.strftime("%Y-%m-%d")
-    auto_date = st.text_input("Data", value=today, label_visibility="collapsed")
+    selected_date = st.text_input("Data", value=today, label_visibility="collapsed")
 
-st.markdown("---")
+progress_placeholder = st.empty()
+status_placeholder = st.empty()
+log_placeholder = st.empty()
 
-if st.button("📥 Buscar Jogos e Lesões do GameRead", type="primary", use_container_width=True):
-    with st.spinner("Buscando..."):
-        from scrapers.gameread_scraper import fetch_games_from_gameread, fetch_injuries_from_gameread
-        import json
-        try:
-            games = fetch_games_from_gameread(auto_date)
-            with open(config.DATA_FILES["games"], "w", encoding="utf-8") as f:
-                json.dump(games, f, indent=2, ensure_ascii=False)
-            
-            injuries = fetch_injuries_from_gameread(auto_date)
-            with open(config.DATA_FILES["injuries"], "w", encoding="utf-8") as f:
-                json.dump(injuries, f, indent=2, ensure_ascii=False)
-            
+if st.button("📥 Atualizar dados do dia", type="primary", use_container_width=True):
+    progress_bar = progress_placeholder.progress(0.0, text="Buscando GameRead...")
+    log_lines = []
+
+    def on_progress(value: float, message: str) -> None:
+        progress_bar.progress(value, text=message)
+        status_placeholder.info(message)
+
+    def on_log(message: str) -> None:
+        log_lines.append(message)
+        log_placeholder.code("\n".join(log_lines[-12:]), language="text")
+
+    try:
+        with st.spinner("Buscando jogos, lesões e estatísticas..."):
+            games = fetch_games_from_gameread(selected_date)
+            injuries = fetch_injuries_from_gameread(selected_date)
+
+            with open(config.DATA_FILES["games"], "w", encoding="utf-8") as games_file:
+                json.dump(games, games_file, indent=2, ensure_ascii=False)
+
+            with open(config.DATA_FILES["injuries"], "w", encoding="utf-8") as injuries_file:
+                json.dump(injuries, injuries_file, indent=2, ensure_ascii=False)
+
             st.session_state.loader.load_all()
+            refresh_summary = run_full_stats_refresh(
+                st.session_state.loader,
+                progress_callback=on_progress,
+                log_callback=on_log,
+            )
+
+            st.session_state.stats = refresh_summary["stats"].copy()
+            st.session_state.stats_loaded = bool(st.session_state.stats)
             st.session_state.props_generated = False
             st.session_state.bilhetes_generated = False
-            st.rerun()
-        except Exception as e:
-            st.error(f"Erro ao buscar do GameRead: {e}")
-            st.info("Tentando usar dados em cache...")
-            # Force reload from cache
-            try:
-                st.session_state.loader.load_all()
-                st.warning("Usando dados em cache do último carregamento.")
-                st.rerun()
-            except Exception as cache_err:
-                st.error(f"Erro ao carregar cache: {cache_err}")
+            st.session_state.daily_refresh_summary = {
+                "games": len(st.session_state.loader.games_data),
+                "injuries": len(st.session_state.loader.get_injured_players()) + len(st.session_state.loader.get_questionable_players()),
+                "season_players": refresh_summary["season"]["players_saved"],
+                "season_expected": refresh_summary["season"]["players_expected"],
+                "last5_updated": refresh_summary["last5"]["updated"],
+                "last5_errors": refresh_summary["last5"]["errors"],
+                "teams": refresh_summary["season"]["teams_needed"],
+            }
+
+        progress_bar.progress(1.0, text="Atualização concluída")
+        status_placeholder.success("Dados do dia, Season Stats e Last5 atualizados.")
+        st.rerun()
+    except Exception as exc:
+        status_placeholder.error(f"Erro ao atualizar dados: {exc}")
+
+loader = st.session_state.loader
+stats_cache = loader.stats_cache.copy()
+games_data = loader.games_data
+injuries_data = loader.injuries_data
+summary = st.session_state.daily_refresh_summary
 
 st.markdown("---")
 
-tab1, tab2, tab3 = st.tabs(["📝 Texto Plano", "🏀 Jogos do Dia", "🏥 Relatório de Lesões"])
+m1, m2, m3, m4 = st.columns(4)
+m1.metric("Jogos", len(games_data))
+m2.metric("Lesões", len(loader.get_injured_players()) + len(loader.get_questionable_players()))
+m3.metric("Season Stats", len(stats_cache))
+m4.metric("Last5 válidos", sum(1 for stats in stats_cache.values() if (stats.get("games_last5") or 0) >= 2))
 
-
-def parse_games_text(raw: str) -> list[dict]:
-    games = []
-    lines = raw.strip().split("\n")
-    date_hint = None
-
-    for line in lines:
-        line = line.strip()
-        if not line or line.startswith("#") or line.startswith("//"):
-            continue
-
-        date_match = re.search(r"(\d{1,2}[/-]\d{1,2}[/-]\d{2,4})", line)
-        if date_match and "vs" not in line.lower() and "x" not in line.lower() and "@" not in line:
-            date_hint = date_match.group(1)
-            continue
-
-        parts = re.split(r"\s+(?:vs|v|x|@)\s+", line, flags=re.IGNORECASE)
-        if len(parts) < 2:
-            continue
-
-        t1 = parts[0].strip()
-        rest = parts[1].strip()
-
-        time_match = re.search(r"(\d{1,2}:\d{2})", rest)
-        if time_match:
-            game_time = time_match.group(1)
-            t2 = re.sub(r"\s*\d{1,2}:\d{2}\s*$", "", rest).strip()
-        else:
-            game_time = None
-            t2 = rest
-
-        if "@" in line.lower():
-            home_name, away_name = t2, t1
-        else:
-            home_name, away_name = t1, t2
-
-        team1_full = _resolve_team(home_name)
-        team2_full = _resolve_team(away_name)
-
-        if not team1_full or not team2_full:
-            continue
-
-        game_date = date_hint or datetime.now().strftime("%Y-%m-%d")
-        if "/" in game_date:
-            parts = game_date.replace("-", "/").split("/")
-            month, day = parts[0], parts[1]
-            year = parts[2] if len(parts) > 2 else datetime.now().strftime("%Y")
-            if len(year) == 2:
-                year = "20" + year
-            game_date = f"{year}-{month.zfill(2)}-{day.zfill(2)}"
-
-        game_id = f"{team2_full.split()[-1]}vs{team1_full.split()[-1]}_{game_date[:10]}"
-
-        if game_time:
-            h, m = game_time.split(":")
-            dt_obj = datetime.fromisoformat(game_date[:10]) + timedelta(hours=int(h), minutes=int(m))
-            game_datetime = dt_obj.isoformat()
-        else:
-            game_datetime = f"{game_date[:10]}T21:00:00"
-
-        games.append({
-                "id": game_id,
-                "home": team1_full,
-                "away": team2_full,
-                "datetime": game_datetime,
-            })
-
-    return games
-
-
-def parse_injuries_text(raw: str) -> dict:
-    by_team = {}
-    current_team = None
-    current_abbr = None
-    lines = raw.strip().split("\n")
-
-    for line in lines:
-        line = line.strip()
-        if not line or line.startswith("#") or line.startswith("//"):
-            continue
-
-        team_header_brackets = re.match(r"\[(?P<inside>[^\]]+)\](?:\s*(?P<after>.+))?", line, re.IGNORECASE)
-        if team_header_brackets:
-            inside = (team_header_brackets.group("inside") or "").strip()
-            after = (team_header_brackets.group("after") or "").strip()
-            
-            inside_upper = inside.upper()
-            if inside_upper in _TEAM_KEYWORDS:
-                current_team = _TEAM_KEYWORDS[inside_upper]
-                current_abbr = _team_name_to_abbr(current_team)
-            else:
-                resolved = _resolve_team(inside)
-                current_team = resolved
-                current_abbr = _team_name_to_abbr(resolved)
-            
-            if current_team and current_abbr and current_team not in by_team:
-                by_team[current_team] = {"abbr": current_abbr, "team": current_team, "jogadores": []}
-            continue
-
-        team_header_colon = re.match(r"^(?P<abbr>[A-Z]{2,3})\s*:\s*(?P<name>.*)$", line, re.IGNORECASE)
-        if team_header_colon:
-            abbr = (team_header_colon.group("abbr") or "").upper()
-            name = team_header_colon.group("name")
-            if abbr:
-                current_team = name.strip() if name.strip() else _abbr_to_team_name(abbr)
-                current_abbr = abbr
-                if current_team and current_abbr and current_team not in by_team:
-                    by_team[current_team] = {"abbr": current_abbr, "team": current_team, "jogadores": []}
-            continue
-
-        if not current_team and not ":" in line and not "[" in line:
-            potential_team = _resolve_team(line.strip())
-            if potential_team and potential_team != line.strip():
-                current_team = potential_team
-                current_abbr = _team_name_to_abbr(potential_team)
-                if current_team not in by_team:
-                    by_team[current_team] = {"abbr": current_abbr, "team": current_team, "jogadores": []}
-                continue
-
-        injury_line = re.match(
-            r"(?P<player>[A-Z][A-Za-z'\-À-ÿ]+(?:\s+[A-Za-z'\-À-ÿ]+)*)"
-            r"(?:\s*[-–:]\s*)"
-            r"(?P<status>.+)",
-            line,
+if summary:
+    st.success(
+        " | ".join(
+            [
+                f"Jogos: {summary['games']}",
+                f"Lesões: {summary['injuries']}",
+                f"Season: {summary['season_players']}/{summary['season_expected']}",
+                f"Last5: {summary['last5_updated']} atualizados",
+            ]
         )
-        if injury_line and current_team:
-            player = injury_line.group("player").strip()
-            status_raw = injury_line.group("status").strip().upper()
-            status = _normalize_status(status_raw)
-            by_team[current_team]["jogadores"].append({"nome": player, "status": status})
-        elif current_team:
-            status = _normalize_status(line)
-            if status in ("OUT", "DOUBTFUL", "QUESTIONABLE", "PROBABLE", "ACTIVE"):
-                parts = line.split()
-                if parts:
-                    player = " ".join(parts[:-1]).strip()
-                    if player:
-                        by_team[current_team]["jogadores"].append({"nome": player, "status": status})
+    )
+    st.caption(f"Times processados: {', '.join(summary['teams'])}")
 
-    return {
-        "relatorio_lesoes": {
-            "data": datetime.now().strftime("%Y-%m-%d"),
-            "times": list(by_team.values()),
-        }
-    }
+tab_games, tab_season, tab_last5 = st.tabs(["Jogos do dia - Relatorio de lesoes", "Season Stats", "Last5"])
 
+with tab_games:
+    st.markdown("### Jogos do dia")
+    _render_games_section(games_data)
+    st.markdown("### Relatorio de lesoes")
+    _render_injuries_section(injuries_data)
 
-def _normalize_status(s: str) -> str:
-    s = s.upper().strip()
-    if any(k in s for k in ["OUT", "INATIVO", "SUSPENSO"]):
-        return "OUT"
-    if "DOUBT" in s:
-        return "DOUBTFUL"
-    if "QUESTION" in s or "DUVIDA" in s:
-        return "QUESTIONABLE"
-    if "PROBABLE" in s or "PROVAVEL" in s or "PROB" in s:
-        return "PROBABLE"
-    if "ACTIVE" in s or "ATIVO" in s:
-        return "ACTIVE"
-    return "OUT"
+with tab_season:
+    _render_season_section(stats_cache)
 
-
-_TEAM_KEYWORDS = {
-    "ATLANTA": "Atlanta Hawks", "HAWKS": "Atlanta Hawks", "ATL": "Atlanta Hawks",
-    "BOSTON": "Boston Celtics", "CELTICS": "Boston Celtics", "BOS": "Boston Celtics",
-    "BROOKLYN": "Brooklyn Nets", "NETS": "Brooklyn Nets", "BKN": "Brooklyn Nets",
-    "CHARLOTTE": "Charlotte Hornets", "HORNETS": "Charlotte Hornets", "CHA": "Charlotte Hornets",
-    "CHICAGO": "Chicago Bulls", "BULLS": "Chicago Bulls", "CHI": "Chicago Bulls",
-    "CLEVELAND": "Cleveland Cavaliers", "CAVALIERS": "Cleveland Cavaliers", "CLE": "Cleveland Cavaliers",
-    "DALLAS": "Dallas Mavericks", "MAVERICKS": "Dallas Mavericks", "DAL": "Dallas Mavericks",
-    "DENVER": "Denver Nuggets", "NUGGETS": "Denver Nuggets", "DEN": "Denver Nuggets",
-    "DETROIT": "Detroit Pistons", "PISTONS": "Detroit Pistons", "DET": "Detroit Pistons",
-    "GOLDEN STATE": "Golden State Warriors", "WARRIORS": "Golden State Warriors", "GSW": "Golden State Warriors",
-    "G.S.W.": "Golden State Warriors",
-    "HOUSTON": "Houston Rockets", "ROCKETS": "Houston Rockets", "HOU": "Houston Rockets",
-    "INDIANA": "Indiana Pacers", "PACERS": "Indiana Pacers", "IND": "Indiana Pacers",
-    "L.A. CLIPPERS": "Los Angeles Clippers", "L.A. CLIPPERS": "Los Angeles Clippers",
-    "LA CLIPPERS": "Los Angeles Clippers", "LAC": "Los Angeles Clippers",
-    "CLIPPERS": "Los Angeles Clippers",
-    "L.A. LAKERS": "Los Angeles Lakers", "L.A. LAKERS": "Los Angeles Lakers",
-    "LA LAKERS": "Los Angeles Lakers", "LAL": "Los Angeles Lakers",
-    "LAKERS": "Los Angeles Lakers",
-    "MEMPHIS": "Memphis Grizzlies", "GRIZZLIES": "Memphis Grizzlies", "MEM": "Memphis Grizzlies",
-    "MIAMI": "Miami Heat", "HEAT": "Miami Heat", "MIA": "Miami Heat",
-    "MILWAUKEE": "Milwaukee Bucks", "BUCKS": "Milwaukee Bucks", "MIL": "Milwaukee Bucks",
-    "MINNESOTA": "Minnesota Timberwolves", "TIMBERWOLVES": "Minnesota Timberwolves",
-    "MIN": "Minnesota Timberwolves", "WOLVES": "Minnesota Timberwolves",
-    "NEW ORLEANS": "New Orleans Pelicans", "NOP": "New Orleans Pelicans",
-    "N.O.P.": "New Orleans Pelicans",
-    "PELICANS": "New Orleans Pelicans", "PELS": "New Orleans Pelicans",
-    "NEW YORK": "New York Knicks", "KNICKS": "New York Knicks", "NYK": "New York Knicks", "NY KNICKS": "New York Knicks", "NY": "New York Knicks",
-    "OKLAHOMA CITY": "Oklahoma City Thunder", "THUNDER": "Oklahoma City Thunder", "OKC": "Oklahoma City Thunder",
-    "ORLANDO": "Orlando Magic", "MAGIC": "Orlando Magic", "ORL": "Orlando Magic",
-    "PHILADELPHIA": "Philadelphia 76ers", "76ERS": "Philadelphia 76ers", "PHI": "Philadelphia 76ers",
-    "PHOENIX": "Phoenix Suns", "SUNS": "Phoenix Suns", "PHX": "Phoenix Suns",
-    "PORTLAND": "Portland Trail Blazers", "BLAZERS": "Portland Trail Blazers", "POR": "Portland Trail Blazers",
-    "SACRAMENTO": "Sacramento Kings", "KINGS": "Sacramento Kings", "SAC": "Sacramento Kings",
-    "SAN ANTONIO": "San Antonio Spurs", "SPURS": "San Antonio Spurs", "SAS": "San Antonio Spurs",
-    "TORONTO": "Toronto Raptors", "RAPTORS": "Toronto Raptors", "TOR": "Toronto Raptors",
-    "UTAH": "Utah Jazz", "JAZZ": "Utah Jazz", "UTA": "Utah Jazz",
-    "WASHINGTON": "Washington Wizards", "WIZARDS": "Washington Wizards", "WAS": "Washington Wizards",
-}
-
-
-def _resolve_team(name: str) -> str:
-    name_clean = name.strip().upper()
-    
-    if name_clean in _TEAM_KEYWORDS:
-        return _TEAM_KEYWORDS[name_clean]
-    
-    words = name_clean.split()
-    if len(words) >= 2:
-        two_words = " ".join(words[:2])
-        if two_words in _TEAM_KEYWORDS:
-            return _TEAM_KEYWORDS[two_words]
-        if len(words) >= 3:
-            three_words = " ".join(words[:3])
-            if three_words in _TEAM_KEYWORDS:
-                return _TEAM_KEYWORDS[three_words]
-    
-    for kw, full in _TEAM_KEYWORDS.items():
-        if " " in kw and (kw == name_clean or name_clean.startswith(kw + " ") or name_clean.endswith(" " + kw)):
-            return full
-    
-    return name.strip()
-
-
-def _abbr_to_team_name(abbr: str) -> str:
-    abbr = abbr.upper()
-    for kw, full in _TEAM_KEYWORDS.items():
-        if kw == abbr:
-            return full
-    return abbr
-
-
-def _team_name_to_abbr(name: str) -> str:
-    name_upper = name.strip().upper()
-    
-    if name_upper in _TEAM_KEYWORDS:
-        return _TEAM_KEYWORDS[name_upper]
-    
-    words = name_upper.split()
-    if len(words) >= 2:
-        two_words = " ".join(words[:2])
-        if two_words in _TEAM_KEYWORDS:
-            return _TEAM_KEYWORDS[two_words]
-        if len(words) >= 3:
-            three_words = " ".join(words[:3])
-            if three_words in _TEAM_KEYWORDS:
-                return _TEAM_KEYWORDS[three_words]
-    
-    return name.strip()
-
-
-def save_games(games: list):
-    import json
-    with open(config.DATA_FILES["games"], "w", encoding="utf-8") as f:
-        json.dump(games, f, indent=2, ensure_ascii=False)
-    st.session_state.loader.games_data = games
-    st.session_state.props_generated = False
-    st.session_state.bilhetes_generated = False
-
-
-def save_injuries(injuries: dict):
-    import json
-    with open(config.DATA_FILES["injuries"], "w", encoding="utf-8") as f:
-        json.dump(injuries, f, indent=2, ensure_ascii=False)
-    st.session_state.loader.injuries_data = st.session_state.loader._parse_injuries(injuries)
-    st.session_state.loader._build_injury_index()
-    st.session_state.props_generated = False
-    st.session_state.bilhetes_generated = False
-
-
-with tab1:
-    st.markdown("#### 📝 Entrada de Texto Plano")
-    st.caption("Cole os jogos e lesões no formato livre abaixo — o sistema detecta automaticamente.")
-
-    col_games, col_injuries = st.columns(2)
-
-    with col_games:
-        st.markdown("**🏀 Jogos do Dia**")
-        st.caption("Formato: `Time vs Time 21:00` ou `Time x Time`")
-        default_games = ""
-        if st.session_state.loader.games_data:
-            for g in st.session_state.loader.games_data:
-                try:
-                    dt = datetime.fromisoformat(g["datetime"])
-                    t = dt.strftime("%H:%M")
-                except Exception:
-                    t = "21:00"
-                default_games += f"{g['away']} vs {g['home']} {t}\n"
-        games_text = st.text_area(
-            "Jogos", value=default_games, height=300,
-            placeholder="DET vs WAS 20:30\nORL @ CHA 19:00\nCLE x CHI 21:00\nLAL vs MIA 22:30",
-            label_visibility="collapsed",
-        )
-
-    with col_injuries:
-        st.markdown("**🏥 Relatório de Lesões**")
-        st.caption("Formato: `[DET] Detroit` depois `Jogador OUT`")
-        default_injuries = ""
-        if st.session_state.loader.injuries_data and isinstance(st.session_state.loader.injuries_data, list):
-            prev_team = ""
-            for entry in st.session_state.loader.injuries_data:
-                team = entry.get("team", "")
-                if team != prev_team:
-                    abbr = _team_name_to_abbr(team)
-                    default_injuries += f"[{abbr}] {team}\n"
-                    prev_team = team
-                default_injuries += f"{entry['player']} {entry['status']}\n"
-
-        injuries_text = st.text_area(
-            "Lesões", value=default_injuries, height=300,
-            placeholder="[DET] Detroit Pistons\nCade Cunningham OUT\nIsaiah Stewart OUT\n\n[WIZ] Washington Wizards\nTrae Young OUT\nAnthony Davis OUT",
-            label_visibility="collapsed",
-        )
-
-    if st.button("🔄 Processar e Salvar", type="primary"):
-        errors = []
-
-        games = parse_games_text(games_text)
-        if not games:
-            errors.append("⚠️ Nenhum jogo reconhecido. Verifique o formato.")
-        else:
-            save_games(games)
-            st.success(f"✅ {len(games)} jogos salvos!")
-
-        injuries = parse_injuries_text(injuries_text)
-        total_inj = sum(len(t["jogadores"]) for t in injuries.get("relatorio_lesoes", {}).get("times", []))
-        if total_inj > 0:
-            save_injuries(injuries)
-            st.success(f"✅ {total_inj} jogadores com lesão salvos!")
-
-        if errors:
-            for e in errors:
-                st.error(e)
-
-        if games or total_inj > 0:
-            st.rerun()
-
-    with st.expander("📖 Formato aceito"):
-        st.markdown("""
-**Jogos:**
-- `DET vs WAS 20:30` —DET em casa, jogo às 20:30
-- `CLE x CHI` —CLE em casa, às 21:00
-- `ORL @ CHA` —ORL fora, CHA em casa
-- `2026-03-20\nLAL vs MIA 22:30` — com data na linha acima
-- Times: use nome completo ou abreviatura (CLE, WAS, LAC, LAL...)
-
-**Lesões:**
-- `[DET] Detroit Pistons` — abre seção do time
-- `Jogador OUT` — OUT, DOUBTFUL, QUESTIONABLE, PROBABLE, ACTIVE
-- `Jogador - OUT (tornozelo)` — com descrição opcional
-- `[WAS] Washington Wizards` depois linhas de jogadores
-""")
-
-
-with tab2:
-    st.markdown("#### 🏀 Jogos do Dia")
-
-    if st.session_state.loader.games_data:
-        import json
-        edited = st.data_editor(
-            st.session_state.loader.games_data,
-            num_rows="dynamic",
-            column_config={
-                "id": st.column_config.TextColumn("ID", width="medium"),
-                "home": st.column_config.TextColumn("Casa", width="medium"),
-                "away": st.column_config.TextColumn("Fora", width="medium"),
-                "datetime": st.column_config.TextColumn("DataTime ISO", width="medium"),
-            },
-            hide_index=True,
-            key="games_editor",
-        )
-        if st.button("💾 Salvar Jogos", type="primary"):
-            save_games(st.session_state.get("games_editor", edited))
-            st.success("✅ Jogos salvos!")
-            st.rerun()
-    else:
-        st.info("Nenhum jogo carregado. Use a aba **📝 Texto Plano** para adicionar.")
-
-
-with tab3:
-    st.markdown("#### 🏥 Relatório de Lesões")
-
-    if st.session_state.loader.injuries_data and isinstance(st.session_state.loader.injuries_data, list):
-        rows = []
-        for entry in st.session_state.loader.injuries_data:
-            rows.append({
-                "team": entry.get("team", ""),
-                "player": entry.get("player", ""),
-                "status": entry.get("status", ""),
-            })
-
-        edited = st.data_editor(
-            rows,
-            num_rows="dynamic",
-            column_config={
-                "team": st.column_config.TextColumn("Time", width="medium"),
-                "player": st.column_config.TextColumn("Jogador", width="medium"),
-                "status": st.column_config.SelectboxColumn(
-                    "Status", width="small",
-                    options=["OUT", "DOUBTFUL", "QUESTIONABLE", "PROBABLE", "ACTIVE"],
-                ),
-            },
-            hide_index=True,
-            key="injuries_editor",
-        )
-
-        if st.button("💾 Salvar Lesões", type="primary"):
-            by_team = {}
-            edited_rows = st.session_state.get("injuries_editor", [])
-            if hasattr(edited_rows, "to_dict"):
-                edited_rows = edited_rows.to_dict("records")
-            for row in edited_rows:
-                t = row["team"]
-                if t not in by_team:
-                    by_team[t] = {"abbr": _team_name_to_abbr(t), "team": t, "jogadores": []}
-                by_team[t]["jogadores"].append({"nome": row["player"], "status": row["status"]})
-            injuries = {"relatorio_lesoes": {"data": datetime.now().strftime("%Y-%m-%d"), "times": list(by_team.values())}}
-            save_injuries(injuries)
-            st.success("✅ Lesões salvas!")
-            st.rerun()
-    else:
-        st.info("Nenhum relatório carregado. Use a aba **📝 Texto Plano** para adicionar.")
+with tab_last5:
+    _render_last5_section(stats_cache)

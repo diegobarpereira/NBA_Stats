@@ -22,6 +22,15 @@ class PropsEngine:
             except Exception:
                 pass
 
+    def _get_prop_stat_keys(self, prop_type: str) -> Tuple[str, str]:
+        special_keys = {
+            "3pt": ("avg3PT_season", "avg3PT_last5"),
+        }
+        return special_keys.get(
+            prop_type,
+            (f"avg{prop_type.capitalize()}_season", f"avg{prop_type.capitalize()}_last5"),
+        )
+
     def calculate_adjusted_line(
         self,
         player_stats: Dict,
@@ -29,8 +38,7 @@ class PropsEngine:
         injury_status: Optional[str] = None,
         player_name: Optional[str] = None,
     ) -> float:
-        season_key = f"avg{prop_type.capitalize()}_season"
-        last5_key = f"avg{prop_type.capitalize()}_last5"
+        season_key, last5_key = self._get_prop_stat_keys(prop_type)
 
         season_avg = player_stats.get(season_key, 0)
         last5_avg = player_stats.get(last5_key, 0)
@@ -149,8 +157,8 @@ class PropsEngine:
                 "type": prop_type,
                 "abbrev": self.prop_abbrev[prop_type],
                 "line": base_line,
-                "season_avg": player_stats.get(f"avg{prop_type.capitalize()}_season", 0),
-                "last5_avg": player_stats.get(f"avg{prop_type.capitalize()}_last5", 0),
+                "season_avg": player_stats.get(self._get_prop_stat_keys(prop_type)[0], 0),
+                "last5_avg": player_stats.get(self._get_prop_stat_keys(prop_type)[1], 0),
                 "season_games": season_games,
                 "last5_games": last5_games,
                 "odds_over": self.odds_config["prop_over_odds"],

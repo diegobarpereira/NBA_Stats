@@ -1,3 +1,4 @@
+import copy
 import json
 from datetime import datetime
 from itertools import combinations
@@ -20,24 +21,149 @@ class BilheteiroV2:
         self._odds_cache = None
         self._odds_initialized = False
 
-    def _get_market_gap(self, prop: Dict) -> Optional[float]:
+    def _build_odds_snapshot(self, prop: Dict) -> Dict:
+        return {
+            "captured_at": datetime.now().isoformat(),
+            "side": prop.get("over_under", "Over"),
+            "selected_odds": prop.get("dynamic_odds", prop.get("selected_odds", prop.get("odds_over", self.default_prop_odds))),
+            "odds_source": prop.get("odds_source", "unknown"),
+            "bookmaker": prop.get("bookmaker", ""),
+            "market_line": prop.get("market_line"),
+            "market_target_line": prop.get("market_target_line"),
+            "market_reference_lines": prop.get("market_reference_lines", []),
+            "market_odds_over": prop.get("market_odds_over"),
+            "market_odds_under": prop.get("market_odds_under"),
+            "reference_odds_over": prop.get("reference_odds_over"),
+            "reference_odds_under": prop.get("reference_odds_under"),
+            "reference_source": prop.get("reference_source"),
+            "reference_bookmaker": prop.get("reference_bookmaker"),
+            "reference_bookmakers": prop.get("reference_bookmakers", []),
+            "price_delta_over": prop.get("price_delta_over"),
+            "price_delta_under": prop.get("price_delta_under"),
+        }
+
+    def _annotate_tickets_for_save(self, tickets: List[Dict]) -> List[Dict]:
+        annotated = copy.deepcopy(tickets)
+        snapshot_time = datetime.now().isoformat()
+        for ticket in annotated:
+            ticket["odds_snapshot_time"] = snapshot_time
+            for prop in ticket.get("props", []):
+                prop["odds_snapshot"] = self._build_odds_snapshot(prop)
+                prop.setdefault("picked_odds", prop.get("dynamic_odds", prop.get("selected_odds", prop.get("odds_over", self.default_prop_odds))))
+        return annotated
+
+    def _pair_correlation_penalty(self, left: Dict, right: Dict) -> float:
+        penalty = 0.0
+
+        same_team = left.get("team") == right.get("team")
+        same_game = left.get("game_id") == right.get("game_id")
+        same_side = left.get("over_under", "Over") == right.get("over_under", "Over")
+        left_type = left.get("type")
+        right_type = right.get("type")
+        type_pair = frozenset({left_type, right_type})
+
+        if not same_game:
+            return 0.0
+
+        if same_team and same_side:
+            penalty += 0.25
+
+        if same_team and same_side and type_pair == frozenset({"points", "3pt"}):
+            penalty += 0.45
+        elif same_team and same_side and type_pair == frozenset({"points", "assists"}):
+            penalty += 0.35
+        elif same_team and same_side and type_pair == frozenset({"rebounds", "assists"}):
+            penalty += 0.15
+        elif same_team and left_type == right_type:
+            penalty += 0.20
+
+        if same_side and left_type == right_type:
+            penalty += 0.10
+
+        if left.get("over_under") != right.get("over_under") and same_team:
+            penalty -= 0.08
+
+        return max(0.0, round(penalty, 3))
+
+    def _combo_correlation_penalty(self, combo: List[Dict]) -> float:
+        if len(combo) < 2:
+            return 0.0
+
+        total_penalty = 0.0
+        for idx, left in enumerate(combo):
+            for right in combo[idx + 1:]:
+                total_penalty += self._pair_correlation_penalty(left, right)
+
+        return round(total_penalty, 3)
+
+    def _selected_price_delta(self, prop: Dict) -> float:
+        if prop.get("over_under", "Over") == "Under":
+            return float(prop.get("price_delta_under") or 0.0)
+        return float(prop.get("price_delta_over") or 0.0)
+
+    def _get_market_gap(self, prop: Dict, side: str = "Over") -> Optional[float]:
         market_line = prop.get("market_line")
         model_line = prop.get("line")
         if market_line is None or model_line is None:
             return None
-        return float(model_line) - float(market_line)
+        raw_gap = float(model_line) - float(market_line)
+        return raw_gap if side == "Over" else -raw_gap
 
-    def _refresh_prop_calibration(self, prop: Dict) -> None:
-        market_gap = self._get_market_gap(prop)
-        prop["market_gap"] = round(market_gap, 2) if market_gap is not None else None
+    def _under_momentum_penalty(self, prop: Dict) -> float:
+        season_avg = float(prop.get("season_avg") or 0.0)
+        last5_avg = float(prop.get("last5_avg") or 0.0)
+        minute_trend = float(prop.get("minute_trend") or 0.0)
+        avg_minutes = float(prop.get("avgMinutes_last5") or prop.get("avg_minutes") or 0.0)
+        minute_profile = str(prop.get("minute_profile") or "")
+
+        penalty = 0.0
+
+        if season_avg > 0 and last5_avg > season_avg:
+            trend_ratio = (last5_avg - season_avg) / season_avg
+            if trend_ratio >= 0.30:
+                penalty += 0.08
+            elif trend_ratio >= 0.15:
+                penalty += 0.04
+
+        if minute_trend >= 3.0:
+            penalty += 0.06
+        elif minute_trend >= 1.5:
+            penalty += 0.03
+
+        if avg_minutes >= 36:
+            penalty += 0.03
+        elif avg_minutes >= 32:
+            penalty += 0.015
+
+        if minute_profile in {"minutes_up", "bench_opportunity"}:
+            penalty += 0.03
+
+        return round(min(0.18, penalty), 3)
+
+    def _refresh_prop_calibration(self, prop: Dict, side: str, odds: float) -> Dict:
+        calibrated_prop = dict(prop)
+        market_gap = self._get_market_gap(calibrated_prop, side)
+        calibrated_prop["market_gap"] = round(market_gap, 2) if market_gap is not None else None
+        calibrated_prop["over_under"] = side
 
         calibrated_prob = 0.5
         probability_components = {}
         analyzer = getattr(self.props_engine, "performance_analyzer", None)
         if analyzer is not None:
-            calibrated_prob, probability_components = analyzer.estimate_hit_probability(prop)
+            calibrated_prob, probability_components = analyzer.estimate_hit_probability(calibrated_prop)
 
-        odds = prop.get("dynamic_odds", self.default_prop_odds) or self.default_prop_odds
+        under_momentum_penalty = self._under_momentum_penalty(calibrated_prop) if side == "Under" else 0.0
+        calibrated_prop["under_momentum_penalty"] = under_momentum_penalty
+        calibrated_prop["base_aggressiveness"] = float(calibrated_prop.get("aggressiveness", 0.0))
+        if under_momentum_penalty > 0:
+            calibrated_prob = max(0.15, calibrated_prob - under_momentum_penalty)
+            probability_components = dict(probability_components)
+            probability_components["under_momentum_penalty"] = round(-under_momentum_penalty, 3)
+            calibrated_prop["aggressiveness"] = round(
+                min(1.0, calibrated_prop["base_aggressiveness"] + under_momentum_penalty),
+                3,
+            )
+
         try:
             odds = float(odds)
         except (TypeError, ValueError):
@@ -47,12 +173,17 @@ class BilheteiroV2:
         probability_edge = calibrated_prob - implied_prob
         expected_value = (calibrated_prob * odds) - 1.0
 
-        prop["calibrated_hit_probability"] = round(calibrated_prob, 3)
-        prop["probability_components"] = probability_components
-        prop["implied_probability"] = round(implied_prob, 3)
-        prop["probability_edge"] = round(probability_edge, 3)
-        prop["expected_value_over"] = round(expected_value, 3)
-        prop["fair_odds_over"] = round(1.0 / calibrated_prob, 2) if calibrated_prob > 0 else None
+        calibrated_prop["calibrated_hit_probability"] = round(calibrated_prob, 3)
+        calibrated_prop["probability_components"] = probability_components
+        calibrated_prop["implied_probability"] = round(implied_prob, 3)
+        calibrated_prop["probability_edge"] = round(probability_edge, 3)
+        calibrated_prop["expected_value"] = round(expected_value, 3)
+        calibrated_prop["fair_odds"] = round(1.0 / calibrated_prob, 2) if calibrated_prob > 0 else None
+        calibrated_prop["expected_value_over"] = calibrated_prop["expected_value"]
+        calibrated_prop["fair_odds_over"] = calibrated_prop["fair_odds"]
+        calibrated_prop["selected_odds"] = odds
+
+        return calibrated_prop
 
     def _is_prop_allowed_for_mode(self, prop: Dict, mode: str, min_confidence: float) -> bool:
         confidence = float(prop.get("confidence", 0))
@@ -60,9 +191,11 @@ class BilheteiroV2:
             return False
 
         calibrated_prob = float(prop.get("calibrated_hit_probability", 0.5))
+        probability_edge = float(prop.get("probability_edge", 0.0))
+        expected_value = float(prop.get("expected_value", prop.get("expected_value_over", 0.0)))
 
         if mode == "aggressive":
-            return True
+            return probability_edge >= -0.03 and expected_value >= -0.08
 
         if prop.get("odds_source") not in {"api", "market_approx"} or prop.get("market_line") is None:
             return False
@@ -72,12 +205,27 @@ class BilheteiroV2:
             return False
 
         aggressiveness = float(prop.get("aggressiveness", 0))
+        under_momentum_penalty = float(prop.get("under_momentum_penalty", 0.0))
 
         if mode == "conservative":
-            return market_gap >= -0.25 and aggressiveness <= 0.22 and calibrated_prob >= 0.53
+            return (
+                market_gap >= -0.25
+                and aggressiveness <= 0.22
+                and under_momentum_penalty <= 0.06
+                and calibrated_prob >= 0.53
+                and probability_edge >= 0.02
+                and expected_value >= 0.0
+            )
 
         if mode == "balanced":
-            return market_gap >= -0.75 and aggressiveness <= 0.32 and calibrated_prob >= 0.50
+            return (
+                market_gap >= -0.75
+                and aggressiveness <= 0.32
+                and under_momentum_penalty <= 0.10
+                and calibrated_prob >= 0.50
+                and probability_edge >= 0.0
+                and expected_value >= -0.02
+            )
 
         return True
 
@@ -115,7 +263,7 @@ class BilheteiroV2:
 
         return round(max(1.10, min(2.10, base)), 2)
 
-    def calculate_prop_odds(self, prop: Dict) -> float:
+    def calculate_prop_odds(self, prop: Dict) -> Dict:
         self._ensure_odds_cache()
 
         prop_type = prop.get("type", "points")
@@ -129,27 +277,43 @@ class BilheteiroV2:
         )
 
         if api_odds and api_odds.get("source") in {"api", "market_approx"}:
-            prop["odds_source"] = api_odds.get("source")
-            prop["bookmaker"] = api_odds.get("bookmaker", "")
-            prop["market_line"] = api_odds.get("reference_line", api_odds.get("line"))
-            prop["market_target_line"] = api_odds.get("line")
-            prop["market_reference_lines"] = api_odds.get("reference_lines", [prop["market_line"]] if prop.get("market_line") is not None else [])
-            prop["market_odds_over"] = api_odds.get("odds_over", self.default_prop_odds)
-            return float(api_odds.get("odds_over", self.default_prop_odds))
-        
-        prop["odds_source"] = "calculated"
-        prop["market_line"] = None
-        prop["market_target_line"] = None
-        prop["market_reference_lines"] = []
-        prop["market_odds_over"] = None
-        return self._calculate_odds_fallback(prop)
+            market_line = api_odds.get("reference_line", api_odds.get("line"))
+            return {
+                "odds_source": api_odds.get("source"),
+                "bookmaker": api_odds.get("bookmaker", ""),
+                "market_line": market_line,
+                "market_target_line": api_odds.get("line"),
+                "market_reference_lines": api_odds.get("reference_lines", [market_line] if market_line is not None else []),
+                "market_odds_over": api_odds.get("odds_over", self.default_prop_odds),
+                "market_odds_under": api_odds.get("odds_under", self.default_prop_odds),
+                "reference_odds_over": api_odds.get("reference_odds_over"),
+                "reference_odds_under": api_odds.get("reference_odds_under"),
+                "reference_source": api_odds.get("reference_source"),
+                "reference_bookmaker": api_odds.get("reference_bookmaker", ""),
+                "reference_bookmakers": api_odds.get("reference_bookmakers", []),
+                "price_delta_over": api_odds.get("price_delta_over"),
+                "price_delta_under": api_odds.get("price_delta_under"),
+            }
+
+        fallback_odds = self._calculate_odds_fallback(prop)
+        return {
+            "odds_source": "calculated",
+            "bookmaker": "",
+            "market_line": None,
+            "market_target_line": None,
+            "market_reference_lines": [],
+            "market_odds_over": None,
+            "market_odds_under": None,
+            "fallback_odds_over": fallback_odds,
+            "fallback_odds_under": fallback_odds,
+        }
 
     def calculate_total_odds(self, props: List[Dict]) -> float:
         if not props:
             return 0.0
         total = 1.0
         for prop in props:
-            odds = prop.get("dynamic_odds", prop.get("odds_over"))
+            odds = prop.get("dynamic_odds", prop.get("selected_odds", prop.get("odds_over")))
             if odds is None:
                 odds = self.default_prop_odds
             try:
@@ -163,9 +327,21 @@ class BilheteiroV2:
         result = []
         for p in props:
             p = dict(p)
-            p["dynamic_odds"] = self.calculate_prop_odds(p)
-            self._refresh_prop_calibration(p)
-            result.append(p)
+            odds_payload = self.calculate_prop_odds(p)
+            p.update(odds_payload)
+
+            over_odds = odds_payload.get("market_odds_over") or odds_payload.get("fallback_odds_over") or p.get("odds_over", self.default_prop_odds)
+            under_odds = odds_payload.get("market_odds_under") or odds_payload.get("fallback_odds_under") or p.get("odds_under", self.default_prop_odds)
+
+            over_prop = self._refresh_prop_calibration(p, "Over", over_odds)
+            over_prop["dynamic_odds"] = float(over_odds)
+            over_prop["market_odds"] = odds_payload.get("market_odds_over")
+            result.append(over_prop)
+
+            under_prop = self._refresh_prop_calibration(p, "Under", under_odds)
+            under_prop["dynamic_odds"] = float(under_odds)
+            under_prop["market_odds"] = odds_payload.get("market_odds_under")
+            result.append(under_prop)
         return result
 
     def calculate_quality_score(self, combo: List[Dict]) -> float:
@@ -175,7 +351,7 @@ class BilheteiroV2:
         avg_conf = sum(p.get("confidence", 5) for p in combo) / len(combo)
         avg_calibrated_prob = sum(p.get("calibrated_hit_probability", 0.5) for p in combo) / len(combo)
         avg_prob_edge = sum(p.get("probability_edge", 0.0) for p in combo) / len(combo)
-        avg_expected_value = sum(p.get("expected_value_over", 0.0) for p in combo) / len(combo)
+        avg_expected_value = sum(p.get("expected_value", p.get("expected_value_over", 0.0)) for p in combo) / len(combo)
         
         avg_aggr = sum(p.get("aggressiveness", 0.3) for p in combo) / len(combo)
 
@@ -201,6 +377,13 @@ class BilheteiroV2:
         unique_players = len(set(players))
         player_bonus = min(unique_players * 0.3, 0.9)
 
+        team_count = len({p.get("team") for p in combo if p.get("team")})
+        team_bonus = min(team_count * 0.2, 0.6)
+
+        correlation_penalty = self._combo_correlation_penalty(combo)
+        avg_price_delta = sum(self._selected_price_delta(p) for p in combo) / len(combo)
+        market_price_bonus = max(-0.2, min(0.2, avg_price_delta * 2.0))
+
         # Prefer combinations that fit the odds target with more athletes,
         # as long as quality and market alignment remain acceptable.
         size_bonus = max(0, len(combo) - 2) * 0.45
@@ -213,8 +396,11 @@ class BilheteiroV2:
             (1 - avg_aggr) * 1.4 +
             type_bonus +
             player_bonus +
+            team_bonus +
+            market_price_bonus +
             (avg_market_alignment * 1.1) +
-            size_bonus
+            size_bonus -
+            (correlation_penalty * 1.8)
         )
         
         return round(score, 2)
@@ -238,6 +424,7 @@ class BilheteiroV2:
             distance = total_odds - max_odds
 
         quality_score = self.calculate_quality_score(combo)
+        correlation_penalty = self._combo_correlation_penalty(combo)
 
         return {
             "game_id": game_id,
@@ -245,6 +432,7 @@ class BilheteiroV2:
             "num_props": len(combo),
             "odds": total_odds,
             "quality_score": quality_score,
+            "correlation_penalty": correlation_penalty,
             "avg_calibrated_probability": round(sum(p.get("calibrated_hit_probability", 0.5) for p in combo) / len(combo), 3),
             "avg_probability_edge": round(sum(p.get("probability_edge", 0.0) for p in combo) / len(combo), 3),
             "within_target_odds": within_target,
@@ -470,17 +658,19 @@ class BilheteiroV2:
         output_path = config.OUTPUT_DIR / filename
         config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
+        annotated_tickets = self._annotate_tickets_for_save(tickets)
+
         output = {
             "created_at": datetime.now().isoformat(),
             "version": "v2",
             "mode": mode,
-            "num_tickets": len(tickets),
-            "tickets": tickets,
+            "num_tickets": len(annotated_tickets),
+            "tickets": annotated_tickets,
         }
 
-        if tickets:
+        if annotated_tickets:
             total_odds = 1.0
-            for ticket in tickets:
+            for ticket in annotated_tickets:
                 total_odds *= ticket.get("odds", 1.0)
             output["total_combined_odds"] = round(total_odds, 2)
 

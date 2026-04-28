@@ -37,7 +37,7 @@ st.title("📊 Propriedades (Props)")
 st.markdown("Visualize e filtre os props gerados para cada jogo do dia.")
 
 if not st.session_state.stats_loaded:
-    st.error("⚠️ Execute o scraping primeiro na aba **Scraping**.")
+    st.error("⚠️ Atualize os dados na aba **Dados do Dia** para carregar Season Stats e Last5.")
     st.stop()
 
 if not st.session_state.loader.games_data:
@@ -96,6 +96,18 @@ def conf_color(conf):
     return "🔴"
 
 
+def _resolve_prop_odds_display(odds_payload, bilheteiro_obj):
+    if not isinstance(odds_payload, dict):
+        return bilheteiro_obj.default_prop_odds, bilheteiro_obj.default_prop_odds, "unknown", "-"
+
+    over_odds = odds_payload.get("market_odds_over") or odds_payload.get("fallback_odds_over") or bilheteiro_obj.default_prop_odds
+    under_odds = odds_payload.get("market_odds_under") or odds_payload.get("fallback_odds_under") or bilheteiro_obj.default_prop_odds
+    odds_source = odds_payload.get("odds_source", "unknown")
+    market_line = odds_payload.get("market_line")
+    market_ref = f"{market_line:.1f}" if isinstance(market_line, (int, float)) else "-"
+    return over_odds, under_odds, odds_source, market_ref
+
+
 st.markdown(f"**Total de props gerados:** {len(props)}")
 
 col_filter1, col_filter2, col_filter3 = st.columns(3)
@@ -125,7 +137,8 @@ st.markdown(f"**Props filtrados:** {len(filtered)}")
 rows = []
 for p in filtered:
     conf = engine.get_confidence_score(p)
-    odds = bilheteiro_obj.calculate_prop_odds(p)
+    odds_payload = bilheteiro_obj.calculate_prop_odds(p)
+    odds_over, odds_under, odds_source, market_ref = _resolve_prop_odds_display(odds_payload, bilheteiro_obj)
     injury_tag = f" ⚠️ {p.get('injury_status', '')}" if p.get('injury_status') else ""
     
     adv = p.get("advanced_filters", {})
@@ -141,7 +154,10 @@ for p in filtered:
         "Time": p["team"],
         "Tipo": p["type"].upper(),
         "Linha": p["line"],
-        "Odds": odds,
+        "Odds Over": odds_over,
+        "Odds Under": odds_under,
+        "Fonte": odds_source,
+        "Ref Mercado": market_ref,
         "Conf": int(conf),
         "Season Avg": p.get("season_avg", 0),
         "Last5 Avg": p.get("last5_avg", 0),
@@ -160,7 +176,10 @@ st.dataframe(
         "Time": st.column_config.TextColumn("Time", width="small"),
         "Tipo": st.column_config.TextColumn("Tipo", width="small"),
         "Linha": st.column_config.NumberColumn("Linha", format="%.1f", width="small"),
-        "Odds": st.column_config.NumberColumn("Odds", format="%.2f", width="small"),
+        "Odds Over": st.column_config.NumberColumn("Odds Over", format="%.2f", width="small"),
+        "Odds Under": st.column_config.NumberColumn("Odds Under", format="%.2f", width="small"),
+        "Fonte": st.column_config.TextColumn("Fonte", width="small"),
+        "Ref Mercado": st.column_config.TextColumn("Ref Mercado", width="small"),
         "Conf": st.column_config.NumberColumn("Conf", format="%d", width="small"),
         "Season Avg": st.column_config.NumberColumn("Season Avg", format="%.1f", width="small"),
         "Last5 Avg": st.column_config.NumberColumn("Last5 Avg", format="%.1f", width="small"),
@@ -198,6 +217,8 @@ for gid, game_data in sorted(games_with_props.items()):
         gp_rows = []
         for p in game_props:
             conf = engine.get_confidence_score(p)
+            odds_payload = bilheteiro_obj.calculate_prop_odds(p)
+            odds_over, odds_under, odds_source, market_ref = _resolve_prop_odds_display(odds_payload, bilheteiro_obj)
             adv = p.get("advanced_filters", {})
             trend_emoji = {"up": "📈", "down": "📉", "stable": "➡️"}.get(adv.get("trend", "stable"), "➡️")
             consistency = adv.get("consistency", 0)
@@ -205,7 +226,10 @@ for gid, game_data in sorted(games_with_props.items()):
                 "Jogador": p["player"],
                 "Tipo": p["type"].upper(),
                 "Linha": p["line"],
-                "Odds": bilheteiro_obj.calculate_prop_odds(p),
+                "Odds Over": odds_over,
+                "Odds Under": odds_under,
+                "Fonte": odds_source,
+                "Ref Mercado": market_ref,
                 "Conf": int(conf),
                 "Season": p.get("season_avg", 0),
                 "Last5": p.get("last5_avg", 0),
@@ -219,7 +243,10 @@ for gid, game_data in sorted(games_with_props.items()):
                 "Jogador": st.column_config.TextColumn("Jogador"),
                 "Tipo": st.column_config.TextColumn("Tipo"),
                 "Linha": st.column_config.NumberColumn("Linha", format="%.1f"),
-                "Odds": st.column_config.NumberColumn("Odds", format="%.2f"),
+                "Odds Over": st.column_config.NumberColumn("Odds Over", format="%.2f"),
+                "Odds Under": st.column_config.NumberColumn("Odds Under", format="%.2f"),
+                "Fonte": st.column_config.TextColumn("Fonte"),
+                "Ref Mercado": st.column_config.TextColumn("Ref Mercado"),
                 "Conf": st.column_config.NumberColumn("Conf", format="%d"),
                 "Season": st.column_config.NumberColumn("Season", format="%.1f"),
                 "Last5": st.column_config.NumberColumn("Last5", format="%.1f"),

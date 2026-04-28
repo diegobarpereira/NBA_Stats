@@ -12,6 +12,8 @@ CACHE_FILE = DATA_DIR / "cache_stats.json"
 ODDS_CACHE_FILE = DATA_DIR / "odds_cache_{date}.json"
 
 THE_ODDS_API_KEY = os.environ.get("THE_ODDS_API_KEY", "")
+THE_ODDS_API_REFERENCE_KEY = os.environ.get("THE_ODDS_API_REFERENCE_KEY", "") or os.environ.get("ODDS_API_NBA_PROPS_KEY", "")
+THE_ODDS_API_TARGET_KEY = os.environ.get("THE_ODDS_API_TARGET_KEY", "") or os.environ.get("ODDS_API_NBA_PROPS_SECONDARY_API_KEY", "")
 
 try:
     from config_local import THE_ODDS_API_KEY as LOCAL_API_KEY
@@ -19,6 +21,26 @@ try:
         THE_ODDS_API_KEY = LOCAL_API_KEY
 except ImportError:
     pass
+
+try:
+    from config_local import THE_ODDS_API_REFERENCE_KEY as LOCAL_REFERENCE_API_KEY
+    if LOCAL_REFERENCE_API_KEY and not THE_ODDS_API_REFERENCE_KEY:
+        THE_ODDS_API_REFERENCE_KEY = LOCAL_REFERENCE_API_KEY
+except ImportError:
+    pass
+
+try:
+    from config_local import THE_ODDS_API_TARGET_KEY as LOCAL_TARGET_API_KEY
+    if LOCAL_TARGET_API_KEY and not THE_ODDS_API_TARGET_KEY:
+        THE_ODDS_API_TARGET_KEY = LOCAL_TARGET_API_KEY
+except ImportError:
+    pass
+
+if not THE_ODDS_API_REFERENCE_KEY:
+    THE_ODDS_API_REFERENCE_KEY = THE_ODDS_API_KEY
+
+if not THE_ODDS_API_TARGET_KEY:
+    THE_ODDS_API_TARGET_KEY = THE_ODDS_API_KEY
 
 DATA_FILES = {
     "teams": BASE_DIR / "nba_por_equipe.json",
