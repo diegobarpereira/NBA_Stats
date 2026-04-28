@@ -4,7 +4,7 @@ from datetime import datetime, timedelta, date
 from typing import Dict, List, Optional, Tuple
 
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, FeatureNotFound
 
 import config
 
@@ -38,6 +38,12 @@ class ESPNScraper:
             "Accept-Language": "en-US,en;q=0.9",
         })
         self.delay = config.SCRAPING_CONFIG["request_delay_seconds"]
+
+    def _parse_html(self, html: str) -> BeautifulSoup:
+        try:
+            return BeautifulSoup(html, "lxml")
+        except FeatureNotFound:
+            return BeautifulSoup(html, "html.parser")
 
     def _extract_opponent_abbr(self, opponent_raw: str) -> str:
         cleaned = str(opponent_raw or "").upper().replace("VS", "").replace("@", "").strip()
@@ -90,7 +96,7 @@ class ESPNScraper:
         if resp.status_code != 200:
             return []
 
-        soup = BeautifulSoup(resp.text, "lxml")
+        soup = self._parse_html(resp.text)
         rows_out = []
 
         for table in soup.find_all("table"):
@@ -165,7 +171,7 @@ class ESPNScraper:
             if resp.status_code != 200:
                 return None
 
-            soup = BeautifulSoup(resp.text, "lxml")
+            soup = self._parse_html(resp.text)
             tables = soup.find_all("table")
             if len(tables) < 4:
                 return None
@@ -423,7 +429,7 @@ class ESPNScraper:
             print(f"Error in get_player_game_against_opponent: {e}")
             return None
 
-            soup = BeautifulSoup(resp.text, "lxml")
+            soup = self._parse_html(resp.text)
 
             table = soup.find("table", {"class": "mod-data"})
             if not table:
