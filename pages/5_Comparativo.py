@@ -87,11 +87,16 @@ def _build_game_cache_key(player_name: str, game_label: str, reference_date: Opt
     return f"{_normalize_name(player_name)}::{_normalize_name(game_label)}::{normalized_date}"
 
 
-def _should_refresh_cached_game_result(cached: Optional[Dict]) -> bool:
+def _should_refresh_cached_game_result(cached: Optional[Dict], reference_date: Optional[datetime.date] = None) -> bool:
     if not cached:
         return True
     status = cached.get("status")
     if status == "played":
+        if reference_date is not None:
+            expected_date = f"{reference_date.month}/{reference_date.day}"
+            cached_date = str(cached.get("date", "")).strip()
+            if cached_date != expected_date:
+                return True
         return False
     if status == "void":
         return True
@@ -1220,7 +1225,7 @@ with tab2:
                     def find_game_result(name, game_label):
                         cache_key = _build_game_cache_key(name, game_label, bet_reference_date)
                         cached = cached_game_results.get(cache_key)
-                        if cached and not _should_refresh_cached_game_result(cached):
+                        if cached and not _should_refresh_cached_game_result(cached, bet_reference_date):
                             return cached
 
                         search_name = name.lower().strip()
@@ -1247,7 +1252,7 @@ with tab2:
                             scraper_i = ESPNScraper()
                             if opponent_abbr:
                                 target_game = scraper_i.get_player_game_against_opponent(
-                                    player_info["pid"], name, opponent_abbr, bet_reference_date
+                                    player_info["pid"], name, opponent_abbr, bet_reference_date, max_age_days=0
                                 )
                                 if target_game:
                                     return target_game
@@ -1278,7 +1283,7 @@ with tab2:
                     selections_to_fetch = []
                     for cache_key, sel in unique_selection_map.items():
                         cached = cached_game_results.get(cache_key)
-                        if cached is not None and not _should_refresh_cached_game_result(cached):
+                        if cached is not None and not _should_refresh_cached_game_result(cached, bet_reference_date):
                             fetched_selection_results[cache_key] = cached
                         else:
                             selections_to_fetch.append((cache_key, sel))

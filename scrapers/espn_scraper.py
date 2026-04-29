@@ -166,7 +166,9 @@ class ESPNScraper:
                     if game_date_raw:
                         try:
                             parsed_dt = datetime.fromisoformat(game_date_raw.replace("Z", "+00:00"))
-                            game_date = parsed_dt.date()
+                            # ESPN returns UTC timestamps; shift to the typical US game night
+                            # so west-coast games do not spill into the next calendar day.
+                            game_date = (parsed_dt - timedelta(hours=6)).date()
                             date_text = f"{game_date.month}/{game_date.day}"
                         except ValueError:
                             game_date = None
