@@ -132,81 +132,91 @@ class ESPNScraper:
             return []
 
         season_types = payload.get("seasonTypes", [])
-        regular_season = next(
-            (season_type for season_type in season_types if "Regular Season" in str(season_type.get("displayName", ""))),
-            None,
-        )
-        if not regular_season:
+        supported_season_types = [
+            season_type
+            for season_type in season_types
+            if any(
+                label in str(season_type.get("displayName", ""))
+                for label in ("Regular Season", "Postseason")
+            )
+        ]
+        if not supported_season_types:
             return []
 
         events_index = payload.get("events", {})
         rows_out = []
+        seen_event_ids = set()
 
-        for category in regular_season.get("categories", []):
-            if category.get("type") != "event":
-                continue
-
-            for event_entry in category.get("events", []):
-                event_id = str(event_entry.get("eventId", "")).strip()
-                stats = event_entry.get("stats", [])
-                event_meta = events_index.get(event_id, {}) if event_id else {}
-
-                game_date_raw = str(event_meta.get("gameDate", "")).strip()
-                game_date = None
-                date_text = ""
-                if game_date_raw:
-                    try:
-                        parsed_dt = datetime.fromisoformat(game_date_raw.replace("Z", "+00:00"))
-                        game_date = parsed_dt.date()
-                        date_text = f"{game_date.month}/{game_date.day}"
-                    except ValueError:
-                        game_date = None
-
-                if not date_text:
+        for season_type in supported_season_types:
+            for category in season_type.get("categories", []):
+                if category.get("type") != "event":
                     continue
 
-                opponent = event_meta.get("opponent", {})
-                opponent_abbr = self._extract_opponent_abbr(opponent.get("abbreviation", ""))
-                at_vs = str(event_meta.get("atVs", "")).strip().lower()
+                for event_entry in category.get("events", []):
+                    event_id = str(event_entry.get("eventId", "")).strip()
+                    if not event_id or event_id in seen_event_ids:
+                        continue
+                    seen_event_ids.add(event_id)
+                    stats = event_entry.get("stats", [])
+                    event_meta = events_index.get(event_id, {})
 
-                minutes_raw = str(stats[0]).strip() if len(stats) > 0 else ""
-                minutes = self._parse_minutes_value(minutes_raw)
-                played = minutes > 0
-
-                fg3 = 0.0
-                if len(stats) > 3:
-                    fg3_raw = str(stats[3]).strip()
-                    if fg3_raw and "-" in fg3_raw:
+                    game_date_raw = str(event_meta.get("gameDate", "")).strip()
+                    game_date = None
+                    date_text = ""
+                    if game_date_raw:
                         try:
-                            fg3 = float(fg3_raw.split("-", 1)[0])
+                            parsed_dt = datetime.fromisoformat(game_date_raw.replace("Z", "+00:00"))
+                            game_date = parsed_dt.date()
+                            date_text = f"{game_date.month}/{game_date.day}"
                         except ValueError:
-                            fg3 = 0.0
+                            game_date = None
 
-                def parse_stat_value(index: int) -> float:
-                    if index >= len(stats):
-                        return 0.0
-                    raw = str(stats[index]).strip()
-                    try:
-                        return float(raw)
-                    except ValueError:
-                        return 0.0
+                    if not date_text:
+                        continue
 
-                rows_out.append({
-                    "date": date_text,
-                    "game_date": game_date,
-                    "opponent_raw": opponent_abbr,
-                    "opponent_abbr": opponent_abbr,
-                    "result_raw": str(event_meta.get("gameResult", "")).strip(),
-                    "minutes_raw": minutes_raw,
-                    "minutes": minutes,
-                    "played": played,
-                    "is_home": at_vs == "vs",
-                    "pts": parse_stat_value(13) if played else 0.0,
-                    "reb": parse_stat_value(7) if played else 0.0,
-                    "ast": parse_stat_value(8) if played else 0.0,
-                    "fg3": fg3 if played else 0.0,
-                })
+                    opponent = event_meta.get("opponent", {})
+                    opponent_abbr = self._extract_opponent_abbr(opponent.get("abbreviation", ""))
+                    at_vs = str(event_meta.get("atVs", "")).strip().lower()
 
+                    minutes_raw = str(stats[0]).strip() if len(stats) > 0 else ""
+                    minutes = self._parse_minutes_value(minutes_raw)
+                    played = minutes > 0
+
+                    fg3 = 0.0
+                    if len(stats) > 3:
+                        fg3_raw = str(stats[3]).strip()
+                        if fg3_raw and "-" in fg3_raw:
+                            try:
+                                fg3 = float(fg3_raw.split("-", 1)[0])
+                            except ValueError:
+                                fg3 = 0.0
+
+                    def parse_stat_value(index: int) -> float:
+                        if index >= len(stats):
+                            return 0.0
+                        raw = str(stats[index]).strip()
+                        try:
+                            return float(raw)
+                        except ValueError:
+                            return 0.0
+
+                    rows_out.append({
+                        "date": date_text,
+                        "game_date": game_date,
+                        "opponent_raw": opponent_abbr,
+                        "opponent_abbr": opponent_abbr,
+                        "result_raw": str(event_meta.get("gameResult", "")).strip(),
+                        "minutes_raw": minutes_raw,
+                        "minutes": minutes,
+                        "played": played,
+                        "is_home": at_vs == "vs",
+                        "pts": parse_stat_value(13) if played else 0.0,
+                        "reb": parse_stat_value(7) if played else 0.0,
+                        "ast": parse_stat_value(8) if played else 0.0,
+                        "fg3": fg3 if played else 0.0,
+                    })
+
+        rows_out.sort(key=lambda row: (row.get("game_date") is not None, row.get("game_date")), reverse=True)
         return rows_out
 
     def _fetch_player_game_log_rows(self, pid: str) -> List[Dict]:
