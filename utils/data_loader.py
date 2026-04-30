@@ -13,23 +13,16 @@ from utils.game_schedule_validation import validate_games_against_espn
 
 def _sync_cache_from_github() -> bool:
     """
-    Tenta sincronizar o cache do GitHub automaticamente.
+    Tenta sincronizar o cache do GitHub apenas quando solicitado.
     """
     CACHE_FILE = config.DATA_DIR / "cache_stats.json"
     GITHUB_RAW_URL = "https://raw.githubusercontent.com/diegobarpereira/NBA_Stats/main/data/cache_stats.json"
-    MAX_CACHE_AGE_HOURS = 24
-    
-    # Verifica se está no Streamlit Cloud
-    is_cloud = os.environ.get("STREAMLIT_SHARING_MODE") is not None
-    
-    if not is_cloud and not CACHE_FILE.exists():
+    sync_requested = os.environ.get("NBA_SYNC_CACHE_FROM_GITHUB", "").strip().lower()
+    if sync_requested not in {"1", "true", "yes", "on"}:
         return False
-    
-    if not is_cloud:
-        return False
-    
+
     print("Verificando cache do GitHub...")
-    
+
     # Verifica se precisa atualizar
     needs_update = True
     if CACHE_FILE.exists():
@@ -112,7 +105,7 @@ class DataLoader:
         self.injuries_data: List[Dict] = []
         self.stats_cache: Dict[str, Dict] = {}
         self._injury_index: Dict[str, Dict] = {}
-        
+
         _sync_cache_from_github()
     
     def load_all(self) -> None:
