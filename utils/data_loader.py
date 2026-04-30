@@ -8,6 +8,7 @@ import time
 import requests
 
 import config
+from utils.game_schedule_validation import validate_games_against_espn
 
 
 def _sync_cache_from_github() -> bool:
@@ -138,6 +139,7 @@ class DataLoader:
             self.games_data = raw
         else:
             self.games_data = raw.get("jogos", [])
+        self.games_data, _ = validate_games_against_espn(self.games_data)
         self._validate_games()
         return self.games_data
 

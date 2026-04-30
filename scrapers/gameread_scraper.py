@@ -7,6 +7,7 @@ import time
 import logging
 
 import config
+from utils.game_schedule_validation import validate_games_against_espn
 
 logger = logging.getLogger(__name__)
 
@@ -95,23 +96,54 @@ def fetch_games_from_gameread(date: str, season: int = 2025) -> List[Dict]:
             "id": game_id,
             "home": home_name,
             "away": away_name,
+            "date": date,
             "datetime": dt.isoformat(),
             "home_abbr": home_abbr,
             "away_abbr": away_abbr,
             "game_api_id": game.get("id"),
         })
-    
-    return games
+
+    filtered_games, removed_games = validate_games_against_espn(games, date=date)
+    for removed_game in removed_games:
+        logger.info(
+            "Jogo removido por validacao ESPN: %s @ %s (%s)",
+            removed_game.get("away_abbr") or removed_game.get("away"),
+            removed_game.get("home_abbr") or removed_game.get("home"),
+            removed_game.get("validation_reason", "sem motivo informado"),
+        )
+
+    return filtered_games
 
 
 def fetch_injuries_from_gameread(date: str, season: int = 2025) -> Dict:
     games_url = f"https://gameread.app/nba/api/v1/games/day?date={date}&season={season}"
     response = _retry_request(games_url, timeout=30)
     data = response.json()
-    
-    by_team = {}
-    
+
+    candidate_games = []
     for game in data.get("games", []):
+        candidate_games.append({
+            "id": f"{game.get('visitorTeam', {}).get('abbreviation', '')}vs{game.get('homeTeam', {}).get('abbreviation', '')}_{date}",
+            "date": date,
+            "home_abbr": game.get("homeTeam", {}).get("abbreviation", ""),
+            "away_abbr": game.get("visitorTeam", {}).get("abbreviation", ""),
+            "game_api_id": game.get("id"),
+            "_source_game": game,
+        })
+
+    validated_games, removed_games = validate_games_against_espn(candidate_games, date=date)
+    for removed_game in removed_games:
+        logger.info(
+            "Lesoes ignoradas para jogo fora da agenda ESPN: %s @ %s (%s)",
+            removed_game.get("away_abbr") or removed_game.get("away"),
+            removed_game.get("home_abbr") or removed_game.get("home"),
+            removed_game.get("validation_reason", "sem motivo informado"),
+        )
+
+    by_team = {}
+
+    for raw_game in validated_games:
+        game = raw_game["_source_game"]
         game_api_id = game.get("id")
         if not game_api_id:
             continue

@@ -1,7 +1,8 @@
 import json
 import re
+from datetime import date
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 import requests
 from bs4 import BeautifulSoup
@@ -189,30 +190,64 @@ def get_matchup_boost(
         return 0.83
 
 
+def _read_matchup_cache() -> Tuple[Dict[str, Dict], Optional[str]]:
+    if not MATCHUP_CACHE.exists():
+        return {}, None
+
+    with open(MATCHUP_CACHE, "r", encoding="utf-8") as f:
+        payload = json.load(f)
+
+    if isinstance(payload, dict) and isinstance(payload.get("data"), dict):
+        return payload["data"], payload.get("updated_on")
+
+    if isinstance(payload, dict):
+        return payload, None
+
+    return {}, None
+
+
 def load_matchup_cache() -> Dict[str, Dict]:
-    if MATCHUP_CACHE.exists():
-        with open(MATCHUP_CACHE, "r", encoding="utf-8") as f:
-            return json.load(f)
-    return {}
+    data, _ = _read_matchup_cache()
+    return data
 
 
 def save_matchup_cache(data: Dict[str, Dict]) -> None:
     with open(MATCHUP_CACHE, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+        json.dump(
+            {
+                "updated_on": date.today().isoformat(),
+                "data": data,
+            },
+            f,
+            indent=2,
+            ensure_ascii=False,
+        )
 
 
 def fetch_and_cache_matchups(force: bool = False) -> Dict[str, Dict]:
-    if not force:
-        cached = load_matchup_cache()
-        if cached:
-            return cached
+    cached, updated_on = _read_matchup_cache()
+    cache_is_fresh = updated_on == date.today().isoformat()
 
-    print("Buscando dados de matchups (defesa vs posicao)...")
+    if cached and cache_is_fresh and not force:
+        return cached
+
+    if cached and not cache_is_fresh and not force:
+        print(f"Cache de matchup desatualizado ({updated_on or 'sem data'}); atualizando para {date.today().isoformat()}...")
+    elif not cached and not force:
+        print("Cache de matchup ausente; atualizando via scrape HTML...")
+
+    print("Atualizando cache de matchups (defesa vs posicao) via scrape HTML...")
     data = _scrape_defense_vs_position()
     if data:
         save_matchup_cache(data)
         print(f"Dados de matchup salvos: {len(data)} entradas")
-    return data
+        return data
+
+    if cached:
+        print("Falha ao atualizar matchup; preservando cache existente.")
+        return cached
+
+    return {}
 
 
 def print_matchup_summary(matchup_data: Dict[str, Dict]) -> None:

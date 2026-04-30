@@ -1,17 +1,15 @@
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 import re
 from datetime import datetime, timedelta, date
 from typing import Dict, List, Optional, Tuple
 
 import requests
-from bs4 import BeautifulSoup, FeatureNotFound
 
 import config
 
 
 class ESPNScraper:
-    TEAM_URL = "https://www.espn.com/nba/team/stats/_/name/{abbr}/season/{season}/type/2"
-    PLAYER_LOG_URL = "https://www.espn.com/nba/player/gamelog/_/id/{pid}/type/nba"
     PLAYER_GAMELOG_API_URL = "https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/{pid}/gamelog"
     TEAM_DIRECTORY_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams"
     TEAM_ROSTER_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/{team_id}/roster"
@@ -43,13 +41,19 @@ class ESPNScraper:
             "Referer": "https://www.espn.com/nba/",
         })
         self.delay = config.SCRAPING_CONFIG["request_delay_seconds"]
+        self.api_delay = 0.05
         self._team_id_cache: Dict[str, str] = {}
+
+    def _request_delay(self, url: str) -> float:
+        if "site.api.espn.com/apis/" in url or "site.web.api.espn.com/apis/" in url or "sports.core.api.espn.com/" in url:
+            return self.api_delay
+        return self.delay
 
     def _get(self, url: str, timeout: int = 20, attempts: int = 3) -> Optional[requests.Response]:
         last_error = None
         for attempt in range(1, attempts + 1):
             try:
-                time.sleep(self.delay)
+                time.sleep(self._request_delay(url))
                 response = self.session.get(url, timeout=timeout)
                 if response.status_code == 200:
                     return response
@@ -78,12 +82,6 @@ class ESPNScraper:
         except ValueError as exc:
             print(f"ESPN JSON decode failed for {url}: {exc}")
             return None
-
-    def _parse_html(self, html: str) -> BeautifulSoup:
-        try:
-            return BeautifulSoup(html, "lxml")
-        except FeatureNotFound:
-            return BeautifulSoup(html, "html.parser")
 
     def _extract_opponent_abbr(self, opponent_raw: str) -> str:
         cleaned = str(opponent_raw or "").upper().replace("VS", "").replace("@", "").strip()
@@ -225,67 +223,7 @@ class ESPNScraper:
         if not pid:
             return []
 
-        api_rows = self._fetch_player_game_log_rows_via_api(pid)
-        if api_rows:
-            return api_rows
-
-        season_year = self._get_season_year()
-        url = f"https://www.espn.com/nba/player/gamelog/_/id/{pid}/season/{season_year}"
-        resp = self._get(url, timeout=20)
-        if resp is None or resp.status_code != 200:
-            return []
-
-        soup = self._parse_html(resp.text)
-        rows_out = []
-
-        for table in soup.find_all("table"):
-            table_text = table.get_text()
-            if "DateOPPResultMIN" not in table_text:
-                continue
-            if "Postseason" in table_text or "Preseason" in table_text:
-                continue
-
-            for row in table.find_all("tr"):
-                cells = row.find_all(["td"])
-                if len(cells) < 4:
-                    continue
-
-                date_text = cells[0].get_text(strip=True)
-                if not re.search(r"\d+/\d+", date_text):
-                    continue
-
-                opponent_raw = cells[1].get_text(strip=True) if len(cells) > 1 else ""
-                result_raw = cells[2].get_text(strip=True) if len(cells) > 2 else ""
-                minutes_raw = cells[3].get_text(strip=True) if len(cells) > 3 else ""
-                minutes = self._parse_minutes_value(minutes_raw)
-                played = minutes > 0
-
-                fg3 = 0.0
-                if len(cells) > 6:
-                    fg3_raw = cells[6].get_text(strip=True)
-                    if fg3_raw and "-" in fg3_raw:
-                        try:
-                            fg3 = float(fg3_raw.split("-")[0])
-                        except ValueError:
-                            fg3 = 0.0
-
-                rows_out.append({
-                    "date": date_text,
-                    "game_date": self._parse_game_date(date_text),
-                    "opponent_raw": opponent_raw,
-                    "opponent_abbr": self._extract_opponent_abbr(opponent_raw),
-                    "result_raw": result_raw,
-                    "minutes_raw": minutes_raw,
-                    "minutes": minutes,
-                    "played": played,
-                    "is_home": "vs" in opponent_raw.lower() or "@" not in opponent_raw,
-                    "pts": self._safe_stat_float(cells, 16) if played else 0.0,
-                    "reb": self._safe_stat_float(cells, 10) if played else 0.0,
-                    "ast": self._safe_stat_float(cells, 11) if played else 0.0,
-                    "fg3": fg3 if played else 0.0,
-                })
-
-        return rows_out
+        return self._fetch_player_game_log_rows_via_api(pid)
 
     def _abbr_to_espn(self, team_abbr: str) -> str:
         REVERSE_MAP = {
@@ -349,6 +287,33 @@ class ESPNScraper:
                         return default
         return default
 
+    def _load_athlete_season_stats(self, athlete: Dict, season: int) -> Optional[Dict]:
+        pid = str(athlete.get("id", "")).strip()
+        name = athlete.get("displayName") or athlete.get("fullName") or ""
+        position = athlete.get("position", {}).get("abbreviation", "G")
+        if not pid or not name:
+            return None
+
+        stats_url = self.ATHLETE_STATS_URL.format(season=season, pid=pid)
+        stats_payload = self._get_json(stats_url, timeout=20)
+        if not stats_payload:
+            return None
+
+        gp_val = int(self._extract_stat_value(stats_payload, "gamesPlayed", 0))
+        if gp_val == 0 or gp_val == 1:
+            gp_val = 30
+
+        return {
+            "name": name,
+            "position": position or "G",
+            "pid": pid,
+            "gp": gp_val,
+            "ppg": round(self._extract_stat_value(stats_payload, "avgPoints", 0.0), 1),
+            "rpg": round(self._extract_stat_value(stats_payload, "avgRebounds", 0.0), 1),
+            "apg": round(self._extract_stat_value(stats_payload, "avgAssists", 0.0), 1),
+            "tpg": round(self._extract_stat_value(stats_payload, "avgThreePointFieldGoalsMade", 0.0), 1),
+        }
+
     def _get_team_stats_via_api(self, team_abbr: str) -> Optional[List[Dict]]:
         team_id = self._get_team_id(team_abbr)
         if not team_id:
@@ -368,32 +333,14 @@ class ESPNScraper:
 
         season = self._get_current_season_year()
         results = []
-        for athlete in athletes:
-            pid = str(athlete.get("id", "")).strip()
-            name = athlete.get("displayName") or athlete.get("fullName") or ""
-            position = athlete.get("position", {}).get("abbreviation", "G")
-            if not pid or not name:
-                continue
 
-            stats_url = self.ATHLETE_STATS_URL.format(season=season, pid=pid)
-            stats_payload = self._get_json(stats_url, timeout=20)
-            if not stats_payload:
-                continue
-
-            gp_val = int(self._extract_stat_value(stats_payload, "gamesPlayed", 0))
-            if gp_val == 0 or gp_val == 1:
-                gp_val = 30
-
-            results.append({
-                "name": name,
-                "position": position or "G",
-                "pid": pid,
-                "gp": gp_val,
-                "ppg": round(self._extract_stat_value(stats_payload, "avgPoints", 0.0), 1),
-                "rpg": round(self._extract_stat_value(stats_payload, "avgRebounds", 0.0), 1),
-                "apg": round(self._extract_stat_value(stats_payload, "avgAssists", 0.0), 1),
-                "tpg": round(self._extract_stat_value(stats_payload, "avgThreePointFieldGoalsMade", 0.0), 1),
-            })
+        max_workers = min(6, max(1, len(athletes)))
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            futures = [executor.submit(self._load_athlete_season_stats, athlete, season) for athlete in athletes]
+            for future in as_completed(futures):
+                athlete_stats = future.result()
+                if athlete_stats:
+                    results.append(athlete_stats)
 
         if not results:
             print(f"ESPN API returned no player statistics for {team_abbr}")
@@ -403,99 +350,7 @@ class ESPNScraper:
         return results
 
     def get_team_stats(self, team_abbr: str) -> Optional[List[Dict]]:
-        season = self._get_current_season_year()
-        url = f"https://www.espn.com/nba/team/stats/_/name/{self._abbr_to_espn(team_abbr)}/season/{season}/seasontype/2"
-        try:
-            resp = self._get(url, timeout=15)
-            if resp is None or resp.status_code != 200:
-                status = resp.status_code if resp is not None else "sem resposta"
-                print(f"ESPN HTML team request failed for {team_abbr}: {status}")
-                return self._get_team_stats_via_api(team_abbr)
-
-            soup = self._parse_html(resp.text)
-            tables = soup.find_all("table")
-            if len(tables) < 4:
-                page_title = soup.title.get_text(strip=True) if soup.title else "sem titulo"
-                print(f"ESPN team page unexpected structure for {team_abbr}: {len(tables)} tables | {page_title}")
-                return self._get_team_stats_via_api(team_abbr)
-
-            name_table = tables[0]
-            stats_table = tables[1]
-            shooting_table = tables[3]
-
-            name_rows = name_table.find_all("tr")
-            stat_rows = stats_table.find_all("tr")
-            shoot_rows = shooting_table.find_all("tr")
-
-            if len(name_rows) < 2 or len(stat_rows) < 2:
-                return None
-
-            results = []
-            num_players = min(len(name_rows), len(stat_rows), len(shoot_rows))
-
-            for i in range(1, num_players):
-                name_link = name_rows[i].find("a")
-                if not name_link:
-                    continue
-
-                href = name_link.get("href", "")
-
-                name_td = name_rows[i].find(["td", "th"])
-                name_raw = name_td.get_text(strip=True) if name_td else name_link.get_text(strip=True)
-
-                position = ""
-                name = name_raw
-                pos_match = re.search(r"(G|F|C)(?:-(G|F|C))?\*?\s*$", name_raw)
-                if pos_match:
-                    full = pos_match.group(0).strip().rstrip("*")
-                    position = full
-                    name = re.sub(r"(G|F|C)(?:-(G|F|C))?\*?\s*$", "", name_raw).strip()
-                else:
-                    name = name_raw
-
-                pid_match = re.search(r"/id/(\d+)/", href)
-                pid = pid_match.group(1) if pid_match else ""
-
-                stat_cells = stat_rows[i].find_all(["td", "th"])
-                shoot_cells = shoot_rows[i].find_all(["td", "th"])
-
-                def get_val(cells, idx, default=0.0):
-                    try:
-                        text = cells[idx].get_text(strip=True) if idx < len(cells) else ""
-                        return float(text) if text and text != "-" else default
-                    except (ValueError, IndexError):
-                        return default
-
-                def get_str(cells, idx, default=""):
-                    try:
-                        text = cells[idx].get_text(strip=True) if idx < len(cells) else ""
-                        return text if text else default
-                    except IndexError:
-                        return default
-
-                pts = get_val(stat_cells, 3)
-                reb = get_val(stat_cells, 6)
-                ast = get_val(stat_cells, 7)
-                fg3 = get_val(shoot_cells, 3)
-
-                gp_val = int(get_val(stat_cells, 0))
-                if gp_val == 0 or gp_val == 1:
-                    gp_val = 30
-                results.append({
-                    "name": name,
-                    "position": position or "G",
-                    "pid": pid,
-                    "gp": gp_val,
-                    "ppg": round(pts, 1),
-                    "rpg": round(reb, 1),
-                    "apg": round(ast, 1),
-                    "tpg": round(fg3, 1),
-                })
-
-            return results
-        except Exception as e:
-            print(f"    Erro team {team_abbr}: {e}")
-            return self._get_team_stats_via_api(team_abbr)
+        return self._get_team_stats_via_api(team_abbr)
 
     def get_player_last5(self, pid: str, player_name: str, last_game_only: bool = False) -> Optional[Dict]:
         if not pid:
@@ -670,77 +525,6 @@ class ESPNScraper:
             }
         except Exception as e:
             print(f"Error in get_player_game_against_opponent: {e}")
-            return None
-
-            soup = self._parse_html(resp.text)
-
-            table = soup.find("table", {"class": "mod-data"})
-            if not table:
-                tables = soup.find_all("table")
-                table = next((t for t in tables if "PTS" in t.get_text()), None)
-
-            if not table:
-                return None
-
-            rows = table.find_all("tr")
-            data_rows = [
-                r for r in rows
-                if r.find("td") and ("player" not in (r.get("class") or []))
-            ]
-
-            game_rows = []
-            for row in data_rows[:20]:
-                cells = row.find_all(["td", "th"])
-                if len(cells) < 16:
-                    continue
-                date_text = cells[0].get_text(strip=True)
-                if not date_text or "/" not in date_text:
-                    continue
-                try:
-                    pts = float(cells[16].get_text(strip=True)) if cells[16].get_text(strip=True) else 0
-                    reb = float(cells[10].get_text(strip=True)) if cells[10].get_text(strip=True) else 0
-                    ast = float(cells[11].get_text(strip=True)) if cells[11].get_text(strip=True) else 0
-                    fg3_raw = cells[6].get_text(strip=True) if len(cells) > 6 else ""
-                    fg3 = 0.0
-                    if fg3_raw and "-" in fg3_raw:
-                        fg3 = float(fg3_raw.split("-")[0])
-                    elif fg3_raw:
-                        try:
-                            fg3 = float(fg3_raw)
-                        except ValueError:
-                            fg3 = 0.0
-                    
-                    minutes = 0.0
-                    if len(cells) > 3:
-                        min_raw = cells[3].get_text(strip=True) if cells[3].get_text(strip=True) else "0"
-                        try:
-                            minutes = float(min_raw)
-                        except ValueError:
-                            minutes = 0.0
-                    
-                    game_rows.append({"pts": pts, "reb": reb, "ast": ast, "fg3": fg3, "min": minutes})
-                except (ValueError, IndexError):
-                    continue
-
-            if not game_rows:
-                return None
-
-            last5 = game_rows[:5]
-
-            def avg(key):
-                vals = [g[key] for g in last5]
-                return round(sum(vals) / len(vals), 1) if vals else 0.0
-
-            return {
-                "ppg": avg("pts"),
-                "rpg": avg("reb"),
-                "apg": avg("ast"),
-                "tpg": avg("fg3"),
-                "mpg": avg("min"),
-                "games": len(last5),
-            }
-        except Exception as e:
-            print(f"Error in get_player_last5: {e}")
             return None
 
     def get_player_stats(self, player_name: str, team_abbr: str) -> Optional[Dict]:

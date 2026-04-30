@@ -4,7 +4,6 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import requests
-from bs4 import BeautifulSoup
 
 import config
 
